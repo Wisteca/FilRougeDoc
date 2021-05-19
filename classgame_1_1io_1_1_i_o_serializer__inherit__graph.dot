@@ -1,0 +1,9 @@
+digraph "game::io::IOSerializer"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="game::io::IOSerializer",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Interface each class that can be serialized/deserialized from a xml file must implement."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="game::skills::SkillsSet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1skills_1_1_skills_set.html",tooltip="A set of all skills each Entity has with useful methods to manage them."];
+}
