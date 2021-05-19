@@ -15,7 +15,7 @@ digraph "src/SkillsSet.cpp"
   Node4 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node6 [label="list",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
   Node2 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node7 [label="IOSerializer.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_i_o_serializer_8hpp_source.html",tooltip=" "];
+  Node7 [label="IOSerializer.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_i_o_serializer_8hpp.html",tooltip="Interface each class that can be serialized/deserialized from a xml file must implement."];
   Node7 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node8 [label="rapidxml.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
   Node2 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

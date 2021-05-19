@@ -1,0 +1,13 @@
+digraph "src/IOSerializer.hpp"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="src/IOSerializer.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Interface each class that can be serialized/deserialized from a xml file must implement."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="src/SkillsSet.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_skills_set_8hpp.html",tooltip="Header file of SkillsSet class and SkillLevel enum."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="src/main.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8cpp_source.html",tooltip=" "];
+  Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="src/SkillsSet.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_skills_set_8cpp.html",tooltip="Implementation of SkillsSet class."];
+}

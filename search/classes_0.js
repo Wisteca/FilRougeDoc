@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ioserializer_52',['IOSerializer',['../classgame_1_1io_1_1_i_o_serializer.html',1,'game::io']]]
+  ['entity_55',['Entity',['../classgame_1_1entity_1_1_entity.html',1,'game::entity']]]
 ];

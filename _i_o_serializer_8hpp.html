@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>FilRouge: src/SkillsSet.hpp File Reference</title>
+<title>FilRouge: src/IOSerializer.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -67,65 +67,46 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
-<div class="title">SkillsSet.hpp File Reference</div>  </div>
+<div class="title">IOSerializer.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Header file of SkillsSet class and SkillLevel enum.  
+<p>Interface each class that can be serialized/deserialized from a xml file must implement.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="_skill_8hpp_source.html">Skill.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_i_o_serializer_8hpp_source.html">IOSerializer.hpp</a>&quot;</code><br />
-<code>#include &lt;list&gt;</code><br />
-<code>#include &lt;map&gt;</code><br />
-<code>#include &lt;ostream&gt;</code><br />
+<div class="textblock"><code>#include &lt;rapidxml.hpp&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for SkillsSet.hpp:</div>
+Include dependency graph for IOSerializer.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="_skills_set_8hpp__incl.png" border="0" usemap="#asrc_2_skills_set_8hpp" alt=""/></div>
+<div class="center"><img src="_i_o_serializer_8hpp__incl.png" border="0" usemap="#asrc_2_i_o_serializer_8hpp" alt=""/></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="_skills_set_8hpp__dep__incl.png" border="0" usemap="#asrc_2_skills_set_8hppdep" alt=""/></div>
+<div class="center"><img src="_i_o_serializer_8hpp__dep__incl.png" border="0" usemap="#asrc_2_i_o_serializer_8hppdep" alt=""/></div>
 </div>
 </div>
-<p><a href="_skills_set_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="_i_o_serializer_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1skills_1_1_skills_set.html">game::skills::SkillsSet</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A set of all skills each Entity has with useful methods to manage them.  <a href="classgame_1_1skills_1_1_skills_set.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1io_1_1_i_o_serializer.html">game::io::IOSerializer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface each class that can be serialized/deserialized from a xml file must implement.  <a href="classgame_1_1io_1_1_i_o_serializer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:namespacegame_1_1skills"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame_1_1skills.html">game::skills</a></td></tr>
-<tr class="memdesc:namespacegame_1_1skills"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skills system namespace. <br /></td></tr>
+<tr class="memitem:namespacegame_1_1io"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame_1_1io.html">game::io</a></td></tr>
+<tr class="memdesc:namespacegame_1_1io"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inputs/outputs namespace. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a23c3c906594652d6fb2d249dfdbed78b"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame_1_1skills.html#a23c3c906594652d6fb2d249dfdbed78b">game::skills::SkillLevel</a> : int { <br />
-&#160;&#160;<a class="el" href="namespacegame_1_1skills.html#a23c3c906594652d6fb2d249dfdbed78ba6e5affbf5c08fef0e28c094856f94627">game::skills::EASY</a> = 1
-, <a class="el" href="namespacegame_1_1skills.html#a23c3c906594652d6fb2d249dfdbed78ba1e23852820b9154316c7c06e2b7ba051">game::skills::NORMAL</a> = 2
-, <a class="el" href="namespacegame_1_1skills.html#a23c3c906594652d6fb2d249dfdbed78ba7c144eae2e08db14c82e376603cc01f4">game::skills::HARD</a> = 3
-, <a class="el" href="namespacegame_1_1skills.html#a23c3c906594652d6fb2d249dfdbed78baaa68a1cbb39b1f0572d8cb1c1c2c7960">game::skills::HARDCORE</a> = 4
-, <br />
-&#160;&#160;<a class="el" href="namespacegame_1_1skills.html#a23c3c906594652d6fb2d249dfdbed78ba081912e034fd835fdda076251f2cd586">game::skills::FROZEN</a> = 0
-<br />
- }</td></tr>
-<tr class="memdesc:a23c3c906594652d6fb2d249dfdbed78b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This enum specifies the difficulty to improve a skill.  <a href="namespacegame_1_1skills.html#a23c3c906594652d6fb2d249dfdbed78b">More...</a><br /></td></tr>
-<tr class="separator:a23c3c906594652d6fb2d249dfdbed78b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Header file of SkillsSet class and SkillLevel enum. </p>
+<div class="textblock"><p>Interface each class that can be serialized/deserialized from a xml file must implement. </p>
 <dl class="section author"><dt>Author</dt><dd>Bastian Cerf </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>30.04.2021 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>18.05.2021 </dd></dl>
 
-<p class="definition">Definition in file <a class="el" href="_skills_set_8hpp_source.html">SkillsSet.hpp</a>.</p>
+<p class="definition">Definition in file <a class="el" href="_i_o_serializer_8hpp_source.html">IOSerializer.hpp</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
