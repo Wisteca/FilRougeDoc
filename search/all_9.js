@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['normal_28',['NORMAL',['../namespacegame_1_1skills.html#a23c3c906594652d6fb2d249dfdbed78ba1e23852820b9154316c7c06e2b7ba051',1,'game::skills']]]
+  ['martial_5farts_28',['MARTIAL_ARTS',['../classgame_1_1skills_1_1_skill_type.html#a7ed5e7ef7b099a0ebab44ff8879027bc',1,'game::skills::SkillType']]],
+  ['max_5fhealth_29',['MAX_HEALTH',['../classgame_1_1skills_1_1_skill_type.html#a8c2ff204d029562e7d36104c37a0c2b3',1,'game::skills::SkillType']]],
+  ['max_5fsuto_30',['MAX_SUTO',['../classgame_1_1skills_1_1_skill_type.html#a0becc9c45d68686c70677358e6af268c',1,'game::skills::SkillType']]]
 ];
