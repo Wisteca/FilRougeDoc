@@ -118,13 +118,18 @@ std::ios_base &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>endlog
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Singleton <a class="el" href="classgame_1_1logs_1_1_logger.html" title="Singleton Logger.">Logger</a>. </p>
-<p>Because this class inherit from std::ostream the way to log something is like that : <code> Logger::log() &lt;&lt; info &lt;&lt; "System started." &lt;&lt; endlog; </code> The aim is to bring a maximum of flexibility when logging something and to log like in cout for example. A log may always begin by an identificator</p><ul>
+<p>Because this class inherit from std::ostream the way to log something is like that : <code> Logger::log() &lt;&lt; info &lt;&lt; "System started." &lt;&lt; endlog; </code></p>
+<p>The aim is to bring a maximum of flexibility when logging something and to log like in cout for example.</p>
+<p>A log may always begin by an identificator</p><ul>
 <li>info</li>
 <li>warning</li>
-<li>severe If it isn't, the last used identificator is used. To terminate a log, use the endlog identificator. The log isn't saved before this call, so for example : <code> Logger::log() &lt;&lt; info &lt;&lt; "Hello all,"; Logger::log() &lt;&lt; " I'm a log"; Logger::log() &lt;&lt; endlog; </code> will create only one log. It's not possible to log something with more than one severity, so : <code> Logger::log() &lt;&lt; info &lt;&lt; "This is info"; Logger::log() &lt;&lt; warning &lt;&lt; "This is warning"; // The info log is logged (endlog is automatically called) Logger::log() &lt;&lt; endlog; // Warning is logged. </code> </li>
+<li>severe</li>
 </ul>
+<p>If it isn't, the identificator of the last log is used.</p>
+<p>To terminate a log, use the endlog identificator. The log isn't saved before this call, so for example : <code> Logger::log() &lt;&lt; info &lt;&lt; "Hello all,"; Logger::log() &lt;&lt; " I'm a log"; Logger::log() &lt;&lt; endlog; </code> will create only one log.</p>
+<p>It's not possible to log something with more than one severity, so : <code> Logger::log() &lt;&lt; info &lt;&lt; "This is info"; Logger::log() &lt;&lt; warning &lt;&lt; "This is warning"; // The info log is logged (endlog is automatically called) Logger::log() &lt;&lt; endlog; // Warning is logged </code> </p>
 
-<p class="definition">Definition at line <a class="el" href="_logger_8hpp_source.html#l00062">62</a> of file <a class="el" href="_logger_8hpp_source.html">Logger.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_logger_8hpp_source.html#l00067">67</a> of file <a class="el" href="_logger_8hpp_source.html">Logger.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="_logger_8hpp_source.html">Logger.hpp</a></li>
 <li>src/<a class="el" href="_logger_8cpp_source.html">Logger.cpp</a></li>
