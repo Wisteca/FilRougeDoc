@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>game</b></li><li class="navelem"><b>logs</b></li><li class="navelem"><a class="el" href="classgame_1_1logs_1_1_logger.html">Logger</a></li>  </ul>
+<li class="navelem"><b>game</b></li><li class="navelem"><a class="el" href="namespacegame_1_1logs.html">logs</a></li><li class="navelem"><a class="el" href="classgame_1_1logs_1_1_logger.html">Logger</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -73,6 +73,11 @@ $(function() {
 <div class="title">game::logs::Logger Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Singleton <a class="el" href="classgame_1_1logs_1_1_logger.html" title="Singleton Logger.">Logger</a>.  
+ <a href="classgame_1_1logs_1_1_logger.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_logger_8hpp_source.html">Logger.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for game::logs::Logger:</div>
 <div class="dyncontent">
@@ -86,9 +91,9 @@ Collaboration diagram for game::logs::Logger:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a60760d8feb91dad4ed780eb387be5c06"><td class="memItemLeft" align="right" valign="top"><a id="a60760d8feb91dad4ed780eb387be5c06"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> ()</td></tr>
-<tr class="separator:a60760d8feb91dad4ed780eb387be5c06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37ef138d8ab0bd2c35242be543f1234c"><td class="memItemLeft" align="right" valign="top"><a id="a37ef138d8ab0bd2c35242be543f1234c"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> ()</td></tr>
+<tr class="separator:a37ef138d8ab0bd2c35242be543f1234c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a8d2953acd2ff0a975da2efc146516e"><td class="memItemLeft" align="right" valign="top"><a id="a5a8d2953acd2ff0a975da2efc146516e"></a>
 static void&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> ()</td></tr>
 <tr class="separator:a5a8d2953acd2ff0a975da2efc146516e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -112,8 +117,14 @@ std::ios_base &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>endlog
 <tr class="separator:ab8873b7c319621f84547535d41a0f9c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_logger_8hpp_source.html#l00028">28</a> of file <a class="el" href="_logger_8hpp_source.html">Logger.hpp</a>.</p>
+<div class="textblock"><p>Singleton <a class="el" href="classgame_1_1logs_1_1_logger.html" title="Singleton Logger.">Logger</a>. </p>
+<p>Because this class inherit from std::ostream the way to log something is like that : <code> Logger::log() &lt;&lt; info &lt;&lt; "System started." &lt;&lt; endlog; </code> The aim is to bring a maximum of flexibility when logging something and to log like in cout for example. A log may always begin by an identificator</p><ul>
+<li>info</li>
+<li>warning</li>
+<li>severe If it isn't, the last used identificator is used. To terminate a log, use the endlog identificator. The log isn't saved before this call, so for example : <code> Logger::log() &lt;&lt; info &lt;&lt; "Hello all,"; Logger::log() &lt;&lt; " I'm a log"; Logger::log() &lt;&lt; endlog; </code> will create only one log. It's not possible to log something with more than one severity, so : <code> Logger::log() &lt;&lt; info &lt;&lt; "This is info"; Logger::log() &lt;&lt; warning &lt;&lt; "This is warning"; // The info log is logged (endlog is automatically called) Logger::log() &lt;&lt; endlog; // Warning is logged. </code> </li>
+</ul>
+
+<p class="definition">Definition at line <a class="el" href="_logger_8hpp_source.html#l00062">62</a> of file <a class="el" href="_logger_8hpp_source.html">Logger.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="_logger_8hpp_source.html">Logger.hpp</a></li>
 <li>src/<a class="el" href="_logger_8cpp_source.html">Logger.cpp</a></li>

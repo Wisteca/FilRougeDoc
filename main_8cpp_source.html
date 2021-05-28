@@ -82,7 +82,7 @@ $(function() {
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">using namespace </span>std;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1skills.html">game::skills</a>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using namespace </span>game::logs;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1logs.html">game::logs</a>;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using namespace </span>rapidxml;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
@@ -175,7 +175,7 @@ $(function() {
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    skSet2.deserialize(doc.first_node()); <span class="comment">// Deserialize a second set from the document</span></div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    cout &lt;&lt; skSet2 &lt;&lt; endl; <span class="comment">// Display it, must be the same values</span></div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    Logger::start();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    cout &lt;&lt; Logger::start() &lt;&lt; endl;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    Logger::log() &lt;&lt; severe &lt;&lt; <span class="stringliteral">&quot;salut&quot;</span> &lt;&lt; <span class="stringliteral">&quot;coucou&quot;</span> &lt;&lt; info &lt;&lt; <span class="stringliteral">&quot;problem&quot;</span>;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    Logger::log() &lt;&lt; warning &lt;&lt; <span class="stringliteral">&quot;yep&quot;</span> &lt;&lt; endlog;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    Logger::end();</div>
@@ -189,6 +189,7 @@ $(function() {
 <div class="ttc" id="aclassgame_1_1skills_1_1_skill_html"><div class="ttname"><a href="classgame_1_1skills_1_1_skill.html">game::skills::Skill</a></div><div class="ttdoc">This class contain a skill type, a base value for this skill and a temporary value used by buffs/debu...</div><div class="ttdef"><b>Definition:</b> <a href="_skill_8hpp_source.html#l00028">Skill.hpp:29</a></div></div>
 <div class="ttc" id="aclassgame_1_1skills_1_1_skill_type_html"><div class="ttname"><a href="classgame_1_1skills_1_1_skill_type.html">game::skills::SkillType</a></div><div class="ttdoc">Skills enumeration.</div><div class="ttdef"><b>Definition:</b> <a href="_skill_type_8hpp_source.html#l00047">SkillType.hpp:48</a></div></div>
 <div class="ttc" id="aclassgame_1_1skills_1_1_skills_set_html"><div class="ttname"><a href="classgame_1_1skills_1_1_skills_set.html">game::skills::SkillsSet</a></div><div class="ttdoc">A set of all skills each Entity has with useful methods to manage them.</div><div class="ttdef"><b>Definition:</b> <a href="_skills_set_8hpp_source.html#l00046">SkillsSet.hpp:47</a></div></div>
+<div class="ttc" id="anamespacegame_1_1logs_html"><div class="ttname"><a href="namespacegame_1_1logs.html">game::logs</a></div><div class="ttdoc">Logger namespace.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00019">Logger.cpp:20</a></div></div>
 <div class="ttc" id="anamespacegame_1_1skills_html"><div class="ttname"><a href="namespacegame_1_1skills.html">game::skills</a></div><div class="ttdoc">Skills system namespace.</div><div class="ttdef"><b>Definition:</b> <a href="_skill_8cpp_source.html#l00014">Skill.cpp:15</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

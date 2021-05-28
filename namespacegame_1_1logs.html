@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>FilRouge: src/Logger.hpp File Reference</title>
+<title>FilRouge: game::logs Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,53 +61,32 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><b>game</b></li><li class="navelem"><a class="el" href="namespacegame_1_1logs.html">logs</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">Logger.hpp File Reference</div>  </div>
+<div class="title">game::logs Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Singleton that manages logs, their severity and files.  
-<a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;fstream&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for Logger.hpp:</div>
-<div class="dyncontent">
-<div class="center"><img src="_logger_8hpp__incl.png" border="0" usemap="#asrc_2_logger_8hpp" alt=""/></div>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="_logger_8hpp__dep__incl.png" border="0" usemap="#asrc_2_logger_8hppdep" alt=""/></div>
-</div>
-</div>
-<p><a href="_logger_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a class="el" href="classgame_1_1logs_1_1_logger.html" title="Singleton Logger.">Logger</a> namespace.  
+<a href="namespacegame_1_1logs.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1logs_1_1_logger.html">game::logs::Logger</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1logs_1_1_logger.html">Logger</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singleton <a class="el" href="classgame_1_1logs_1_1_logger.html" title="Singleton Logger.">Logger</a>.  <a href="classgame_1_1logs_1_1_logger.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:namespacegame_1_1logs"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame_1_1logs.html">game::logs</a></td></tr>
-<tr class="memdesc:namespacegame_1_1logs"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classgame_1_1logs_1_1_logger.html" title="Singleton Logger.">Logger</a> namespace. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a9b2a36984b00c12bf57a74d96d69bebd"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame_1_1logs.html#a9b2a36984b00c12bf57a74d96d69bebd">game::logs::Severity</a> : char { <b>INFO</b>
+<tr class="memitem:a9b2a36984b00c12bf57a74d96d69bebd"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame_1_1logs.html#a9b2a36984b00c12bf57a74d96d69bebd">Severity</a> : char { <b>INFO</b>
 , <b>WARNING</b>
 , <b>SEVERE</b>
  }</td></tr>
@@ -116,33 +95,105 @@ Enumerations</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a0ce458c617d35922cbeff8eea07d4109"><td class="memItemLeft" align="right" valign="top"><a id="a0ce458c617d35922cbeff8eea07d4109"></a>
-ios_base &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>game::logs::info</b> (std::ios_base &amp;base)</td></tr>
+ios_base &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>info</b> (std::ios_base &amp;base)</td></tr>
 <tr class="separator:a0ce458c617d35922cbeff8eea07d4109"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3bea0b6cba6e4d445a59889cb0586f85"><td class="memItemLeft" align="right" valign="top"><a id="a3bea0b6cba6e4d445a59889cb0586f85"></a>
-ios_base &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>game::logs::warning</b> (std::ios_base &amp;base)</td></tr>
+ios_base &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>warning</b> (std::ios_base &amp;base)</td></tr>
 <tr class="separator:a3bea0b6cba6e4d445a59889cb0586f85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acda173634be088930af43767b63f95d6"><td class="memItemLeft" align="right" valign="top"><a id="acda173634be088930af43767b63f95d6"></a>
-ios_base &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>game::logs::severe</b> (std::ios_base &amp;base)</td></tr>
+ios_base &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>severe</b> (std::ios_base &amp;base)</td></tr>
 <tr class="separator:acda173634be088930af43767b63f95d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7815834a94e406a5b7fa8bd5305b2343"><td class="memItemLeft" align="right" valign="top"><a id="a7815834a94e406a5b7fa8bd5305b2343"></a>
-ios_base &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>game::logs::endlog</b> (std::ios_base &amp;base)</td></tr>
+ios_base &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>endlog</b> (std::ios_base &amp;base)</td></tr>
 <tr class="separator:a7815834a94e406a5b7fa8bd5305b2343"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:aebd7913ede3729e6ef608c8ef517b94c"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame_1_1logs.html#aebd7913ede3729e6ef608c8ef517b94c">game::logs::LOGS_FILES_NUMBER</a> = 3</td></tr>
+<tr class="memitem:aebd7913ede3729e6ef608c8ef517b94c"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame_1_1logs.html#aebd7913ede3729e6ef608c8ef517b94c">LOGS_FILES_NUMBER</a> = 3</td></tr>
 <tr class="separator:aebd7913ede3729e6ef608c8ef517b94c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a786c545cf8494b9278ebed7d40bfacb9"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame_1_1logs.html#a786c545cf8494b9278ebed7d40bfacb9">game::logs::LOGS_TRACER_FILE</a> = &quot;logs_tracer.txt&quot;</td></tr>
+<tr class="memitem:a786c545cf8494b9278ebed7d40bfacb9"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame_1_1logs.html#a786c545cf8494b9278ebed7d40bfacb9">LOGS_TRACER_FILE</a> = &quot;logs_tracer.txt&quot;</td></tr>
 <tr class="separator:a786c545cf8494b9278ebed7d40bfacb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Singleton that manages logs, their severity and files. </p>
-<p><a href="https://stackoverflow.com/questions/772355/how-to-inherit-from-stdostream">https://stackoverflow.com/questions/772355/how-to-inherit-from-stdostream</a></p>
-<dl class="section author"><dt>Author</dt><dd>Bastian Cerf </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>25.05.2021 </dd></dl>
+<div class="textblock"><p><a class="el" href="classgame_1_1logs_1_1_logger.html" title="Singleton Logger.">Logger</a> namespace. </p>
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a9b2a36984b00c12bf57a74d96d69bebd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b2a36984b00c12bf57a74d96d69bebd">&#9670;&nbsp;</a></span>Severity</h2>
 
-<p class="definition">Definition in file <a class="el" href="_logger_8hpp_source.html">Logger.hpp</a>.</p>
-</div></div><!-- contents -->
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacegame_1_1logs.html#a9b2a36984b00c12bf57a74d96d69bebd">game::logs::Severity</a> : char</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Internal use. This is a list of the severities a log can have. </p>
+
+<p class="definition">Definition at line <a class="el" href="_logger_8hpp_source.html#l00028">28</a> of file <a class="el" href="_logger_8hpp_source.html">Logger.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="aebd7913ede3729e6ef608c8ef517b94c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebd7913ede3729e6ef608c8ef517b94c">&#9670;&nbsp;</a></span>LOGS_FILES_NUMBER</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int game::logs::LOGS_FILES_NUMBER = 3</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Number of logs files to keep </p>
+
+<p class="definition">Definition at line <a class="el" href="_logger_8hpp_source.html#l00021">21</a> of file <a class="el" href="_logger_8hpp_source.html">Logger.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a786c545cf8494b9278ebed7d40bfacb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a786c545cf8494b9278ebed7d40bfacb9">&#9670;&nbsp;</a></span>LOGS_TRACER_FILE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* game::logs::LOGS_TRACER_FILE = &quot;logs_tracer.txt&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Logs tracer file name needed to know how many files are existing </p>
+
+<p class="definition">Definition at line <a class="el" href="_logger_8hpp_source.html#l00022">22</a> of file <a class="el" href="_logger_8hpp_source.html">Logger.hpp</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1

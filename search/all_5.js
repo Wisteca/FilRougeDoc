@@ -7,5 +7,6 @@ var searchData=
   ['getskilltype_15',['getSkillType',['../classgame_1_1skills_1_1_skill.html#a945995877c43743a3ab2e964ce22313e',1,'game::skills::Skill']]],
   ['gettempvalue_16',['getTempValue',['../classgame_1_1skills_1_1_skill.html#abab58aaa34670f524fa0ac2eb1b54e1e',1,'game::skills::Skill']]],
   ['io_17',['io',['../namespacegame_1_1io.html',1,'game']]],
-  ['skills_18',['skills',['../namespacegame_1_1skills.html',1,'game']]]
+  ['logs_18',['logs',['../namespacegame_1_1logs.html',1,'game']]],
+  ['skills_19',['skills',['../namespacegame_1_1skills.html',1,'game']]]
 ];
