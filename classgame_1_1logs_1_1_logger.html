@@ -111,7 +111,8 @@ Friends</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Singleton <a class="el" href="classgame_1_1logs_1_1_logger.html" title="Singleton Logger.">Logger</a>. </p>
-<p>Because this class inherit from std::ostream the way to log something is like that : <code> <a class="el" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log()</a> &lt;&lt; info &lt;&lt; "System started." &lt;&lt; endlog; </code></p>
+<p>Because this class inherit from std::ostream the way to log something is like that :</p>
+<p><code> <a class="el" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log()</a> &lt;&lt; info &lt;&lt; "System started." &lt;&lt; endlog; </code></p>
 <p>The aim is to bring a maximum of flexibility when logging something and to log like in cout for example.</p>
 <p>A log may always begin by an identificator</p><ul>
 <li>info</li>
@@ -119,11 +120,13 @@ Friends</h2></td></tr>
 <li>severe</li>
 </ul>
 <p>If it isn't, the identificator of the last log is used.</p>
-<p>To terminate a log, use the endlog identificator. The log isn't saved before this call, so for example : <code> <a class="el" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log()</a> &lt;&lt; info &lt;&lt; "Hello all,"; <a class="el" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log()</a> &lt;&lt; " I'm a log"; <a class="el" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log()</a> &lt;&lt; endlog; </code> will create only one log.</p>
-<p>It's not possible to log something with more than one severity, so : <code> <a class="el" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log()</a> &lt;&lt; info &lt;&lt; "This is info"; <a class="el" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log()</a> &lt;&lt; warning &lt;&lt; "This is warning"; // The info log is logged (endlog is automatically called) <a class="el" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log()</a> &lt;&lt; endlog; // Warning is logged </code></p>
+<p>To terminate a log, use the endlog identificator. The log isn't saved before this call, so for example :</p>
+<p><code> <a class="el" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log()</a> &lt;&lt; info &lt;&lt; "Hello all,"; <a class="el" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log()</a> &lt;&lt; " I'm a log"; <a class="el" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log()</a> &lt;&lt; endlog; </code> will create only one log.</p>
+<p>It's not possible to log something with more than one severity, so :</p>
+<p><code> <a class="el" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log()</a> &lt;&lt; info &lt;&lt; "This is info"; <a class="el" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log()</a> &lt;&lt; warning &lt;&lt; "This is warning"; // The info log is logged (endlog is automatically called) <a class="el" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log()</a> &lt;&lt; endlog; // Warning is logged </code></p>
 <p>This class is based on : <a href="https://stackoverflow.com/questions/772355/how-to-inherit-from-stdostream">https://stackoverflow.com/questions/772355/how-to-inherit-from-stdostream</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="_logger_8hpp_source.html#l00067">67</a> of file <a class="el" href="_logger_8hpp_source.html">Logger.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_logger_8hpp_source.html#l00070">70</a> of file <a class="el" href="_logger_8hpp_source.html">Logger.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a5a8d2953acd2ff0a975da2efc146516e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5a8d2953acd2ff0a975da2efc146516e">&#9670;&nbsp;</a></span>end()</h2>
