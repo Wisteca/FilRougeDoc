@@ -112,8 +112,11 @@ Friends</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Singleton <a class="el" href="classgame_1_1logs_1_1_logger.html" title="Singleton Logger.">Logger</a>. </p>
 <p>Because this class inherit from std::ostream the way to log something is like that :</p>
-<p><code> <a class="el" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log()</a> &lt;&lt; info &lt;&lt; "System started." &lt;&lt; endlog; </code></p>
-<p>The aim is to bring a maximum of flexibility when logging something and to log like in cout for example.</p>
+<div class="fragment"><div class="line"><a class="code" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log</a>() &lt;&lt; <a class="code" href="classgame_1_1logs_1_1_logger.html#a37224f1cad5d6a26f282d3093609ccc9">info</a> &lt;&lt; <span class="stringliteral">&quot;System started.&quot;</span> &lt;&lt; <a class="code" href="classgame_1_1logs_1_1_logger.html#ab8873b7c319621f84547535d41a0f9c4">endlog</a>;</div>
+<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a036307cebe1e2ea25c31cc2cb8e5b3ad"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">game::logs::Logger::log</a></div><div class="ttdeci">static Logger &amp; log()</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00193">Logger.cpp:193</a></div></div>
+<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a37224f1cad5d6a26f282d3093609ccc9"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a37224f1cad5d6a26f282d3093609ccc9">game::logs::Logger::info</a></div><div class="ttdeci">friend std::ios_base &amp; info(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00198">Logger.cpp:198</a></div></div>
+<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_ab8873b7c319621f84547535d41a0f9c4"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#ab8873b7c319621f84547535d41a0f9c4">game::logs::Logger::endlog</a></div><div class="ttdeci">friend std::ios_base &amp; endlog(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00216">Logger.cpp:216</a></div></div>
+</div><!-- fragment --><p>The aim is to bring a maximum of flexibility when logging something and to log like in cout for example.</p>
 <p>A log may always begin by an identificator</p><ul>
 <li>info</li>
 <li>warning</li>
@@ -121,10 +124,16 @@ Friends</h2></td></tr>
 </ul>
 <p>If it isn't, the identificator of the last log is used.</p>
 <p>To terminate a log, use the endlog identificator. The log isn't saved before this call, so for example :</p>
-<p><code> <a class="el" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log()</a> &lt;&lt; info &lt;&lt; "Hello all,"; <a class="el" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log()</a> &lt;&lt; " I'm a log"; <a class="el" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log()</a> &lt;&lt; endlog; </code> will create only one log.</p>
+<div class="fragment"><div class="line"><a class="code" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log</a>() &lt;&lt; <a class="code" href="classgame_1_1logs_1_1_logger.html#a37224f1cad5d6a26f282d3093609ccc9">info</a> &lt;&lt; <span class="stringliteral">&quot;Hello all,&quot;</span>;</div>
+<div class="line"><a class="code" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log</a>() &lt;&lt; <span class="stringliteral">&quot; I&#39;m a log&quot;</span>;</div>
+<div class="line"><a class="code" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log</a>() &lt;&lt; <a class="code" href="classgame_1_1logs_1_1_logger.html#ab8873b7c319621f84547535d41a0f9c4">endlog</a>;</div>
+</div><!-- fragment --><p> will create only one log.</p>
 <p>It's not possible to log something with more than one severity, so :</p>
-<p><code> <a class="el" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log()</a> &lt;&lt; info &lt;&lt; "This is info"; <a class="el" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log()</a> &lt;&lt; warning &lt;&lt; "This is warning"; // The info log is logged (endlog is automatically called) <a class="el" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log()</a> &lt;&lt; endlog; // Warning is logged </code></p>
-<p>This class is based on : <a href="https://stackoverflow.com/questions/772355/how-to-inherit-from-stdostream">https://stackoverflow.com/questions/772355/how-to-inherit-from-stdostream</a>. </p>
+<div class="fragment"><div class="line"><a class="code" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log</a>() &lt;&lt; <a class="code" href="classgame_1_1logs_1_1_logger.html#a37224f1cad5d6a26f282d3093609ccc9">info</a> &lt;&lt; <span class="stringliteral">&quot;This is info&quot;</span>;</div>
+<div class="line"><a class="code" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log</a>() &lt;&lt; <a class="code" href="classgame_1_1logs_1_1_logger.html#a7d9c86e1f7e1107f0b3669c9da4d6eab">warning</a> &lt;&lt; <span class="stringliteral">&quot;This is warning&quot;</span>; <span class="comment">// The info log is logged (endlog is automatically called)</span></div>
+<div class="line"><a class="code" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log</a>() &lt;&lt; <a class="code" href="classgame_1_1logs_1_1_logger.html#ab8873b7c319621f84547535d41a0f9c4">endlog</a>; <span class="comment">// Warning is logged</span></div>
+<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a7d9c86e1f7e1107f0b3669c9da4d6eab"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a7d9c86e1f7e1107f0b3669c9da4d6eab">game::logs::Logger::warning</a></div><div class="ttdeci">friend std::ios_base &amp; warning(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00204">Logger.cpp:204</a></div></div>
+</div><!-- fragment --><p>This class is based on : <a href="https://stackoverflow.com/questions/772355/how-to-inherit-from-stdostream">https://stackoverflow.com/questions/772355/how-to-inherit-from-stdostream</a>. </p>
 
 <p class="definition">Definition at line <a class="el" href="_logger_8hpp_source.html#l00070">70</a> of file <a class="el" href="_logger_8hpp_source.html">Logger.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
@@ -207,8 +216,14 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Create the singleton, initialize it. </p><dl class="section return"><dt>Returns</dt><dd>Error flag, if true an error occured and the <a class="el" href="classgame_1_1logs_1_1_logger.html" title="Singleton Logger.">Logger</a> class won't work properly</dd></dl>
-<p>Initialization example : <code> if(Logger::start()) { <a class="el" href="classgame_1_1logs_1_1_logger.html#a5a8d2953acd2ff0a975da2efc146516e">Logger::end()</a>; // Choose how to react to this error } </code> </p>
-
+<p>Initialization example : </p><div class="fragment"><div class="line"><span class="keywordflow">if</span>(<a class="code" href="classgame_1_1logs_1_1_logger.html#a37ef138d8ab0bd2c35242be543f1234c">Logger::start</a>())</div>
+<div class="line">{</div>
+<div class="line">    <a class="code" href="classgame_1_1logs_1_1_logger.html#a5a8d2953acd2ff0a975da2efc146516e">Logger::end</a>();</div>
+<div class="line">    <span class="comment">// Choose how to react to this error</span></div>
+<div class="line">}</div>
+<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a37ef138d8ab0bd2c35242be543f1234c"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a37ef138d8ab0bd2c35242be543f1234c">game::logs::Logger::start</a></div><div class="ttdeci">static bool start()</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00181">Logger.cpp:181</a></div></div>
+<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a5a8d2953acd2ff0a975da2efc146516e"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a5a8d2953acd2ff0a975da2efc146516e">game::logs::Logger::end</a></div><div class="ttdeci">static void end()</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00187">Logger.cpp:187</a></div></div>
+</div><!-- fragment --> 
 <p class="definition">Definition at line <a class="el" href="_logger_8cpp_source.html#l00181">181</a> of file <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a>.</p>
 
 </div>
