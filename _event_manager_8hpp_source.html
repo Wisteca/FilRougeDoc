@@ -88,39 +88,39 @@ $(function() {
 <div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="classgame_1_1events_1_1_event_listener.html#ad4425057b3c4ac7736c9c70df7c65773">   81</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classgame_1_1events_1_1_event_listener.html#ad4425057b3c4ac7736c9c70df7c65773">onEvent</a>(<span class="keyword">const</span> std::shared_ptr&lt;Event&gt; event) = 0;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    };</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="classgame_1_1events_1_1_event_manager.html">  102</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1events_1_1_event_manager.html">EventManager</a></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        private :</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keyword">static</span> <a class="code" href="classgame_1_1events_1_1_event_manager.html">EventManager</a>* m_instance; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        std::queue&lt;std::shared_ptr&lt;Event&gt;&gt; m_queueEvents; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        std::list&lt;EventListener*&gt; m_listeners; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <a class="code" href="classgame_1_1events_1_1_event_manager.html">EventManager</a>();</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="classgame_1_1events_1_1_event_manager.html">EventManager</a>();</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        public :</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgame_1_1events_1_1_event_manager.html#a3c04c7e2a634dff0b142eb85d4f71fcf">pushEvent</a>(<a class="code" href="classgame_1_1events_1_1_event.html">Event</a>* event);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgame_1_1events_1_1_event_manager.html#a55dd07571cb899824ee9e6c34b7b0593">processEvents</a>();</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgame_1_1events_1_1_event_manager.html#a4fee7da9f2156b46babb8c3b4d1b56a8">addListener</a>(<a class="code" href="classgame_1_1events_1_1_event_listener.html">EventListener</a>* listener);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgame_1_1events_1_1_event_manager.html#aec18bd5bf857e8c5d297e4cc57fd258b">removeListener</a>(<a class="code" href="classgame_1_1events_1_1_event_listener.html">EventListener</a>* listener);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classgame_1_1events_1_1_event_manager.html#a6d450b5cbd0aa6b60f406adef39bf408">start</a>();</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keyword">static</span> <a class="code" href="classgame_1_1events_1_1_event_manager.html">EventManager</a>* <a class="code" href="classgame_1_1events_1_1_event_manager.html#af7c07b8a6223592d010df7ff4930b258">getInstance</a>();</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classgame_1_1events_1_1_event_manager.html#a2b8aebd2093feb6406998ff041b649fc">end</a>();</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    };</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;}</div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="classgame_1_1events_1_1_event_manager.html">  103</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1events_1_1_event_manager.html">EventManager</a></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        private :</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keyword">static</span> <a class="code" href="classgame_1_1events_1_1_event_manager.html">EventManager</a>* m_instance; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        std::queue&lt;std::shared_ptr&lt;Event&gt;&gt; m_queueEvents; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        std::list&lt;EventListener*&gt; m_listeners; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <a class="code" href="classgame_1_1events_1_1_event_manager.html">EventManager</a>();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="classgame_1_1events_1_1_event_manager.html">EventManager</a>();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        public :</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgame_1_1events_1_1_event_manager.html#a3c04c7e2a634dff0b142eb85d4f71fcf">pushEvent</a>(<a class="code" href="classgame_1_1events_1_1_event.html">Event</a>* event);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgame_1_1events_1_1_event_manager.html#a55dd07571cb899824ee9e6c34b7b0593">processEvents</a>();</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgame_1_1events_1_1_event_manager.html#a4fee7da9f2156b46babb8c3b4d1b56a8">addListener</a>(<a class="code" href="classgame_1_1events_1_1_event_listener.html">EventListener</a>* listener);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgame_1_1events_1_1_event_manager.html#aec18bd5bf857e8c5d297e4cc57fd258b">removeListener</a>(<a class="code" href="classgame_1_1events_1_1_event_listener.html">EventListener</a>* listener);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classgame_1_1events_1_1_event_manager.html#a6d450b5cbd0aa6b60f406adef39bf408">start</a>();</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keyword">static</span> <a class="code" href="classgame_1_1events_1_1_event_manager.html">EventManager</a>* <a class="code" href="classgame_1_1events_1_1_event_manager.html#af7c07b8a6223592d010df7ff4930b258">getInstance</a>();</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classgame_1_1events_1_1_event_manager.html#a2b8aebd2093feb6406998ff041b649fc">end</a>();</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    };</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;}</div>
 <div class="ttc" id="a_event_8hpp_html"><div class="ttname"><a href="_event_8hpp.html">Event.hpp</a></div><div class="ttdoc">File that contains Event and EventType declarations.</div></div>
 <div class="ttc" id="aclassgame_1_1events_1_1_event_html"><div class="ttname"><a href="classgame_1_1events_1_1_event.html">game::events::Event</a></div><div class="ttdoc">Superclass of any event.</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00048">Event.hpp:49</a></div></div>
 <div class="ttc" id="aclassgame_1_1events_1_1_event_listener_html"><div class="ttname"><a href="classgame_1_1events_1_1_event_listener.html">game::events::EventListener</a></div><div class="ttdoc">This is the interface each class who wants to listen to events must implement.</div><div class="ttdef"><b>Definition:</b> <a href="_event_manager_8hpp_source.html#l00068">EventManager.hpp:69</a></div></div>
 <div class="ttc" id="aclassgame_1_1events_1_1_event_listener_html_ad4425057b3c4ac7736c9c70df7c65773"><div class="ttname"><a href="classgame_1_1events_1_1_event_listener.html#ad4425057b3c4ac7736c9c70df7c65773">game::events::EventListener::onEvent</a></div><div class="ttdeci">virtual void onEvent(const std::shared_ptr&lt; Event &gt; event)=0</div><div class="ttdoc">This method is called on each event by the EventManager singleton.</div></div>
-<div class="ttc" id="aclassgame_1_1events_1_1_event_manager_html"><div class="ttname"><a href="classgame_1_1events_1_1_event_manager.html">game::events::EventManager</a></div><div class="ttdoc">This singleton manages events processing.</div><div class="ttdef"><b>Definition:</b> <a href="_event_manager_8hpp_source.html#l00102">EventManager.hpp:103</a></div></div>
+<div class="ttc" id="aclassgame_1_1events_1_1_event_manager_html"><div class="ttname"><a href="classgame_1_1events_1_1_event_manager.html">game::events::EventManager</a></div><div class="ttdoc">This singleton manages events processing.</div><div class="ttdef"><b>Definition:</b> <a href="_event_manager_8hpp_source.html#l00103">EventManager.hpp:104</a></div></div>
 <div class="ttc" id="aclassgame_1_1events_1_1_event_manager_html_a2b8aebd2093feb6406998ff041b649fc"><div class="ttname"><a href="classgame_1_1events_1_1_event_manager.html#a2b8aebd2093feb6406998ff041b649fc">game::events::EventManager::end</a></div><div class="ttdeci">static void end()</div><div class="ttdef"><b>Definition:</b> <a href="_event_manager_8cpp_source.html#l00067">EventManager.cpp:67</a></div></div>
 <div class="ttc" id="aclassgame_1_1events_1_1_event_manager_html_a3c04c7e2a634dff0b142eb85d4f71fcf"><div class="ttname"><a href="classgame_1_1events_1_1_event_manager.html#a3c04c7e2a634dff0b142eb85d4f71fcf">game::events::EventManager::pushEvent</a></div><div class="ttdeci">void pushEvent(Event *event)</div><div class="ttdef"><b>Definition:</b> <a href="_event_manager_8cpp_source.html#l00027">EventManager.cpp:27</a></div></div>
 <div class="ttc" id="aclassgame_1_1events_1_1_event_manager_html_a4fee7da9f2156b46babb8c3b4d1b56a8"><div class="ttname"><a href="classgame_1_1events_1_1_event_manager.html#a4fee7da9f2156b46babb8c3b4d1b56a8">game::events::EventManager::addListener</a></div><div class="ttdeci">void addListener(EventListener *listener)</div><div class="ttdef"><b>Definition:</b> <a href="_event_manager_8cpp_source.html#l00047">EventManager.cpp:47</a></div></div>

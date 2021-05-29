@@ -121,7 +121,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventManager</b></td
 <div class="line"> </div>
 <div class="line">    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classgame_1_1events_1_1_event_listener.html#ad4425057b3c4ac7736c9c70df7c65773">onEvent</a>(<span class="keyword">const</span> shared_ptr&lt;Event&gt; event)<span class="keyword"> override</span></div>
 <div class="line"><span class="keyword">    </span>{</div>
-<div class="line">        <span class="comment">// Implement the onEvent method that will be call for each event.</span></div>
+<div class="line">        <span class="comment">// Implement the onEvent method that will be called for each event.</span></div>
 <div class="line">        Logger::log() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a0ce458c617d35922cbeff8eea07d4109">info</a> &lt;&lt; <span class="stringliteral">&quot;Processing event &quot;</span> &lt;&lt; <span class="keyword">event</span>-&gt;getEventTypeName() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
 <div class="line">        <span class="keywordflow">switch</span>(event-&gt;getEventType())</div>
 <div class="line">        {</div>
