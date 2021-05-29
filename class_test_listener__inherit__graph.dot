@@ -5,5 +5,5 @@ digraph "TestListener"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node1 [label="TestListener",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
   Node2 -> Node1 [dir="back",color="firebrick4",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="game::events::EventListener",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1events_1_1_event_listener.html",tooltip=" "];
+  Node2 [label="game::events::EventListener",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1events_1_1_event_listener.html",tooltip="This is the interface each class who wants to listen to events must implement."];
 }

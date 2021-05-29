@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>game</b></li><li class="navelem"><b>events</b></li><li class="navelem"><a class="el" href="classgame_1_1events_1_1_event_listener.html">EventListener</a></li>  </ul>
+<li class="navelem"><b>game</b></li><li class="navelem"><a class="el" href="namespacegame_1_1events.html">events</a></li><li class="navelem"><a class="el" href="classgame_1_1events_1_1_event_listener.html">EventListener</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -73,6 +73,11 @@ $(function() {
 <div class="title">game::events::EventListener Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This is the interface each class who wants to listen to events must implement.  
+ <a href="classgame_1_1events_1_1_event_listener.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_event_manager_8hpp_source.html">EventManager.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for game::events::EventListener:</div>
 <div class="dyncontent">
@@ -81,9 +86,9 @@ Inheritance diagram for game::events::EventListener:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a883c426e980f17d9f1ba1ceaf978d245"><td class="memItemLeft" align="right" valign="top"><a id="a883c426e980f17d9f1ba1ceaf978d245"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onEvent</b> (std::shared_ptr&lt; <a class="el" href="classgame_1_1events_1_1_event.html">Event</a> &gt; event)=0</td></tr>
-<tr class="separator:a883c426e980f17d9f1ba1ceaf978d245"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4425057b3c4ac7736c9c70df7c65773"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1events_1_1_event_listener.html#ad4425057b3c4ac7736c9c70df7c65773">onEvent</a> (const std::shared_ptr&lt; <a class="el" href="classgame_1_1events_1_1_event.html">Event</a> &gt; event)=0</td></tr>
+<tr class="memdesc:ad4425057b3c4ac7736c9c70df7c65773"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is called on each event by the <a class="el" href="classgame_1_1events_1_1_event_manager.html" title="This singleton manages events processing.">EventManager</a> singleton.  <a href="classgame_1_1events_1_1_event_listener.html#ad4425057b3c4ac7736c9c70df7c65773">More...</a><br /></td></tr>
+<tr class="separator:ad4425057b3c4ac7736c9c70df7c65773"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -92,9 +97,88 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventManager</b></td
 <tr class="separator:aba45a46c615e2683daffdae82e2d3b8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_event_manager_8hpp_source.html#l00018">18</a> of file <a class="el" href="_event_manager_8hpp_source.html">EventManager.hpp</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p>This is the interface each class who wants to listen to events must implement. </p>
+<p>This is a really simple oriented objects events system. Here a little example to demonstrate how it works :</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_event_manager_8hpp.html">EventManager.hpp</a>&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// ExampleListener implements EventListener as private because there is no need for ExampleListener</span></div>
+<div class="line"><span class="comment">// users to know that it listens to events.</span></div>
+<div class="line"><span class="keyword">class </span>ExampleListener : <span class="keyword">private</span> EventListener</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">public</span>:</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">inline</span> ExampleListener()</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">// Add the listener in the EventManager list at object construction</span></div>
+<div class="line">        <a class="code" href="classgame_1_1events_1_1_event_manager.html#af7c07b8a6223592d010df7ff4930b258">EventManager::getInstance</a>()-&gt;<a class="code" href="classgame_1_1events_1_1_event_manager.html#a4fee7da9f2156b46babb8c3b4d1b56a8">addListener</a>(<span class="keyword">this</span>);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">inline</span> <span class="keyword">virtual</span> ~ExampleListener()</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">// Don&#39;t forget to remove the listener from the list at destruction !</span></div>
+<div class="line">        <a class="code" href="classgame_1_1events_1_1_event_manager.html#af7c07b8a6223592d010df7ff4930b258">EventManager::getInstance</a>()-&gt;<a class="code" href="classgame_1_1events_1_1_event_manager.html#aec18bd5bf857e8c5d297e4cc57fd258b">removeListener</a>(<span class="keyword">this</span>);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classgame_1_1events_1_1_event_listener.html#ad4425057b3c4ac7736c9c70df7c65773">onEvent</a>(<span class="keyword">const</span> shared_ptr&lt;Event&gt; event)<span class="keyword"> override</span></div>
+<div class="line"><span class="keyword">    </span>{</div>
+<div class="line">        <span class="comment">// Implement the onEvent method that will be call for each event.</span></div>
+<div class="line">        Logger::log() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a0ce458c617d35922cbeff8eea07d4109">info</a> &lt;&lt; <span class="stringliteral">&quot;Processing event &quot;</span> &lt;&lt; <span class="keyword">event</span>-&gt;getEventTypeName() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
+<div class="line">        <span class="keywordflow">switch</span>(event-&gt;getEventType())</div>
+<div class="line">        {</div>
+<div class="line">            <span class="keywordflow">case</span> <a class="code" href="namespacegame_1_1events.html#a378c3475a4b95a6338894957e852bf5ba5f230435435ee85627b3adab7f153bf1">EventType::ATTACK_EVENT</a> :</div>
+<div class="line">                Logger::log() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a0ce458c617d35922cbeff8eea07d4109">info</a> &lt;&lt; <span class="stringliteral">&quot;Attack event !&quot;</span> &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>; <span class="comment">// Do something in case of attack event, ...</span></div>
+<div class="line">                <span class="keywordflow">break</span>;</div>
+<div class="line">            <span class="keywordflow">case</span> <a class="code" href="namespacegame_1_1events.html#a378c3475a4b95a6338894957e852bf5ba673be2311ba748257d183a7b90dfd14b">EventType::MOVE_EVENT</a> :</div>
+<div class="line">                Logger::log() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a0ce458c617d35922cbeff8eea07d4109">info</a> &lt;&lt; <span class="stringliteral">&quot;Move event !&quot;</span> &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
+<div class="line">                <span class="keywordflow">break</span>;</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">};</div>
+<div class="ttc" id="a_event_manager_8hpp_html"><div class="ttname"><a href="_event_manager_8hpp.html">EventManager.hpp</a></div><div class="ttdoc">Singleton that manages events processing.</div></div>
+<div class="ttc" id="aclassgame_1_1events_1_1_event_listener_html_ad4425057b3c4ac7736c9c70df7c65773"><div class="ttname"><a href="classgame_1_1events_1_1_event_listener.html#ad4425057b3c4ac7736c9c70df7c65773">game::events::EventListener::onEvent</a></div><div class="ttdeci">virtual void onEvent(const std::shared_ptr&lt; Event &gt; event)=0</div><div class="ttdoc">This method is called on each event by the EventManager singleton.</div></div>
+<div class="ttc" id="aclassgame_1_1events_1_1_event_manager_html_a4fee7da9f2156b46babb8c3b4d1b56a8"><div class="ttname"><a href="classgame_1_1events_1_1_event_manager.html#a4fee7da9f2156b46babb8c3b4d1b56a8">game::events::EventManager::addListener</a></div><div class="ttdeci">void addListener(EventListener *listener)</div><div class="ttdef"><b>Definition:</b> <a href="_event_manager_8cpp_source.html#l00047">EventManager.cpp:47</a></div></div>
+<div class="ttc" id="aclassgame_1_1events_1_1_event_manager_html_aec18bd5bf857e8c5d297e4cc57fd258b"><div class="ttname"><a href="classgame_1_1events_1_1_event_manager.html#aec18bd5bf857e8c5d297e4cc57fd258b">game::events::EventManager::removeListener</a></div><div class="ttdeci">void removeListener(EventListener *listener)</div><div class="ttdef"><b>Definition:</b> <a href="_event_manager_8cpp_source.html#l00052">EventManager.cpp:52</a></div></div>
+<div class="ttc" id="aclassgame_1_1events_1_1_event_manager_html_af7c07b8a6223592d010df7ff4930b258"><div class="ttname"><a href="classgame_1_1events_1_1_event_manager.html#af7c07b8a6223592d010df7ff4930b258">game::events::EventManager::getInstance</a></div><div class="ttdeci">static EventManager * getInstance()</div><div class="ttdef"><b>Definition:</b> <a href="_event_manager_8cpp_source.html#l00062">EventManager.cpp:62</a></div></div>
+<div class="ttc" id="anamespacegame_1_1events_html_a378c3475a4b95a6338894957e852bf5ba5f230435435ee85627b3adab7f153bf1"><div class="ttname"><a href="namespacegame_1_1events.html#a378c3475a4b95a6338894957e852bf5ba5f230435435ee85627b3adab7f153bf1">game::events::EventType::ATTACK_EVENT</a></div><div class="ttdeci">@ ATTACK_EVENT</div></div>
+<div class="ttc" id="anamespacegame_1_1events_html_a378c3475a4b95a6338894957e852bf5ba673be2311ba748257d183a7b90dfd14b"><div class="ttname"><a href="namespacegame_1_1events.html#a378c3475a4b95a6338894957e852bf5ba673be2311ba748257d183a7b90dfd14b">game::events::EventType::MOVE_EVENT</a></div><div class="ttdeci">@ MOVE_EVENT</div></div>
+<div class="ttc" id="anamespacegame_1_1logs_html_a0ce458c617d35922cbeff8eea07d4109"><div class="ttname"><a href="namespacegame_1_1logs.html#a0ce458c617d35922cbeff8eea07d4109">game::logs::info</a></div><div class="ttdeci">ios_base &amp; info(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00198">Logger.cpp:198</a></div></div>
+<div class="ttc" id="anamespacegame_1_1logs_html_a7815834a94e406a5b7fa8bd5305b2343"><div class="ttname"><a href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">game::logs::endlog</a></div><div class="ttdeci">ios_base &amp; endlog(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00216">Logger.cpp:216</a></div></div>
+</div><!-- fragment --><p>Because the <a class="el" href="classgame_1_1events_1_1_event_listener.html#ad4425057b3c4ac7736c9c70df7c65773" title="This method is called on each event by the EventManager singleton.">onEvent()</a> method takes a shared_ptr as argument, it is totally accepted to keep a reference to it in the listener for later processing for example. The event will automatically be deleted when all references are lost. </p>
+
+<p class="definition">Definition at line <a class="el" href="_event_manager_8hpp_source.html#l00068">68</a> of file <a class="el" href="_event_manager_8hpp_source.html">EventManager.hpp</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad4425057b3c4ac7736c9c70df7c65773"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4425057b3c4ac7736c9c70df7c65773">&#9670;&nbsp;</a></span>onEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void game::events::EventListener::onEvent </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classgame_1_1events_1_1_event.html">Event</a> &gt;&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This method is called on each event by the <a class="el" href="classgame_1_1events_1_1_event_manager.html" title="This singleton manages events processing.">EventManager</a> singleton. </p>
+<p>To be called by the <a class="el" href="classgame_1_1events_1_1_event_manager.html" title="This singleton manages events processing.">EventManager</a>, the listener must be registered. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classgame_1_1events_1_1_event_manager.html#a4fee7da9f2156b46babb8c3b4d1b56a8">EventManager::addListener()</a> </dd>
+<dd>
+<a class="el" href="classgame_1_1events_1_1_event_manager.html#aec18bd5bf857e8c5d297e4cc57fd258b">EventManager::removeListener()</a> </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/<a class="el" href="_event_manager_8hpp_source.html">EventManager.hpp</a></li>
 </ul>
 </div><!-- contents -->

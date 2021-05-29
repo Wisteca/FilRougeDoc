@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['normal_153',['NORMAL',['../namespacegame_1_1skills.html#a23c3c906594652d6fb2d249dfdbed78ba1e23852820b9154316c7c06e2b7ba051',1,'game::skills']]]
+  ['hard_180',['HARD',['../namespacegame_1_1skills.html#a23c3c906594652d6fb2d249dfdbed78ba7c144eae2e08db14c82e376603cc01f4',1,'game::skills']]],
+  ['hardcore_181',['HARDCORE',['../namespacegame_1_1skills.html#a23c3c906594652d6fb2d249dfdbed78baaa68a1cbb39b1f0572d8cb1c1c2c7960',1,'game::skills']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['operator_3c_117',['operator&lt;',['../classgame_1_1skills_1_1_skill_type.html#a594bc5c3fec605b7e04ee6fb682dd35a',1,'game::skills::SkillType']]],
-  ['operator_3d_3d_118',['operator==',['../classgame_1_1skills_1_1_skill_type.html#a628ae306235402ac0ad9d5f656649dde',1,'game::skills::SkillType']]]
+  ['log_139',['log',['../classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad',1,'game::logs::Logger']]]
 ];
