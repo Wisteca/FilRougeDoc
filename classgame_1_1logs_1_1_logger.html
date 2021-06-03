@@ -66,6 +66,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="classgame_1_1logs_1_1_logger-members.html">List of all members</a>  </div>
@@ -89,6 +90,11 @@ Collaboration diagram for game::logs::Logger:</div>
 <div class="center"><img src="classgame_1_1logs_1_1_logger__coll__graph.png" border="0" usemap="#agame_1_1logs_1_1_logger_coll__map" alt="Collaboration graph"/></div>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a4dcb4dd9fbd034ddf7bc3bbfce8a4562"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1logs_1_1_logger.html#a4dcb4dd9fbd034ddf7bc3bbfce8a4562">setConsoleVisibility</a> (<a class="el" href="namespacegame_1_1logs.html#a9b2a36984b00c12bf57a74d96d69bebd">Severity</a> s, bool show)</td></tr>
+<tr class="separator:a4dcb4dd9fbd034ddf7bc3bbfce8a4562"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a37ef138d8ab0bd2c35242be543f1234c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1logs_1_1_logger.html#a37ef138d8ab0bd2c35242be543f1234c">start</a> ()</td></tr>
@@ -113,9 +119,9 @@ Friends</h2></td></tr>
 <div class="textblock"><p>Singleton <a class="el" href="classgame_1_1logs_1_1_logger.html" title="Singleton Logger.">Logger</a>. </p>
 <p>Because this class inherit from std::ostream the way to log something is like that :</p>
 <div class="fragment"><div class="line"><a class="code" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log</a>() &lt;&lt; <a class="code" href="classgame_1_1logs_1_1_logger.html#a37224f1cad5d6a26f282d3093609ccc9">info</a> &lt;&lt; <span class="stringliteral">&quot;System started.&quot;</span> &lt;&lt; <a class="code" href="classgame_1_1logs_1_1_logger.html#ab8873b7c319621f84547535d41a0f9c4">endlog</a>;</div>
-<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a036307cebe1e2ea25c31cc2cb8e5b3ad"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">game::logs::Logger::log</a></div><div class="ttdeci">static Logger &amp; log()</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00193">Logger.cpp:193</a></div></div>
-<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a37224f1cad5d6a26f282d3093609ccc9"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a37224f1cad5d6a26f282d3093609ccc9">game::logs::Logger::info</a></div><div class="ttdeci">friend std::ios_base &amp; info(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00198">Logger.cpp:198</a></div></div>
-<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_ab8873b7c319621f84547535d41a0f9c4"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#ab8873b7c319621f84547535d41a0f9c4">game::logs::Logger::endlog</a></div><div class="ttdeci">friend std::ios_base &amp; endlog(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00216">Logger.cpp:216</a></div></div>
+<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a036307cebe1e2ea25c31cc2cb8e5b3ad"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">game::logs::Logger::log</a></div><div class="ttdeci">static Logger &amp; log()</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00202">Logger.cpp:202</a></div></div>
+<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a37224f1cad5d6a26f282d3093609ccc9"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a37224f1cad5d6a26f282d3093609ccc9">game::logs::Logger::info</a></div><div class="ttdeci">friend std::ios_base &amp; info(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00212">Logger.cpp:212</a></div></div>
+<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_ab8873b7c319621f84547535d41a0f9c4"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#ab8873b7c319621f84547535d41a0f9c4">game::logs::Logger::endlog</a></div><div class="ttdeci">friend std::ios_base &amp; endlog(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00230">Logger.cpp:230</a></div></div>
 </div><!-- fragment --><p>The aim is to bring a maximum of flexibility when logging something and to have the same interface as std::cout.</p>
 <p>A log may always begin by an identificator</p><ul>
 <li>info</li>
@@ -132,10 +138,10 @@ Friends</h2></td></tr>
 <div class="fragment"><div class="line"><a class="code" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log</a>() &lt;&lt; <a class="code" href="classgame_1_1logs_1_1_logger.html#a37224f1cad5d6a26f282d3093609ccc9">info</a> &lt;&lt; <span class="stringliteral">&quot;This is info&quot;</span>;</div>
 <div class="line"><a class="code" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log</a>() &lt;&lt; <a class="code" href="classgame_1_1logs_1_1_logger.html#a7d9c86e1f7e1107f0b3669c9da4d6eab">warning</a> &lt;&lt; <span class="stringliteral">&quot;This is warning&quot;</span>; <span class="comment">// The info log is logged (endlog is automatically called)</span></div>
 <div class="line"><a class="code" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">Logger::log</a>() &lt;&lt; <a class="code" href="classgame_1_1logs_1_1_logger.html#ab8873b7c319621f84547535d41a0f9c4">endlog</a>; <span class="comment">// Warning is logged</span></div>
-<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a7d9c86e1f7e1107f0b3669c9da4d6eab"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a7d9c86e1f7e1107f0b3669c9da4d6eab">game::logs::Logger::warning</a></div><div class="ttdeci">friend std::ios_base &amp; warning(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00204">Logger.cpp:204</a></div></div>
+<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a7d9c86e1f7e1107f0b3669c9da4d6eab"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a7d9c86e1f7e1107f0b3669c9da4d6eab">game::logs::Logger::warning</a></div><div class="ttdeci">friend std::ios_base &amp; warning(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00218">Logger.cpp:218</a></div></div>
 </div><!-- fragment --><p>This class is based on : <a href="https://stackoverflow.com/questions/772355/how-to-inherit-from-stdostream">https://stackoverflow.com/questions/772355/how-to-inherit-from-stdostream</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="_logger_8hpp_source.html#l00070">70</a> of file <a class="el" href="_logger_8hpp_source.html">Logger.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_logger_8hpp_source.html#l00071">71</a> of file <a class="el" href="_logger_8hpp_source.html">Logger.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a5a8d2953acd2ff0a975da2efc146516e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5a8d2953acd2ff0a975da2efc146516e">&#9670;&nbsp;</a></span>end()</h2>
@@ -161,7 +167,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Terminate the <a class="el" href="classgame_1_1logs_1_1_logger.html" title="Singleton Logger.">Logger</a>, delete memory, ... </p>
 
-<p class="definition">Definition at line <a class="el" href="_logger_8cpp_source.html#l00188">188</a> of file <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_logger_8cpp_source.html#l00197">197</a> of file <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a>.</p>
 
 </div>
 </div>
@@ -189,7 +195,44 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Please always call <a class="el" href="classgame_1_1logs_1_1_logger.html#a37ef138d8ab0bd2c35242be543f1234c">Logger::start()</a> before. </p><dl class="section return"><dt>Returns</dt><dd>The reference on the current <a class="el" href="classgame_1_1logs_1_1_logger.html" title="Singleton Logger.">Logger</a> object </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_logger_8cpp_source.html#l00193">193</a> of file <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_logger_8cpp_source.html#l00202">202</a> of file <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a4dcb4dd9fbd034ddf7bc3bbfce8a4562"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dcb4dd9fbd034ddf7bc3bbfce8a4562">&#9670;&nbsp;</a></span>setConsoleVisibility()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game::logs::Logger::setConsoleVisibility </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacegame_1_1logs.html#a9b2a36984b00c12bf57a74d96d69bebd">Severity</a>&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>show</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set the visibility of a log in the console. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>The severity of concerned log </td></tr>
+    <tr><td class="paramname">show</td><td>true to show, false to hide </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_logger_8cpp_source.html#l00207">207</a> of file <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a>.</p>
 
 </div>
 </div>
@@ -221,10 +264,10 @@ Friends</h2></td></tr>
 <div class="line">    <a class="code" href="classgame_1_1logs_1_1_logger.html#a5a8d2953acd2ff0a975da2efc146516e">Logger::end</a>();</div>
 <div class="line">    <span class="comment">// Choose how to react to this error</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a37ef138d8ab0bd2c35242be543f1234c"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a37ef138d8ab0bd2c35242be543f1234c">game::logs::Logger::start</a></div><div class="ttdeci">static bool start()</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00182">Logger.cpp:182</a></div></div>
-<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a5a8d2953acd2ff0a975da2efc146516e"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a5a8d2953acd2ff0a975da2efc146516e">game::logs::Logger::end</a></div><div class="ttdeci">static void end()</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00188">Logger.cpp:188</a></div></div>
+<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a37ef138d8ab0bd2c35242be543f1234c"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a37ef138d8ab0bd2c35242be543f1234c">game::logs::Logger::start</a></div><div class="ttdeci">static bool start()</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00191">Logger.cpp:191</a></div></div>
+<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a5a8d2953acd2ff0a975da2efc146516e"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a5a8d2953acd2ff0a975da2efc146516e">game::logs::Logger::end</a></div><div class="ttdeci">static void end()</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00197">Logger.cpp:197</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="_logger_8cpp_source.html#l00182">182</a> of file <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_logger_8cpp_source.html#l00191">191</a> of file <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a>.</p>
 
 </div>
 </div>
@@ -254,7 +297,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>endlog identificator for use in a stream. </p>
 
-<p class="definition">Definition at line <a class="el" href="_logger_8cpp_source.html#l00216">216</a> of file <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_logger_8cpp_source.html#l00230">230</a> of file <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a>.</p>
 
 </div>
 </div>
@@ -283,7 +326,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>info identificator for use in a stream. </p>
 
-<p class="definition">Definition at line <a class="el" href="_logger_8cpp_source.html#l00198">198</a> of file <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_logger_8cpp_source.html#l00212">212</a> of file <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a>.</p>
 
 </div>
 </div>
@@ -312,7 +355,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>severe identificator for use in a stream. </p>
 
-<p class="definition">Definition at line <a class="el" href="_logger_8cpp_source.html#l00210">210</a> of file <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_logger_8cpp_source.html#l00224">224</a> of file <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a>.</p>
 
 </div>
 </div>
@@ -341,13 +384,13 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>warrning identificator for use in a stream. </p>
 
-<p class="definition">Definition at line <a class="el" href="_logger_8cpp_source.html#l00204">204</a> of file <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_logger_8cpp_source.html#l00218">218</a> of file <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/<a class="el" href="_logger_8hpp_source.html">Logger.hpp</a></li>
-<li>src/<a class="el" href="_logger_8cpp_source.html">Logger.cpp</a></li>
+<li>src/io/<a class="el" href="_logger_8hpp_source.html">Logger.hpp</a></li>
+<li>src/io/<a class="el" href="_logger_8cpp_source.html">Logger.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>FilRouge: src/Logger.hpp Source File</title>
+<title>FilRouge: src/io/Logger.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html">io</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -74,81 +74,86 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegame_1_1logs.html">game::logs</a></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="namespacegame_1_1logs.html#aebd7913ede3729e6ef608c8ef517b94c">   19</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="namespacegame_1_1logs.html#aebd7913ede3729e6ef608c8ef517b94c">LOGS_FILES_NUMBER</a> = 3; </div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="namespacegame_1_1logs.html#a786c545cf8494b9278ebed7d40bfacb9">   20</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="namespacegame_1_1logs.html#a786c545cf8494b9278ebed7d40bfacb9">LOGS_TRACER_FILE</a> = <span class="stringliteral">&quot;logs_tracer.txt&quot;</span>; </div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="namespacegame_1_1logs.html#a9b2a36984b00c12bf57a74d96d69bebd">   26</a></span>&#160;    <span class="keyword">enum class</span> <a class="code" href="namespacegame_1_1logs.html#a9b2a36984b00c12bf57a74d96d69bebd">Severity</a> : char</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        INFO,</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        WARNING,</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        SEVERE</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    };</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classgame_1_1logs_1_1_logger.html">   70</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1logs_1_1_logger.html">Logger</a> : <span class="keyword">private</span> std::streambuf, <span class="keyword">public</span> std::ostream</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        private :</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keyword">static</span> <a class="code" href="classgame_1_1logs_1_1_logger.html">Logger</a>* m_instance; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <a class="code" href="namespacegame_1_1logs.html#a9b2a36984b00c12bf57a74d96d69bebd">Severity</a> m_severity = Severity::INFO; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        std::string m_curLogConsole, m_curLogFile; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        std::ofstream m_fout; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordtype">bool</span> m_error = <span class="keyword">false</span>; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="classgame_1_1logs_1_1_logger.html">Logger</a>();</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="classgame_1_1logs_1_1_logger.html">Logger</a>();</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">int</span> overflow(<span class="keywordtype">int</span> c) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordtype">void</span> setSeverity(<a class="code" href="namespacegame_1_1logs.html#a9b2a36984b00c12bf57a74d96d69bebd">Severity</a> s);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordtype">void</span> finishLog();</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        std::string getSeverityName(<a class="code" href="namespacegame_1_1logs.html#a9b2a36984b00c12bf57a74d96d69bebd">Severity</a> s, <span class="keywordtype">bool</span> console) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        std::string getCurrentDate(<span class="keyword">const</span> <span class="keywordtype">char</span>* format) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordtype">bool</span> fileExist(<span class="keyword">const</span> std::string&amp; path) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordtype">void</span> error(<span class="keyword">const</span> <span class="keywordtype">char</span>* desc);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        public :</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1logs_1_1_logger.html#a37ef138d8ab0bd2c35242be543f1234c">start</a>();</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classgame_1_1logs_1_1_logger.html#a5a8d2953acd2ff0a975da2efc146516e">end</a>();</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keyword">static</span> <a class="code" href="classgame_1_1logs_1_1_logger.html">Logger</a>&amp; <a class="code" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">log</a>();</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="comment">// Friends declaration</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keyword">friend</span> std::ios_base&amp; <a class="code" href="classgame_1_1logs_1_1_logger.html#a37224f1cad5d6a26f282d3093609ccc9">info</a>(std::ios_base&amp; base);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keyword">friend</span> std::ios_base&amp; <a class="code" href="classgame_1_1logs_1_1_logger.html#a7d9c86e1f7e1107f0b3669c9da4d6eab">warning</a>(std::ios_base&amp; base);</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="keyword">friend</span> std::ios_base&amp; <a class="code" href="classgame_1_1logs_1_1_logger.html#ac466ec9305d0347f5a0edc4c3b45ad02">severe</a>(std::ios_base&amp; base);</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keyword">friend</span> std::ios_base&amp; <a class="code" href="classgame_1_1logs_1_1_logger.html#ab8873b7c319621f84547535d41a0f9c4">endlog</a>(std::ios_base&amp; base);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    };</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    std::ios_base&amp; <a class="code" href="namespacegame_1_1logs.html#a0ce458c617d35922cbeff8eea07d4109">info</a>(std::ios_base&amp; base);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    std::ios_base&amp; <a class="code" href="namespacegame_1_1logs.html#a3bea0b6cba6e4d445a59889cb0586f85">warning</a>(std::ios_base&amp; base);</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    std::ios_base&amp; <a class="code" href="namespacegame_1_1logs.html#acda173634be088930af43767b63f95d6">severe</a>(std::ios_base&amp; base);</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    std::ios_base&amp; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>(std::ios_base&amp; base);</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;}</div>
-<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html">game::logs::Logger</a></div><div class="ttdoc">Singleton Logger.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8hpp_source.html#l00070">Logger.hpp:71</a></div></div>
-<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a036307cebe1e2ea25c31cc2cb8e5b3ad"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">game::logs::Logger::log</a></div><div class="ttdeci">static Logger &amp; log()</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00193">Logger.cpp:193</a></div></div>
-<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a37224f1cad5d6a26f282d3093609ccc9"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a37224f1cad5d6a26f282d3093609ccc9">game::logs::Logger::info</a></div><div class="ttdeci">friend std::ios_base &amp; info(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00198">Logger.cpp:198</a></div></div>
-<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a37ef138d8ab0bd2c35242be543f1234c"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a37ef138d8ab0bd2c35242be543f1234c">game::logs::Logger::start</a></div><div class="ttdeci">static bool start()</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00182">Logger.cpp:182</a></div></div>
-<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a5a8d2953acd2ff0a975da2efc146516e"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a5a8d2953acd2ff0a975da2efc146516e">game::logs::Logger::end</a></div><div class="ttdeci">static void end()</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00188">Logger.cpp:188</a></div></div>
-<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a7d9c86e1f7e1107f0b3669c9da4d6eab"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a7d9c86e1f7e1107f0b3669c9da4d6eab">game::logs::Logger::warning</a></div><div class="ttdeci">friend std::ios_base &amp; warning(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00204">Logger.cpp:204</a></div></div>
-<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_ab8873b7c319621f84547535d41a0f9c4"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#ab8873b7c319621f84547535d41a0f9c4">game::logs::Logger::endlog</a></div><div class="ttdeci">friend std::ios_base &amp; endlog(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00216">Logger.cpp:216</a></div></div>
-<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_ac466ec9305d0347f5a0edc4c3b45ad02"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#ac466ec9305d0347f5a0edc4c3b45ad02">game::logs::Logger::severe</a></div><div class="ttdeci">friend std::ios_base &amp; severe(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00210">Logger.cpp:210</a></div></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegame_1_1logs.html">game::logs</a></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="namespacegame_1_1logs.html#aebd7913ede3729e6ef608c8ef517b94c">   20</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="namespacegame_1_1logs.html#aebd7913ede3729e6ef608c8ef517b94c">LOGS_FILES_NUMBER</a> = 3; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="namespacegame_1_1logs.html#a786c545cf8494b9278ebed7d40bfacb9">   21</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="namespacegame_1_1logs.html#a786c545cf8494b9278ebed7d40bfacb9">LOGS_TRACER_FILE</a> = <span class="stringliteral">&quot;logs_tracer.txt&quot;</span>; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="namespacegame_1_1logs.html#a9b2a36984b00c12bf57a74d96d69bebd">   27</a></span>&#160;    <span class="keyword">enum class</span> <a class="code" href="namespacegame_1_1logs.html#a9b2a36984b00c12bf57a74d96d69bebd">Severity</a> : char</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        INFO,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        WARNING,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        SEVERE</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    };</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classgame_1_1logs_1_1_logger.html">   71</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1logs_1_1_logger.html">Logger</a> : <span class="keyword">private</span> std::streambuf, <span class="keyword">public</span> std::ostream</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        private :</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">static</span> <a class="code" href="classgame_1_1logs_1_1_logger.html">Logger</a>* m_instance; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <a class="code" href="namespacegame_1_1logs.html#a9b2a36984b00c12bf57a74d96d69bebd">Severity</a> m_severity = Severity::INFO; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        std::string m_curLogConsole, m_curLogFile; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        std::ofstream m_fout; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        std::map&lt;Severity, bool&gt; m_consoleVisibilities; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordtype">bool</span> m_error = <span class="keyword">false</span>; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="classgame_1_1logs_1_1_logger.html">Logger</a>();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="classgame_1_1logs_1_1_logger.html">Logger</a>();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordtype">int</span> overflow(<span class="keywordtype">int</span> c) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordtype">void</span> setSeverity(<a class="code" href="namespacegame_1_1logs.html#a9b2a36984b00c12bf57a74d96d69bebd">Severity</a> s);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordtype">void</span> finishLog();</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        std::string getSeverityName(<a class="code" href="namespacegame_1_1logs.html#a9b2a36984b00c12bf57a74d96d69bebd">Severity</a> s, <span class="keywordtype">bool</span> console) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        std::string getCurrentDate(<span class="keyword">const</span> <span class="keywordtype">char</span>* format) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordtype">bool</span> fileExist(<span class="keyword">const</span> std::string&amp; path) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordtype">void</span> error(<span class="keyword">const</span> <span class="keywordtype">char</span>* desc);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        public :</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1logs_1_1_logger.html#a37ef138d8ab0bd2c35242be543f1234c">start</a>();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classgame_1_1logs_1_1_logger.html#a5a8d2953acd2ff0a975da2efc146516e">end</a>();</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keyword">static</span> <a class="code" href="classgame_1_1logs_1_1_logger.html">Logger</a>&amp; <a class="code" href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">log</a>();</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgame_1_1logs_1_1_logger.html#a4dcb4dd9fbd034ddf7bc3bbfce8a4562">setConsoleVisibility</a>(<a class="code" href="namespacegame_1_1logs.html#a9b2a36984b00c12bf57a74d96d69bebd">Severity</a> s, <span class="keywordtype">bool</span> show);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="comment">// Friends declaration</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="keyword">friend</span> std::ios_base&amp; <a class="code" href="classgame_1_1logs_1_1_logger.html#a37224f1cad5d6a26f282d3093609ccc9">info</a>(std::ios_base&amp; base);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keyword">friend</span> std::ios_base&amp; <a class="code" href="classgame_1_1logs_1_1_logger.html#a7d9c86e1f7e1107f0b3669c9da4d6eab">warning</a>(std::ios_base&amp; base);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keyword">friend</span> std::ios_base&amp; <a class="code" href="classgame_1_1logs_1_1_logger.html#ac466ec9305d0347f5a0edc4c3b45ad02">severe</a>(std::ios_base&amp; base);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keyword">friend</span> std::ios_base&amp; <a class="code" href="classgame_1_1logs_1_1_logger.html#ab8873b7c319621f84547535d41a0f9c4">endlog</a>(std::ios_base&amp; base);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    };</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    std::ios_base&amp; <a class="code" href="namespacegame_1_1logs.html#a0ce458c617d35922cbeff8eea07d4109">info</a>(std::ios_base&amp; base);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    std::ios_base&amp; <a class="code" href="namespacegame_1_1logs.html#a3bea0b6cba6e4d445a59889cb0586f85">warning</a>(std::ios_base&amp; base);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    std::ios_base&amp; <a class="code" href="namespacegame_1_1logs.html#acda173634be088930af43767b63f95d6">severe</a>(std::ios_base&amp; base);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    std::ios_base&amp; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>(std::ios_base&amp; base);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;}</div>
+<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html">game::logs::Logger</a></div><div class="ttdoc">Singleton Logger.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8hpp_source.html#l00071">Logger.hpp:72</a></div></div>
+<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a036307cebe1e2ea25c31cc2cb8e5b3ad"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad">game::logs::Logger::log</a></div><div class="ttdeci">static Logger &amp; log()</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00202">Logger.cpp:202</a></div></div>
+<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a37224f1cad5d6a26f282d3093609ccc9"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a37224f1cad5d6a26f282d3093609ccc9">game::logs::Logger::info</a></div><div class="ttdeci">friend std::ios_base &amp; info(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00212">Logger.cpp:212</a></div></div>
+<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a37ef138d8ab0bd2c35242be543f1234c"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a37ef138d8ab0bd2c35242be543f1234c">game::logs::Logger::start</a></div><div class="ttdeci">static bool start()</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00191">Logger.cpp:191</a></div></div>
+<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a4dcb4dd9fbd034ddf7bc3bbfce8a4562"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a4dcb4dd9fbd034ddf7bc3bbfce8a4562">game::logs::Logger::setConsoleVisibility</a></div><div class="ttdeci">void setConsoleVisibility(Severity s, bool show)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00207">Logger.cpp:207</a></div></div>
+<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a5a8d2953acd2ff0a975da2efc146516e"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a5a8d2953acd2ff0a975da2efc146516e">game::logs::Logger::end</a></div><div class="ttdeci">static void end()</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00197">Logger.cpp:197</a></div></div>
+<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a7d9c86e1f7e1107f0b3669c9da4d6eab"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a7d9c86e1f7e1107f0b3669c9da4d6eab">game::logs::Logger::warning</a></div><div class="ttdeci">friend std::ios_base &amp; warning(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00218">Logger.cpp:218</a></div></div>
+<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_ab8873b7c319621f84547535d41a0f9c4"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#ab8873b7c319621f84547535d41a0f9c4">game::logs::Logger::endlog</a></div><div class="ttdeci">friend std::ios_base &amp; endlog(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00230">Logger.cpp:230</a></div></div>
+<div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_ac466ec9305d0347f5a0edc4c3b45ad02"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#ac466ec9305d0347f5a0edc4c3b45ad02">game::logs::Logger::severe</a></div><div class="ttdeci">friend std::ios_base &amp; severe(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00224">Logger.cpp:224</a></div></div>
 <div class="ttc" id="anamespacegame_1_1logs_html"><div class="ttname"><a href="namespacegame_1_1logs.html">game::logs</a></div><div class="ttdoc">Logger namespace.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00019">Logger.cpp:20</a></div></div>
-<div class="ttc" id="anamespacegame_1_1logs_html_a0ce458c617d35922cbeff8eea07d4109"><div class="ttname"><a href="namespacegame_1_1logs.html#a0ce458c617d35922cbeff8eea07d4109">game::logs::info</a></div><div class="ttdeci">ios_base &amp; info(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00198">Logger.cpp:198</a></div></div>
-<div class="ttc" id="anamespacegame_1_1logs_html_a3bea0b6cba6e4d445a59889cb0586f85"><div class="ttname"><a href="namespacegame_1_1logs.html#a3bea0b6cba6e4d445a59889cb0586f85">game::logs::warning</a></div><div class="ttdeci">ios_base &amp; warning(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00204">Logger.cpp:204</a></div></div>
-<div class="ttc" id="anamespacegame_1_1logs_html_a7815834a94e406a5b7fa8bd5305b2343"><div class="ttname"><a href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">game::logs::endlog</a></div><div class="ttdeci">ios_base &amp; endlog(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00216">Logger.cpp:216</a></div></div>
-<div class="ttc" id="anamespacegame_1_1logs_html_a786c545cf8494b9278ebed7d40bfacb9"><div class="ttname"><a href="namespacegame_1_1logs.html#a786c545cf8494b9278ebed7d40bfacb9">game::logs::LOGS_TRACER_FILE</a></div><div class="ttdeci">const char * LOGS_TRACER_FILE</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8hpp_source.html#l00020">Logger.hpp:20</a></div></div>
-<div class="ttc" id="anamespacegame_1_1logs_html_a9b2a36984b00c12bf57a74d96d69bebd"><div class="ttname"><a href="namespacegame_1_1logs.html#a9b2a36984b00c12bf57a74d96d69bebd">game::logs::Severity</a></div><div class="ttdeci">Severity</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8hpp_source.html#l00026">Logger.hpp:27</a></div></div>
-<div class="ttc" id="anamespacegame_1_1logs_html_acda173634be088930af43767b63f95d6"><div class="ttname"><a href="namespacegame_1_1logs.html#acda173634be088930af43767b63f95d6">game::logs::severe</a></div><div class="ttdeci">ios_base &amp; severe(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00210">Logger.cpp:210</a></div></div>
-<div class="ttc" id="anamespacegame_1_1logs_html_aebd7913ede3729e6ef608c8ef517b94c"><div class="ttname"><a href="namespacegame_1_1logs.html#aebd7913ede3729e6ef608c8ef517b94c">game::logs::LOGS_FILES_NUMBER</a></div><div class="ttdeci">const int LOGS_FILES_NUMBER</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8hpp_source.html#l00019">Logger.hpp:19</a></div></div>
+<div class="ttc" id="anamespacegame_1_1logs_html_a0ce458c617d35922cbeff8eea07d4109"><div class="ttname"><a href="namespacegame_1_1logs.html#a0ce458c617d35922cbeff8eea07d4109">game::logs::info</a></div><div class="ttdeci">ios_base &amp; info(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00212">Logger.cpp:212</a></div></div>
+<div class="ttc" id="anamespacegame_1_1logs_html_a3bea0b6cba6e4d445a59889cb0586f85"><div class="ttname"><a href="namespacegame_1_1logs.html#a3bea0b6cba6e4d445a59889cb0586f85">game::logs::warning</a></div><div class="ttdeci">ios_base &amp; warning(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00218">Logger.cpp:218</a></div></div>
+<div class="ttc" id="anamespacegame_1_1logs_html_a7815834a94e406a5b7fa8bd5305b2343"><div class="ttname"><a href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">game::logs::endlog</a></div><div class="ttdeci">ios_base &amp; endlog(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00230">Logger.cpp:230</a></div></div>
+<div class="ttc" id="anamespacegame_1_1logs_html_a786c545cf8494b9278ebed7d40bfacb9"><div class="ttname"><a href="namespacegame_1_1logs.html#a786c545cf8494b9278ebed7d40bfacb9">game::logs::LOGS_TRACER_FILE</a></div><div class="ttdeci">const char * LOGS_TRACER_FILE</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8hpp_source.html#l00021">Logger.hpp:21</a></div></div>
+<div class="ttc" id="anamespacegame_1_1logs_html_a9b2a36984b00c12bf57a74d96d69bebd"><div class="ttname"><a href="namespacegame_1_1logs.html#a9b2a36984b00c12bf57a74d96d69bebd">game::logs::Severity</a></div><div class="ttdeci">Severity</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8hpp_source.html#l00027">Logger.hpp:28</a></div></div>
+<div class="ttc" id="anamespacegame_1_1logs_html_acda173634be088930af43767b63f95d6"><div class="ttname"><a href="namespacegame_1_1logs.html#acda173634be088930af43767b63f95d6">game::logs::severe</a></div><div class="ttdeci">ios_base &amp; severe(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00224">Logger.cpp:224</a></div></div>
+<div class="ttc" id="anamespacegame_1_1logs_html_aebd7913ede3729e6ef608c8ef517b94c"><div class="ttname"><a href="namespacegame_1_1logs.html#aebd7913ede3729e6ef608c8ef517b94c">game::logs::LOGS_FILES_NUMBER</a></div><div class="ttdeci">const int LOGS_FILES_NUMBER</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8hpp_source.html#l00020">Logger.hpp:20</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -141,8 +141,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventManager</b></td
 <div class="ttc" id="aclassgame_1_1events_1_1_event_manager_html_af7c07b8a6223592d010df7ff4930b258"><div class="ttname"><a href="classgame_1_1events_1_1_event_manager.html#af7c07b8a6223592d010df7ff4930b258">game::events::EventManager::getInstance</a></div><div class="ttdeci">static EventManager * getInstance()</div><div class="ttdef"><b>Definition:</b> <a href="_event_manager_8cpp_source.html#l00062">EventManager.cpp:62</a></div></div>
 <div class="ttc" id="anamespacegame_1_1events_html_a378c3475a4b95a6338894957e852bf5ba5f230435435ee85627b3adab7f153bf1"><div class="ttname"><a href="namespacegame_1_1events.html#a378c3475a4b95a6338894957e852bf5ba5f230435435ee85627b3adab7f153bf1">game::events::EventType::ATTACK_EVENT</a></div><div class="ttdeci">@ ATTACK_EVENT</div></div>
 <div class="ttc" id="anamespacegame_1_1events_html_a378c3475a4b95a6338894957e852bf5ba673be2311ba748257d183a7b90dfd14b"><div class="ttname"><a href="namespacegame_1_1events.html#a378c3475a4b95a6338894957e852bf5ba673be2311ba748257d183a7b90dfd14b">game::events::EventType::MOVE_EVENT</a></div><div class="ttdeci">@ MOVE_EVENT</div></div>
-<div class="ttc" id="anamespacegame_1_1logs_html_a0ce458c617d35922cbeff8eea07d4109"><div class="ttname"><a href="namespacegame_1_1logs.html#a0ce458c617d35922cbeff8eea07d4109">game::logs::info</a></div><div class="ttdeci">ios_base &amp; info(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00198">Logger.cpp:198</a></div></div>
-<div class="ttc" id="anamespacegame_1_1logs_html_a7815834a94e406a5b7fa8bd5305b2343"><div class="ttname"><a href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">game::logs::endlog</a></div><div class="ttdeci">ios_base &amp; endlog(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00216">Logger.cpp:216</a></div></div>
+<div class="ttc" id="anamespacegame_1_1logs_html_a0ce458c617d35922cbeff8eea07d4109"><div class="ttname"><a href="namespacegame_1_1logs.html#a0ce458c617d35922cbeff8eea07d4109">game::logs::info</a></div><div class="ttdeci">ios_base &amp; info(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00212">Logger.cpp:212</a></div></div>
+<div class="ttc" id="anamespacegame_1_1logs_html_a7815834a94e406a5b7fa8bd5305b2343"><div class="ttname"><a href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">game::logs::endlog</a></div><div class="ttdeci">ios_base &amp; endlog(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00230">Logger.cpp:230</a></div></div>
 </div><!-- fragment --><p>Because the <a class="el" href="classgame_1_1events_1_1_event_listener.html#ad4425057b3c4ac7736c9c70df7c65773" title="This method is called on each event by the EventManager singleton.">onEvent()</a> method takes a shared_ptr as argument, it is totally accepted to keep a reference to it in the listener for later processing for example. The event will automatically be deleted when all references are lost. </p>
 
 <p class="definition">Definition at line <a class="el" href="_event_manager_8hpp_source.html#l00068">68</a> of file <a class="el" href="_event_manager_8hpp_source.html">EventManager.hpp</a>.</p>
@@ -179,7 +179,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventManager</b></td
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/<a class="el" href="_event_manager_8hpp_source.html">EventManager.hpp</a></li>
+<li>src/events/<a class="el" href="_event_manager_8hpp_source.html">EventManager.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

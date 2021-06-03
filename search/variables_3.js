@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['logs_5ffiles_5fnumber_159',['LOGS_FILES_NUMBER',['../namespacegame_1_1logs.html#aebd7913ede3729e6ef608c8ef517b94c',1,'game::logs']]],
-  ['logs_5ftracer_5ffile_160',['LOGS_TRACER_FILE',['../namespacegame_1_1logs.html#a786c545cf8494b9278ebed7d40bfacb9',1,'game::logs']]]
+  ['intelligence_182',['INTELLIGENCE',['../classgame_1_1skills_1_1_skill_type.html#acf3af50895ab41670f6186af9a6d34b8',1,'game::skills::SkillType']]]
 ];

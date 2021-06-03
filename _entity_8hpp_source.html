@@ -70,14 +70,29 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="_entity_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span>game::entity</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classgame_1_1entity_1_1_entity.html">   14</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1entity_1_1_entity.html">Entity</a></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    };</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
-<div class="ttc" id="aclassgame_1_1entity_1_1_entity_html"><div class="ttname"><a href="classgame_1_1entity_1_1_entity.html">game::entity::Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00014">Entity.hpp:15</a></div></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_skills_set_8hpp.html">skills/SkillsSet.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span>game::entity</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classgame_1_1entity_1_1_entity.html">   17</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1entity_1_1_entity.html">Entity</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        private :</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="classgame_1_1skills_1_1_skills_set.html">skills::SkillsSet</a> m_skills;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">int</span> m_health;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">int</span> m_suto;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        public :</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="classgame_1_1entity_1_1_entity.html">Entity</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <a class="code" href="classgame_1_1skills_1_1_skills_set.html">skills::SkillsSet</a>&amp; getSkillsSet();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    };</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
+<div class="ttc" id="a_skills_set_8hpp_html"><div class="ttname"><a href="_skills_set_8hpp.html">SkillsSet.hpp</a></div><div class="ttdoc">Header file of SkillsSet class and SkillLevel enum.</div></div>
+<div class="ttc" id="aclassgame_1_1entity_1_1_entity_html"><div class="ttname"><a href="classgame_1_1entity_1_1_entity.html">game::entity::Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00017">Entity.hpp:18</a></div></div>
+<div class="ttc" id="aclassgame_1_1skills_1_1_skills_set_html"><div class="ttname"><a href="classgame_1_1skills_1_1_skills_set.html">game::skills::SkillsSet</a></div><div class="ttdoc">A set of all skills each Entity has with useful methods to manage them.</div><div class="ttdef"><b>Definition:</b> <a href="_skills_set_8hpp_source.html#l00046">SkillsSet.hpp:47</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
