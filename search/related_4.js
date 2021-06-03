@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['warning_214',['warning',['../classgame_1_1logs_1_1_logger.html#a7d9c86e1f7e1107f0b3669c9da4d6eab',1,'game::logs::Logger']]]
+  ['severe_288',['severe',['../classgame_1_1logs_1_1_logger.html#ac466ec9305d0347f5a0edc4c3b45ad02',1,'game::logs::Logger']]]
 ];

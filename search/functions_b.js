@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['values_175',['values',['../classgame_1_1skills_1_1_skills_set.html#af9a7db77170fc87557f45bba1de34e4d',1,'game::skills::SkillsSet::values()'],['../classgame_1_1skills_1_1_skill_type.html#a19e12c5a54cc5c0c3d5d24c051808535',1,'game::skills::SkillType::values()']]]
+  ['removelistener_220',['removeListener',['../classgame_1_1events_1_1_event_manager.html#aec18bd5bf857e8c5d297e4cc57fd258b',1,'game::events::EventManager']]],
+  ['requirements_221',['requirements',['../classgame_1_1items_1_1_fight_item.html#a5c14d997af0cad8336ee603d815f201d',1,'game::items::FightItem']]]
 ];

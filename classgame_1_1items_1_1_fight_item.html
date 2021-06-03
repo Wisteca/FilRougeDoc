@@ -61,17 +61,23 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>game</b></li><li class="navelem"><b>items</b></li><li class="navelem"><a class="el" href="classgame_1_1items_1_1_fight_item.html">FightItem</a></li>  </ul>
+<li class="navelem"><b>game</b></li><li class="navelem"><a class="el" href="namespacegame_1_1items.html">items</a></li><li class="navelem"><a class="el" href="classgame_1_1items_1_1_fight_item.html">FightItem</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classgame_1_1items_1_1_fight_item-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">game::items::FightItem Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A <a class="el" href="classgame_1_1items_1_1_fight_item.html" title="A FightItem is an object that has a role in combat.">FightItem</a> is an object that has a role in combat.  
+ <a href="classgame_1_1items_1_1_fight_item.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_fight_item_8hpp_source.html">FightItem.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for game::items::FightItem:</div>
 <div class="dyncontent">
@@ -85,48 +91,182 @@ Collaboration diagram for game::items::FightItem:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae78fd25f146723b65e610b3239c1f934"><td class="memItemLeft" align="right" valign="top"><a id="ae78fd25f146723b65e610b3239c1f934"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>FightItem</b> (const std::string name, float weight)</td></tr>
-<tr class="separator:ae78fd25f146723b65e610b3239c1f934"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b96a224b34ba5a4b0bc40641ce70f6e"><td class="memItemLeft" align="right" valign="top"><a id="a3b96a224b34ba5a4b0bc40641ce70f6e"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_fight_item.html#a3b96a224b34ba5a4b0bc40641ce70f6e">FightItem</a> ()</td></tr>
+<tr class="memdesc:a3b96a224b34ba5a4b0bc40641ce70f6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="classgame_1_1items_1_1_fight_item.html" title="A FightItem is an object that has a role in combat.">FightItem</a> with a default name and 0 weight. <br /></td></tr>
+<tr class="separator:a3b96a224b34ba5a4b0bc40641ce70f6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc4e4fa443053252ed7444ac86104dbc"><td class="memItemLeft" align="right" valign="top"><a id="acc4e4fa443053252ed7444ac86104dbc"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_fight_item.html#acc4e4fa443053252ed7444ac86104dbc">FightItem</a> (const std::string name, float weight=0)</td></tr>
+<tr class="memdesc:acc4e4fa443053252ed7444ac86104dbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="classgame_1_1items_1_1_fight_item.html" title="A FightItem is an object that has a role in combat.">FightItem</a> by specifying a name and optionally its weight. <br /></td></tr>
+<tr class="separator:acc4e4fa443053252ed7444ac86104dbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa68ecdc3aeb4c3d85942e90b33a59443"><td class="memItemLeft" align="right" valign="top"><a id="aa68ecdc3aeb4c3d85942e90b33a59443"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>FightItem</b> (const <a class="el" href="classgame_1_1items_1_1_fight_item.html">FightItem</a> &amp;toCopy)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_fight_item.html#aa68ecdc3aeb4c3d85942e90b33a59443">FightItem</a> (const <a class="el" href="classgame_1_1items_1_1_fight_item.html">FightItem</a> &amp;toCopy)</td></tr>
+<tr class="memdesc:aa68ecdc3aeb4c3d85942e90b33a59443"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy a <a class="el" href="classgame_1_1items_1_1_fight_item.html" title="A FightItem is an object that has a role in combat.">FightItem</a>, the user of new item will be nullptr. <br /></td></tr>
 <tr class="separator:aa68ecdc3aeb4c3d85942e90b33a59443"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c14d997af0cad8336ee603d815f201d"><td class="memItemLeft" align="right" valign="top"><a id="a5c14d997af0cad8336ee603d815f201d"></a>
-std::map&lt; <a class="el" href="classgame_1_1skills_1_1_skill_type.html">skills::SkillType</a>, int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>requirements</b> ()</td></tr>
+<tr class="memitem:a5c14d997af0cad8336ee603d815f201d"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="classgame_1_1skills_1_1_skill_type.html">skills::SkillType</a>, int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_fight_item.html#a5c14d997af0cad8336ee603d815f201d">requirements</a> ()</td></tr>
 <tr class="separator:a5c14d997af0cad8336ee603d815f201d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af686161e505b3b593f1a2bb2701768f7"><td class="memItemLeft" align="right" valign="top"><a id="af686161e505b3b593f1a2bb2701768f7"></a>
-std::map&lt; <a class="el" href="classgame_1_1skills_1_1_skill_type.html">skills::SkillType</a>, int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>modificators</b> ()</td></tr>
+<tr class="memitem:af686161e505b3b593f1a2bb2701768f7"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="classgame_1_1skills_1_1_skill_type.html">skills::SkillType</a>, int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_fight_item.html#af686161e505b3b593f1a2bb2701768f7">modificators</a> ()</td></tr>
 <tr class="separator:af686161e505b3b593f1a2bb2701768f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2eddfeb85af46f8b51b698f4345a98ec"><td class="memItemLeft" align="right" valign="top"><a id="a2eddfeb85af46f8b51b698f4345a98ec"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>canEquip</b> (<a class="el" href="classgame_1_1entity_1_1_entity.html">entity::Entity</a> *user) const</td></tr>
+<tr class="memitem:a2eddfeb85af46f8b51b698f4345a98ec"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_fight_item.html#a2eddfeb85af46f8b51b698f4345a98ec">canEquip</a> (<a class="el" href="classgame_1_1entity_1_1_entity.html">entity::Entity</a> *user) const</td></tr>
+<tr class="memdesc:a2eddfeb85af46f8b51b698f4345a98ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test if an entity has the requirements to equip the <a class="el" href="classgame_1_1items_1_1_fight_item.html" title="A FightItem is an object that has a role in combat.">FightItem</a>.  <a href="classgame_1_1items_1_1_fight_item.html#a2eddfeb85af46f8b51b698f4345a98ec">More...</a><br /></td></tr>
 <tr class="separator:a2eddfeb85af46f8b51b698f4345a98ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e31e584ad351c3988f08fc7a8032c3f"><td class="memItemLeft" align="right" valign="top"><a id="a0e31e584ad351c3988f08fc7a8032c3f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>equip</b> (<a class="el" href="classgame_1_1entity_1_1_entity.html">entity::Entity</a> *user)</td></tr>
+<tr class="memitem:a0e31e584ad351c3988f08fc7a8032c3f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_fight_item.html#a0e31e584ad351c3988f08fc7a8032c3f">equip</a> (<a class="el" href="classgame_1_1entity_1_1_entity.html">entity::Entity</a> *user)</td></tr>
+<tr class="memdesc:a0e31e584ad351c3988f08fc7a8032c3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to equip an entity, if it success, the item applies its modificators.  <a href="classgame_1_1items_1_1_fight_item.html#a0e31e584ad351c3988f08fc7a8032c3f">More...</a><br /></td></tr>
 <tr class="separator:a0e31e584ad351c3988f08fc7a8032c3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classgame_1_1items_1_1_item"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classgame_1_1items_1_1_item')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classgame_1_1items_1_1_item.html">game::items::Item</a></td></tr>
-<tr class="memitem:af5b7b80dc119e70cb37b169c275a9466 inherit pub_methods_classgame_1_1items_1_1_item"><td class="memItemLeft" align="right" valign="top"><a id="af5b7b80dc119e70cb37b169c275a9466"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Item</b> (const std::string &amp;name, float weight)</td></tr>
-<tr class="separator:af5b7b80dc119e70cb37b169c275a9466 inherit pub_methods_classgame_1_1items_1_1_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a466868a44302074b84c87c98e4288b7b inherit pub_methods_classgame_1_1items_1_1_item"><td class="memItemLeft" align="right" valign="top"><a id="a466868a44302074b84c87c98e4288b7b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_item.html#a466868a44302074b84c87c98e4288b7b">Item</a> ()</td></tr>
+<tr class="memdesc:a466868a44302074b84c87c98e4288b7b inherit pub_methods_classgame_1_1items_1_1_item"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor, default name and 0 weight. <br /></td></tr>
+<tr class="separator:a466868a44302074b84c87c98e4288b7b inherit pub_methods_classgame_1_1items_1_1_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31d943d939784db4e1298c36e21a5d82 inherit pub_methods_classgame_1_1items_1_1_item"><td class="memItemLeft" align="right" valign="top"><a id="a31d943d939784db4e1298c36e21a5d82"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_item.html#a31d943d939784db4e1298c36e21a5d82">Item</a> (const std::string &amp;name, float weight=0)</td></tr>
+<tr class="memdesc:a31d943d939784db4e1298c36e21a5d82 inherit pub_methods_classgame_1_1items_1_1_item"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an object by specifying a name and optionally its weight. <br /></td></tr>
+<tr class="separator:a31d943d939784db4e1298c36e21a5d82 inherit pub_methods_classgame_1_1items_1_1_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acff9fb1abb3bda677591e8a498df5646 inherit pub_methods_classgame_1_1items_1_1_item"><td class="memItemLeft" align="right" valign="top"><a id="acff9fb1abb3bda677591e8a498df5646"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Item</b> (const <a class="el" href="classgame_1_1items_1_1_item.html">Item</a> &amp;toCopy)=default</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_item.html#acff9fb1abb3bda677591e8a498df5646">Item</a> (const <a class="el" href="classgame_1_1items_1_1_item.html">Item</a> &amp;toCopy)=default</td></tr>
+<tr class="memdesc:acff9fb1abb3bda677591e8a498df5646 inherit pub_methods_classgame_1_1items_1_1_item"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy an item. <br /></td></tr>
 <tr class="separator:acff9fb1abb3bda677591e8a498df5646 inherit pub_methods_classgame_1_1items_1_1_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e1a461414b05717f009ab6dc1e08402 inherit pub_methods_classgame_1_1items_1_1_item"><td class="memItemLeft" align="right" valign="top"><a id="a7e1a461414b05717f009ab6dc1e08402"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getName</b> () const</td></tr>
+<tr class="memitem:a2bafde3621279734c0fb32333f19e0fd inherit pub_methods_classgame_1_1items_1_1_item"><td class="memItemLeft" align="right" valign="top"><a id="a2bafde3621279734c0fb32333f19e0fd"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_item.html#a2bafde3621279734c0fb32333f19e0fd">~Item</a> ()=default</td></tr>
+<tr class="memdesc:a2bafde3621279734c0fb32333f19e0fd inherit pub_methods_classgame_1_1items_1_1_item"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete an item. <br /></td></tr>
+<tr class="separator:a2bafde3621279734c0fb32333f19e0fd inherit pub_methods_classgame_1_1items_1_1_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e1a461414b05717f009ab6dc1e08402 inherit pub_methods_classgame_1_1items_1_1_item"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_item.html#a7e1a461414b05717f009ab6dc1e08402">getName</a> () const</td></tr>
 <tr class="separator:a7e1a461414b05717f009ab6dc1e08402 inherit pub_methods_classgame_1_1items_1_1_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b62a6cf956857eab1331d65a82b9a38 inherit pub_methods_classgame_1_1items_1_1_item"><td class="memItemLeft" align="right" valign="top"><a id="a7b62a6cf956857eab1331d65a82b9a38"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getWeight</b> () const</td></tr>
+<tr class="memitem:a7b62a6cf956857eab1331d65a82b9a38 inherit pub_methods_classgame_1_1items_1_1_item"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_item.html#a7b62a6cf956857eab1331d65a82b9a38">getWeight</a> () const</td></tr>
 <tr class="separator:a7b62a6cf956857eab1331d65a82b9a38 inherit pub_methods_classgame_1_1items_1_1_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52a162f02adc35ecc5377ad36d82dc62 inherit pub_methods_classgame_1_1items_1_1_item"><td class="memItemLeft" align="right" valign="top"><a id="a52a162f02adc35ecc5377ad36d82dc62"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>use</b> ()=0</td></tr>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_item.html#a52a162f02adc35ecc5377ad36d82dc62">use</a> ()=0</td></tr>
+<tr class="memdesc:a52a162f02adc35ecc5377ad36d82dc62 inherit pub_methods_classgame_1_1items_1_1_item"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract <a class="el" href="classgame_1_1items_1_1_item.html#a52a162f02adc35ecc5377ad36d82dc62" title="Abstract use() method, each item can implement a custom behavior.">use()</a> method, each item can implement a custom behavior. <br /></td></tr>
 <tr class="separator:a52a162f02adc35ecc5377ad36d82dc62 inherit pub_methods_classgame_1_1items_1_1_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a7ee132df432d26d348f0ee9e8aeab8 inherit pub_methods_classgame_1_1items_1_1_item"><td class="memItemLeft" align="right" valign="top"><a id="a0a7ee132df432d26d348f0ee9e8aeab8"></a>
-virtual std::shared_ptr&lt; <a class="el" href="classgame_1_1items_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>clone</b> () const =0</td></tr>
+<tr class="memitem:a0a7ee132df432d26d348f0ee9e8aeab8 inherit pub_methods_classgame_1_1items_1_1_item"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; <a class="el" href="classgame_1_1items_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_item.html#a0a7ee132df432d26d348f0ee9e8aeab8">clone</a> () const =0</td></tr>
 <tr class="separator:a0a7ee132df432d26d348f0ee9e8aeab8 inherit pub_methods_classgame_1_1items_1_1_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a481ec44d83356bcdbbd4107936ee7f7d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgame_1_1entity_1_1_entity.html">entity::Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_fight_item.html#a481ec44d83356bcdbbd4107936ee7f7d">m_user</a> = nullptr</td></tr>
+<tr class="separator:a481ec44d83356bcdbbd4107936ee7f7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_fight_item_8hpp_source.html#l00017">17</a> of file <a class="el" href="_fight_item_8hpp_source.html">FightItem.hpp</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<div class="textblock"><p>A <a class="el" href="classgame_1_1items_1_1_fight_item.html" title="A FightItem is an object that has a role in combat.">FightItem</a> is an object that has a role in combat. </p>
+<p>To use a <a class="el" href="classgame_1_1items_1_1_fight_item.html" title="A FightItem is an object that has a role in combat.">FightItem</a> an entity must equip it (become its owner/user).</p>
+<p>The <a class="el" href="classgame_1_1items_1_1_fight_item.html#a2eddfeb85af46f8b51b698f4345a98ec" title="Test if an entity has the requirements to equip the FightItem.">canEquip()</a> method checks if an entity is able to equip the item by reviewing its skills and compare them to the requirements map. The <a class="el" href="classgame_1_1items_1_1_fight_item.html#a0e31e584ad351c3988f08fc7a8032c3f" title="Try to equip an entity, if it success, the item applies its modificators.">equip()</a> method equip the entity if <a class="el" href="classgame_1_1items_1_1_fight_item.html#a2eddfeb85af46f8b51b698f4345a98ec" title="Test if an entity has the requirements to equip the FightItem.">canEquip()</a> returns true.</p>
+<p>Once the entity is equipped, the <a class="el" href="classgame_1_1items_1_1_fight_item.html" title="A FightItem is an object that has a role in combat.">FightItem</a> will apply some modificators to its skills. </p>
+
+<p class="definition">Definition at line <a class="el" href="_fight_item_8hpp_source.html#l00028">28</a> of file <a class="el" href="_fight_item_8hpp_source.html">FightItem.hpp</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2eddfeb85af46f8b51b698f4345a98ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2eddfeb85af46f8b51b698f4345a98ec">&#9670;&nbsp;</a></span>canEquip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool game::items::FightItem::canEquip </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgame_1_1entity_1_1_entity.html">entity::Entity</a> *&#160;</td>
+          <td class="paramname"><em>user</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Test if an entity has the requirements to equip the <a class="el" href="classgame_1_1items_1_1_fight_item.html" title="A FightItem is an object that has a role in combat.">FightItem</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if it has, false otherwise </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_fight_item_8cpp_source.html#l00046">46</a> of file <a class="el" href="_fight_item_8cpp_source.html">FightItem.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a0e31e584ad351c3988f08fc7a8032c3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e31e584ad351c3988f08fc7a8032c3f">&#9670;&nbsp;</a></span>equip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool game::items::FightItem::equip </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgame_1_1entity_1_1_entity.html">entity::Entity</a> *&#160;</td>
+          <td class="paramname"><em>user</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Try to equip an entity, if it success, the item applies its modificators. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classgame_1_1items_1_1_fight_item.html#a2eddfeb85af46f8b51b698f4345a98ec" title="Test if an entity has the requirements to equip the FightItem.">canEquip()</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_fight_item_8cpp_source.html#l00057">57</a> of file <a class="el" href="_fight_item_8cpp_source.html">FightItem.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af686161e505b3b593f1a2bb2701768f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af686161e505b3b593f1a2bb2701768f7">&#9670;&nbsp;</a></span>modificators()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">map&lt; <a class="el" href="classgame_1_1skills_1_1_skill_type.html">skills::SkillType</a>, int &gt; &amp; game::items::FightItem::modificators </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>A reference on the modificators map, this can be used to get and set modificators </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_fight_item_8cpp_source.html#l00041">41</a> of file <a class="el" href="_fight_item_8cpp_source.html">FightItem.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a5c14d997af0cad8336ee603d815f201d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c14d997af0cad8336ee603d815f201d">&#9670;&nbsp;</a></span>requirements()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">map&lt; <a class="el" href="classgame_1_1skills_1_1_skill_type.html">skills::SkillType</a>, int &gt; &amp; game::items::FightItem::requirements </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>A reference on the requirements map, this can be used to get and set requirements </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_fight_item_8cpp_source.html#l00036">36</a> of file <a class="el" href="_fight_item_8cpp_source.html">FightItem.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a481ec44d83356bcdbbd4107936ee7f7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a481ec44d83356bcdbbd4107936ee7f7d">&#9670;&nbsp;</a></span>m_user</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgame_1_1entity_1_1_entity.html">entity::Entity</a>* game::items::FightItem::m_user = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Entity that is using the item or nullptr if there is no one </p>
+
+<p class="definition">Definition at line <a class="el" href="_fight_item_8hpp_source.html#l00037">37</a> of file <a class="el" href="_fight_item_8hpp_source.html">FightItem.hpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/items/<a class="el" href="_fight_item_8hpp_source.html">FightItem.hpp</a></li>
 <li>src/items/<a class="el" href="_fight_item_8cpp_source.html">FightItem.cpp</a></li>
 </ul>

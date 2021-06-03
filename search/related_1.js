@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['info_211',['info',['../classgame_1_1logs_1_1_logger.html#a37224f1cad5d6a26f282d3093609ccc9',1,'game::logs::Logger']]]
+  ['endlog_285',['endlog',['../classgame_1_1logs_1_1_logger.html#ab8873b7c319621f84547535d41a0f9c4',1,'game::logs::Logger']]]
 ];

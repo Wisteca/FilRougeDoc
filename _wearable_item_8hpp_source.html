@@ -74,26 +74,32 @@ $(function() {
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_fight_item_8hpp.html">FightItem.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span>game::items</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegame_1_1items.html">game::items</a></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
 <div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classgame_1_1items_1_1_wearable_item.html">   14</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1items_1_1_wearable_item.html">WearableItem</a> : <span class="keyword">public</span> <a class="code" href="classgame_1_1items_1_1_fight_item.html">FightItem</a></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        public :</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="classgame_1_1items_1_1_wearable_item.html">WearableItem</a>();</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="classgame_1_1items_1_1_wearable_item.html">WearableItem</a>(std::string name, <span class="keywordtype">float</span> weight);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="classgame_1_1items_1_1_wearable_item.html">WearableItem</a>(<span class="keyword">const</span> <a class="code" href="classgame_1_1items_1_1_wearable_item.html">WearableItem</a>&amp; toCopy) = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">bool</span> use() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        std::shared_ptr&lt;Item&gt; clone() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    };</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="classgame_1_1items_1_1_wearable_item.html#a5b1f4af130d7612ffc3657cc218cdc21">WearableItem</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classgame_1_1items_1_1_wearable_item.html#adcc74c2733833caeca62f3ffe704842c">   26</a></span>&#160;        <a class="code" href="classgame_1_1items_1_1_wearable_item.html#adcc74c2733833caeca62f3ffe704842c">WearableItem</a>(std::string name, <span class="keywordtype">float</span> weight = 0);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classgame_1_1items_1_1_wearable_item.html#aeba9c4e505e95b29208e9cc0ae3a8816">   31</a></span>&#160;        <a class="code" href="classgame_1_1items_1_1_wearable_item.html#aeba9c4e505e95b29208e9cc0ae3a8816">WearableItem</a>(<span class="keyword">const</span> <a class="code" href="classgame_1_1items_1_1_wearable_item.html">WearableItem</a>&amp; toCopy) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1items_1_1_wearable_item.html#af1e9a90d34f2975b6ea2fdfad6c0509b">use</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        std::shared_ptr&lt;Item&gt; <a class="code" href="classgame_1_1items_1_1_wearable_item.html#a807293a3dd5730d20ab51f3ea339c8b7">clone</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    };</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
 <div class="ttc" id="a_fight_item_8hpp_html"><div class="ttname"><a href="_fight_item_8hpp.html">FightItem.hpp</a></div><div class="ttdoc">A FightItem is an object that has a role in combat.</div></div>
-<div class="ttc" id="aclassgame_1_1items_1_1_fight_item_html"><div class="ttname"><a href="classgame_1_1items_1_1_fight_item.html">game::items::FightItem</a></div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8hpp_source.html#l00017">FightItem.hpp:18</a></div></div>
+<div class="ttc" id="aclassgame_1_1items_1_1_fight_item_html"><div class="ttname"><a href="classgame_1_1items_1_1_fight_item.html">game::items::FightItem</a></div><div class="ttdoc">A FightItem is an object that has a role in combat.</div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8hpp_source.html#l00028">FightItem.hpp:29</a></div></div>
 <div class="ttc" id="aclassgame_1_1items_1_1_wearable_item_html"><div class="ttname"><a href="classgame_1_1items_1_1_wearable_item.html">game::items::WearableItem</a></div><div class="ttdef"><b>Definition:</b> <a href="_wearable_item_8hpp_source.html#l00014">WearableItem.hpp:15</a></div></div>
+<div class="ttc" id="aclassgame_1_1items_1_1_wearable_item_html_a5b1f4af130d7612ffc3657cc218cdc21"><div class="ttname"><a href="classgame_1_1items_1_1_wearable_item.html#a5b1f4af130d7612ffc3657cc218cdc21">game::items::WearableItem::WearableItem</a></div><div class="ttdeci">WearableItem()</div><div class="ttdoc">Construct a WearableItem with default values.</div><div class="ttdef"><b>Definition:</b> <a href="_wearable_item_8cpp_source.html#l00015">WearableItem.cpp:15</a></div></div>
+<div class="ttc" id="aclassgame_1_1items_1_1_wearable_item_html_a807293a3dd5730d20ab51f3ea339c8b7"><div class="ttname"><a href="classgame_1_1items_1_1_wearable_item.html#a807293a3dd5730d20ab51f3ea339c8b7">game::items::WearableItem::clone</a></div><div class="ttdeci">std::shared_ptr&lt; Item &gt; clone() const override</div><div class="ttdef"><b>Definition:</b> <a href="_wearable_item_8cpp_source.html#l00026">WearableItem.cpp:26</a></div></div>
+<div class="ttc" id="aclassgame_1_1items_1_1_wearable_item_html_adcc74c2733833caeca62f3ffe704842c"><div class="ttname"><a href="classgame_1_1items_1_1_wearable_item.html#adcc74c2733833caeca62f3ffe704842c">game::items::WearableItem::WearableItem</a></div><div class="ttdeci">WearableItem(std::string name, float weight=0)</div><div class="ttdoc">Construct a WearableItem with a name and optionally a weight.</div></div>
+<div class="ttc" id="aclassgame_1_1items_1_1_wearable_item_html_aeba9c4e505e95b29208e9cc0ae3a8816"><div class="ttname"><a href="classgame_1_1items_1_1_wearable_item.html#aeba9c4e505e95b29208e9cc0ae3a8816">game::items::WearableItem::WearableItem</a></div><div class="ttdeci">WearableItem(const WearableItem &amp;toCopy)=default</div><div class="ttdoc">Copy a WearableItem.</div></div>
+<div class="ttc" id="aclassgame_1_1items_1_1_wearable_item_html_af1e9a90d34f2975b6ea2fdfad6c0509b"><div class="ttname"><a href="classgame_1_1items_1_1_wearable_item.html#af1e9a90d34f2975b6ea2fdfad6c0509b">game::items::WearableItem::use</a></div><div class="ttdeci">bool use() override</div><div class="ttdoc">This has no effect for now but maybe it will in futures features.</div><div class="ttdef"><b>Definition:</b> <a href="_wearable_item_8cpp_source.html#l00021">WearableItem.cpp:21</a></div></div>
+<div class="ttc" id="anamespacegame_1_1items_html"><div class="ttname"><a href="namespacegame_1_1items.html">game::items</a></div><div class="ttdoc">Items namespace.</div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8cpp_source.html#l00014">FightItem.cpp:15</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

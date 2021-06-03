@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>game</b></li><li class="navelem"><b>items</b></li><li class="navelem"><a class="el" href="classgame_1_1items_1_1_item.html">Item</a></li>  </ul>
+<li class="navelem"><b>game</b></li><li class="navelem"><a class="el" href="namespacegame_1_1items.html">items</a></li><li class="navelem"><a class="el" href="classgame_1_1items_1_1_item.html">Item</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -73,6 +73,11 @@ $(function() {
 <div class="title">game::items::Item Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>An item is an object an entity can own and use.  
+ <a href="classgame_1_1items_1_1_item.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_item_8hpp_source.html">Item.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for game::items::Item:</div>
 <div class="dyncontent">
@@ -81,35 +86,115 @@ Inheritance diagram for game::items::Item:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af5b7b80dc119e70cb37b169c275a9466"><td class="memItemLeft" align="right" valign="top"><a id="af5b7b80dc119e70cb37b169c275a9466"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Item</b> (const std::string &amp;name, float weight)</td></tr>
-<tr class="separator:af5b7b80dc119e70cb37b169c275a9466"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a466868a44302074b84c87c98e4288b7b"><td class="memItemLeft" align="right" valign="top"><a id="a466868a44302074b84c87c98e4288b7b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_item.html#a466868a44302074b84c87c98e4288b7b">Item</a> ()</td></tr>
+<tr class="memdesc:a466868a44302074b84c87c98e4288b7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor, default name and 0 weight. <br /></td></tr>
+<tr class="separator:a466868a44302074b84c87c98e4288b7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31d943d939784db4e1298c36e21a5d82"><td class="memItemLeft" align="right" valign="top"><a id="a31d943d939784db4e1298c36e21a5d82"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_item.html#a31d943d939784db4e1298c36e21a5d82">Item</a> (const std::string &amp;name, float weight=0)</td></tr>
+<tr class="memdesc:a31d943d939784db4e1298c36e21a5d82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an object by specifying a name and optionally its weight. <br /></td></tr>
+<tr class="separator:a31d943d939784db4e1298c36e21a5d82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acff9fb1abb3bda677591e8a498df5646"><td class="memItemLeft" align="right" valign="top"><a id="acff9fb1abb3bda677591e8a498df5646"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Item</b> (const <a class="el" href="classgame_1_1items_1_1_item.html">Item</a> &amp;toCopy)=default</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_item.html#acff9fb1abb3bda677591e8a498df5646">Item</a> (const <a class="el" href="classgame_1_1items_1_1_item.html">Item</a> &amp;toCopy)=default</td></tr>
+<tr class="memdesc:acff9fb1abb3bda677591e8a498df5646"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy an item. <br /></td></tr>
 <tr class="separator:acff9fb1abb3bda677591e8a498df5646"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e1a461414b05717f009ab6dc1e08402"><td class="memItemLeft" align="right" valign="top"><a id="a7e1a461414b05717f009ab6dc1e08402"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getName</b> () const</td></tr>
+<tr class="memitem:a2bafde3621279734c0fb32333f19e0fd"><td class="memItemLeft" align="right" valign="top"><a id="a2bafde3621279734c0fb32333f19e0fd"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_item.html#a2bafde3621279734c0fb32333f19e0fd">~Item</a> ()=default</td></tr>
+<tr class="memdesc:a2bafde3621279734c0fb32333f19e0fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete an item. <br /></td></tr>
+<tr class="separator:a2bafde3621279734c0fb32333f19e0fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e1a461414b05717f009ab6dc1e08402"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_item.html#a7e1a461414b05717f009ab6dc1e08402">getName</a> () const</td></tr>
 <tr class="separator:a7e1a461414b05717f009ab6dc1e08402"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b62a6cf956857eab1331d65a82b9a38"><td class="memItemLeft" align="right" valign="top"><a id="a7b62a6cf956857eab1331d65a82b9a38"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getWeight</b> () const</td></tr>
+<tr class="memitem:a7b62a6cf956857eab1331d65a82b9a38"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_item.html#a7b62a6cf956857eab1331d65a82b9a38">getWeight</a> () const</td></tr>
 <tr class="separator:a7b62a6cf956857eab1331d65a82b9a38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52a162f02adc35ecc5377ad36d82dc62"><td class="memItemLeft" align="right" valign="top"><a id="a52a162f02adc35ecc5377ad36d82dc62"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>use</b> ()=0</td></tr>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_item.html#a52a162f02adc35ecc5377ad36d82dc62">use</a> ()=0</td></tr>
+<tr class="memdesc:a52a162f02adc35ecc5377ad36d82dc62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract <a class="el" href="classgame_1_1items_1_1_item.html#a52a162f02adc35ecc5377ad36d82dc62" title="Abstract use() method, each item can implement a custom behavior.">use()</a> method, each item can implement a custom behavior. <br /></td></tr>
 <tr class="separator:a52a162f02adc35ecc5377ad36d82dc62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a7ee132df432d26d348f0ee9e8aeab8"><td class="memItemLeft" align="right" valign="top"><a id="a0a7ee132df432d26d348f0ee9e8aeab8"></a>
-virtual std::shared_ptr&lt; <a class="el" href="classgame_1_1items_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>clone</b> () const =0</td></tr>
+<tr class="memitem:a0a7ee132df432d26d348f0ee9e8aeab8"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; <a class="el" href="classgame_1_1items_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_item.html#a0a7ee132df432d26d348f0ee9e8aeab8">clone</a> () const =0</td></tr>
 <tr class="separator:a0a7ee132df432d26d348f0ee9e8aeab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
 <tr class="memitem:a4a39cd399f202e3225cd7976dcf4ae3d"><td class="memItemLeft" align="right" valign="top"><a id="a4a39cd399f202e3225cd7976dcf4ae3d"></a>
-std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;stream, const <a class="el" href="classgame_1_1items_1_1_item.html">Item</a> &amp;item)</td></tr>
+std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1items_1_1_item.html#a4a39cd399f202e3225cd7976dcf4ae3d">operator&lt;&lt;</a> (std::ostream &amp;stream, const <a class="el" href="classgame_1_1items_1_1_item.html">Item</a> &amp;item)</td></tr>
+<tr class="memdesc:a4a39cd399f202e3225cd7976dcf4ae3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a little description in a stream. <br /></td></tr>
 <tr class="separator:a4a39cd399f202e3225cd7976dcf4ae3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_item_8hpp_source.html#l00016">16</a> of file <a class="el" href="_item_8hpp_source.html">Item.hpp</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<div class="textblock"><p>An item is an object an entity can own and use. </p>
+<p>An item can be placed in the Inventory of an Entity. </p>
+
+<p class="definition">Definition at line <a class="el" href="_item_8hpp_source.html#l00024">24</a> of file <a class="el" href="_item_8hpp_source.html">Item.hpp</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0a7ee132df432d26d348f0ee9e8aeab8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a7ee132df432d26d348f0ee9e8aeab8">&#9670;&nbsp;</a></span>clone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::shared_ptr&lt;<a class="el" href="classgame_1_1items_1_1_item.html">Item</a>&gt; game::items::Item::clone </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>A smart pointer on a newly allocated same item </dd></dl>
+
+<p>Implemented in <a class="el" href="classgame_1_1items_1_1_wearable_item.html#a807293a3dd5730d20ab51f3ea339c8b7">game::items::WearableItem</a>, and <a class="el" href="classgame_1_1items_1_1_melee_weapon.html#a7dec931d4e2c1666b54e8922ad3d5fb2">game::items::MeleeWeapon</a>.</p>
+
+</div>
+</div>
+<a id="a7e1a461414b05717f009ab6dc1e08402"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e1a461414b05717f009ab6dc1e08402">&#9670;&nbsp;</a></span>getName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string &amp; game::items::Item::getName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The name of the item </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_item_8cpp_source.html#l00021">21</a> of file <a class="el" href="_item_8cpp_source.html">Item.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a7b62a6cf956857eab1331d65a82b9a38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b62a6cf956857eab1331d65a82b9a38">&#9670;&nbsp;</a></span>getWeight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float game::items::Item::getWeight </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The weight of the item </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_item_8cpp_source.html#l00026">26</a> of file <a class="el" href="_item_8cpp_source.html">Item.cpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/items/<a class="el" href="_item_8hpp_source.html">Item.hpp</a></li>
 <li>src/items/<a class="el" href="_item_8cpp_source.html">Item.cpp</a></li>
 </ul>
