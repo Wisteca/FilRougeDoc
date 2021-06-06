@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['intelligence_248',['INTELLIGENCE',['../classgame_1_1skills_1_1_skill_type.html#acf3af50895ab41670f6186af9a6d34b8',1,'game::skills::SkillType']]]
+  ['intelligence_279',['INTELLIGENCE',['../classgame_1_1skills_1_1_skill_type.html#acf3af50895ab41670f6186af9a6d34b8',1,'game::skills::SkillType']]]
 ];

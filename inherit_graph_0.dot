@@ -4,5 +4,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="game::entity::AttackComputer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1entity_1_1_attack_computer.html",tooltip="Provide utility methods to compute an attack."];
+  Node0 [label="game::console::ConsoleEngine",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1console_1_1_console_engine.html",tooltip=" "];
 }

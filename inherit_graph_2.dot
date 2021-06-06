@@ -4,9 +4,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="game::events::Event",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1events_1_1_event.html",tooltip="Superclass of any event."];
-  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="game::events::AttackEvent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1events_1_1_attack_event.html",tooltip="Processed when an entity attacks another."];
-  Node0 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="game::events::MoveEvent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1events_1_1_move_event.html",tooltip="Processed when an entity moves."];
+  Node0 [label="game::console::Sprite",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1console_1_1_sprite.html",tooltip=" "];
 }

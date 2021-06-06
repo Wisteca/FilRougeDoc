@@ -4,7 +4,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="game::events::EventListener",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1events_1_1_event_listener.html",tooltip="This is the interface each class who wants to listen to events must implement."];
-  Node0 -> Node1 [dir="back",color="firebrick4",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="TestListener",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_test_listener.html",tooltip=" "];
+  Node0 [label="game::entity::AttackComputer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1entity_1_1_attack_computer.html",tooltip="Provide utility methods to compute an attack."];
 }

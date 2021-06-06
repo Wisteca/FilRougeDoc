@@ -8,7 +8,7 @@ digraph "src/items" {
   dir_d702b1830c517f66a168af5170d68148 [shape=box label="skills" URL="dir_d702b1830c517f66a168af5170d68148.html"];
   dir_17cee08e17148530a7aedf85f92ee362 [shape=box, label="items", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_17cee08e17148530a7aedf85f92ee362.html"];
   }
-  dir_17cee08e17148530a7aedf85f92ee362->dir_c184e51c84f2c3f0345bbc8a0d75d3e1 [headlabel="1", labeldistance=1.5 headhref="dir_000003_000002.html"];
-  dir_17cee08e17148530a7aedf85f92ee362->dir_d702b1830c517f66a168af5170d68148 [headlabel="1", labeldistance=1.5 headhref="dir_000003_000004.html"];
-  dir_d702b1830c517f66a168af5170d68148->dir_c184e51c84f2c3f0345bbc8a0d75d3e1 [headlabel="1", labeldistance=1.5 headhref="dir_000004_000002.html"];
+  dir_17cee08e17148530a7aedf85f92ee362->dir_c184e51c84f2c3f0345bbc8a0d75d3e1 [headlabel="1", labeldistance=1.5 headhref="dir_000004_000003.html"];
+  dir_17cee08e17148530a7aedf85f92ee362->dir_d702b1830c517f66a168af5170d68148 [headlabel="1", labeldistance=1.5 headhref="dir_000004_000005.html"];
+  dir_d702b1830c517f66a168af5170d68148->dir_c184e51c84f2c3f0345bbc8a0d75d3e1 [headlabel="1", labeldistance=1.5 headhref="dir_000005_000003.html"];
 }
