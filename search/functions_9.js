@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['normalize_242',['normalize',['../classgame_1_1math_1_1_vec2.html#a24bd7d7f59e4c23be791ae08c0db41eb',1,'game::math::Vec2']]]
+  ['normalize_252',['normalize',['../classgame_1_1math_1_1_vec2.html#ab268a969a921a4e4f9d219636b6e126b',1,'game::math::Vec2']]]
 ];

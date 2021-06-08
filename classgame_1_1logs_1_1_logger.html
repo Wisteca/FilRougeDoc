@@ -92,6 +92,10 @@ Collaboration diagram for game::logs::Logger:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a0f61269324fa87cc117be290a763ba0b"><td class="memItemLeft" align="right" valign="top"><a id="a0f61269324fa87cc117be290a763ba0b"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1logs_1_1_logger.html#a0f61269324fa87cc117be290a763ba0b">~Logger</a> ()</td></tr>
+<tr class="memdesc:a0f61269324fa87cc117be290a763ba0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close stream and delete singleton. <br /></td></tr>
+<tr class="separator:a0f61269324fa87cc117be290a763ba0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4dcb4dd9fbd034ddf7bc3bbfce8a4562"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1logs_1_1_logger.html#a4dcb4dd9fbd034ddf7bc3bbfce8a4562">setConsoleVisibility</a> (<a class="el" href="namespacegame_1_1logs.html#a9b2a36984b00c12bf57a74d96d69bebd">Severity</a> s, bool show)</td></tr>
 <tr class="separator:a4dcb4dd9fbd034ddf7bc3bbfce8a4562"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8c480c98cb3e02d636b7fc971e43938"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1logs_1_1_logger.html#ae8c480c98cb3e02d636b7fc971e43938">setFileVisibility</a> (<a class="el" href="namespacegame_1_1logs.html#a9b2a36984b00c12bf57a74d96d69bebd">Severity</a> s, bool show)</td></tr>
@@ -146,7 +150,7 @@ Friends</h2></td></tr>
 <div class="ttc" id="aclassgame_1_1logs_1_1_logger_html_a7d9c86e1f7e1107f0b3669c9da4d6eab"><div class="ttname"><a href="classgame_1_1logs_1_1_logger.html#a7d9c86e1f7e1107f0b3669c9da4d6eab">game::logs::Logger::warning</a></div><div class="ttdeci">friend std::ios_base &amp; warning(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00233">Logger.cpp:233</a></div></div>
 </div><!-- fragment --><p>This class is based on : <a href="https://stackoverflow.com/questions/772355/how-to-inherit-from-stdostream">https://stackoverflow.com/questions/772355/how-to-inherit-from-stdostream</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="_logger_8hpp_source.html#l00073">73</a> of file <a class="el" href="_logger_8hpp_source.html">Logger.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_logger_8hpp_source.html#l00074">74</a> of file <a class="el" href="_logger_8hpp_source.html">Logger.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a5a8d2953acd2ff0a975da2efc146516e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5a8d2953acd2ff0a975da2efc146516e">&#9670;&nbsp;</a></span>end()</h2>
@@ -198,7 +202,7 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Please always call <a class="el" href="classgame_1_1logs_1_1_logger.html#a37ef138d8ab0bd2c35242be543f1234c">Logger::start()</a> before. </p><dl class="section return"><dt>Returns</dt><dd>The reference on the current <a class="el" href="classgame_1_1logs_1_1_logger.html" title="Singleton Logger.">Logger</a> object </dd></dl>
+<p>Please always call <a class="el" href="classgame_1_1logs_1_1_logger.html#a37ef138d8ab0bd2c35242be543f1234c">Logger::start()</a> before. </p><dl class="section return"><dt>Returns</dt><dd>A reference on the <a class="el" href="classgame_1_1logs_1_1_logger.html" title="Singleton Logger.">Logger</a> object </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_logger_8cpp_source.html#l00212">212</a> of file <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a>.</p>
 

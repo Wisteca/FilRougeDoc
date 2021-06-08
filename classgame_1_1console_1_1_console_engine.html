@@ -73,18 +73,29 @@ $(function() {
 <div class="title">game::console::ConsoleEngine Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Console manager class. An instance of this can manage all display using its own render thread.  
+ <a href="classgame_1_1console_1_1_console_engine.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_console_engine_8hpp_source.html">ConsoleEngine.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a62337ee95151bad737aceb865dbe3095"><td class="memItemLeft" align="right" valign="top"><a id="a62337ee95151bad737aceb865dbe3095"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ConsoleEngine</b> (std::ostream *out, std::istream *in, const <a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a> &amp;size, float fps=1.)</td></tr>
-<tr class="separator:a62337ee95151bad737aceb865dbe3095"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1da25acac6897eae1f43348fe11f2f16"><td class="memItemLeft" align="right" valign="top"><a id="a1da25acac6897eae1f43348fe11f2f16"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setSize</b> (const <a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a> &amp;v)</td></tr>
-<tr class="separator:a1da25acac6897eae1f43348fe11f2f16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32dd50a01ac0b149531587ecec1e6641"><td class="memItemLeft" align="right" valign="top"><a id="a32dd50a01ac0b149531587ecec1e6641"></a>
-<a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getSize</b> () const</td></tr>
-<tr class="separator:a32dd50a01ac0b149531587ecec1e6641"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b324b67e7c1d8c4c049092928a87901"><td class="memItemLeft" align="right" valign="top"><a id="a4b324b67e7c1d8c4c049092928a87901"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ConsoleEngine</b> (const <a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt; &amp;size, float fps=1.)</td></tr>
+<tr class="separator:a4b324b67e7c1d8c4c049092928a87901"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08498fbb2a15adc347c9c79ceac31225"><td class="memItemLeft" align="right" valign="top"><a id="a08498fbb2a15adc347c9c79ceac31225"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ConsoleEngine</b> (const <a class="el" href="classgame_1_1console_1_1_console_engine.html">ConsoleEngine</a> &amp;ce)=delete</td></tr>
+<tr class="separator:a08498fbb2a15adc347c9c79ceac31225"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90ea4f54161f4e0a57e08ff34c351f60"><td class="memItemLeft" align="right" valign="top"><a id="a90ea4f54161f4e0a57e08ff34c351f60"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classgame_1_1console_1_1_console_engine.html">ConsoleEngine</a> &amp;ce)=delete</td></tr>
+<tr class="separator:a90ea4f54161f4e0a57e08ff34c351f60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab35847438387ce3f1d3e861803c775f9"><td class="memItemLeft" align="right" valign="top"><a id="ab35847438387ce3f1d3e861803c775f9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setSize</b> (const <a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt; &amp;v)</td></tr>
+<tr class="separator:ab35847438387ce3f1d3e861803c775f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe4560703cbc6adfd63b6de9f836761c"><td class="memItemLeft" align="right" valign="top"><a id="afe4560703cbc6adfd63b6de9f836761c"></a>
+<a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getSize</b> () const</td></tr>
+<tr class="separator:afe4560703cbc6adfd63b6de9f836761c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86a1d9ef1fc97210b1c5bd924ab4089c"><td class="memItemLeft" align="right" valign="top"><a id="a86a1d9ef1fc97210b1c5bd924ab4089c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>addSprite</b> (<a class="el" href="classgame_1_1console_1_1_sprite.html">Sprite</a> *sprite, int layer=0)</td></tr>
 <tr class="separator:a86a1d9ef1fc97210b1c5bd924ab4089c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -105,8 +116,12 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Sprite</b></td></tr>
 <tr class="separator:a3292175d54d93d126ba2829249316344"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_console_engine_8hpp_source.html#l00033">33</a> of file <a class="el" href="_console_engine_8hpp_source.html">ConsoleEngine.hpp</a>.</p>
+<div class="textblock"><p>Console manager class. An instance of this can manage all display using its own render thread. </p>
+<p>Do not write to console while an object of this class is running. Multiple threads that access to cout can do weird things.</p>
+<p>This class has a pixels buffer where pixels are char. It cannot be accessed directly. To display something create a <a class="el" href="classgame_1_1console_1_1_sprite.html">Sprite</a> object and add it to the <a class="el" href="classgame_1_1console_1_1_console_engine.html" title="Console manager class. An instance of this can manage all display using its own render thread.">ConsoleEngine</a> object.</p>
+<p>Usage example : </p><div class="fragment"><div class="line">ConsoleEngine ce(&amp;std::cout, &amp;std::cin, Vec2&lt;int&gt;(140, 40), <span class="keyword">true</span>); <span class="comment">// Specify output, input (for events), size, clear screen flag, ev fps</span></div>
+</div><!-- fragment --> 
+<p class="definition">Definition at line <a class="el" href="_console_engine_8hpp_source.html#l00053">53</a> of file <a class="el" href="_console_engine_8hpp_source.html">ConsoleEngine.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/consoleEngine/<a class="el" href="_console_engine_8hpp_source.html">ConsoleEngine.hpp</a></li>
 <li>src/consoleEngine/<a class="el" href="_console_engine_8cpp_source.html">ConsoleEngine.cpp</a></li>

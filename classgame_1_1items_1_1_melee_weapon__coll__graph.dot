@@ -8,6 +8,4 @@ digraph "game::items::MeleeWeapon"
   Node2 [label="game::items::FightItem",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1items_1_1_fight_item.html",tooltip="A FightItem is an object that has a role in combat."];
   Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 [label="game::items::Item",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1items_1_1_item.html",tooltip="An item is an object an entity can own and use."];
-  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_user" ,fontname="Helvetica"];
-  Node4 [label="game::entity::Entity",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1entity_1_1_entity.html",tooltip=" "];
 }

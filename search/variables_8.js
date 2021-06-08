@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['senses_296',['SENSES',['../classgame_1_1skills_1_1_skill_type.html#a8ebafbc0ab3b04839de680d3c50a561d',1,'game::skills::SkillType']]],
-  ['stamina_297',['STAMINA',['../classgame_1_1skills_1_1_skill_type.html#a902ea5d8873db3350c8e5332b4eab0b6',1,'game::skills::SkillType']]],
-  ['strength_298',['STRENGTH',['../classgame_1_1skills_1_1_skill_type.html#ac65d65104a1bca8fc8d79d2ece1afab8',1,'game::skills::SkillType']]],
-  ['suto_5finside_299',['SUTO_INSIDE',['../classgame_1_1skills_1_1_skill_type.html#aa4d75e15b9cb11323d2b771d05a4e15d',1,'game::skills::SkillType']]],
-  ['suto_5foutside_300',['SUTO_OUTSIDE',['../classgame_1_1skills_1_1_skill_type.html#a6fe135a43efb224c8bed9a97003a4cd2',1,'game::skills::SkillType']]]
+  ['regen_5fhealth_311',['REGEN_HEALTH',['../classgame_1_1skills_1_1_skill_type.html#a1da15e93525c8bb2a32fa945d9ce6713',1,'game::skills::SkillType']]],
+  ['regen_5fsuto_312',['REGEN_SUTO',['../classgame_1_1skills_1_1_skill_type.html#a635ec672ce720654e9631a81e5a005a7',1,'game::skills::SkillType']]],
+  ['run_5fspeed_313',['RUN_SPEED',['../classgame_1_1skills_1_1_skill_type.html#af4dfd0232bc9627a923a209d8c5a10d3',1,'game::skills::SkillType']]]
 ];

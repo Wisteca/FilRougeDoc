@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['normal_314',['NORMAL',['../namespacegame_1_1skills.html#a23c3c906594652d6fb2d249dfdbed78ba1e23852820b9154316c7c06e2b7ba051',1,'game::skills']]]
+  ['magical_5fattack_331',['MAGICAL_ATTACK',['../_attack_computer_8hpp.html#a7b82b7725a82f30933389dcaec020beca46f3323afb82175472048e652d67b3af',1,'game::entity']]],
+  ['move_5fevent_332',['MOVE_EVENT',['../namespacegame_1_1events.html#a378c3475a4b95a6338894957e852bf5ba673be2311ba748257d183a7b90dfd14b',1,'game::events']]]
 ];

@@ -71,24 +71,26 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_entity_8hpp.html">Entity.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1skills.html">game::skills</a>;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span>game::entity</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classgame_1_1skills_1_1_skills_set.html">SkillsSet</a>&amp; Entity::getSkillsSet()</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordflow">return</span> m_skills;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">void</span> Entity::endureAttack(AttackComputer ac)</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        ac.setTarget(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        ac.targetDodge();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        ac.targetProtection();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        m_health -= ac.computeLostHP();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1skills.html">game::skills</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span>game::entity</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classgame_1_1skills_1_1_skills_set.html">SkillsSet</a>&amp; Entity::getSkillsSet()</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">return</span> m_skills;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    }</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> Entity::endureAttack(AttackComputer ac)</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        ac.setTarget(shared_ptr&lt;Entity&gt;(<span class="keyword">this</span>));</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        ac.targetDodge();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        ac.targetProtection();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        m_health -= ac.computeLostHP();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
 <div class="ttc" id="a_entity_8hpp_html"><div class="ttname"><a href="_entity_8hpp.html">Entity.hpp</a></div><div class="ttdoc">Entity of the world.</div></div>
 <div class="ttc" id="aclassgame_1_1skills_1_1_skills_set_html"><div class="ttname"><a href="classgame_1_1skills_1_1_skills_set.html">game::skills::SkillsSet</a></div><div class="ttdoc">A set of all skills each Entity has with useful methods to manage them.</div><div class="ttdef"><b>Definition:</b> <a href="_skills_set_8hpp_source.html#l00046">SkillsSet.hpp:47</a></div></div>
 <div class="ttc" id="anamespacegame_1_1skills_html"><div class="ttname"><a href="namespacegame_1_1skills.html">game::skills</a></div><div class="ttdoc">Skills system namespace.</div><div class="ttdef"><b>Definition:</b> <a href="_skill_8cpp_source.html#l00014">Skill.cpp:15</a></div></div>

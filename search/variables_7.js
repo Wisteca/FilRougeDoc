@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['regen_5fhealth_293',['REGEN_HEALTH',['../classgame_1_1skills_1_1_skill_type.html#a1da15e93525c8bb2a32fa945d9ce6713',1,'game::skills::SkillType']]],
-  ['regen_5fsuto_294',['REGEN_SUTO',['../classgame_1_1skills_1_1_skill_type.html#a635ec672ce720654e9631a81e5a005a7',1,'game::skills::SkillType']]],
-  ['run_5fspeed_295',['RUN_SPEED',['../classgame_1_1skills_1_1_skill_type.html#af4dfd0232bc9627a923a209d8c5a10d3',1,'game::skills::SkillType']]]
+  ['physical_5fprotection_309',['PHYSICAL_PROTECTION',['../classgame_1_1skills_1_1_skill_type.html#ae37f0abdbf53b18b2cd8e40308221938',1,'game::skills::SkillType']]],
+  ['psychic_310',['PSYCHIC',['../classgame_1_1skills_1_1_skill_type.html#ab0a2c9ae73161e8fb5383fc46cf7d785',1,'game::skills::SkillType']]]
 ];
