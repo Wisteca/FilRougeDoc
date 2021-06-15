@@ -75,47 +75,59 @@ $(function() {
 <div class="title">game::console::Sprite Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> is an ASCII image that can be displayed by the <a class="el" href="classgame_1_1console_1_1_console_engine.html" title="Console manager class. An instance of this can manage all display using its own render thread.">ConsoleEngine</a>.  
+ <a href="classgame_1_1console_1_1_sprite.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_console_engine_8hpp_source.html">ConsoleEngine.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8a888cf528d118674811653b9176f181"><td class="memItemLeft" align="right" valign="top"><a id="a8a888cf528d118674811653b9176f181"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Sprite</b> (const std::string &amp;path)</td></tr>
+<tr class="memitem:a6060bd1ba132035ed42854ec2d14eff2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1console_1_1_sprite.html#a6060bd1ba132035ed42854ec2d14eff2">Sprite</a> (const <a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt; &amp;size, char spaceChar)</td></tr>
+<tr class="memdesc:a6060bd1ba132035ed42854ec2d14eff2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an empty <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a>.  <a href="classgame_1_1console_1_1_sprite.html#a6060bd1ba132035ed42854ec2d14eff2">More...</a><br /></td></tr>
+<tr class="separator:a6060bd1ba132035ed42854ec2d14eff2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a888cf528d118674811653b9176f181"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1console_1_1_sprite.html#a8a888cf528d118674811653b9176f181">Sprite</a> (const std::string &amp;path)</td></tr>
+<tr class="memdesc:a8a888cf528d118674811653b9176f181"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> from a file.  <a href="classgame_1_1console_1_1_sprite.html#a8a888cf528d118674811653b9176f181">More...</a><br /></td></tr>
 <tr class="separator:a8a888cf528d118674811653b9176f181"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9da1bd6f5934899864b7070775704479"><td class="memItemLeft" align="right" valign="top"><a id="a9da1bd6f5934899864b7070775704479"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (const std::string &amp;path)</td></tr>
+<tr class="memitem:a5125d67f87c94ef347a9c753ffca9aa9"><td class="memItemLeft" align="right" valign="top"><a id="a5125d67f87c94ef347a9c753ffca9aa9"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1console_1_1_sprite.html#a5125d67f87c94ef347a9c753ffca9aa9">~Sprite</a> ()=default</td></tr>
+<tr class="memdesc:a5125d67f87c94ef347a9c753ffca9aa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete object. <br /></td></tr>
+<tr class="separator:a5125d67f87c94ef347a9c753ffca9aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9da1bd6f5934899864b7070775704479"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1console_1_1_sprite.html#a9da1bd6f5934899864b7070775704479">load</a> (const std::string &amp;path)</td></tr>
+<tr class="memdesc:a9da1bd6f5934899864b7070775704479"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> from a file.  <a href="classgame_1_1console_1_1_sprite.html#a9da1bd6f5934899864b7070775704479">More...</a><br /></td></tr>
 <tr class="separator:a9da1bd6f5934899864b7070775704479"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1faa3bd65f89cb7af4c8f18dcfc4bf0"><td class="memItemLeft" align="right" valign="top"><a id="ad1faa3bd65f89cb7af4c8f18dcfc4bf0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setPosition</b> (const <a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt; &amp;pos)</td></tr>
+<tr class="memitem:ad1faa3bd65f89cb7af4c8f18dcfc4bf0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1console_1_1_sprite.html#ad1faa3bd65f89cb7af4c8f18dcfc4bf0">setPosition</a> (const <a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt; &amp;pos)</td></tr>
+<tr class="memdesc:ad1faa3bd65f89cb7af4c8f18dcfc4bf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the position of the <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> in the screen.  <a href="classgame_1_1console_1_1_sprite.html#ad1faa3bd65f89cb7af4c8f18dcfc4bf0">More...</a><br /></td></tr>
 <tr class="separator:ad1faa3bd65f89cb7af4c8f18dcfc4bf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa07889a92122f12c1cb13f304ca443e4"><td class="memItemLeft" align="right" valign="top"><a id="aa07889a92122f12c1cb13f304ca443e4"></a>
-<a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPosition</b> () const</td></tr>
+<tr class="memitem:aa07889a92122f12c1cb13f304ca443e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1console_1_1_sprite.html#aa07889a92122f12c1cb13f304ca443e4">getPosition</a> () const</td></tr>
 <tr class="separator:aa07889a92122f12c1cb13f304ca443e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac260913241f22f7165f6efe55aa46704"><td class="memItemLeft" align="right" valign="top"><a id="ac260913241f22f7165f6efe55aa46704"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setPixel</b> (const <a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt; &amp;pos, char px)</td></tr>
-<tr class="separator:ac260913241f22f7165f6efe55aa46704"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18dcabe08ab1c19ebb637d008bf00892"><td class="memItemLeft" align="right" valign="top"><a id="a18dcabe08ab1c19ebb637d008bf00892"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>getPixel</b> (const <a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt; &amp;pos)</td></tr>
+<tr class="memitem:aef5ef4f5020f569317f4f878594ac07e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1console_1_1_sprite.html#aef5ef4f5020f569317f4f878594ac07e">setPixel</a> (const <a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt; &amp;pos, char px)</td></tr>
+<tr class="memdesc:aef5ef4f5020f569317f4f878594ac07e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change a pixel at the specified position.  <a href="classgame_1_1console_1_1_sprite.html#aef5ef4f5020f569317f4f878594ac07e">More...</a><br /></td></tr>
+<tr class="separator:aef5ef4f5020f569317f4f878594ac07e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18dcabe08ab1c19ebb637d008bf00892"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1console_1_1_sprite.html#a18dcabe08ab1c19ebb637d008bf00892">getPixel</a> (const <a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt; &amp;pos)</td></tr>
 <tr class="separator:a18dcabe08ab1c19ebb637d008bf00892"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3d66067e01e47327b903308862704c5"><td class="memItemLeft" align="right" valign="top"><a id="aa3d66067e01e47327b903308862704c5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>writeText</b> (const <a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt; &amp;pos, const std::string &amp;txt)</td></tr>
-<tr class="separator:aa3d66067e01e47327b903308862704c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe94491fedf8dfd6e5e0b9eda2e4b28e"><td class="memItemLeft" align="right" valign="top"><a id="abe94491fedf8dfd6e5e0b9eda2e4b28e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getErrType</b> () const</td></tr>
+<tr class="memitem:ad28881ed992a34aecf313ea069ea6318"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1console_1_1_sprite.html#ad28881ed992a34aecf313ea069ea6318">writeText</a> (const <a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt; &amp;pos, const std::string &amp;txt)</td></tr>
+<tr class="memdesc:ad28881ed992a34aecf313ea069ea6318"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a text in the <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a>.  <a href="classgame_1_1console_1_1_sprite.html#ad28881ed992a34aecf313ea069ea6318">More...</a><br /></td></tr>
+<tr class="separator:ad28881ed992a34aecf313ea069ea6318"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe94491fedf8dfd6e5e0b9eda2e4b28e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1console_1_1_sprite.html#abe94491fedf8dfd6e5e0b9eda2e4b28e">getErrType</a> () const</td></tr>
 <tr class="separator:abe94491fedf8dfd6e5e0b9eda2e4b28e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54701cddb1e12a0623d5ed7c4715793a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1console_1_1_sprite.html#a54701cddb1e12a0623d5ed7c4715793a">getSize</a> () const</td></tr>
+<tr class="separator:a54701cddb1e12a0623d5ed7c4715793a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a05f06bd02281bff6cddf3887fba5ec7f"><td class="memItemLeft" align="right" valign="top"><a id="a05f06bd02281bff6cddf3887fba5ec7f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>needDraw</b> () const</td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1console_1_1_sprite.html#a05f06bd02281bff6cddf3887fba5ec7f">needDraw</a> () const</td></tr>
+<tr class="memdesc:a05f06bd02281bff6cddf3887fba5ec7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicate if a draw is needed, the flag is reset to false at draw. <br /></td></tr>
 <tr class="separator:a05f06bd02281bff6cddf3887fba5ec7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af154c999d36f8a0ce746405e93870995"><td class="memItemLeft" align="right" valign="top"><a id="af154c999d36f8a0ce746405e93870995"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>draw</b> (<a class="el" href="classgame_1_1console_1_1_console_engine.html">ConsoleEngine</a> &amp;ce)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1console_1_1_sprite.html#af154c999d36f8a0ce746405e93870995">draw</a> (<a class="el" href="classgame_1_1console_1_1_console_engine.html">ConsoleEngine</a> &amp;ce)</td></tr>
+<tr class="memdesc:af154c999d36f8a0ce746405e93870995"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw the <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> in the pixels buffer of the given <a class="el" href="classgame_1_1console_1_1_console_engine.html" title="Console manager class. An instance of this can manage all display using its own render thread.">ConsoleEngine</a>. <br /></td></tr>
 <tr class="separator:af154c999d36f8a0ce746405e93870995"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a416e7a5345b76408bf671b411fc485ba"><td class="memItemLeft" align="right" valign="top"><a id="a416e7a5345b76408bf671b411fc485ba"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_needDraw</b> = true</td></tr>
+<tr class="memitem:a416e7a5345b76408bf671b411fc485ba"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1console_1_1_sprite.html#a416e7a5345b76408bf671b411fc485ba">m_needDraw</a> = true</td></tr>
 <tr class="separator:a416e7a5345b76408bf671b411fc485ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
@@ -125,9 +137,328 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>ConsoleEngine</b></t
 <tr class="separator:a02e7de5d5c293077f350e9a7d109de99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_console_engine_8hpp_source.html#l00105">105</a> of file <a class="el" href="_console_engine_8hpp_source.html">ConsoleEngine.hpp</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<div class="textblock"><p>A <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> is an ASCII image that can be displayed by the <a class="el" href="classgame_1_1console_1_1_console_engine.html" title="Console manager class. An instance of this can manage all display using its own render thread.">ConsoleEngine</a>. </p>
+<p>A <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> has a position in the screen that can be accessed with <a class="el" href="classgame_1_1console_1_1_sprite.html#ad1faa3bd65f89cb7af4c8f18dcfc4bf0" title="Change the position of the Sprite in the screen.">setPosition()</a> and <a class="el" href="classgame_1_1console_1_1_sprite.html#aa07889a92122f12c1cb13f304ca443e4">getPosition()</a> methods.</p>
+<p>The <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> is loaded from a file that has to respect this syntax : </p><div class="fragment"><div class="line">29</div>
+<div class="line">8</div>
+<div class="line">s</div>
+<div class="line">  _____            _ _       </div>
+<div class="line"> / ____|          (_) |      </div>
+<div class="line">| (___  _ __  _ __ _| |_ ___ </div>
+<div class="line"> \___ \| <span class="stringliteral">&#39;_ \| &#39;</span>__| | __/ _ \</div>
+<div class="line"> ____) | |_) | |  | | ||  __/</div>
+<div class="line">|_____/| .__/|_|  |_|\__\___|</div>
+<div class="line">       | |                   </div>
+<div class="line">       |_|                   </div>
+</div><!-- fragment --><p>Where 29 is the width and 8 the height (number of character). The character s will be used to display spaces. By default all spaces ' ' in the file are blank (or alpha = 0), so when two <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> are drawn one over the other there will be transparency. If this behavior isn't desired, the "space char" can be used to tell "here is a space and not a blank".</p>
+<p>It is possible to create a <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> without loading from a file. You can create a <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> by specifying the size and the space char, then use <a class="el" href="classgame_1_1console_1_1_sprite.html#aef5ef4f5020f569317f4f878594ac07e" title="Change a pixel at the specified position.">setPixel()</a> method to draw on it.</p>
+<p>It is possible to draw text on a <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> by using <a class="el" href="classgame_1_1console_1_1_sprite.html#ad28881ed992a34aecf313ea069ea6318" title="Write a text in the Sprite.">writeText()</a> method.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classgame_1_1console_1_1_console_engine.html" title="Console manager class. An instance of this can manage all display using its own render thread.">ConsoleEngine</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_console_engine_8hpp_source.html#l00217">217</a> of file <a class="el" href="_console_engine_8hpp_source.html">ConsoleEngine.hpp</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a6060bd1ba132035ed42854ec2d14eff2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6060bd1ba132035ed42854ec2d14eff2">&#9670;&nbsp;</a></span>Sprite() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">game::console::Sprite::Sprite </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>spaceChar</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct an empty <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>width and height </td></tr>
+    <tr><td class="paramname">spaceChar</td><td>The char to use for displaying spaces ' ' </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_console_engine_8cpp_source.html#l00274">274</a> of file <a class="el" href="_console_engine_8cpp_source.html">ConsoleEngine.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a8a888cf528d118674811653b9176f181"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a888cf528d118674811653b9176f181">&#9670;&nbsp;</a></span>Sprite() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">game::console::Sprite::Sprite </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Load a <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> from a file. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classgame_1_1console_1_1_console_engine_exception.html" title="Custom error class for the ConsoleEngine operations.">ConsoleEngineException</a></td><td>if the loading fails, an error flag can be retrieved by calling <a class="el" href="classgame_1_1console_1_1_sprite.html#abe94491fedf8dfd6e5e0b9eda2e4b28e">getErrType()</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_console_engine_8cpp_source.html#l00263">263</a> of file <a class="el" href="_console_engine_8cpp_source.html">ConsoleEngine.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="abe94491fedf8dfd6e5e0b9eda2e4b28e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe94491fedf8dfd6e5e0b9eda2e4b28e">&#9670;&nbsp;</a></span>getErrType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int game::console::Sprite::getErrType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>An error code</dd></dl>
+<p>Error id and meaning : 1 : Can't open the file 2 : Error reading the size of the <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> in the file 3 : <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> size isn't the same has specified in the beginning of the file (width error) 4 : <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> size isn't the same has specified in the beginning of the file (height error) </p>
+
+<p class="definition">Definition at line <a class="el" href="_console_engine_8cpp_source.html#l00390">390</a> of file <a class="el" href="_console_engine_8cpp_source.html">ConsoleEngine.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a18dcabe08ab1c19ebb637d008bf00892"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18dcabe08ab1c19ebb637d008bf00892">&#9670;&nbsp;</a></span>getPixel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char game::console::Sprite::getPixel </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The pixel at the given position or ' ' if the position is outside the bounds of the <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a></dd></dl>
+<p>You are responsible for giving a correct position. </p>
+
+<p class="definition">Definition at line <a class="el" href="_console_engine_8cpp_source.html#l00365">365</a> of file <a class="el" href="_console_engine_8cpp_source.html">ConsoleEngine.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aa07889a92122f12c1cb13f304ca443e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa07889a92122f12c1cb13f304ca443e4">&#9670;&nbsp;</a></span>getPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgame_1_1math_1_1_vec2.html">Vec2</a>&lt; int &gt; game::console::Sprite::getPosition </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The position in the screen </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_console_engine_8cpp_source.html#l00349">349</a> of file <a class="el" href="_console_engine_8cpp_source.html">ConsoleEngine.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a54701cddb1e12a0623d5ed7c4715793a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54701cddb1e12a0623d5ed7c4715793a">&#9670;&nbsp;</a></span>getSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgame_1_1math_1_1_vec2.html">Vec2</a>&lt; int &gt; game::console::Sprite::getSize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The size of the <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_console_engine_8cpp_source.html#l00395">395</a> of file <a class="el" href="_console_engine_8cpp_source.html">ConsoleEngine.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a9da1bd6f5934899864b7070775704479"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9da1bd6f5934899864b7070775704479">&#9670;&nbsp;</a></span>load()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool game::console::Sprite::load </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Load a <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> from a file. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if the file was loaded correctly, false if an error occured </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_console_engine_8cpp_source.html#l00277">277</a> of file <a class="el" href="_console_engine_8cpp_source.html">ConsoleEngine.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aef5ef4f5020f569317f4f878594ac07e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef5ef4f5020f569317f4f878594ac07e">&#9670;&nbsp;</a></span>setPixel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool game::console::Sprite::setPixel </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>px</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Change a pixel at the specified position. </p>
+<dl class="section return"><dt>Returns</dt><dd>false if the position wasn't respecting the bounds of the <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> (see <a class="el" href="classgame_1_1console_1_1_sprite.html#a54701cddb1e12a0623d5ed7c4715793a">getSize()</a>), true otherwise </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_console_engine_8cpp_source.html#l00354">354</a> of file <a class="el" href="_console_engine_8cpp_source.html">ConsoleEngine.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad1faa3bd65f89cb7af4c8f18dcfc4bf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1faa3bd65f89cb7af4c8f18dcfc4bf0">&#9670;&nbsp;</a></span>setPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game::console::Sprite::setPosition </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Change the position of the <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> in the screen. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>New position </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_console_engine_8cpp_source.html#l00338">338</a> of file <a class="el" href="_console_engine_8cpp_source.html">ConsoleEngine.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad28881ed992a34aecf313ea069ea6318"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad28881ed992a34aecf313ea069ea6318">&#9670;&nbsp;</a></span>writeText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool game::console::Sprite::writeText </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>txt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write a text in the <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>The position where the first character will be written </td></tr>
+    <tr><td class="paramname">txt</td><td>The text to write </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the text was successfully written, false if it was out of <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> bounds </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_console_engine_8cpp_source.html#l00374">374</a> of file <a class="el" href="_console_engine_8cpp_source.html">ConsoleEngine.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a416e7a5345b76408bf671b411fc485ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a416e7a5345b76408bf671b411fc485ba">&#9670;&nbsp;</a></span>m_needDraw</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool game::console::Sprite::m_needDraw = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>This flag indicates if the <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> has changed (position or pixel) and need to be redraw </p>
+
+<p class="definition">Definition at line <a class="el" href="_console_engine_8hpp_source.html#l00232">232</a> of file <a class="el" href="_console_engine_8hpp_source.html">ConsoleEngine.hpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/consoleEngine/<a class="el" href="_console_engine_8hpp_source.html">ConsoleEngine.hpp</a></li>
 <li>src/consoleEngine/<a class="el" href="_console_engine_8cpp_source.html">ConsoleEngine.cpp</a></li>
 </ul>
