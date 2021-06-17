@@ -72,459 +72,577 @@ $(function() {
 <a href="_console_engine_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_console_engine_8hpp.html">ConsoleEngine.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../events/EventManager.hpp&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1math.html">game::math</a>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1events.html">game::events</a>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span>privateFunc <span class="comment">// Private namespace of cpp file, see https://stackoverflow.com/questions/35194200/how-to-limit-a-function-scope-in-the-same-file-as-it-is-defined-in-c</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">// ================ Inputs OS specific functions ================ //</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#ifdef _WIN32</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">    #include &lt;conio.h&gt;</span> <span class="comment">// Windows kbhit and getch</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">    #include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">    #include &lt;sys/ioctl.h&gt;</span> <span class="comment">// For FIONREAD</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">    #include &lt;termios.h&gt;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">    #include &lt;unistd.h&gt;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">    #include &lt;stdbool.h&gt;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">// Linux and MAC OS kbhit() and getch() functions</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">// Codes below are from https://stackoverflow.com/questions/421860/capture-characters-from-standard-input-without-waiting-for-enter-to-be-pressed</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">int</span> kbhit() </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> STDIN = 0;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="comment">// Use termios to turn off line buffering</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">struct </span>termios term;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        tcgetattr(STDIN, &amp;term);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        term.c_lflag &amp;= ~ICANON;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        tcsetattr(STDIN, TCSANOW, &amp;term);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        setbuf(stdin, NULL);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">int</span> nbbytes;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        ioctl(STDIN, FIONREAD, &amp;nbbytes);  <span class="comment">// 0 is STDIN</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">return</span> nbbytes;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">char</span> getch() </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordtype">char</span> buf = 0;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keyword">struct </span>termios old = {0};</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">if</span> (tcgetattr(0, &amp;old) &lt; 0)</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                perror(<span class="stringliteral">&quot;tcsetattr()&quot;</span>);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        old.c_lflag &amp;= ~ICANON;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        old.c_lflag &amp;= ~ECHO;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        old.c_cc[VMIN] = 1;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        old.c_cc[VTIME] = 0;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">if</span> (tcsetattr(0, TCSANOW, &amp;old) &lt; 0)</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                perror(<span class="stringliteral">&quot;tcsetattr ICANON&quot;</span>);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">if</span> (read(0, &amp;buf, 1) &lt; 0)</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                perror (<span class="stringliteral">&quot;read()&quot;</span>);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        old.c_lflag |= ICANON;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        old.c_lflag |= ECHO;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">if</span> (tcsetattr(0, TCSADRAIN, &amp;old) &lt; 0)</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                perror (<span class="stringliteral">&quot;tcsetattr ~ICANON&quot;</span>);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">return</span> (buf);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="namespacegame_1_1console.html">   73</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegame_1_1console.html">game::console</a></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;{</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">// ================ ConsoleEngine class ================ //</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_console_engine.html#a4b324b67e7c1d8c4c049092928a87901">   77</a></span>&#160;    ConsoleEngine::ConsoleEngine(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a>&amp; size, <span class="keywordtype">float</span> fps) </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        : m_size(size), m_fps(fps)</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        resizeBuffer(); <span class="comment">// Initialize pixels buffer</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0 ; i &lt; <a class="code" href="namespacegame_1_1console.html#a32065d91d5dd176c17e9e2622088e8ca">LAYERS_NUMBER</a> ; ++i) <span class="comment">// Initialize sprites list</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            m_sprites.push_back(list&lt;Sprite*&gt;());</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_console_engine.html#a78b93063c2cc36b3e4eb368fa076c1f1">   85</a></span>&#160;    <a class="code" href="classgame_1_1console_1_1_console_engine.html#a78b93063c2cc36b3e4eb368fa076c1f1">ConsoleEngine::~ConsoleEngine</a>()</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="comment">// Delete all sprites</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0 ; i &lt; <a class="code" href="namespacegame_1_1console.html#a32065d91d5dd176c17e9e2622088e8ca">LAYERS_NUMBER</a> ; ++i)</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">for</span>(<a class="code" href="classgame_1_1console_1_1_sprite.html">Sprite</a>* ptr : m_sprites[i])</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <span class="keyword">delete</span> ptr;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        }</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_console_engine.html#ab35847438387ce3f1d3e861803c775f9">   95</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classgame_1_1console_1_1_console_engine.html#ab35847438387ce3f1d3e861803c775f9">ConsoleEngine::setSize</a>(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a>&amp; v)</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        lock_guard&lt;mutex&gt; locker(m_guard); <span class="comment">// Lock access</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        m_size = v; <span class="comment">// Copy size vector</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        resizeBuffer(); <span class="comment">// Update the buffer</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_console_engine.html#afe4560703cbc6adfd63b6de9f836761c">  102</a></span>&#160;    <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a> <a class="code" href="classgame_1_1console_1_1_console_engine.html#afe4560703cbc6adfd63b6de9f836761c">ConsoleEngine::getSize</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">return</span> m_size;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;../io/Logger.hpp&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1math.html">game::math</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1events.html">game::events</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1logs.html">game::logs</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span>privateFunc <span class="comment">// Private namespace of cpp file, see https://stackoverflow.com/questions/35194200/how-to-limit-a-function-scope-in-the-same-file-as-it-is-defined-in-c</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="comment">// ================ Inputs OS specific functions ================ //</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">    #include &lt;conio.h&gt;</span> <span class="comment">// Windows kbhit and getch</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">    #include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">    #include &lt;sys/ioctl.h&gt;</span> <span class="comment">// For FIONREAD</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">    #include &lt;termios.h&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">    #include &lt;unistd.h&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">    #include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">// Linux and MAC OS kbhit() and getch() functions</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment">// Codes below are from https://stackoverflow.com/questions/421860/capture-characters-from-standard-input-without-waiting-for-enter-to-be-pressed</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">int</span> kbhit() </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> STDIN = 0;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="comment">// Use termios to turn off line buffering</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">struct </span>termios term;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        tcgetattr(STDIN, &amp;term);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        term.c_lflag &amp;= ~ICANON;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        tcsetattr(STDIN, TCSANOW, &amp;term);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        setbuf(stdin, NULL);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">int</span> nbbytes;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        ioctl(STDIN, FIONREAD, &amp;nbbytes);  <span class="comment">// 0 is STDIN</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">return</span> nbbytes;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">char</span> getch() </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordtype">char</span> buf = 0;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keyword">struct </span>termios old = {0};</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">if</span> (tcgetattr(0, &amp;old) &lt; 0)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                perror(<span class="stringliteral">&quot;tcsetattr()&quot;</span>);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        old.c_lflag &amp;= ~ICANON;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        old.c_lflag &amp;= ~ECHO;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        old.c_cc[VMIN] = 1;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        old.c_cc[VTIME] = 0;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">if</span> (tcsetattr(0, TCSANOW, &amp;old) &lt; 0)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                perror(<span class="stringliteral">&quot;tcsetattr ICANON&quot;</span>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">if</span> (read(0, &amp;buf, 1) &lt; 0)</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                perror (<span class="stringliteral">&quot;read()&quot;</span>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        old.c_lflag |= ICANON;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        old.c_lflag |= ECHO;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">if</span> (tcsetattr(0, TCSADRAIN, &amp;old) &lt; 0)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                perror (<span class="stringliteral">&quot;tcsetattr ~ICANON&quot;</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">return</span> (buf);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="namespacegame_1_1console.html">   75</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegame_1_1console.html">game::console</a></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;{</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">// ================ ConsoleEngine class ================ //</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_console_engine.html#a4b324b67e7c1d8c4c049092928a87901">   79</a></span>&#160;    ConsoleEngine::ConsoleEngine(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a>&amp; size, <span class="keywordtype">float</span> fps) </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        : m_size(size), m_fps(fps)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        resizeBuffer(); <span class="comment">// Initialize pixels buffer</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0 ; i &lt; <a class="code" href="namespacegame_1_1console.html#a32065d91d5dd176c17e9e2622088e8ca">LAYERS_NUMBER</a> ; ++i) <span class="comment">// Initialize sprites list</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            m_sprites.push_back(list&lt;shared_ptr&lt;Drawable&gt;&gt;());</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_console_engine.html#ab35847438387ce3f1d3e861803c775f9">   87</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classgame_1_1console_1_1_console_engine.html#ab35847438387ce3f1d3e861803c775f9">ConsoleEngine::setSize</a>(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a>&amp; v)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        lock_guard&lt;mutex&gt; locker(m_guard); <span class="comment">// Lock access</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        m_size = v; <span class="comment">// Copy size vector</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        resizeBuffer(); <span class="comment">// Update the buffer</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_console_engine.html#afe4560703cbc6adfd63b6de9f836761c">   94</a></span>&#160;    <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a> <a class="code" href="classgame_1_1console_1_1_console_engine.html#afe4560703cbc6adfd63b6de9f836761c">ConsoleEngine::getSize</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">return</span> m_size;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_console_engine.html#a2c9b51ec146c789ad2c30eac6de628bd">   99</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classgame_1_1console_1_1_console_engine.html#a2c9b51ec146c789ad2c30eac6de628bd">ConsoleEngine::addDrawable</a>(shared_ptr&lt;Drawable&gt; drawable, <span class="keywordtype">int</span> layer)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="comment">// Clamp the layer between 0 and LAYERS_NUMBER</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">if</span>(layer &lt; 0)</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            layer = 0;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(layer &gt; <a class="code" href="namespacegame_1_1console.html#a32065d91d5dd176c17e9e2622088e8ca">LAYERS_NUMBER</a>)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            layer = <a class="code" href="namespacegame_1_1console.html#a32065d91d5dd176c17e9e2622088e8ca">LAYERS_NUMBER</a>;</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_console_engine.html#a86a1d9ef1fc97210b1c5bd924ab4089c">  107</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classgame_1_1console_1_1_console_engine.html#a86a1d9ef1fc97210b1c5bd924ab4089c">ConsoleEngine::addSprite</a>(<a class="code" href="classgame_1_1console_1_1_sprite.html">Sprite</a>* sprite, <span class="keywordtype">int</span> layer)</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="comment">// Clamp the layer between 0 and LAYERS_NUMBER</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">if</span>(layer &lt; 0)</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            layer = 0;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(layer &gt; <a class="code" href="namespacegame_1_1console.html#a32065d91d5dd176c17e9e2622088e8ca">LAYERS_NUMBER</a>)</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            layer = <a class="code" href="namespacegame_1_1console.html#a32065d91d5dd176c17e9e2622088e8ca">LAYERS_NUMBER</a>;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        lock_guard&lt;mutex&gt; locker(m_guard); <span class="comment">// Lock access to m_sprites</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        m_sprites[layer].push_back(sprite); <span class="comment">// Place the ptr in the sprites vector</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        lock_guard&lt;mutex&gt; locker(m_guard); <span class="comment">// Lock access to m_sprites</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        m_sprites[layer].push_back(drawable); <span class="comment">// Place the ptr in the sprites vector</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        m_needDraw = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_console_engine.html#a24946503418e6c1a3fd6105e9ac48971">  112</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classgame_1_1console_1_1_console_engine.html#a24946503418e6c1a3fd6105e9ac48971">ConsoleEngine::removeDrawable</a>(shared_ptr&lt;Drawable&gt; drawable)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        lock_guard&lt;mutex&gt; locker(m_guard); <span class="comment">// Lock access to m_sprites</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0 ; i &lt; <a class="code" href="namespacegame_1_1console.html#a32065d91d5dd176c17e9e2622088e8ca">LAYERS_NUMBER</a> ; ++i) <span class="comment">// Search in each layer</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            m_sprites[i].remove(drawable);</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        m_needDraw = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_console_engine.html#a8528305e3eeee5690759667b0706319c">  120</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classgame_1_1console_1_1_console_engine.html#a8528305e3eeee5690759667b0706319c">ConsoleEngine::removeSprite</a>(<a class="code" href="classgame_1_1console_1_1_sprite.html">Sprite</a>* sprite)</div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_console_engine.html#a981d85f0718b5a99d53717374e454831">  120</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classgame_1_1console_1_1_console_engine.html#a981d85f0718b5a99d53717374e454831">ConsoleEngine::startRendering</a>()</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        lock_guard&lt;mutex&gt; locker(m_guard); <span class="comment">// Lock access to m_sprites</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0 ; i &lt; <a class="code" href="namespacegame_1_1console.html#a32065d91d5dd176c17e9e2622088e8ca">LAYERS_NUMBER</a> ; ++i) <span class="comment">// Search in each layer</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            m_sprites[i].remove(sprite);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        m_needDraw = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    }</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_console_engine.html#a981d85f0718b5a99d53717374e454831">  128</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classgame_1_1console_1_1_console_engine.html#a981d85f0718b5a99d53717374e454831">ConsoleEngine::startRendering</a>()</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    {</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordflow">if</span>(m_rendering)</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordflow">return</span>; <span class="comment">// Already running</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        m_rendering = <span class="keyword">true</span>; <span class="comment">// Change the flag to true</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        m_renderThread = thread(&amp;ConsoleEngine::renderLoop, <span class="keyword">this</span>); <span class="comment">// Start the render thread</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    }</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
-<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_console_engine.html#a35bedebed2ed18dd698a8c59945753c0">  137</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classgame_1_1console_1_1_console_engine.html#a35bedebed2ed18dd698a8c59945753c0">ConsoleEngine::stopRendering</a>()</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    {</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        m_rendering = <span class="keyword">false</span>; <span class="comment">// Stop the render thread at the end of the render loop</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    }</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordtype">void</span> ConsoleEngine::setPixel(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">math::Vec2&lt;int&gt;</a>&amp; pos, <span class="keywordtype">char</span> px)</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    {</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">if</span>(!isInsideScreen(pos, m_size))</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordflow">return</span>; <span class="comment">// The position isn&#39;t in the screen</span></div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        m_pixels[<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() * pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>() + pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>())] = px;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    }</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordtype">char</span> ConsoleEngine::getPixel(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">math::Vec2&lt;int&gt;</a>&amp; pos)</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    {</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keywordflow">if</span>(!isInsideScreen(pos, m_size))</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keywordflow">return</span> <span class="charliteral">&#39; &#39;</span>; <span class="comment">// The position isn&#39;t in the screen</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordflow">return</span> m_pixels.at(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() * pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>() + pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>()));</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    }</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordtype">void</span> ConsoleEngine::resizeBuffer()</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    {</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        m_pixels.clear();</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0 ; i &lt; m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() * m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>() ; ++i)</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            m_pixels.push_back(<span class="charliteral">&#39; &#39;</span>);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        m_needDraw = <span class="keyword">true</span>; <span class="comment">// Indicate that a redraw is needed</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    }</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordtype">void</span> ConsoleEngine::clearBuffer()</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    {</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="comment">// Clear the buffer</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">char</span>&amp; c : m_pixels)</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            c = <span class="charliteral">&#39; &#39;</span>;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        m_needDraw = <span class="keyword">true</span>; <span class="comment">// Indicate that a redraw is needed</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">if</span>(m_rendering)</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keywordflow">return</span>; <span class="comment">// Already running</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        m_rendering = <span class="keyword">true</span>; <span class="comment">// Change the flag to true</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        m_renderThread = thread(&amp;ConsoleEngine::renderLoop, <span class="keyword">this</span>); <span class="comment">// Start the render thread</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_console_engine.html#a35bedebed2ed18dd698a8c59945753c0">  129</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classgame_1_1console_1_1_console_engine.html#a35bedebed2ed18dd698a8c59945753c0">ConsoleEngine::stopRendering</a>()</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        m_rendering = <span class="keyword">false</span>; <span class="comment">// Stop the render thread at the end of the render loop</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordtype">void</span> ConsoleEngine::setPixel(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">math::Vec2&lt;int&gt;</a>&amp; pos, <span class="keywordtype">char</span> px)</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        m_pixels[<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() * pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>() + pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>())] = px;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordtype">char</span> ConsoleEngine::getPixel(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">math::Vec2&lt;int&gt;</a>&amp; pos)</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keywordflow">return</span> m_pixels.at(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() * pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>() + pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>()));</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordtype">void</span> ConsoleEngine::resizeBuffer()</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        m_pixels.clear();</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0 ; i &lt; m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() * m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>() ; ++i)</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            m_pixels.push_back(<span class="charliteral">&#39; &#39;</span>);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        m_needDraw = <span class="keyword">true</span>; <span class="comment">// Indicate that a redraw is needed</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordtype">void</span> ConsoleEngine::clearBuffer()</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="comment">// Clear the buffer</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">char</span>&amp; c : m_pixels)</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            c = <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        m_needDraw = <span class="keyword">true</span>; <span class="comment">// Indicate that a redraw is needed</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordtype">void</span> ConsoleEngine::renderLoop()</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    {</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> sleepms = 1000 / m_fps; <span class="comment">// Number of ms to wait between each render</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        int64_t nextRender = 0;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keywordflow">while</span>(m_rendering)</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            <span class="keyword">auto</span> duration = chrono::system_clock::now().time_since_epoch();</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            int64_t millis = std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(duration).count();</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            <span class="keywordflow">if</span>(millis &gt;= nextRender)</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                nextRender = millis + sleepms;</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordtype">void</span> ConsoleEngine::renderLoop()</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    {</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> sleepms = 1000 / m_fps; <span class="comment">// Number of ms to wait between each render</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        int64_t nextRender = 0;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keywordflow">while</span>(m_rendering)</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        {</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="keyword">auto</span> duration = chrono::system_clock::now().time_since_epoch();</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            int64_t millis = std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(duration).count();</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <span class="keywordflow">if</span>(millis &gt;= nextRender)</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            {</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                nextRender = millis + sleepms;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                lock_guard&lt;mutex&gt; locker(m_guard); <span class="comment">// Lock access to entire object</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                <span class="comment">// Determine if it is needed to redraw</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                <span class="keywordtype">bool</span> draw = m_needDraw;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                <span class="keywordflow">if</span>(!m_needDraw)</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                {</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                    <span class="comment">// Iterate over the sprite to see if there is one that need to be draw</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0 ; i &lt; <a class="code" href="namespacegame_1_1console.html#a32065d91d5dd176c17e9e2622088e8ca">LAYERS_NUMBER</a> &amp;&amp; !draw ; ++i)</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                    {</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                        <span class="keywordflow">for</span>(<span class="keyword">const</span> Sprite* sprite : m_sprites[i])</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                        {</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                            <span class="comment">// The sprite need to be draw and is in the screen</span></div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                            <span class="keywordflow">if</span>(sprite-&gt;needDraw() </div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                                &amp;&amp; (isInsideScreen(sprite-&gt;getPosition(), m_size)</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                                || isInsideScreen(sprite-&gt;getPosition() + sprite-&gt;m_size, m_size)))</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                            {</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                                <span class="comment">// No need to continue to iterate if at least one sprite need redraw </span></div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                                draw = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                            }</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                        }</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                    }</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                }</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                lock_guard&lt;mutex&gt; locker(m_guard); <span class="comment">// Lock access to entire object</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                <span class="comment">// Determine if it is needed to redraw</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                <span class="keywordtype">bool</span> draw = m_needDraw;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                <span class="keywordflow">if</span>(!draw)</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                    <span class="comment">// Iterate over the sprite to see if there is one that need to be draw</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0 ; i &lt; <a class="code" href="namespacegame_1_1console.html#a32065d91d5dd176c17e9e2622088e8ca">LAYERS_NUMBER</a> &amp;&amp; !draw ; ++i)</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                    {</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                        <span class="keywordflow">for</span>(<span class="keyword">const</span> shared_ptr&lt;Drawable&gt; drawable : m_sprites[i])</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                        {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                            <span class="comment">// The sprite need to be drawn and is in the screen</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                            <span class="keywordflow">if</span>(drawable-&gt;needDraw() </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                                &amp;&amp; (isInsideScreen(drawable-&gt;getPosition(), m_size)</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                                || isInsideScreen(drawable-&gt;getPosition() + drawable-&gt;m_size, m_size)))</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                            {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                                <span class="comment">// No need to continue to iterate if at least one sprite need redraw </span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                                draw = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                            }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                        }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                    }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                }</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                <span class="comment">// Draw if needed</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                <span class="keywordflow">if</span>(draw)</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                {</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                    clearBuffer(); <span class="comment">// Clear the buffer</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                    <span class="comment">// Ask each sprite to draw in the buffer</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0 ; i &lt; <a class="code" href="namespacegame_1_1console.html#a32065d91d5dd176c17e9e2622088e8ca">LAYERS_NUMBER</a> ; ++i)</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                    {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                        <span class="keywordflow">for</span>(shared_ptr&lt;Drawable&gt; drawable : m_sprites[i])</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                            drawable-&gt;draw(*<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                    }</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                <span class="comment">// Draw if needed</span></div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                <span class="keywordflow">if</span>(draw)</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                {</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                    clearBuffer(); <span class="comment">// Clear the buffer</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                    <span class="comment">// Ask each sprite to draw in the buffer</span></div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0 ; i &lt; <a class="code" href="namespacegame_1_1console.html#a32065d91d5dd176c17e9e2622088e8ca">LAYERS_NUMBER</a> ; ++i)</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                    {</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                        <span class="keywordflow">for</span>(Sprite* sprite : m_sprites[i])</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                            sprite-&gt;draw(*<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                    }</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                    <span class="comment">// Print the buffer in the out stream</span></div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                    system(ENGINE_CLEAR_SCREEN_CMD);</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> y = 0 ; y &lt; m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>() ; ++y)</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                    {</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> x = 0 ; x &lt; m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() ; ++x)</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                            cout &lt;&lt; getPixel(<a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a>(x, y));</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                        cout &lt;&lt; endl;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                    }</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                    m_needDraw = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                }</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            } <span class="comment">// Release access</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            <span class="comment">// Test if there is new input</span></div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <span class="keywordflow">if</span>(privateFunc::kbhit()) <span class="comment">// Key pressed</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            {</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                <span class="keywordtype">char</span> in = privateFunc::getch();</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                EventManager::getInstance()-&gt;pushEvent(<span class="keyword">new</span> <a class="code" href="classgame_1_1events_1_1_console_key_pressed_event.html">ConsoleKeyPressedEvent</a>(in));</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            }</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            this_thread::sleep_for(chrono::milliseconds(1)); <span class="comment">// Little wait </span></div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        }</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    }</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="comment">// Static method to know if a position is inside a screen of size</span></div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="keywordtype">bool</span> ConsoleEngine::isInsideScreen(<span class="keyword">const</span> math::Vec2&lt;int&gt;&amp; v, <span class="keyword">const</span> math::Vec2&lt;int&gt;&amp; size)</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    {</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="keywordtype">bool</span> inside = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        <span class="keywordflow">if</span>(v.x() &lt; 0)</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            inside = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(v.x() &gt;= size.x())</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            inside = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                    <span class="comment">// Print the buffer in the out stream</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                    system(ENGINE_CLEAR_SCREEN_CMD);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> y = 0 ; y &lt; m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>() ; ++y)</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                    {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> x = 0 ; x &lt; m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() ; ++x)</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                            cout &lt;&lt; getPixel(<a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a>(x, y));</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                        cout &lt;&lt; endl;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                    }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                    m_needDraw = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            } <span class="comment">// Release access</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            <span class="comment">// Test if there is new input</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keywordflow">if</span>(privateFunc::kbhit()) <span class="comment">// Key pressed</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            {</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                <span class="keywordtype">char</span> in = privateFunc::getch();</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                EventManager::getInstance()-&gt;pushEvent(<span class="keyword">new</span> <a class="code" href="classgame_1_1events_1_1_console_key_pressed_event.html">ConsoleKeyPressedEvent</a>(in));</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            }</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            this_thread::sleep_for(chrono::milliseconds(10)); <span class="comment">// Little wait </span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        }</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    }</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="comment">// Static method to know if a position is inside a screen of size</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordtype">bool</span> ConsoleEngine::isInsideScreen(<span class="keyword">const</span> math::Vec2&lt;int&gt;&amp; v, <span class="keyword">const</span> math::Vec2&lt;int&gt;&amp; size)</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    {</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <span class="keywordtype">bool</span> inside = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="keywordflow">if</span>(v.x() &lt; 0)</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            inside = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(v.x() &gt;= size.x())</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            inside = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        <span class="keywordflow">if</span>(v.y() &lt; 0)</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            inside = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(v.y() &gt;= size.y())</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            inside = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="keywordflow">return</span> inside;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    }</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="comment">// ================ Drawable class ================ //</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keywordflow">if</span>(v.y() &lt; 0)</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            inside = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(v.y() &gt;= size.y())</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            inside = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        <span class="keywordflow">return</span> inside;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    }</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="comment">// ================ Sprite class ================ //</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_drawable.html#a9c06278dfb8728ffe9125152e81b2297">  253</a></span>&#160;    <a class="code" href="classgame_1_1console_1_1_drawable.html#aeb247711951e68bbc1d79ac85d515fb9">Drawable::Drawable</a>(<a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a> size) : m_size(size)</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    {}</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_drawable.html#a6d6e33b53ac5d4303707f5d87f42f95b">  256</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classgame_1_1console_1_1_drawable.html#a6d6e33b53ac5d4303707f5d87f42f95b">Drawable::setPosition</a>(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a>&amp; pos)</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        lock_guard&lt;mutex&gt; guard(<a class="code" href="classgame_1_1console_1_1_drawable.html#a0b3fe95c17cba6ac8f22cb65fa8961ee">m_guard</a>);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        <span class="keywordflow">if</span>(m_pos == pos)</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
-<div class="line"><a name="l00263"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_sprite.html#a8a888cf528d118674811653b9176f181">  263</a></span>&#160;    Sprite::Sprite(<span class="keyword">const</span> std::string&amp; path)</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    {</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="keywordflow">if</span>(!<a class="code" href="classgame_1_1console_1_1_sprite.html#a9da1bd6f5934899864b7070775704479">load</a>(path))</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        {</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            stringstream ss;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            ss &lt;&lt; <span class="stringliteral">&quot;An error occured while loading the sprite at : &quot;</span> &lt;&lt; path;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            ss &lt;&lt; <span class="stringliteral">&quot; Error id : &quot;</span> &lt;&lt; m_errType;</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            <span class="keywordflow">throw</span> <a class="code" href="classgame_1_1console_1_1_console_engine_exception.html">ConsoleEngineException</a>(ss.str());</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        }</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    }</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
-<div class="line"><a name="l00274"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_sprite.html#a6060bd1ba132035ed42854ec2d14eff2">  274</a></span>&#160;    Sprite::Sprite(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a>&amp; size, <span class="keywordtype">char</span> spaceChar) : m_size(size), m_spaceChar(spaceChar)</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    {}</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
-<div class="line"><a name="l00277"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_sprite.html#a9da1bd6f5934899864b7070775704479">  277</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1console_1_1_sprite.html#a9da1bd6f5934899864b7070775704479">Sprite::load</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; path)</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    {</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        ifstream file(path);</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        <span class="keywordflow">if</span>(!file.good())</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        {</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            m_errType = 1;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// Can&#39;t open file (doesn&#39;t exists)</span></div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        }</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        <span class="comment">// Read size</span></div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        file &gt;&gt; m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>();</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        file &gt;&gt; m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>();</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        <span class="keywordflow">if</span>(!file.good())</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        {</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            m_errType = 2;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// Can&#39;t read size</span></div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        }</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        m_pos = pos;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <a class="code" href="classgame_1_1console_1_1_drawable.html#a7b716911e6a6e08575f17e2348861878">m_needDraw</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    }</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_drawable.html#adc0c2a133ff8f8ed223b4406deb67670">  270</a></span>&#160;    <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a> <a class="code" href="classgame_1_1console_1_1_drawable.html#adc0c2a133ff8f8ed223b4406deb67670">Drawable::getPosition</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="keywordflow">return</span> m_pos;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    }</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
+<div class="line"><a name="l00278"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_drawable.html#ab58ebbed5ee0f4cb60cbe1197a995ebb">  278</a></span>&#160;    <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a> <a class="code" href="classgame_1_1console_1_1_drawable.html#ab58ebbed5ee0f4cb60cbe1197a995ebb">Drawable::getSize</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classgame_1_1console_1_1_drawable.html#ac3d5d87b85bf7665d4a9efa3aa3310cb">m_size</a>;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00286"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_drawable.html#a062513353ac1d20d88c60acece9af361">  286</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1console_1_1_drawable.html#a062513353ac1d20d88c60acece9af361">Drawable::needDraw</a>()</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    {</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classgame_1_1console_1_1_drawable.html#a7b716911e6a6e08575f17e2348861878">m_needDraw</a>;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    }</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="comment">// ================ Sprite class ================ //</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160; </div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        <span class="comment">// Read space char</span></div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        file &gt;&gt; m_spaceChar;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        </div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        m_pixels.clear();</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        <span class="keywordtype">char</span> c = <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        <span class="keywordflow">while</span>(c == <span class="charliteral">&#39;\n&#39;</span> || c == <span class="charliteral">&#39;\r&#39;</span>)</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            file.get(c); <span class="comment">// Go to next char of interest</span></div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> width = 1, height = 1 ; !file.eof() ; ++width)</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        {</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            <span class="keywordflow">if</span>(c == <span class="charliteral">&#39;\n&#39;</span> || c == <span class="charliteral">&#39;\r&#39;</span>)</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            {</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                <span class="comment">// for debug</span></div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                <span class="comment">//cout &lt;&lt; &quot;Find cr at height &quot; &lt;&lt; height &lt;&lt; &quot;, width is &quot; &lt;&lt; width &lt;&lt; &quot; of &quot; &lt;&lt; m_size.x() + 1 &lt;&lt;  endl;</span></div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                <span class="keywordflow">if</span>(width != m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() + 1)</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                {</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                    m_errType = 3;</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// Image size isn&#39;t correct</span></div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                }</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                {</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                    width = 0;</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                    ++height;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                }</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                <span class="keywordflow">while</span>(c == <span class="charliteral">&#39;\n&#39;</span> || c == <span class="charliteral">&#39;\r&#39;</span>) <span class="comment">// Needed on linux because line return often is \n\r</span></div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                    file.get(c); <span class="comment">// Go to next char of interest</span></div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                <span class="keywordflow">continue</span>; <span class="comment">// Do not put c in the pixels list </span></div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            }</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            <span class="keywordflow">if</span>(height &gt; m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>())</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            {</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                m_errType = 4;</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// Image size isn&#39;t correct</span></div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            }</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            m_pixels.push_back(c);</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            file.get(c);</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        }            </div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <a class="code" href="classgame_1_1console_1_1_sprite.html#a416e7a5345b76408bf671b411fc485ba">m_needDraw</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    }</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
-<div class="line"><a name="l00338"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_sprite.html#ad1faa3bd65f89cb7af4c8f18dcfc4bf0">  338</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classgame_1_1console_1_1_sprite.html#ad1faa3bd65f89cb7af4c8f18dcfc4bf0">Sprite::setPosition</a>(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a>&amp; pos)</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    {</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        lock_guard&lt;mutex&gt; guard(m_guard);</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        <span class="keywordflow">if</span>(m_pos == pos)</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        m_pos = pos;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        <a class="code" href="classgame_1_1console_1_1_sprite.html#a416e7a5345b76408bf671b411fc485ba">m_needDraw</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    }</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
-<div class="line"><a name="l00349"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_sprite.html#aa07889a92122f12c1cb13f304ca443e4">  349</a></span>&#160;    <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a> <a class="code" href="classgame_1_1console_1_1_sprite.html#aa07889a92122f12c1cb13f304ca443e4">Sprite::getPosition</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        <span class="keywordflow">return</span> m_pos;</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    }</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
-<div class="line"><a name="l00354"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_sprite.html#aef5ef4f5020f569317f4f878594ac07e">  354</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1console_1_1_sprite.html#aef5ef4f5020f569317f4f878594ac07e">Sprite::setPixel</a>(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a>&amp; pos, <span class="keywordtype">char</span> px)</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    {</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        lock_guard&lt;mutex&gt; guard(m_guard);</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        <span class="keywordflow">if</span>(!ConsoleEngine::isInsideScreen(pos, m_size))</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// overflow</span></div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        m_pixels[pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>() * m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() + pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>()] = px;</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        <a class="code" href="classgame_1_1console_1_1_sprite.html#a416e7a5345b76408bf671b411fc485ba">m_needDraw</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    }</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
-<div class="line"><a name="l00365"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_sprite.html#a18dcabe08ab1c19ebb637d008bf00892">  365</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="classgame_1_1console_1_1_sprite.html#a18dcabe08ab1c19ebb637d008bf00892">Sprite::getPixel</a>(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a>&amp; pos)</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    {</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        lock_guard&lt;mutex&gt; guard(m_guard);</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        <span class="keywordflow">if</span>(!ConsoleEngine::isInsideScreen(pos, m_size))</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            <span class="keywordflow">return</span> <span class="charliteral">&#39; &#39;</span>; <span class="comment">// Isn&#39;t in the screen</span></div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        <span class="keywordflow">return</span> m_pixels.at(pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>() * m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() + pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>());</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    }</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
-<div class="line"><a name="l00374"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_sprite.html#ad28881ed992a34aecf313ea069ea6318">  374</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1console_1_1_sprite.html#ad28881ed992a34aecf313ea069ea6318">Sprite::writeText</a>(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a>&amp; pos, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; txt)</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    {</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        lock_guard&lt;mutex&gt; guard(m_guard);</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160; </div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        <span class="comment">// Test bounds</span></div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        <span class="keywordtype">size_t</span> posLength = pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>() * m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() + pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>();</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <span class="keywordflow">if</span>(posLength &lt; 0 || posLength + txt.length() &gt; <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() * m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>()))</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00295"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_sprite.html#a8a888cf528d118674811653b9176f181">  295</a></span>&#160;    Sprite::Sprite(<span class="keyword">const</span> std::string&amp; path)</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    {</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        <span class="keywordflow">if</span>(!<a class="code" href="classgame_1_1console_1_1_sprite.html#a9da1bd6f5934899864b7070775704479">load</a>(path))</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        {</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            stringstream ss;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            ss &lt;&lt; <span class="stringliteral">&quot;An error occured while loading the sprite at : &quot;</span> &lt;&lt; path;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            ss &lt;&lt; <span class="stringliteral">&quot; Error id : &quot;</span> &lt;&lt; m_errType;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            <span class="keywordflow">throw</span> <a class="code" href="classgame_1_1console_1_1_console_engine_exception.html">ConsoleEngineException</a>(ss.str());</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        }</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
+<div class="line"><a name="l00306"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_sprite.html#a6060bd1ba132035ed42854ec2d14eff2">  306</a></span>&#160;    Sprite::Sprite(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a>&amp; size, <span class="keywordtype">char</span> spaceChar) : <a class="code" href="classgame_1_1console_1_1_drawable.html">Drawable</a>(size), m_spaceChar(spaceChar)</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    {}</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
+<div class="line"><a name="l00309"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_sprite.html#a9da1bd6f5934899864b7070775704479">  309</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1console_1_1_sprite.html#a9da1bd6f5934899864b7070775704479">Sprite::load</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; path)</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    {</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        ifstream file(path);</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <span class="keywordflow">if</span>(!file.good())</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            m_errType = 1;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// Can&#39;t open file (doesn&#39;t exists)</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        }</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        <span class="comment">// Read size</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        file &gt;&gt; <a class="code" href="classgame_1_1console_1_1_drawable.html#ac3d5d87b85bf7665d4a9efa3aa3310cb">m_size</a>.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>();</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        file &gt;&gt; <a class="code" href="classgame_1_1console_1_1_drawable.html#ac3d5d87b85bf7665d4a9efa3aa3310cb">m_size</a>.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>();</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        <span class="keywordflow">if</span>(!file.good())</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        {</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            m_errType = 2;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// Can&#39;t read size</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        }</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        <span class="comment">// Read space char</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        file &gt;&gt; m_spaceChar;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        </div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        m_pixels.clear();</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        <span class="keywordtype">char</span> c = <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        <span class="keywordflow">while</span>(c == <span class="charliteral">&#39;\n&#39;</span> || c == <span class="charliteral">&#39;\r&#39;</span>)</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            file.get(c); <span class="comment">// Go to next char of interest</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> width = 1, height = 1 ; !file.eof() ; ++width)</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        {</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            <span class="keywordflow">if</span>(c == <span class="charliteral">&#39;\n&#39;</span> || c == <span class="charliteral">&#39;\r&#39;</span>)</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            {</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                <span class="comment">// for debug</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                <span class="comment">//cout &lt;&lt; &quot;Find cr at height &quot; &lt;&lt; height &lt;&lt; &quot;, width is &quot; &lt;&lt; width &lt;&lt; &quot; of &quot; &lt;&lt; m_size.x() + 1 &lt;&lt;  endl;</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                <span class="keywordflow">if</span>(width != <a class="code" href="classgame_1_1console_1_1_drawable.html#ac3d5d87b85bf7665d4a9efa3aa3310cb">m_size</a>.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() + 1)</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                {</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                    m_errType = 3;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                    Logger::log() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#acda173634be088930af43767b63f95d6">severe</a> &lt;&lt; <span class="stringliteral">&quot;Failed to load &quot;</span> &lt;&lt; path &lt;&lt; <span class="stringliteral">&quot; because of width incoherance at width &quot;</span> &lt;&lt; width &lt;&lt; <span class="stringliteral">&quot; and height &quot;</span> &lt;&lt; height &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// Image size isn&#39;t correct</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                }</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                {</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                    width = 0;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                    ++height;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                }</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                <span class="keywordflow">while</span>(c == <span class="charliteral">&#39;\n&#39;</span> || c == <span class="charliteral">&#39;\r&#39;</span>) <span class="comment">// Needed on linux because line return often is \n\r</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                    file.get(c); <span class="comment">// Go to next char of interest</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                <span class="keywordflow">continue</span>; <span class="comment">// Do not put c in the pixels list </span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            }</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            <span class="keywordflow">if</span>(height &gt; <a class="code" href="classgame_1_1console_1_1_drawable.html#ac3d5d87b85bf7665d4a9efa3aa3310cb">m_size</a>.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>())</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;            {</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                m_errType = 4;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                Logger::log() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#acda173634be088930af43767b63f95d6">severe</a> &lt;&lt; <span class="stringliteral">&quot;Failed to load &quot;</span> &lt;&lt; path &lt;&lt; <span class="stringliteral">&quot; because of height incoherance at width &quot;</span> &lt;&lt; width &lt;&lt; <span class="stringliteral">&quot; and height &quot;</span> &lt;&lt; height &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// Image size isn&#39;t correct</span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;            }</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160; </div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            m_pixels.push_back(c);</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            file.get(c);</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        }            </div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;        <a class="code" href="classgame_1_1console_1_1_drawable.html#a7b716911e6a6e08575f17e2348861878">m_needDraw</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    }</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160; </div>
+<div class="line"><a name="l00372"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_sprite.html#aef5ef4f5020f569317f4f878594ac07e">  372</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1console_1_1_sprite.html#aef5ef4f5020f569317f4f878594ac07e">Sprite::setPixel</a>(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a>&amp; pos, <span class="keywordtype">char</span> px)</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    {</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        lock_guard&lt;mutex&gt; guard(<a class="code" href="classgame_1_1console_1_1_drawable.html#a0b3fe95c17cba6ac8f22cb65fa8961ee">m_guard</a>);</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160; </div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        <span class="keywordflow">if</span>(!ConsoleEngine::isInsideScreen(pos, <a class="code" href="classgame_1_1console_1_1_drawable.html#ac3d5d87b85bf7665d4a9efa3aa3310cb">m_size</a>))</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// overflow</span></div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        m_pixels[pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>() * <a class="code" href="classgame_1_1console_1_1_drawable.html#ac3d5d87b85bf7665d4a9efa3aa3310cb">m_size</a>.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() + pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>()] = px;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        <a class="code" href="classgame_1_1console_1_1_drawable.html#a7b716911e6a6e08575f17e2348861878">m_needDraw</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    }</div>
 <div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160; </div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        <span class="comment">// Write text</span></div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0 ; i &lt; txt.length() ; ++i)</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;            m_pixels[i + posLength] = txt[i];</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        <a class="code" href="classgame_1_1console_1_1_sprite.html#a416e7a5345b76408bf671b411fc485ba">m_needDraw</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    }</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
-<div class="line"><a name="l00390"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_sprite.html#abe94491fedf8dfd6e5e0b9eda2e4b28e">  390</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classgame_1_1console_1_1_sprite.html#abe94491fedf8dfd6e5e0b9eda2e4b28e">Sprite::getErrType</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        <span class="keywordflow">return</span> m_errType;</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    }</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160; </div>
-<div class="line"><a name="l00395"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_sprite.html#a54701cddb1e12a0623d5ed7c4715793a">  395</a></span>&#160;    <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a> <a class="code" href="classgame_1_1console_1_1_sprite.html#a54701cddb1e12a0623d5ed7c4715793a">Sprite::getSize</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        <span class="keywordflow">return</span> m_size;</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    }</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160; </div>
-<div class="line"><a name="l00400"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_sprite.html#a05f06bd02281bff6cddf3887fba5ec7f">  400</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1console_1_1_sprite.html#a05f06bd02281bff6cddf3887fba5ec7f">Sprite::needDraw</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classgame_1_1console_1_1_sprite.html#a416e7a5345b76408bf671b411fc485ba">m_needDraw</a>;</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    }</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160; </div>
-<div class="line"><a name="l00405"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_sprite.html#af154c999d36f8a0ce746405e93870995">  405</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classgame_1_1console_1_1_sprite.html#af154c999d36f8a0ce746405e93870995">Sprite::draw</a>(<a class="code" href="classgame_1_1console_1_1_console_engine.html">ConsoleEngine</a>&amp; ce)</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    {</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;        lock_guard&lt;mutex&gt; guard(m_guard);</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160; </div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> y = 0 ; y &lt; m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>() ; ++y)</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        {</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> x = 0 ; x &lt; m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() ; ++x)</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;            {</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                <span class="keywordtype">char</span> px = m_pixels.at(y * m_size.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() + x);</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                <span class="keywordflow">if</span>(px != <span class="charliteral">&#39; &#39;</span>) <span class="comment">// Do not write spaces that means transparency</span></div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                {</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                    <span class="keywordflow">if</span>(px == m_spaceChar)</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                        px = <span class="charliteral">&#39; &#39;</span>; <span class="comment">// Replace space char by a real space</span></div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                    ce.setPixel(m_pos + <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a>(x, y), px);</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                }</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            }</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        }</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        <a class="code" href="classgame_1_1console_1_1_sprite.html#a416e7a5345b76408bf671b411fc485ba">m_needDraw</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    }</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160; </div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    <span class="comment">// ================ ConsoleEngineException class ================ //</span></div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160; </div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    ConsoleEngineException::ConsoleEngineException(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; message) : m_message(message)</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    {}</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160; </div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* ConsoleEngineException::what() const noexcept</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    {</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;        <span class="keywordflow">return</span> m_message.c_str();</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    }</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;}</div>
+<div class="line"><a name="l00383"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_sprite.html#a18dcabe08ab1c19ebb637d008bf00892">  383</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="classgame_1_1console_1_1_sprite.html#a18dcabe08ab1c19ebb637d008bf00892">Sprite::getPixel</a>(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a>&amp; pos)</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    {</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        lock_guard&lt;mutex&gt; guard(<a class="code" href="classgame_1_1console_1_1_drawable.html#a0b3fe95c17cba6ac8f22cb65fa8961ee">m_guard</a>);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160; </div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        <span class="keywordflow">if</span>(!ConsoleEngine::isInsideScreen(pos, <a class="code" href="classgame_1_1console_1_1_drawable.html#ac3d5d87b85bf7665d4a9efa3aa3310cb">m_size</a>))</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;            <span class="keywordflow">return</span> <span class="charliteral">&#39; &#39;</span>; <span class="comment">// Isn&#39;t in the screen</span></div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        <span class="keywordflow">return</span> m_pixels.at(pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>() * <a class="code" href="classgame_1_1console_1_1_drawable.html#ac3d5d87b85bf7665d4a9efa3aa3310cb">m_size</a>.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() + pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>());</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    }</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160; </div>
+<div class="line"><a name="l00392"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_sprite.html#ad28881ed992a34aecf313ea069ea6318">  392</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1console_1_1_sprite.html#ad28881ed992a34aecf313ea069ea6318">Sprite::writeText</a>(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a>&amp; pos, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; txt)</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    {</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;        lock_guard&lt;mutex&gt; guard(<a class="code" href="classgame_1_1console_1_1_drawable.html#a0b3fe95c17cba6ac8f22cb65fa8961ee">m_guard</a>);</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160; </div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        <span class="comment">// Test bounds</span></div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        <span class="keywordtype">size_t</span> posLength = pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>() * <a class="code" href="classgame_1_1console_1_1_drawable.html#ac3d5d87b85bf7665d4a9efa3aa3310cb">m_size</a>.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() + pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>();</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        <span class="keywordflow">if</span>(posLength &lt; 0 || posLength + txt.length() &gt; <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(<a class="code" href="classgame_1_1console_1_1_drawable.html#ac3d5d87b85bf7665d4a9efa3aa3310cb">m_size</a>.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() * <a class="code" href="classgame_1_1console_1_1_drawable.html#ac3d5d87b85bf7665d4a9efa3aa3310cb">m_size</a>.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>()))</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160; </div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        <span class="comment">// Write text</span></div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0 ; i &lt; txt.length() ; ++i)</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            m_pixels[i + posLength] = txt[i];</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;        <a class="code" href="classgame_1_1console_1_1_drawable.html#a7b716911e6a6e08575f17e2348861878">m_needDraw</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    }</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160; </div>
+<div class="line"><a name="l00408"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_sprite.html#abe94491fedf8dfd6e5e0b9eda2e4b28e">  408</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classgame_1_1console_1_1_sprite.html#abe94491fedf8dfd6e5e0b9eda2e4b28e">Sprite::getErrType</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        <span class="keywordflow">return</span> m_errType;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    }</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160; </div>
+<div class="line"><a name="l00413"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_sprite.html#ae8f40905a0edd3422a4008f2ad8eb532">  413</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classgame_1_1console_1_1_sprite.html#ae8f40905a0edd3422a4008f2ad8eb532">Sprite::draw</a>(<a class="code" href="classgame_1_1console_1_1_console_engine.html">ConsoleEngine</a>&amp; ce)</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    {</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        lock_guard&lt;mutex&gt; guard(<a class="code" href="classgame_1_1console_1_1_drawable.html#a0b3fe95c17cba6ac8f22cb65fa8961ee">m_guard</a>);</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160; </div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> y = 0 ; y &lt; <a class="code" href="classgame_1_1console_1_1_drawable.html#ac3d5d87b85bf7665d4a9efa3aa3310cb">m_size</a>.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>() ; ++y)</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        {</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> x = 0 ; x &lt; <a class="code" href="classgame_1_1console_1_1_drawable.html#ac3d5d87b85bf7665d4a9efa3aa3310cb">m_size</a>.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() ; ++x)</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            {</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                <span class="keywordtype">char</span> px = m_pixels.at(y * <a class="code" href="classgame_1_1console_1_1_drawable.html#ac3d5d87b85bf7665d4a9efa3aa3310cb">m_size</a>.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() + x);</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                <span class="keywordflow">if</span>(px != <span class="charliteral">&#39; &#39;</span>) <span class="comment">// Do not write spaces that means transparency</span></div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                {</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;                    <span class="keywordflow">if</span>(px == m_spaceChar)</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                        px = <span class="charliteral">&#39; &#39;</span>; <span class="comment">// Replace space char by a real space</span></div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                    ce.setPixel(<a class="code" href="classgame_1_1console_1_1_drawable.html#adc0c2a133ff8f8ed223b4406deb67670">getPosition</a>() + <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a>(x, y), px);</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                }</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            }</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        }</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        <a class="code" href="classgame_1_1console_1_1_drawable.html#a7b716911e6a6e08575f17e2348861878">m_needDraw</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    }</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160; </div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160; </div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    <span class="comment">// ================ MultiSprite class ================ //</span></div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160; </div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160; </div>
+<div class="line"><a name="l00437"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_multi_sprite.html#a0dba6bfc9437e6e3f1f3ad373e13cc05">  437</a></span>&#160;    MultiSprite::MultiSprite(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">math::Vec2&lt;int&gt;</a>&amp; size) : <a class="code" href="classgame_1_1console_1_1_drawable.html">Drawable</a>(size)</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    {}</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160; </div>
+<div class="line"><a name="l00440"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_multi_sprite.html#a72b7daf7bccdd2aeeb617a5c66da93e3">  440</a></span>&#160;    MultiSprite::MultiSprite(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; paths)</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    {</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        <a class="code" href="classgame_1_1console_1_1_multi_sprite.html#a3ca47d3cff1762cc1cfc3499612a7c6b">load</a>(paths);</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    }</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160; </div>
+<div class="line"><a name="l00445"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_multi_sprite.html#a3ca47d3cff1762cc1cfc3499612a7c6b">  445</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1console_1_1_multi_sprite.html#a3ca47d3cff1762cc1cfc3499612a7c6b">MultiSprite::load</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; paths)</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    {</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;        <span class="keywordtype">bool</span> error = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160; </div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;        <span class="comment">// Iterate over the paths list and load each sprite</span></div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; path : paths)</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;        {</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;            <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;            {</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;                <a class="code" href="classgame_1_1console_1_1_sprite.html">Sprite</a>* sprite = <span class="keyword">new</span> <a class="code" href="classgame_1_1console_1_1_sprite.html">Sprite</a>(path);</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;                m_sprites.push_back(shared_ptr&lt;Sprite&gt;(sprite)); <span class="comment">// Add in the sprite list</span></div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;            }</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;            <span class="keywordflow">catch</span>(<a class="code" href="classgame_1_1console_1_1_console_engine_exception.html">ConsoleEngineException</a>&amp; ex)</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;            {</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;                error = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;                Logger::log() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#acda173634be088930af43767b63f95d6">severe</a> &lt;&lt; <span class="stringliteral">&quot;Unable to load a Sprite in a MultiSprite object : &quot;</span> &lt;&lt; ex.what() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;                <span class="keywordflow">throw</span> ex; <span class="comment">// Throw again to inform above code</span></div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;            }</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;        }</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160; </div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;        <span class="keywordflow">return</span> error;</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    }</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160; </div>
+<div class="line"><a name="l00468"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_multi_sprite.html#a8703004df44aa258a0a18732b9c2ce63">  468</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classgame_1_1console_1_1_multi_sprite.html#a8703004df44aa258a0a18732b9c2ce63">MultiSprite::getSpriteNumber</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;        <span class="keywordflow">return</span> m_sprites.size();</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;    }</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160; </div>
+<div class="line"><a name="l00473"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_multi_sprite.html#a37d9cb4cb6fd979719f0ce99c556424e">  473</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classgame_1_1console_1_1_multi_sprite.html#a37d9cb4cb6fd979719f0ce99c556424e">MultiSprite::getCurrentSpriteIndex</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;        <span class="keywordflow">return</span> m_index;</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    }</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160; </div>
+<div class="line"><a name="l00478"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_multi_sprite.html#a5a3975a82cbbfb5c456c48aac14ebc63">  478</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1console_1_1_multi_sprite.html#a5a3975a82cbbfb5c456c48aac14ebc63">MultiSprite::setCurrentSpriteIndex</a>(<span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;    {</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;        lock_guard&lt;mutex&gt; guard(<a class="code" href="classgame_1_1console_1_1_drawable.html#a0b3fe95c17cba6ac8f22cb65fa8961ee">m_guard</a>);   </div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;    </div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;        <span class="keywordflow">if</span>(index &gt;= <a class="code" href="classgame_1_1console_1_1_multi_sprite.html#a8703004df44aa258a0a18732b9c2ce63">getSpriteNumber</a>())</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;        </div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;        <span class="keywordflow">if</span>(m_index != index)</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;        {</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;            m_index = index;</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;            <a class="code" href="classgame_1_1console_1_1_drawable.html#a7b716911e6a6e08575f17e2348861878">m_needDraw</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;        }</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;    }</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160; </div>
+<div class="line"><a name="l00493"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_multi_sprite.html#af0f2b09143acf32fca4d6aa8a59d6ac1">  493</a></span>&#160;    std::shared_ptr&lt;Sprite&gt; <a class="code" href="classgame_1_1console_1_1_multi_sprite.html#af0f2b09143acf32fca4d6aa8a59d6ac1">MultiSprite::getSpriteAt</a>(<span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;    {</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;        lock_guard&lt;mutex&gt; guard(<a class="code" href="classgame_1_1console_1_1_drawable.html#a0b3fe95c17cba6ac8f22cb65fa8961ee">m_guard</a>);</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160; </div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;        <span class="keywordflow">if</span>(index &gt;= <a class="code" href="classgame_1_1console_1_1_multi_sprite.html#a8703004df44aa258a0a18732b9c2ce63">getSpriteNumber</a>())</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;            </div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;        <span class="keyword">auto</span> it = m_sprites.begin();</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;        std::advance(it, index);</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;        <span class="keywordflow">return</span> *it;</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;    }</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160; </div>
+<div class="line"><a name="l00505"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_multi_sprite.html#a30583a784c95935a513d8a3fee350e3d">  505</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classgame_1_1console_1_1_multi_sprite.html#a30583a784c95935a513d8a3fee350e3d">MultiSprite::addSprite</a>(std::shared_ptr&lt;Sprite&gt; sprite)</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;    {</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;        lock_guard&lt;mutex&gt; guard(<a class="code" href="classgame_1_1console_1_1_drawable.html#a0b3fe95c17cba6ac8f22cb65fa8961ee">m_guard</a>);</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160; </div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;        m_sprites.push_back(sprite);</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    }</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160; </div>
+<div class="line"><a name="l00512"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_multi_sprite.html#ae67496e776069ae8002a3b9d8af00f52">  512</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classgame_1_1console_1_1_multi_sprite.html#ae67496e776069ae8002a3b9d8af00f52">MultiSprite::removeSprite</a>(std::shared_ptr&lt;Sprite&gt; sprite)</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;    {</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;        lock_guard&lt;mutex&gt; guard(<a class="code" href="classgame_1_1console_1_1_drawable.html#a0b3fe95c17cba6ac8f22cb65fa8961ee">m_guard</a>);</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160; </div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;        m_sprites.remove(sprite);</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;    }</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160; </div>
+<div class="line"><a name="l00519"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_multi_sprite.html#a32ef64731cab4cc99c889b462fbeac41">  519</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1console_1_1_multi_sprite.html#a32ef64731cab4cc99c889b462fbeac41">MultiSprite::needDraw</a>()</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;    {</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;        <span class="comment">// If m_needDraw or the current sprite need a draw</span></div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classgame_1_1console_1_1_drawable.html#a7b716911e6a6e08575f17e2348861878">m_needDraw</a> || <a class="code" href="classgame_1_1console_1_1_multi_sprite.html#af0f2b09143acf32fca4d6aa8a59d6ac1">getSpriteAt</a>(m_index)-&gt;needDraw();</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;    }</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160; </div>
+<div class="line"><a name="l00525"></a><span class="lineno"><a class="line" href="classgame_1_1console_1_1_multi_sprite.html#a68c59b476c054e0a2eeae439407f6740">  525</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classgame_1_1console_1_1_multi_sprite.html#a68c59b476c054e0a2eeae439407f6740">MultiSprite::draw</a>(<a class="code" href="classgame_1_1console_1_1_console_engine.html">ConsoleEngine</a>&amp; ce)</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;    {</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;        <span class="comment">// No need to lock the guard because all called methods are already thread safe</span></div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;        <span class="comment">// Update current sprite position to the same as the MultiSprite</span></div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;        shared_ptr&lt;Sprite&gt; cur = <a class="code" href="classgame_1_1console_1_1_multi_sprite.html#af0f2b09143acf32fca4d6aa8a59d6ac1">getSpriteAt</a>(m_index);</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;        cur-&gt;setPosition(<a class="code" href="classgame_1_1console_1_1_drawable.html#adc0c2a133ff8f8ed223b4406deb67670">getPosition</a>());</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;        cur-&gt;draw(ce); <span class="comment">// Then draw the current sprite</span></div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;        <a class="code" href="classgame_1_1console_1_1_drawable.html#a7b716911e6a6e08575f17e2348861878">m_needDraw</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    }</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160; </div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160; </div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;    <span class="comment">// ================ ConsoleEngineException class ================ //</span></div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160; </div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160; </div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;    ConsoleEngineException::ConsoleEngineException(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; message) : m_message(message)</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;    {}</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160; </div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* ConsoleEngineException::what() const noexcept</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;    {</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;        <span class="keywordflow">return</span> m_message.c_str();</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;    }</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;}</div>
 <div class="ttc" id="a_console_engine_8hpp_html"><div class="ttname"><a href="_console_engine_8hpp.html">ConsoleEngine.hpp</a></div><div class="ttdoc">Display really basic graphics in the console.</div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_console_engine_exception_html"><div class="ttname"><a href="classgame_1_1console_1_1_console_engine_exception.html">game::console::ConsoleEngineException</a></div><div class="ttdoc">Custom error class for the ConsoleEngine operations.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8hpp_source.html#l00328">ConsoleEngine.hpp:329</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_console_engine_html"><div class="ttname"><a href="classgame_1_1console_1_1_console_engine.html">game::console::ConsoleEngine</a></div><div class="ttdoc">Console manager class. An instance of this can manage all display using its own render thread.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8hpp_source.html#l00082">ConsoleEngine.hpp:83</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_console_engine_html_a35bedebed2ed18dd698a8c59945753c0"><div class="ttname"><a href="classgame_1_1console_1_1_console_engine.html#a35bedebed2ed18dd698a8c59945753c0">game::console::ConsoleEngine::stopRendering</a></div><div class="ttdeci">void stopRendering()</div><div class="ttdoc">Stop the render thread.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00137">ConsoleEngine.cpp:137</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_console_engine_html_a78b93063c2cc36b3e4eb368fa076c1f1"><div class="ttname"><a href="classgame_1_1console_1_1_console_engine.html#a78b93063c2cc36b3e4eb368fa076c1f1">game::console::ConsoleEngine::~ConsoleEngine</a></div><div class="ttdeci">virtual ~ConsoleEngine()</div><div class="ttdoc">Delete the object, all current Sprite are deleted too !</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00085">ConsoleEngine.cpp:85</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_console_engine_html_a8528305e3eeee5690759667b0706319c"><div class="ttname"><a href="classgame_1_1console_1_1_console_engine.html#a8528305e3eeee5690759667b0706319c">game::console::ConsoleEngine::removeSprite</a></div><div class="ttdeci">void removeSprite(Sprite *sprite)</div><div class="ttdoc">Remove a Sprite.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00120">ConsoleEngine.cpp:120</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_console_engine_html_a86a1d9ef1fc97210b1c5bd924ab4089c"><div class="ttname"><a href="classgame_1_1console_1_1_console_engine.html#a86a1d9ef1fc97210b1c5bd924ab4089c">game::console::ConsoleEngine::addSprite</a></div><div class="ttdeci">void addSprite(Sprite *sprite, int layer=0)</div><div class="ttdoc">Add a Sprite to the render list at specified layer.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00107">ConsoleEngine.cpp:107</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_console_engine_html_a981d85f0718b5a99d53717374e454831"><div class="ttname"><a href="classgame_1_1console_1_1_console_engine.html#a981d85f0718b5a99d53717374e454831">game::console::ConsoleEngine::startRendering</a></div><div class="ttdeci">void startRendering()</div><div class="ttdoc">Start the render thread.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00128">ConsoleEngine.cpp:128</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_console_engine_html_ab35847438387ce3f1d3e861803c775f9"><div class="ttname"><a href="classgame_1_1console_1_1_console_engine.html#ab35847438387ce3f1d3e861803c775f9">game::console::ConsoleEngine::setSize</a></div><div class="ttdeci">void setSize(const math::Vec2&lt; int &gt; &amp;v)</div><div class="ttdoc">Change the size of the screen.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00095">ConsoleEngine.cpp:95</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_console_engine_html_afe4560703cbc6adfd63b6de9f836761c"><div class="ttname"><a href="classgame_1_1console_1_1_console_engine.html#afe4560703cbc6adfd63b6de9f836761c">game::console::ConsoleEngine::getSize</a></div><div class="ttdeci">math::Vec2&lt; int &gt; getSize() const</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00102">ConsoleEngine.cpp:102</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_sprite_html"><div class="ttname"><a href="classgame_1_1console_1_1_sprite.html">game::console::Sprite</a></div><div class="ttdoc">A Sprite is an ASCII image that can be displayed by the ConsoleEngine.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8hpp_source.html#l00217">ConsoleEngine.hpp:218</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_sprite_html_a05f06bd02281bff6cddf3887fba5ec7f"><div class="ttname"><a href="classgame_1_1console_1_1_sprite.html#a05f06bd02281bff6cddf3887fba5ec7f">game::console::Sprite::needDraw</a></div><div class="ttdeci">bool needDraw() const</div><div class="ttdoc">Indicate if a draw is needed, the flag is reset to false at draw.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00400">ConsoleEngine.cpp:400</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_sprite_html_a18dcabe08ab1c19ebb637d008bf00892"><div class="ttname"><a href="classgame_1_1console_1_1_sprite.html#a18dcabe08ab1c19ebb637d008bf00892">game::console::Sprite::getPixel</a></div><div class="ttdeci">char getPixel(const math::Vec2&lt; int &gt; &amp;pos)</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00365">ConsoleEngine.cpp:365</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_sprite_html_a416e7a5345b76408bf671b411fc485ba"><div class="ttname"><a href="classgame_1_1console_1_1_sprite.html#a416e7a5345b76408bf671b411fc485ba">game::console::Sprite::m_needDraw</a></div><div class="ttdeci">bool m_needDraw</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8hpp_source.html#l00232">ConsoleEngine.hpp:232</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_sprite_html_a54701cddb1e12a0623d5ed7c4715793a"><div class="ttname"><a href="classgame_1_1console_1_1_sprite.html#a54701cddb1e12a0623d5ed7c4715793a">game::console::Sprite::getSize</a></div><div class="ttdeci">math::Vec2&lt; int &gt; getSize() const</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00395">ConsoleEngine.cpp:395</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_sprite_html_a9da1bd6f5934899864b7070775704479"><div class="ttname"><a href="classgame_1_1console_1_1_sprite.html#a9da1bd6f5934899864b7070775704479">game::console::Sprite::load</a></div><div class="ttdeci">bool load(const std::string &amp;path)</div><div class="ttdoc">Load a Sprite from a file.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00277">ConsoleEngine.cpp:277</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_sprite_html_aa07889a92122f12c1cb13f304ca443e4"><div class="ttname"><a href="classgame_1_1console_1_1_sprite.html#aa07889a92122f12c1cb13f304ca443e4">game::console::Sprite::getPosition</a></div><div class="ttdeci">math::Vec2&lt; int &gt; getPosition() const</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00349">ConsoleEngine.cpp:349</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_sprite_html_abe94491fedf8dfd6e5e0b9eda2e4b28e"><div class="ttname"><a href="classgame_1_1console_1_1_sprite.html#abe94491fedf8dfd6e5e0b9eda2e4b28e">game::console::Sprite::getErrType</a></div><div class="ttdeci">int getErrType() const</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00390">ConsoleEngine.cpp:390</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_sprite_html_ad1faa3bd65f89cb7af4c8f18dcfc4bf0"><div class="ttname"><a href="classgame_1_1console_1_1_sprite.html#ad1faa3bd65f89cb7af4c8f18dcfc4bf0">game::console::Sprite::setPosition</a></div><div class="ttdeci">void setPosition(const math::Vec2&lt; int &gt; &amp;pos)</div><div class="ttdoc">Change the position of the Sprite in the screen.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00338">ConsoleEngine.cpp:338</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_sprite_html_ad28881ed992a34aecf313ea069ea6318"><div class="ttname"><a href="classgame_1_1console_1_1_sprite.html#ad28881ed992a34aecf313ea069ea6318">game::console::Sprite::writeText</a></div><div class="ttdeci">bool writeText(const math::Vec2&lt; int &gt; &amp;pos, const std::string &amp;txt)</div><div class="ttdoc">Write a text in the Sprite.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00374">ConsoleEngine.cpp:374</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_sprite_html_aef5ef4f5020f569317f4f878594ac07e"><div class="ttname"><a href="classgame_1_1console_1_1_sprite.html#aef5ef4f5020f569317f4f878594ac07e">game::console::Sprite::setPixel</a></div><div class="ttdeci">bool setPixel(const math::Vec2&lt; int &gt; &amp;pos, char px)</div><div class="ttdoc">Change a pixel at the specified position.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00354">ConsoleEngine.cpp:354</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_sprite_html_af154c999d36f8a0ce746405e93870995"><div class="ttname"><a href="classgame_1_1console_1_1_sprite.html#af154c999d36f8a0ce746405e93870995">game::console::Sprite::draw</a></div><div class="ttdeci">virtual void draw(ConsoleEngine &amp;ce)</div><div class="ttdoc">Draw the Sprite in the pixels buffer of the given ConsoleEngine.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00405">ConsoleEngine.cpp:405</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_console_engine_exception_html"><div class="ttname"><a href="classgame_1_1console_1_1_console_engine_exception.html">game::console::ConsoleEngineException</a></div><div class="ttdoc">Custom error class for the ConsoleEngine operations.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8hpp_source.html#l00479">ConsoleEngine.hpp:480</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_console_engine_html"><div class="ttname"><a href="classgame_1_1console_1_1_console_engine.html">game::console::ConsoleEngine</a></div><div class="ttdoc">Console manager class. An instance of this can manage all display using its own render thread.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8hpp_source.html#l00080">ConsoleEngine.hpp:81</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_console_engine_html_a24946503418e6c1a3fd6105e9ac48971"><div class="ttname"><a href="classgame_1_1console_1_1_console_engine.html#a24946503418e6c1a3fd6105e9ac48971">game::console::ConsoleEngine::removeDrawable</a></div><div class="ttdeci">void removeDrawable(std::shared_ptr&lt; Drawable &gt; drawable)</div><div class="ttdoc">Remove a Drawable.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00112">ConsoleEngine.cpp:112</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_console_engine_html_a2c9b51ec146c789ad2c30eac6de628bd"><div class="ttname"><a href="classgame_1_1console_1_1_console_engine.html#a2c9b51ec146c789ad2c30eac6de628bd">game::console::ConsoleEngine::addDrawable</a></div><div class="ttdeci">void addDrawable(std::shared_ptr&lt; Drawable &gt; drawable, int layer=0)</div><div class="ttdoc">Add a Drawable to the render list at specified layer.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00099">ConsoleEngine.cpp:99</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_console_engine_html_a35bedebed2ed18dd698a8c59945753c0"><div class="ttname"><a href="classgame_1_1console_1_1_console_engine.html#a35bedebed2ed18dd698a8c59945753c0">game::console::ConsoleEngine::stopRendering</a></div><div class="ttdeci">void stopRendering()</div><div class="ttdoc">Stop the render thread.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00129">ConsoleEngine.cpp:129</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_console_engine_html_a981d85f0718b5a99d53717374e454831"><div class="ttname"><a href="classgame_1_1console_1_1_console_engine.html#a981d85f0718b5a99d53717374e454831">game::console::ConsoleEngine::startRendering</a></div><div class="ttdeci">void startRendering()</div><div class="ttdoc">Start the render thread.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00120">ConsoleEngine.cpp:120</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_console_engine_html_ab35847438387ce3f1d3e861803c775f9"><div class="ttname"><a href="classgame_1_1console_1_1_console_engine.html#ab35847438387ce3f1d3e861803c775f9">game::console::ConsoleEngine::setSize</a></div><div class="ttdeci">void setSize(const math::Vec2&lt; int &gt; &amp;v)</div><div class="ttdoc">Change the size of the screen.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00087">ConsoleEngine.cpp:87</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_console_engine_html_afe4560703cbc6adfd63b6de9f836761c"><div class="ttname"><a href="classgame_1_1console_1_1_console_engine.html#afe4560703cbc6adfd63b6de9f836761c">game::console::ConsoleEngine::getSize</a></div><div class="ttdeci">math::Vec2&lt; int &gt; getSize() const</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00094">ConsoleEngine.cpp:94</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_drawable_html"><div class="ttname"><a href="classgame_1_1console_1_1_drawable.html">game::console::Drawable</a></div><div class="ttdoc">Abstract superclass of Sprite and MultiSprite classes.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8hpp_source.html#l00196">ConsoleEngine.hpp:197</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_drawable_html_a062513353ac1d20d88c60acece9af361"><div class="ttname"><a href="classgame_1_1console_1_1_drawable.html#a062513353ac1d20d88c60acece9af361">game::console::Drawable::needDraw</a></div><div class="ttdeci">virtual bool needDraw()</div><div class="ttdoc">Indicate if a draw is needed, the flag is reset to false at draw.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00286">ConsoleEngine.cpp:286</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_drawable_html_a0b3fe95c17cba6ac8f22cb65fa8961ee"><div class="ttname"><a href="classgame_1_1console_1_1_drawable.html#a0b3fe95c17cba6ac8f22cb65fa8961ee">game::console::Drawable::m_guard</a></div><div class="ttdeci">std::mutex m_guard</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8hpp_source.html#l00207">ConsoleEngine.hpp:207</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_drawable_html_a6d6e33b53ac5d4303707f5d87f42f95b"><div class="ttname"><a href="classgame_1_1console_1_1_drawable.html#a6d6e33b53ac5d4303707f5d87f42f95b">game::console::Drawable::setPosition</a></div><div class="ttdeci">void setPosition(const math::Vec2&lt; int &gt; &amp;pos)</div><div class="ttdoc">Change the position of the Drawable in the screen.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00256">ConsoleEngine.cpp:256</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_drawable_html_a7b716911e6a6e08575f17e2348861878"><div class="ttname"><a href="classgame_1_1console_1_1_drawable.html#a7b716911e6a6e08575f17e2348861878">game::console::Drawable::m_needDraw</a></div><div class="ttdeci">bool m_needDraw</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8hpp_source.html#l00208">ConsoleEngine.hpp:208</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_drawable_html_ab58ebbed5ee0f4cb60cbe1197a995ebb"><div class="ttname"><a href="classgame_1_1console_1_1_drawable.html#ab58ebbed5ee0f4cb60cbe1197a995ebb">game::console::Drawable::getSize</a></div><div class="ttdeci">math::Vec2&lt; int &gt; getSize() const</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00278">ConsoleEngine.cpp:278</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_drawable_html_ac3d5d87b85bf7665d4a9efa3aa3310cb"><div class="ttname"><a href="classgame_1_1console_1_1_drawable.html#ac3d5d87b85bf7665d4a9efa3aa3310cb">game::console::Drawable::m_size</a></div><div class="ttdeci">math::Vec2&lt; int &gt; m_size</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8hpp_source.html#l00206">ConsoleEngine.hpp:206</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_drawable_html_adc0c2a133ff8f8ed223b4406deb67670"><div class="ttname"><a href="classgame_1_1console_1_1_drawable.html#adc0c2a133ff8f8ed223b4406deb67670">game::console::Drawable::getPosition</a></div><div class="ttdeci">math::Vec2&lt; int &gt; getPosition() const</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00270">ConsoleEngine.cpp:270</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_drawable_html_aeb247711951e68bbc1d79ac85d515fb9"><div class="ttname"><a href="classgame_1_1console_1_1_drawable.html#aeb247711951e68bbc1d79ac85d515fb9">game::console::Drawable::Drawable</a></div><div class="ttdeci">Drawable()=default</div><div class="ttdoc">Create a Drawable object.</div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_multi_sprite_html_a30583a784c95935a513d8a3fee350e3d"><div class="ttname"><a href="classgame_1_1console_1_1_multi_sprite.html#a30583a784c95935a513d8a3fee350e3d">game::console::MultiSprite::addSprite</a></div><div class="ttdeci">void addSprite(std::shared_ptr&lt; Sprite &gt; sprite)</div><div class="ttdoc">Add a Sprite at the end of the list.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00505">ConsoleEngine.cpp:505</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_multi_sprite_html_a32ef64731cab4cc99c889b462fbeac41"><div class="ttname"><a href="classgame_1_1console_1_1_multi_sprite.html#a32ef64731cab4cc99c889b462fbeac41">game::console::MultiSprite::needDraw</a></div><div class="ttdeci">bool needDraw() override</div><div class="ttdoc">Indicate to the ConsoleEngine if a draw is needed.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00519">ConsoleEngine.cpp:519</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_multi_sprite_html_a37d9cb4cb6fd979719f0ce99c556424e"><div class="ttname"><a href="classgame_1_1console_1_1_multi_sprite.html#a37d9cb4cb6fd979719f0ce99c556424e">game::console::MultiSprite::getCurrentSpriteIndex</a></div><div class="ttdeci">int getCurrentSpriteIndex() const</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00473">ConsoleEngine.cpp:473</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_multi_sprite_html_a3ca47d3cff1762cc1cfc3499612a7c6b"><div class="ttname"><a href="classgame_1_1console_1_1_multi_sprite.html#a3ca47d3cff1762cc1cfc3499612a7c6b">game::console::MultiSprite::load</a></div><div class="ttdeci">bool load(const std::vector&lt; std::string &gt; &amp;paths)</div><div class="ttdoc">Load a serie of Sprite by giving a list of paths.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00445">ConsoleEngine.cpp:445</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_multi_sprite_html_a5a3975a82cbbfb5c456c48aac14ebc63"><div class="ttname"><a href="classgame_1_1console_1_1_multi_sprite.html#a5a3975a82cbbfb5c456c48aac14ebc63">game::console::MultiSprite::setCurrentSpriteIndex</a></div><div class="ttdeci">bool setCurrentSpriteIndex(int index)</div><div class="ttdoc">Change the current Sprite, pass the needDraw flag to true.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00478">ConsoleEngine.cpp:478</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_multi_sprite_html_a68c59b476c054e0a2eeae439407f6740"><div class="ttname"><a href="classgame_1_1console_1_1_multi_sprite.html#a68c59b476c054e0a2eeae439407f6740">game::console::MultiSprite::draw</a></div><div class="ttdeci">void draw(ConsoleEngine &amp;ce) override</div><div class="ttdoc">Call the draw() method of the current Sprite.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00525">ConsoleEngine.cpp:525</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_multi_sprite_html_a8703004df44aa258a0a18732b9c2ce63"><div class="ttname"><a href="classgame_1_1console_1_1_multi_sprite.html#a8703004df44aa258a0a18732b9c2ce63">game::console::MultiSprite::getSpriteNumber</a></div><div class="ttdeci">int getSpriteNumber() const</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00468">ConsoleEngine.cpp:468</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_multi_sprite_html_ae67496e776069ae8002a3b9d8af00f52"><div class="ttname"><a href="classgame_1_1console_1_1_multi_sprite.html#ae67496e776069ae8002a3b9d8af00f52">game::console::MultiSprite::removeSprite</a></div><div class="ttdeci">void removeSprite(std::shared_ptr&lt; Sprite &gt; sprite)</div><div class="ttdoc">Remove a Sprite of the list.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00512">ConsoleEngine.cpp:512</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_multi_sprite_html_af0f2b09143acf32fca4d6aa8a59d6ac1"><div class="ttname"><a href="classgame_1_1console_1_1_multi_sprite.html#af0f2b09143acf32fca4d6aa8a59d6ac1">game::console::MultiSprite::getSpriteAt</a></div><div class="ttdeci">std::shared_ptr&lt; Sprite &gt; getSpriteAt(int index)</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00493">ConsoleEngine.cpp:493</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_sprite_html"><div class="ttname"><a href="classgame_1_1console_1_1_sprite.html">game::console::Sprite</a></div><div class="ttdoc">A Sprite is an ASCII image that can be displayed by the ConsoleEngine.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8hpp_source.html#l00295">ConsoleEngine.hpp:296</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_sprite_html_a18dcabe08ab1c19ebb637d008bf00892"><div class="ttname"><a href="classgame_1_1console_1_1_sprite.html#a18dcabe08ab1c19ebb637d008bf00892">game::console::Sprite::getPixel</a></div><div class="ttdeci">char getPixel(const math::Vec2&lt; int &gt; &amp;pos)</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00383">ConsoleEngine.cpp:383</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_sprite_html_a9da1bd6f5934899864b7070775704479"><div class="ttname"><a href="classgame_1_1console_1_1_sprite.html#a9da1bd6f5934899864b7070775704479">game::console::Sprite::load</a></div><div class="ttdeci">bool load(const std::string &amp;path)</div><div class="ttdoc">Load a Sprite from a file.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00309">ConsoleEngine.cpp:309</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_sprite_html_abe94491fedf8dfd6e5e0b9eda2e4b28e"><div class="ttname"><a href="classgame_1_1console_1_1_sprite.html#abe94491fedf8dfd6e5e0b9eda2e4b28e">game::console::Sprite::getErrType</a></div><div class="ttdeci">int getErrType() const</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00408">ConsoleEngine.cpp:408</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_sprite_html_ad28881ed992a34aecf313ea069ea6318"><div class="ttname"><a href="classgame_1_1console_1_1_sprite.html#ad28881ed992a34aecf313ea069ea6318">game::console::Sprite::writeText</a></div><div class="ttdeci">bool writeText(const math::Vec2&lt; int &gt; &amp;pos, const std::string &amp;txt)</div><div class="ttdoc">Write a text in the Sprite.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00392">ConsoleEngine.cpp:392</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_sprite_html_ae8f40905a0edd3422a4008f2ad8eb532"><div class="ttname"><a href="classgame_1_1console_1_1_sprite.html#ae8f40905a0edd3422a4008f2ad8eb532">game::console::Sprite::draw</a></div><div class="ttdeci">void draw(ConsoleEngine &amp;ce) override</div><div class="ttdoc">Draw the Sprite in the pixels buffer of the given ConsoleEngine.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00413">ConsoleEngine.cpp:413</a></div></div>
+<div class="ttc" id="aclassgame_1_1console_1_1_sprite_html_aef5ef4f5020f569317f4f878594ac07e"><div class="ttname"><a href="classgame_1_1console_1_1_sprite.html#aef5ef4f5020f569317f4f878594ac07e">game::console::Sprite::setPixel</a></div><div class="ttdeci">bool setPixel(const math::Vec2&lt; int &gt; &amp;pos, char px)</div><div class="ttdoc">Change a pixel at the specified position.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00372">ConsoleEngine.cpp:372</a></div></div>
 <div class="ttc" id="aclassgame_1_1events_1_1_console_key_pressed_event_html"><div class="ttname"><a href="classgame_1_1events_1_1_console_key_pressed_event.html">game::events::ConsoleKeyPressedEvent</a></div><div class="ttdoc">Processed when a terminal key is pressed.</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00081">Event.hpp:82</a></div></div>
 <div class="ttc" id="aclassgame_1_1math_1_1_vec2_html"><div class="ttname"><a href="classgame_1_1math_1_1_vec2.html">game::math::Vec2&lt; int &gt;</a></div></div>
 <div class="ttc" id="aclassgame_1_1math_1_1_vec2_html_a3721c20991966a6b94a714e7492e1df9"><div class="ttname"><a href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">game::math::Vec2::x</a></div><div class="ttdeci">T &amp; x()</div><div class="ttdef"><b>Definition:</b> <a href="_vec2_8hpp_source.html#l00057">Vec2.hpp:57</a></div></div>
 <div class="ttc" id="aclassgame_1_1math_1_1_vec2_html_a62786a283e106d87da009b9d155c076d"><div class="ttname"><a href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">game::math::Vec2::y</a></div><div class="ttdeci">T &amp; y()</div><div class="ttdef"><b>Definition:</b> <a href="_vec2_8hpp_source.html#l00065">Vec2.hpp:65</a></div></div>
-<div class="ttc" id="anamespacegame_1_1console_html"><div class="ttname"><a href="namespacegame_1_1console.html">game::console</a></div><div class="ttdoc">Namespace of console engine.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00073">ConsoleEngine.cpp:74</a></div></div>
+<div class="ttc" id="anamespacegame_1_1console_html"><div class="ttname"><a href="namespacegame_1_1console.html">game::console</a></div><div class="ttdoc">Namespace of console engine.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00075">ConsoleEngine.cpp:76</a></div></div>
 <div class="ttc" id="anamespacegame_1_1console_html_a32065d91d5dd176c17e9e2622088e8ca"><div class="ttname"><a href="namespacegame_1_1console.html#a32065d91d5dd176c17e9e2622088e8ca">game::console::LAYERS_NUMBER</a></div><div class="ttdeci">const int LAYERS_NUMBER</div><div class="ttdoc">Number of layers the sprites can be drawed on.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8hpp_source.html#l00034">ConsoleEngine.hpp:34</a></div></div>
 <div class="ttc" id="anamespacegame_1_1events_html"><div class="ttname"><a href="namespacegame_1_1events.html">game::events</a></div><div class="ttdoc">Events system namespace.</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00017">Event.hpp:18</a></div></div>
+<div class="ttc" id="anamespacegame_1_1logs_html"><div class="ttname"><a href="namespacegame_1_1logs.html">game::logs</a></div><div class="ttdoc">Logger namespace.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00019">Logger.cpp:20</a></div></div>
+<div class="ttc" id="anamespacegame_1_1logs_html_a7815834a94e406a5b7fa8bd5305b2343"><div class="ttname"><a href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">game::logs::endlog</a></div><div class="ttdeci">ios_base &amp; endlog(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00251">Logger.cpp:251</a></div></div>
+<div class="ttc" id="anamespacegame_1_1logs_html_acda173634be088930af43767b63f95d6"><div class="ttname"><a href="namespacegame_1_1logs.html#acda173634be088930af43767b63f95d6">game::logs::severe</a></div><div class="ttdeci">ios_base &amp; severe(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00239">Logger.cpp:239</a></div></div>
 <div class="ttc" id="anamespacegame_1_1math_html"><div class="ttname"><a href="namespacegame_1_1math.html">game::math</a></div><div class="ttdoc">Namespace of mathematic content.</div><div class="ttdef"><b>Definition:</b> <a href="_vec2_8hpp_source.html#l00015">Vec2.hpp:16</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

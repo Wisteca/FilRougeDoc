@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['entity_187',['Entity',['../classgame_1_1entity_1_1_entity.html',1,'game::entity']]],
-  ['event_188',['Event',['../classgame_1_1events_1_1_event.html',1,'game::events']]],
-  ['eventlistener_189',['EventListener',['../classgame_1_1events_1_1_event_listener.html',1,'game::events']]],
-  ['eventmanager_190',['EventManager',['../classgame_1_1events_1_1_event_manager.html',1,'game::events']]]
+  ['drawable_199',['Drawable',['../classgame_1_1console_1_1_drawable.html',1,'game::console']]]
 ];

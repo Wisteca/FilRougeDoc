@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['skill_197',['Skill',['../classgame_1_1skills_1_1_skill.html',1,'game::skills']]],
-  ['skillsset_198',['SkillsSet',['../classgame_1_1skills_1_1_skills_set.html',1,'game::skills']]],
-  ['skilltype_199',['SkillType',['../classgame_1_1skills_1_1_skill_type.html',1,'game::skills']]],
-  ['sprite_200',['Sprite',['../classgame_1_1console_1_1_sprite.html',1,'game::console']]]
+  ['meleeweapon_208',['MeleeWeapon',['../classgame_1_1items_1_1_melee_weapon.html',1,'game::items']]],
+  ['moveevent_209',['MoveEvent',['../classgame_1_1events_1_1_move_event.html',1,'game::events']]],
+  ['multisprite_210',['MultiSprite',['../classgame_1_1console_1_1_multi_sprite.html',1,'game::console']]]
 ];
