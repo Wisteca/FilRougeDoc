@@ -106,9 +106,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const 
 virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1console_1_1_multi_sprite.html#a00ff00e7da9322bbd10336a21a912a9d">~MultiSprite</a> ()=default</td></tr>
 <tr class="memdesc:a00ff00e7da9322bbd10336a21a912a9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete object and associated sprites (via the use of smart pointers) <br /></td></tr>
 <tr class="separator:a00ff00e7da9322bbd10336a21a912a9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ca47d3cff1762cc1cfc3499612a7c6b"><td class="memItemLeft" align="right" valign="top"><a id="a3ca47d3cff1762cc1cfc3499612a7c6b"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1console_1_1_multi_sprite.html#a3ca47d3cff1762cc1cfc3499612a7c6b">load</a> (const std::vector&lt; std::string &gt; &amp;paths)</td></tr>
-<tr class="memdesc:a3ca47d3cff1762cc1cfc3499612a7c6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a serie of <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> by giving a list of paths. <br /></td></tr>
+<tr class="memitem:a3ca47d3cff1762cc1cfc3499612a7c6b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1console_1_1_multi_sprite.html#a3ca47d3cff1762cc1cfc3499612a7c6b">load</a> (const std::vector&lt; std::string &gt; &amp;paths)</td></tr>
+<tr class="memdesc:a3ca47d3cff1762cc1cfc3499612a7c6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a serie of <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> by giving a list of paths.  <a href="classgame_1_1console_1_1_multi_sprite.html#a3ca47d3cff1762cc1cfc3499612a7c6b">More...</a><br /></td></tr>
 <tr class="separator:a3ca47d3cff1762cc1cfc3499612a7c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8703004df44aa258a0a18732b9c2ce63"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1console_1_1_multi_sprite.html#a8703004df44aa258a0a18732b9c2ce63">getSpriteNumber</a> () const</td></tr>
 <tr class="separator:a8703004df44aa258a0a18732b9c2ce63"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,6 +203,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Create a <a class="el" href="classgame_1_1console_1_1_multi_sprite.html" title="MultiSprite implementation. This Drawable object can display different Sprite regarding the index val...">MultiSprite</a> and load some <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a>. </p>
+<p>Note that the size of the first loaded <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> become the size of the <a class="el" href="classgame_1_1console_1_1_multi_sprite.html" title="MultiSprite implementation. This Drawable object can display different Sprite regarding the index val...">MultiSprite</a>.</p>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname"><a class="el" href="classgame_1_1console_1_1_console_engine_exception.html" title="Custom error class for the ConsoleEngine operations.">ConsoleEngineException</a></td><td>if a load fails </td></tr>
@@ -232,7 +232,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>The index of the current displayed <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_console_engine_8cpp_source.html#l00473">473</a> of file <a class="el" href="_console_engine_8cpp_source.html">ConsoleEngine.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_console_engine_8cpp_source.html#l00480">480</a> of file <a class="el" href="_console_engine_8cpp_source.html">ConsoleEngine.cpp</a>.</p>
 
 </div>
 </div>
@@ -253,7 +253,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>A reference on the <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> at given index or nullptr if the index is out of range </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_console_engine_8cpp_source.html#l00493">493</a> of file <a class="el" href="_console_engine_8cpp_source.html">ConsoleEngine.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_console_engine_8cpp_source.html#l00500">500</a> of file <a class="el" href="_console_engine_8cpp_source.html">ConsoleEngine.cpp</a>.</p>
 
 </div>
 </div>
@@ -273,7 +273,36 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>Number of loaded <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_console_engine_8cpp_source.html#l00468">468</a> of file <a class="el" href="_console_engine_8cpp_source.html">ConsoleEngine.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_console_engine_8cpp_source.html#l00475">475</a> of file <a class="el" href="_console_engine_8cpp_source.html">ConsoleEngine.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3ca47d3cff1762cc1cfc3499612a7c6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ca47d3cff1762cc1cfc3499612a7c6b">&#9670;&nbsp;</a></span>load()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool game::console::MultiSprite::load </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>paths</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Load a serie of <a class="el" href="classgame_1_1console_1_1_sprite.html" title="A Sprite is an ASCII image that can be displayed by the ConsoleEngine.">Sprite</a> by giving a list of paths. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classgame_1_1console_1_1_console_engine_exception.html" title="Custom error class for the ConsoleEngine operations.">ConsoleEngineException</a></td><td>if a load fails </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>false if success </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_console_engine_8cpp_source.html#l00446">446</a> of file <a class="el" href="_console_engine_8cpp_source.html">ConsoleEngine.cpp</a>.</p>
 
 </div>
 </div>
