@@ -4,9 +4,7 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node22 [label="std::ostream",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
-  Node22 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node0 [label="game::logs::Logger",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1logs_1_1_logger.html",tooltip="Singleton Logger."];
-  Node26 [label="std::streambuf",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
-  Node26 -> Node0 [dir="back",color="firebrick4",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="game::io::IOSerializer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1io_1_1_i_o_serializer.html",tooltip="Interface each class that can be serialized/deserialized from a xml file must implement."];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="game::skills::SkillsSet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1skills_1_1_skills_set.html",tooltip="A set of all skills each Entity has with useful methods to manage them."];
 }

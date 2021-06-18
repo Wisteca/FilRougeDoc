@@ -118,45 +118,51 @@ $(function() {
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        private :</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordtype">char</span> m_c; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        public :</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keyword">inline</span> <a class="code" href="classgame_1_1events_1_1_console_key_pressed_event.html">ConsoleKeyPressedEvent</a>(<span class="keywordtype">char</span> c) : m_c(c)</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        {}</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keyword">inline</span> <span class="keywordtype">char</span> getChar()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">        </span>{</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordflow">return</span> m_c;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="classgame_1_1events_1_1_console_key_pressed_event.html#a29892755c3f5bc6d2b144bec2ed70aca">   97</a></span>&#160;        <span class="keyword">inline</span> <a class="code" href="namespacegame_1_1events.html#a378c3475a4b95a6338894957e852bf5b">EventType</a> <a class="code" href="classgame_1_1events_1_1_console_key_pressed_event.html#a29892755c3f5bc6d2b144bec2ed70aca">getEventType</a>()<span class="keyword"> const override</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">        </span>{</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="namespacegame_1_1events.html#a378c3475a4b95a6338894957e852bf5ba6d29b25691f358d6e36bdb19eef5e513">EventType::CONSOLE_KEY_PRESSED</a>;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        }</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    };</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordtype">bool</span> m_pressed; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        public :</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keyword">inline</span> <a class="code" href="classgame_1_1events_1_1_console_key_pressed_event.html">ConsoleKeyPressedEvent</a>(<span class="keywordtype">char</span> c, <span class="keywordtype">bool</span> pressed) : m_c(c), m_pressed(pressed)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        {}</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keyword">inline</span> <span class="keywordtype">char</span> getChar()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">return</span> m_c;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keyword">inline</span> <span class="keywordtype">char</span> isPressed()</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordflow">return</span> m_pressed;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="classgame_1_1events_1_1_attack_event.html">  106</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1events_1_1_attack_event.html">AttackEvent</a> : <span class="keyword">public</span> <a class="code" href="classgame_1_1events_1_1_event.html">Event</a></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keyword">inline</span> <a class="code" href="namespacegame_1_1events.html#a378c3475a4b95a6338894957e852bf5b">EventType</a> getEventType()<span class="keyword"> const override</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keyword">        </span>{</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="namespacegame_1_1events.html#a378c3475a4b95a6338894957e852bf5ba5f230435435ee85627b3adab7f153bf1">EventType::ATTACK_EVENT</a>;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    };</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="classgame_1_1events_1_1_move_event.html">  117</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1events_1_1_move_event.html">MoveEvent</a> : <span class="keyword">public</span> <a class="code" href="classgame_1_1events_1_1_event.html">Event</a></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keyword">inline</span> <a class="code" href="namespacegame_1_1events.html#a378c3475a4b95a6338894957e852bf5b">EventType</a> getEventType()<span class="keyword"> const override</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keyword">        </span>{</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="namespacegame_1_1events.html#a378c3475a4b95a6338894957e852bf5ba673be2311ba748257d183a7b90dfd14b">EventType::MOVE_EVENT</a>;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        }</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    };</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}</div>
-<div class="ttc" id="aclassgame_1_1events_1_1_attack_event_html"><div class="ttname"><a href="classgame_1_1events_1_1_attack_event.html">game::events::AttackEvent</a></div><div class="ttdoc">Processed when an entity attacks another.</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00106">Event.hpp:107</a></div></div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="classgame_1_1events_1_1_console_key_pressed_event.html#a29892755c3f5bc6d2b144bec2ed70aca">  103</a></span>&#160;        <span class="keyword">inline</span> <a class="code" href="namespacegame_1_1events.html#a378c3475a4b95a6338894957e852bf5b">EventType</a> <a class="code" href="classgame_1_1events_1_1_console_key_pressed_event.html#a29892755c3f5bc6d2b144bec2ed70aca">getEventType</a>()<span class="keyword"> const override</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="namespacegame_1_1events.html#a378c3475a4b95a6338894957e852bf5ba6d29b25691f358d6e36bdb19eef5e513">EventType::CONSOLE_KEY_PRESSED</a>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    };</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="classgame_1_1events_1_1_attack_event.html">  112</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1events_1_1_attack_event.html">AttackEvent</a> : <span class="keyword">public</span> <a class="code" href="classgame_1_1events_1_1_event.html">Event</a></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keyword">inline</span> <a class="code" href="namespacegame_1_1events.html#a378c3475a4b95a6338894957e852bf5b">EventType</a> getEventType()<span class="keyword"> const override</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="namespacegame_1_1events.html#a378c3475a4b95a6338894957e852bf5ba5f230435435ee85627b3adab7f153bf1">EventType::ATTACK_EVENT</a>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    };</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="classgame_1_1events_1_1_move_event.html">  123</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1events_1_1_move_event.html">MoveEvent</a> : <span class="keyword">public</span> <a class="code" href="classgame_1_1events_1_1_event.html">Event</a></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keyword">inline</span> <a class="code" href="namespacegame_1_1events.html#a378c3475a4b95a6338894957e852bf5b">EventType</a> getEventType()<span class="keyword"> const override</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="namespacegame_1_1events.html#a378c3475a4b95a6338894957e852bf5ba673be2311ba748257d183a7b90dfd14b">EventType::MOVE_EVENT</a>;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    };</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}</div>
+<div class="ttc" id="aclassgame_1_1events_1_1_attack_event_html"><div class="ttname"><a href="classgame_1_1events_1_1_attack_event.html">game::events::AttackEvent</a></div><div class="ttdoc">Processed when an entity attacks another.</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00112">Event.hpp:113</a></div></div>
 <div class="ttc" id="aclassgame_1_1events_1_1_console_key_pressed_event_html"><div class="ttname"><a href="classgame_1_1events_1_1_console_key_pressed_event.html">game::events::ConsoleKeyPressedEvent</a></div><div class="ttdoc">Processed when a terminal key is pressed.</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00081">Event.hpp:82</a></div></div>
-<div class="ttc" id="aclassgame_1_1events_1_1_console_key_pressed_event_html_a29892755c3f5bc6d2b144bec2ed70aca"><div class="ttname"><a href="classgame_1_1events_1_1_console_key_pressed_event.html#a29892755c3f5bc6d2b144bec2ed70aca">game::events::ConsoleKeyPressedEvent::getEventType</a></div><div class="ttdeci">EventType getEventType() const override</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00097">Event.hpp:97</a></div></div>
+<div class="ttc" id="aclassgame_1_1events_1_1_console_key_pressed_event_html_a29892755c3f5bc6d2b144bec2ed70aca"><div class="ttname"><a href="classgame_1_1events_1_1_console_key_pressed_event.html#a29892755c3f5bc6d2b144bec2ed70aca">game::events::ConsoleKeyPressedEvent::getEventType</a></div><div class="ttdeci">EventType getEventType() const override</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00103">Event.hpp:103</a></div></div>
 <div class="ttc" id="aclassgame_1_1events_1_1_event_html"><div class="ttname"><a href="classgame_1_1events_1_1_event.html">game::events::Event</a></div><div class="ttdoc">Superclass of any event.</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00051">Event.hpp:52</a></div></div>
 <div class="ttc" id="aclassgame_1_1events_1_1_event_html_a1e239d878e53fba9ea854eb057a73bb4"><div class="ttname"><a href="classgame_1_1events_1_1_event.html#a1e239d878e53fba9ea854eb057a73bb4">game::events::Event::getEventTypeName</a></div><div class="ttdeci">const char * getEventTypeName() const</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00068">Event.hpp:68</a></div></div>
 <div class="ttc" id="aclassgame_1_1events_1_1_event_html_a9b9d5a06cb6826c25830d303275d0e1e"><div class="ttname"><a href="classgame_1_1events_1_1_event.html#a9b9d5a06cb6826c25830d303275d0e1e">game::events::Event::getEventType</a></div><div class="ttdeci">virtual EventType getEventType() const =0</div></div>
-<div class="ttc" id="aclassgame_1_1events_1_1_move_event_html"><div class="ttname"><a href="classgame_1_1events_1_1_move_event.html">game::events::MoveEvent</a></div><div class="ttdoc">Processed when an entity moves.</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00117">Event.hpp:118</a></div></div>
+<div class="ttc" id="aclassgame_1_1events_1_1_move_event_html"><div class="ttname"><a href="classgame_1_1events_1_1_move_event.html">game::events::MoveEvent</a></div><div class="ttdoc">Processed when an entity moves.</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00123">Event.hpp:124</a></div></div>
 <div class="ttc" id="anamespacegame_1_1events_html"><div class="ttname"><a href="namespacegame_1_1events.html">game::events</a></div><div class="ttdoc">Events system namespace.</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00017">Event.hpp:18</a></div></div>
 <div class="ttc" id="anamespacegame_1_1events_html_a378c3475a4b95a6338894957e852bf5b"><div class="ttname"><a href="namespacegame_1_1events.html#a378c3475a4b95a6338894957e852bf5b">game::events::EventType</a></div><div class="ttdeci">EventType</div><div class="ttdoc">Enumeration of all types of events.</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00022">Event.hpp:23</a></div></div>
 <div class="ttc" id="anamespacegame_1_1events_html_a378c3475a4b95a6338894957e852bf5ba5f230435435ee85627b3adab7f153bf1"><div class="ttname"><a href="namespacegame_1_1events.html#a378c3475a4b95a6338894957e852bf5ba5f230435435ee85627b3adab7f153bf1">game::events::EventType::ATTACK_EVENT</a></div><div class="ttdeci">@ ATTACK_EVENT</div></div>

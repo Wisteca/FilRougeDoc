@@ -91,7 +91,9 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="separator:a55dd07571cb899824ee9e6c34b7b0593"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fee7da9f2156b46babb8c3b4d1b56a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1events_1_1_event_manager.html#a4fee7da9f2156b46babb8c3b4d1b56a8">addListener</a> (<a class="el" href="classgame_1_1events_1_1_event_listener.html">EventListener</a> *listener)</td></tr>
 <tr class="separator:a4fee7da9f2156b46babb8c3b4d1b56a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec18bd5bf857e8c5d297e4cc57fd258b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1events_1_1_event_manager.html#aec18bd5bf857e8c5d297e4cc57fd258b">removeListener</a> (<a class="el" href="classgame_1_1events_1_1_event_listener.html">EventListener</a> *listener)</td></tr>
+<tr class="memitem:aec18bd5bf857e8c5d297e4cc57fd258b"><td class="memItemLeft" align="right" valign="top"><a id="aec18bd5bf857e8c5d297e4cc57fd258b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1events_1_1_event_manager.html#aec18bd5bf857e8c5d297e4cc57fd258b">removeListener</a> (<a class="el" href="classgame_1_1events_1_1_event_listener.html">EventListener</a> *listener)</td></tr>
+<tr class="memdesc:aec18bd5bf857e8c5d297e4cc57fd258b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unregister a listener. <br /></td></tr>
 <tr class="separator:aec18bd5bf857e8c5d297e4cc57fd258b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
@@ -106,18 +108,18 @@ Static Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This singleton manages events processing. </p>
 <p>It puts each event in a queue on call of <a class="el" href="classgame_1_1events_1_1_event_manager.html#a3c04c7e2a634dff0b142eb85d4f71fcf">pushEvent()</a>. On each call of <a class="el" href="classgame_1_1events_1_1_event_manager.html#a55dd07571cb899824ee9e6c34b7b0593">processEvents()</a>, all waiting events are processed one by one in the order they was added (FIFO).</p>
-<p>When processing an event, the method onEvent() of each listener present in the list is called. Use <a class="el" href="classgame_1_1events_1_1_event_manager.html#a4fee7da9f2156b46babb8c3b4d1b56a8">addListener()</a> and <a class="el" href="classgame_1_1events_1_1_event_manager.html#aec18bd5bf857e8c5d297e4cc57fd258b">removeListener()</a> to register/unregister a listener.</p>
+<p>When processing an event, the method onEvent() of each listener present in the list is called. Use <a class="el" href="classgame_1_1events_1_1_event_manager.html#a4fee7da9f2156b46babb8c3b4d1b56a8">addListener()</a> to register a listener.</p>
 <p>Example : </p><div class="fragment"><div class="line"><a class="code" href="classgame_1_1events_1_1_event_manager.html#a6d450b5cbd0aa6b60f406adef39bf408">EventManager::start</a>(); <span class="comment">// Don&#39;t forget to call start() to create the singleton, otherwise getInstance() will return nullptr</span></div>
 <div class="line"> </div>
 <div class="line"><a class="code" href="classgame_1_1events_1_1_event_manager.html#a51e7fd9f2b02421909929350512f9ebb">EventManager::getInstance</a>()-&gt;pushEvent(<span class="keyword">new</span> AttackEvent()); <span class="comment">// Push an event in the queue</span></div>
 <div class="line"><a class="code" href="classgame_1_1events_1_1_event_manager.html#a51e7fd9f2b02421909929350512f9ebb">EventManager::getInstance</a>()-&gt;processEvents(); <span class="comment">// onEvent() of each listener is called with a pointer to the AttackEvent as argument</span></div>
 <div class="line"> </div>
 <div class="line"><a class="code" href="classgame_1_1events_1_1_event_manager.html#a2b8aebd2093feb6406998ff041b649fc">EventManager::end</a>(); <span class="comment">// Destroy the manager, free memory</span></div>
-<div class="ttc" id="aclassgame_1_1events_1_1_event_manager_html_a2b8aebd2093feb6406998ff041b649fc"><div class="ttname"><a href="classgame_1_1events_1_1_event_manager.html#a2b8aebd2093feb6406998ff041b649fc">game::events::EventManager::end</a></div><div class="ttdeci">static void end()</div><div class="ttdef"><b>Definition:</b> <a href="_event_manager_8cpp_source.html#l00066">EventManager.cpp:66</a></div></div>
-<div class="ttc" id="aclassgame_1_1events_1_1_event_manager_html_a51e7fd9f2b02421909929350512f9ebb"><div class="ttname"><a href="classgame_1_1events_1_1_event_manager.html#a51e7fd9f2b02421909929350512f9ebb">game::events::EventManager::getInstance</a></div><div class="ttdeci">static std::shared_ptr&lt; EventManager &gt; getInstance()</div><div class="ttdef"><b>Definition:</b> <a href="_event_manager_8cpp_source.html#l00061">EventManager.cpp:61</a></div></div>
-<div class="ttc" id="aclassgame_1_1events_1_1_event_manager_html_a6d450b5cbd0aa6b60f406adef39bf408"><div class="ttname"><a href="classgame_1_1events_1_1_event_manager.html#a6d450b5cbd0aa6b60f406adef39bf408">game::events::EventManager::start</a></div><div class="ttdeci">static void start()</div><div class="ttdef"><b>Definition:</b> <a href="_event_manager_8cpp_source.html#l00056">EventManager.cpp:56</a></div></div>
+<div class="ttc" id="aclassgame_1_1events_1_1_event_manager_html_a2b8aebd2093feb6406998ff041b649fc"><div class="ttname"><a href="classgame_1_1events_1_1_event_manager.html#a2b8aebd2093feb6406998ff041b649fc">game::events::EventManager::end</a></div><div class="ttdeci">static void end()</div><div class="ttdef"><b>Definition:</b> <a href="_event_manager_8cpp_source.html#l00068">EventManager.cpp:68</a></div></div>
+<div class="ttc" id="aclassgame_1_1events_1_1_event_manager_html_a51e7fd9f2b02421909929350512f9ebb"><div class="ttname"><a href="classgame_1_1events_1_1_event_manager.html#a51e7fd9f2b02421909929350512f9ebb">game::events::EventManager::getInstance</a></div><div class="ttdeci">static std::shared_ptr&lt; EventManager &gt; getInstance()</div><div class="ttdef"><b>Definition:</b> <a href="_event_manager_8cpp_source.html#l00063">EventManager.cpp:63</a></div></div>
+<div class="ttc" id="aclassgame_1_1events_1_1_event_manager_html_a6d450b5cbd0aa6b60f406adef39bf408"><div class="ttname"><a href="classgame_1_1events_1_1_event_manager.html#a6d450b5cbd0aa6b60f406adef39bf408">game::events::EventManager::start</a></div><div class="ttdeci">static void start()</div><div class="ttdef"><b>Definition:</b> <a href="_event_manager_8cpp_source.html#l00058">EventManager.cpp:58</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="_event_manager_8hpp_source.html#l00104">104</a> of file <a class="el" href="_event_manager_8hpp_source.html">EventManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_event_manager_8hpp_source.html#l00103">103</a> of file <a class="el" href="_event_manager_8hpp_source.html">EventManager.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a4fee7da9f2156b46babb8c3b4d1b56a8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4fee7da9f2156b46babb8c3b4d1b56a8">&#9670;&nbsp;</a></span>addListener()</h2>
@@ -141,7 +143,7 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_event_manager_8cpp_source.html#l00044">44</a> of file <a class="el" href="_event_manager_8cpp_source.html">EventManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_event_manager_8cpp_source.html#l00046">46</a> of file <a class="el" href="_event_manager_8cpp_source.html">EventManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -169,7 +171,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Delete the singleton, free memory. </p>
 
-<p class="definition">Definition at line <a class="el" href="_event_manager_8cpp_source.html#l00066">66</a> of file <a class="el" href="_event_manager_8cpp_source.html">EventManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_event_manager_8cpp_source.html#l00068">68</a> of file <a class="el" href="_event_manager_8cpp_source.html">EventManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -197,7 +199,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>A pointer on the singleton instance, the pointer can be empty if it wasn't initialized </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_event_manager_8cpp_source.html#l00061">61</a> of file <a class="el" href="_event_manager_8cpp_source.html">EventManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_event_manager_8cpp_source.html#l00063">63</a> of file <a class="el" href="_event_manager_8cpp_source.html">EventManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -247,32 +249,6 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aec18bd5bf857e8c5d297e4cc57fd258b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec18bd5bf857e8c5d297e4cc57fd258b">&#9670;&nbsp;</a></span>removeListener()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void game::events::EventManager::removeListener </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classgame_1_1events_1_1_event_listener.html">EventListener</a> *&#160;</td>
-          <td class="paramname"><em>listener</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Ungegister a listener. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">listener</td><td>Pointer on the listener object to remove </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="_event_manager_8cpp_source.html#l00050">50</a> of file <a class="el" href="_event_manager_8cpp_source.html">EventManager.cpp</a>.</p>
-
-</div>
-</div>
 <a id="a6d450b5cbd0aa6b60f406adef39bf408"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6d450b5cbd0aa6b60f406adef39bf408">&#9670;&nbsp;</a></span>start()</h2>
 
@@ -297,7 +273,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Create the singleton, initialize it. </p>
 
-<p class="definition">Definition at line <a class="el" href="_event_manager_8cpp_source.html#l00056">56</a> of file <a class="el" href="_event_manager_8cpp_source.html">EventManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_event_manager_8cpp_source.html#l00058">58</a> of file <a class="el" href="_event_manager_8cpp_source.html">EventManager.cpp</a>.</p>
 
 </div>
 </div>

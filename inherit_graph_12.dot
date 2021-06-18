@@ -4,5 +4,9 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="game::math::Vec2\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1math_1_1_vec2.html",tooltip="2D vector (x,y) with useful methods to use it"];
+  Node27 [label="std::ostream",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node27 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="game::logs::Logger",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1logs_1_1_logger.html",tooltip="Singleton Logger."];
+  Node31 [label="std::streambuf",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node31 -> Node0 [dir="back",color="firebrick4",fontsize="10",style="solid",fontname="Helvetica"];
 }

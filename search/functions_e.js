@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['targetdodge_329',['targetDodge',['../classgame_1_1entity_1_1_attack_computer.html#a01fb47cfad8ec0afab563f9569a8092c',1,'game::entity::AttackComputer']]],
-  ['targetprotection_330',['targetProtection',['../classgame_1_1entity_1_1_attack_computer.html#a2539f26f854c3d7a29b92e36fe6ffb39',1,'game::entity::AttackComputer']]]
+  ['targetdodge_357',['targetDodge',['../classgame_1_1core_1_1_attack_computer.html#ada83b3f4214fcd0e5a090eee1aeb2f03',1,'game::core::AttackComputer']]],
+  ['targetprotection_358',['targetProtection',['../classgame_1_1core_1_1_attack_computer.html#a4d8bc43a10504bfb66bbb882bf812c76',1,'game::core::AttackComputer']]]
 ];

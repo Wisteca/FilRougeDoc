@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>FilRouge: src/AttackComputer.hpp File Reference</title>
+<title>FilRouge: src/gameCore/AttackComputer.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_6f4c0978ff3438ba88815611a39f4c2d.html">gameCore</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -77,52 +77,54 @@ $(function() {
 
 <p>This is a class used to simplify and generalize attack computing while keeping it the most flexible possible.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="_entity_8hpp_source.html">Entity.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="_game_entity_8hpp_source.html">GameEntity.hpp</a>&quot;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for AttackComputer.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="_attack_computer_8hpp__incl.png" border="0" usemap="#asrc_2_attack_computer_8hpp" alt=""/></div>
+<div class="center"><img src="_attack_computer_8hpp__incl.png" border="0" usemap="#asrc_2game_core_2_attack_computer_8hpp" alt=""/></div>
+<!-- MAP 0 -->
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="_attack_computer_8hpp__dep__incl.png" border="0" usemap="#asrc_2_attack_computer_8hppdep" alt=""/></div>
+<div class="center"><img src="_attack_computer_8hpp__dep__incl.png" border="0" usemap="#asrc_2game_core_2_attack_computer_8hppdep" alt=""/></div>
+<!-- MAP 1 -->
 </div>
 </div>
 <p><a href="_attack_computer_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1entity_1_1_attack_computer.html">game::entity::AttackComputer</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provide utility methods to compute an attack.  <a href="classgame_1_1entity_1_1_attack_computer.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_attack_computer.html">game::core::AttackComputer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provide utility methods to compute an attack.  <a href="classgame_1_1core_1_1_attack_computer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:namespacegame_1_1entity_1_1attack__rules"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame_1_1entity_1_1attack__rules.html">game::entity::attack_rules</a></td></tr>
-<tr class="memdesc:namespacegame_1_1entity_1_1attack__rules"><td class="mdescLeft">&#160;</td><td class="mdescRight">Some constants used in attack computing. <br /></td></tr>
+<tr class="memitem:namespacegame_1_1core_1_1attack__rules"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame_1_1core_1_1attack__rules.html">game::core::attack_rules</a></td></tr>
+<tr class="memdesc:namespacegame_1_1core_1_1attack__rules"><td class="mdescLeft">&#160;</td><td class="mdescRight">Some constants used in attack computing. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a7b82b7725a82f30933389dcaec020bec"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_attack_computer_8hpp.html#a7b82b7725a82f30933389dcaec020bec">game::entity::AttackType</a> { <a class="el" href="_attack_computer_8hpp.html#a7b82b7725a82f30933389dcaec020beca46f3323afb82175472048e652d67b3af">MAGICAL_ATTACK</a>
-, <a class="el" href="_attack_computer_8hpp.html#a7b82b7725a82f30933389dcaec020beca1be626fd98929c19a89625bf986765ea">WEAPON_ATTACK</a>
-, <a class="el" href="_attack_computer_8hpp.html#a7b82b7725a82f30933389dcaec020becac9b1d5c07866022609e266c7acd5e3c0">HANDS_ATTACK</a>
+<tr class="memitem:ad4c884df87542938ad82475aee29517a"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_attack_computer_8hpp.html#ad4c884df87542938ad82475aee29517a">game::core::AttackType</a> { <a class="el" href="_attack_computer_8hpp.html#ad4c884df87542938ad82475aee29517aa46f3323afb82175472048e652d67b3af">MAGICAL_ATTACK</a>
+, <a class="el" href="_attack_computer_8hpp.html#ad4c884df87542938ad82475aee29517aa1be626fd98929c19a89625bf986765ea">WEAPON_ATTACK</a>
+, <a class="el" href="_attack_computer_8hpp.html#ad4c884df87542938ad82475aee29517aac9b1d5c07866022609e266c7acd5e3c0">HANDS_ATTACK</a>
  }</td></tr>
-<tr class="memdesc:a7b82b7725a82f30933389dcaec020bec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum of differents types of attack.  <a href="_attack_computer_8hpp.html#a7b82b7725a82f30933389dcaec020bec">More...</a><br /></td></tr>
-<tr class="separator:a7b82b7725a82f30933389dcaec020bec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:ad4c884df87542938ad82475aee29517a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum of differents types of attack.  <a href="_attack_computer_8hpp.html#ad4c884df87542938ad82475aee29517a">More...</a><br /></td></tr>
+<tr class="separator:ad4c884df87542938ad82475aee29517a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ae8ef9443d8f32d09592703f1dc4562b4"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame_1_1entity_1_1attack__rules.html#ae8ef9443d8f32d09592703f1dc4562b4">game::entity::attack_rules::ATTACK_SKILL_FACTOR</a> = 10.</td></tr>
-<tr class="separator:ae8ef9443d8f32d09592703f1dc4562b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26c21f9bce17a05fea3b88a3265a9060"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame_1_1entity_1_1attack__rules.html#a26c21f9bce17a05fea3b88a3265a9060">game::entity::attack_rules::MAX_CRITICAL_LUCK</a> = 100</td></tr>
-<tr class="separator:a26c21f9bce17a05fea3b88a3265a9060"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f7d44de79feab3d53ffbf22d29e9089"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame_1_1entity_1_1attack__rules.html#a8f7d44de79feab3d53ffbf22d29e9089">game::entity::attack_rules::CRITICAL_FACTOR_DIVIDER</a> = 100.</td></tr>
-<tr class="separator:a8f7d44de79feab3d53ffbf22d29e9089"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b8a99c4a727e54004290d4fa01226f3"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame_1_1entity_1_1attack__rules.html#a9b8a99c4a727e54004290d4fa01226f3">game::entity::attack_rules::DODGE_SCALE</a> = 0.25</td></tr>
-<tr class="separator:a9b8a99c4a727e54004290d4fa01226f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25ef1eb503bfca65e59ca742ee4f8347"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame_1_1core_1_1attack__rules.html#a25ef1eb503bfca65e59ca742ee4f8347">game::core::attack_rules::ATTACK_SKILL_FACTOR</a> = 10.</td></tr>
+<tr class="separator:a25ef1eb503bfca65e59ca742ee4f8347"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68686ade28478ae0589a639f0d8bd445"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame_1_1core_1_1attack__rules.html#a68686ade28478ae0589a639f0d8bd445">game::core::attack_rules::MAX_CRITICAL_LUCK</a> = 100</td></tr>
+<tr class="separator:a68686ade28478ae0589a639f0d8bd445"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39691c19e5cd4bbbe0050ffecf522ecc"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame_1_1core_1_1attack__rules.html#a39691c19e5cd4bbbe0050ffecf522ecc">game::core::attack_rules::CRITICAL_FACTOR_DIVIDER</a> = 100.</td></tr>
+<tr class="separator:a39691c19e5cd4bbbe0050ffecf522ecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2602d365a801bb476d11f6018e6589d8"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame_1_1core_1_1attack__rules.html#a2602d365a801bb476d11f6018e6589d8">game::core::attack_rules::DODGE_SCALE</a> = 0.25</td></tr>
+<tr class="separator:a2602d365a801bb476d11f6018e6589d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is a class used to simplify and generalize attack computing while keeping it the most flexible possible. </p>
@@ -131,8 +133,8 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition in file <a class="el" href="_attack_computer_8hpp_source.html">AttackComputer.hpp</a>.</p>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="a7b82b7725a82f30933389dcaec020bec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b82b7725a82f30933389dcaec020bec">&#9670;&nbsp;</a></span>AttackType</h2>
+<a id="ad4c884df87542938ad82475aee29517a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4c884df87542938ad82475aee29517a">&#9670;&nbsp;</a></span>AttackType</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -141,7 +143,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="_attack_computer_8hpp.html#a7b82b7725a82f30933389dcaec020bec">game::entity::AttackType</a></td>
+          <td class="memname">enum <a class="el" href="_attack_computer_8hpp.html#ad4c884df87542938ad82475aee29517a">game::core::AttackType</a></td>
         </tr>
       </table>
   </td>
@@ -153,11 +155,11 @@ Variables</h2></td></tr>
 
 <p>Enum of differents types of attack. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7b82b7725a82f30933389dcaec020beca46f3323afb82175472048e652d67b3af"></a>MAGICAL_ATTACK&#160;</td><td class="fielddoc"><p>By a spell </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad4c884df87542938ad82475aee29517aa46f3323afb82175472048e652d67b3af"></a>MAGICAL_ATTACK&#160;</td><td class="fielddoc"><p>By a spell </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a7b82b7725a82f30933389dcaec020beca1be626fd98929c19a89625bf986765ea"></a>WEAPON_ATTACK&#160;</td><td class="fielddoc"><p>By a melee weapon </p>
+<tr><td class="fieldname"><a id="ad4c884df87542938ad82475aee29517aa1be626fd98929c19a89625bf986765ea"></a>WEAPON_ATTACK&#160;</td><td class="fielddoc"><p>By a melee weapon </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a7b82b7725a82f30933389dcaec020becac9b1d5c07866022609e266c7acd5e3c0"></a>HANDS_ATTACK&#160;</td><td class="fielddoc"><p>By gloves </p>
+<tr><td class="fieldname"><a id="ad4c884df87542938ad82475aee29517aac9b1d5c07866022609e266c7acd5e3c0"></a>HANDS_ATTACK&#160;</td><td class="fielddoc"><p>By gloves </p>
 </td></tr>
 </table>
 

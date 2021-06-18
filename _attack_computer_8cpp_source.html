@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>FilRouge: src/AttackComputer.cpp Source File</title>
+<title>FilRouge: src/gameCore/AttackComputer.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_6f4c0978ff3438ba88815611a39f4c2d.html">gameCore</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,8 +71,8 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_attack_computer_8hpp.html">AttackComputer.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_skills_set_8hpp.html">skills/SkillsSet.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_logger_8hpp.html">io/Logger.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../skills/SkillsSet.hpp&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;../io/Logger.hpp&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;time.h&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
@@ -80,9 +80,9 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1logs.html">game::logs</a>;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using namespace </span>std;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span>game::entity</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span>game::core</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">int</span> AttackComputer::getAttackerAttackSkill(shared_ptr&lt;Entity&gt; ptr)</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">int</span> AttackComputer::getAttackerAttackSkill(shared_ptr&lt;GameEntity&gt; ptr)</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordflow">switch</span>(m_attackType)</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        {</div>
@@ -96,21 +96,21 @@ $(function() {
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classgame_1_1entity_1_1_attack_computer.html#a02ac8fdfbae9a6f31076c10a74568311">   35</a></span>&#160;    <span class="keywordtype">void</span> AttackComputer::configureAttack(<span class="keywordtype">int</span> physicalDamage, <span class="keywordtype">int</span> magicalDamage, <a class="code" href="_attack_computer_8hpp.html#a7b82b7725a82f30933389dcaec020bec">AttackType</a> type)</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classgame_1_1core_1_1_attack_computer.html#a8517f2e2da26d80837d828491b870624">   35</a></span>&#160;    <span class="keywordtype">void</span> AttackComputer::configureAttack(<span class="keywordtype">int</span> physicalDamage, <span class="keywordtype">int</span> magicalDamage, <a class="code" href="_attack_computer_8hpp.html#ad4c884df87542938ad82475aee29517a">AttackType</a> type)</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    {</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        m_physicalDamage = physicalDamage;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        m_magicalDamage = magicalDamage;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        m_attackType = type;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classgame_1_1entity_1_1_attack_computer.html#a20044135a777b6cb6b4d5cdf4d87d983">   42</a></span>&#160;    <span class="keywordtype">void</span> AttackComputer::setAttacker(shared_ptr&lt;Entity&gt; attacker)</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classgame_1_1core_1_1_attack_computer.html#a0c9023dd0252dcbfe10f2893accd1ef8">   42</a></span>&#160;    <span class="keywordtype">void</span> AttackComputer::setAttacker(shared_ptr&lt;GameEntity&gt; attacker)</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        m_attacker = attacker;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classgame_1_1entity_1_1_attack_computer.html#a3a030c11d04f812f2d9de9769a1fa1a0">   47</a></span>&#160;    <span class="keywordtype">void</span> AttackComputer::prepareAttack()</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classgame_1_1core_1_1_attack_computer.html#ad746fdce1ca36edd8ca7512a1841f8f7">   47</a></span>&#160;    <span class="keywordtype">void</span> AttackComputer::prepareAttack()</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        shared_ptr&lt;Entity&gt; ptrAttacker = m_attacker.lock();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        shared_ptr&lt;GameEntity&gt; ptrAttacker = m_attacker.lock();</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">if</span>(!ptrAttacker)</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            Logger::log() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#acda173634be088930af43767b63f95d6">severe</a> &lt;&lt; <span class="stringliteral">&quot;Please configure an attacker before call prepareAttack() !&quot;</span> &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
@@ -122,7 +122,7 @@ $(function() {
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">int</span> skValue = getAttackerAttackSkill(ptrAttacker);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="comment">// Calcul the bonus based on skill value and factor</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordtype">float</span> bonus = skValue / <a class="code" href="namespacegame_1_1entity_1_1attack__rules.html#ae8ef9443d8f32d09592703f1dc4562b4">attack_rules::ATTACK_SKILL_FACTOR</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordtype">float</span> bonus = skValue / <a class="code" href="namespacegame_1_1core_1_1attack__rules.html#a25ef1eb503bfca65e59ca742ee4f8347">attack_rules::ATTACK_SKILL_FACTOR</a>;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="comment">// Add the bonus to the damages</span></div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        m_magicalDamage += bonus;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        m_physicalDamage += bonus;</div>
@@ -130,12 +130,12 @@ $(function() {
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="comment">// ----- 2. Critical attack -----</span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        srand(time(<span class="keyword">nullptr</span>));</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">int</span> luck = ptrAttacker-&gt;getSkillsSet().computeActualValue(<a class="code" href="classgame_1_1skills_1_1_skill_type.html#a7f65d9ca6793246fda1d63121ea778e9">SkillType::CRITICAL_LUCK</a>);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">int</span> random = rand() % <a class="code" href="namespacegame_1_1entity_1_1attack__rules.html#a26c21f9bce17a05fea3b88a3265a9060">attack_rules::MAX_CRITICAL_LUCK</a> + 1;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">int</span> random = rand() % <a class="code" href="namespacegame_1_1core_1_1attack__rules.html#a68686ade28478ae0589a639f0d8bd445">attack_rules::MAX_CRITICAL_LUCK</a> + 1;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        Logger::log() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a99bfd0198d202315c565245819f1a77c">debug</a> &lt;&lt; <span class="stringliteral">&quot;Critical luck : &quot;</span> &lt;&lt; random &lt;&lt; <span class="stringliteral">&quot; &lt;= &quot;</span> &lt;&lt; luck;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">if</span>(random &lt;= luck) <span class="comment">// Critical !</span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        {</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            Logger::log() &lt;&lt; <span class="stringliteral">&quot; =&gt; Critical !&quot;</span> &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordtype">float</span> critFactor = 1. + ptrAttacker-&gt;getSkillsSet().computeActualValue(<a class="code" href="classgame_1_1skills_1_1_skill_type.html#aaf6f27980a84a919ab6417f0bf2acaeb">SkillType::CRITICAL_FACTOR</a>) / <a class="code" href="namespacegame_1_1entity_1_1attack__rules.html#a8f7d44de79feab3d53ffbf22d29e9089">attack_rules::CRITICAL_FACTOR_DIVIDER</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordtype">float</span> critFactor = 1. + ptrAttacker-&gt;getSkillsSet().computeActualValue(<a class="code" href="classgame_1_1skills_1_1_skill_type.html#aaf6f27980a84a919ab6417f0bf2acaeb">SkillType::CRITICAL_FACTOR</a>) / <a class="code" href="namespacegame_1_1core_1_1attack__rules.html#a39691c19e5cd4bbbe0050ffecf522ecc">attack_rules::CRITICAL_FACTOR_DIVIDER</a>;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            Logger::log() &lt;&lt; <span class="stringliteral">&quot;Computed critical factor is &quot;</span> &lt;&lt; critFactor &lt;&lt; <span class="stringliteral">&quot;.&quot;</span> &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            m_physicalDamage *= critFactor;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            m_magicalDamage *= critFactor;</div>
@@ -144,15 +144,15 @@ $(function() {
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            Logger::log() &lt;&lt; <span class="stringliteral">&quot; =&gt; Non critical.&quot;</span> &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classgame_1_1entity_1_1_attack_computer.html#ab026282c9df2ec9a5f33abfaab0329af">   83</a></span>&#160;    <span class="keywordtype">void</span> AttackComputer::setTarget(shared_ptr&lt;Entity&gt; target)</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classgame_1_1core_1_1_attack_computer.html#aaf6be1eba125f7985c925c653de6673b">   83</a></span>&#160;    <span class="keywordtype">void</span> AttackComputer::setTarget(shared_ptr&lt;GameEntity&gt; target)</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    {</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        m_target = target;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    }</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classgame_1_1entity_1_1_attack_computer.html#a01fb47cfad8ec0afab563f9569a8092c">   88</a></span>&#160;    <span class="keywordtype">void</span> AttackComputer::targetDodge()</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classgame_1_1core_1_1_attack_computer.html#ada83b3f4214fcd0e5a090eee1aeb2f03">   88</a></span>&#160;    <span class="keywordtype">void</span> AttackComputer::targetDodge()</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        shared_ptr&lt;Entity&gt; ptrAttacker = m_attacker.lock();</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        shared_ptr&lt;Entity&gt; ptrTarget = m_target.lock();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        shared_ptr&lt;GameEntity&gt; ptrAttacker = m_attacker.lock();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        shared_ptr&lt;GameEntity&gt; ptrTarget = m_target.lock();</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">if</span>(!ptrAttacker || !ptrTarget)</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        {</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            Logger::log() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#acda173634be088930af43767b63f95d6">severe</a> &lt;&lt; <span class="stringliteral">&quot;Please configure an attacker and a target before call targetDodge() !&quot;</span> &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
@@ -180,7 +180,7 @@ $(function() {
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="comment">// Compare the dodge luck to the attack skill of attacker</span></div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordtype">int</span> dodgeResult = dodgeLuck - getAttackerAttackSkill(ptrAttacker);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordtype">int</span> dodgeScale = dodgeLuck * <a class="code" href="namespacegame_1_1entity_1_1attack__rules.html#a9b8a99c4a727e54004290d4fa01226f3">attack_rules::DODGE_SCALE</a>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordtype">int</span> dodgeScale = dodgeLuck * <a class="code" href="namespacegame_1_1core_1_1attack__rules.html#a2602d365a801bb476d11f6018e6589d8">attack_rules::DODGE_SCALE</a>;</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        Logger::log() &lt;&lt; <span class="stringliteral">&quot;Little success if result between &quot;</span> &lt;&lt; -dodgeScale &lt;&lt; <span class="stringliteral">&quot; and 0, total success if &gt; 0.&quot;</span> &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        Logger::log() &lt;&lt; <span class="stringliteral">&quot;dodgeResult = dodgeLuck - attackerAttackSkill = &quot;</span> &lt;&lt; dodgeLuck &lt;&lt; <span class="stringliteral">&quot; - &quot;</span> &lt;&lt; getAttackerAttackSkill(ptrAttacker) &lt;&lt; <span class="stringliteral">&quot; = &quot;</span> &lt;&lt; dodgeResult &lt;&lt; <span class="stringliteral">&quot; =&gt; &quot;</span>;</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="comment">// if dodgeResult is positive, the dodge is a success and no damage comes to the target</span></div>
@@ -206,9 +206,9 @@ $(function() {
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            Logger::log() &lt;&lt; <span class="stringliteral">&quot;Dodge failed, damages doesn&#39;t change.&quot;</span> &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    } </div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
-<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="classgame_1_1entity_1_1_attack_computer.html#a2539f26f854c3d7a29b92e36fe6ffb39">  145</a></span>&#160;    <span class="keywordtype">void</span> AttackComputer::targetProtection()</div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="classgame_1_1core_1_1_attack_computer.html#a4d8bc43a10504bfb66bbb882bf812c76">  145</a></span>&#160;    <span class="keywordtype">void</span> AttackComputer::targetProtection()</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    {</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        shared_ptr&lt;Entity&gt; ptrTarget = m_target.lock();</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        shared_ptr&lt;GameEntity&gt; ptrTarget = m_target.lock();</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordflow">if</span>(!ptrTarget)</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        {</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            Logger::log() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#acda173634be088930af43767b63f95d6">severe</a> &lt;&lt; <span class="stringliteral">&quot;Please configure a target before call targetProtection() !&quot;</span> &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
@@ -226,15 +226,13 @@ $(function() {
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            m_magicalDamage = 0;</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    }</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="classgame_1_1entity_1_1_attack_computer.html#a747b0bd0aeab6bd11ed368055043679a">  165</a></span>&#160;    <span class="keywordtype">int</span> AttackComputer::computeLostHP()</div>
+<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="classgame_1_1core_1_1_attack_computer.html#a29cb7ec62e3e79cb5d11ec860b3667c3">  165</a></span>&#160;    <span class="keywordtype">int</span> AttackComputer::computeLostHP()</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    {</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordflow">return</span> m_physicalDamage + m_magicalDamage;</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    }</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div>
 <div class="ttc" id="a_attack_computer_8hpp_html"><div class="ttname"><a href="_attack_computer_8hpp.html">AttackComputer.hpp</a></div><div class="ttdoc">This is a class used to simplify and generalize attack computing while keeping it the most flexible p...</div></div>
-<div class="ttc" id="a_attack_computer_8hpp_html_a7b82b7725a82f30933389dcaec020bec"><div class="ttname"><a href="_attack_computer_8hpp.html#a7b82b7725a82f30933389dcaec020bec">game::entity::AttackType</a></div><div class="ttdeci">AttackType</div><div class="ttdoc">Enum of differents types of attack.</div><div class="ttdef"><b>Definition:</b> <a href="_attack_computer_8hpp_source.html#l00031">AttackComputer.hpp:32</a></div></div>
-<div class="ttc" id="a_logger_8hpp_html"><div class="ttname"><a href="_logger_8hpp.html">Logger.hpp</a></div><div class="ttdoc">Singleton that manages logs, their severity and files.</div></div>
-<div class="ttc" id="a_skills_set_8hpp_html"><div class="ttname"><a href="_skills_set_8hpp.html">SkillsSet.hpp</a></div><div class="ttdoc">Header file of SkillsSet class and SkillLevel enum.</div></div>
+<div class="ttc" id="a_attack_computer_8hpp_html_ad4c884df87542938ad82475aee29517a"><div class="ttname"><a href="_attack_computer_8hpp.html#ad4c884df87542938ad82475aee29517a">game::core::AttackType</a></div><div class="ttdeci">AttackType</div><div class="ttdoc">Enum of differents types of attack.</div><div class="ttdef"><b>Definition:</b> <a href="_attack_computer_8hpp_source.html#l00031">AttackComputer.hpp:32</a></div></div>
 <div class="ttc" id="aclassgame_1_1skills_1_1_skill_type_html_a64df965d41ccaf6c1f4f98bcd73397be"><div class="ttname"><a href="classgame_1_1skills_1_1_skill_type.html#a64df965d41ccaf6c1f4f98bcd73397be">game::skills::SkillType::DODGE_MAGIC</a></div><div class="ttdeci">static const SkillType DODGE_MAGIC</div><div class="ttdef"><b>Definition:</b> <a href="_skill_type_8hpp_source.html#l00066">SkillType.hpp:66</a></div></div>
 <div class="ttc" id="aclassgame_1_1skills_1_1_skill_type_html_a6a9f9b94bc65547dc82bea586878cd41"><div class="ttname"><a href="classgame_1_1skills_1_1_skill_type.html#a6a9f9b94bc65547dc82bea586878cd41">game::skills::SkillType::DODGE_PHYSIC</a></div><div class="ttdeci">static const SkillType DODGE_PHYSIC</div><div class="ttdef"><b>Definition:</b> <a href="_skill_type_8hpp_source.html#l00065">SkillType.hpp:65</a></div></div>
 <div class="ttc" id="aclassgame_1_1skills_1_1_skill_type_html_a6fe135a43efb224c8bed9a97003a4cd2"><div class="ttname"><a href="classgame_1_1skills_1_1_skill_type.html#a6fe135a43efb224c8bed9a97003a4cd2">game::skills::SkillType::SUTO_OUTSIDE</a></div><div class="ttdeci">static const SkillType SUTO_OUTSIDE</div><div class="ttdef"><b>Definition:</b> <a href="_skill_type_8hpp_source.html#l00069">SkillType.hpp:69</a></div></div>
@@ -244,10 +242,10 @@ $(function() {
 <div class="ttc" id="aclassgame_1_1skills_1_1_skill_type_html_aaf6f27980a84a919ab6417f0bf2acaeb"><div class="ttname"><a href="classgame_1_1skills_1_1_skill_type.html#aaf6f27980a84a919ab6417f0bf2acaeb">game::skills::SkillType::CRITICAL_FACTOR</a></div><div class="ttdeci">static const SkillType CRITICAL_FACTOR</div><div class="ttdef"><b>Definition:</b> <a href="_skill_type_8hpp_source.html#l00073">SkillType.hpp:73</a></div></div>
 <div class="ttc" id="aclassgame_1_1skills_1_1_skill_type_html_ae37f0abdbf53b18b2cd8e40308221938"><div class="ttname"><a href="classgame_1_1skills_1_1_skill_type.html#ae37f0abdbf53b18b2cd8e40308221938">game::skills::SkillType::PHYSICAL_PROTECTION</a></div><div class="ttdeci">static const SkillType PHYSICAL_PROTECTION</div><div class="ttdef"><b>Definition:</b> <a href="_skill_type_8hpp_source.html#l00074">SkillType.hpp:74</a></div></div>
 <div class="ttc" id="aclassgame_1_1skills_1_1_skill_type_html_aeb14cb55639b10d76cb0fe212361adef"><div class="ttname"><a href="classgame_1_1skills_1_1_skill_type.html#aeb14cb55639b10d76cb0fe212361adef">game::skills::SkillType::WEAPON_HANDLING</a></div><div class="ttdeci">static const SkillType WEAPON_HANDLING</div><div class="ttdef"><b>Definition:</b> <a href="_skill_type_8hpp_source.html#l00068">SkillType.hpp:68</a></div></div>
-<div class="ttc" id="anamespacegame_1_1entity_1_1attack__rules_html_a26c21f9bce17a05fea3b88a3265a9060"><div class="ttname"><a href="namespacegame_1_1entity_1_1attack__rules.html#a26c21f9bce17a05fea3b88a3265a9060">game::entity::attack_rules::MAX_CRITICAL_LUCK</a></div><div class="ttdeci">const int MAX_CRITICAL_LUCK</div><div class="ttdef"><b>Definition:</b> <a href="_attack_computer_8hpp_source.html#l00023">AttackComputer.hpp:23</a></div></div>
-<div class="ttc" id="anamespacegame_1_1entity_1_1attack__rules_html_a8f7d44de79feab3d53ffbf22d29e9089"><div class="ttname"><a href="namespacegame_1_1entity_1_1attack__rules.html#a8f7d44de79feab3d53ffbf22d29e9089">game::entity::attack_rules::CRITICAL_FACTOR_DIVIDER</a></div><div class="ttdeci">const float CRITICAL_FACTOR_DIVIDER</div><div class="ttdef"><b>Definition:</b> <a href="_attack_computer_8hpp_source.html#l00024">AttackComputer.hpp:24</a></div></div>
-<div class="ttc" id="anamespacegame_1_1entity_1_1attack__rules_html_a9b8a99c4a727e54004290d4fa01226f3"><div class="ttname"><a href="namespacegame_1_1entity_1_1attack__rules.html#a9b8a99c4a727e54004290d4fa01226f3">game::entity::attack_rules::DODGE_SCALE</a></div><div class="ttdeci">const float DODGE_SCALE</div><div class="ttdef"><b>Definition:</b> <a href="_attack_computer_8hpp_source.html#l00025">AttackComputer.hpp:25</a></div></div>
-<div class="ttc" id="anamespacegame_1_1entity_1_1attack__rules_html_ae8ef9443d8f32d09592703f1dc4562b4"><div class="ttname"><a href="namespacegame_1_1entity_1_1attack__rules.html#ae8ef9443d8f32d09592703f1dc4562b4">game::entity::attack_rules::ATTACK_SKILL_FACTOR</a></div><div class="ttdeci">const float ATTACK_SKILL_FACTOR</div><div class="ttdef"><b>Definition:</b> <a href="_attack_computer_8hpp_source.html#l00022">AttackComputer.hpp:22</a></div></div>
+<div class="ttc" id="anamespacegame_1_1core_1_1attack__rules_html_a25ef1eb503bfca65e59ca742ee4f8347"><div class="ttname"><a href="namespacegame_1_1core_1_1attack__rules.html#a25ef1eb503bfca65e59ca742ee4f8347">game::core::attack_rules::ATTACK_SKILL_FACTOR</a></div><div class="ttdeci">const float ATTACK_SKILL_FACTOR</div><div class="ttdef"><b>Definition:</b> <a href="_attack_computer_8hpp_source.html#l00022">AttackComputer.hpp:22</a></div></div>
+<div class="ttc" id="anamespacegame_1_1core_1_1attack__rules_html_a2602d365a801bb476d11f6018e6589d8"><div class="ttname"><a href="namespacegame_1_1core_1_1attack__rules.html#a2602d365a801bb476d11f6018e6589d8">game::core::attack_rules::DODGE_SCALE</a></div><div class="ttdeci">const float DODGE_SCALE</div><div class="ttdef"><b>Definition:</b> <a href="_attack_computer_8hpp_source.html#l00025">AttackComputer.hpp:25</a></div></div>
+<div class="ttc" id="anamespacegame_1_1core_1_1attack__rules_html_a39691c19e5cd4bbbe0050ffecf522ecc"><div class="ttname"><a href="namespacegame_1_1core_1_1attack__rules.html#a39691c19e5cd4bbbe0050ffecf522ecc">game::core::attack_rules::CRITICAL_FACTOR_DIVIDER</a></div><div class="ttdeci">const float CRITICAL_FACTOR_DIVIDER</div><div class="ttdef"><b>Definition:</b> <a href="_attack_computer_8hpp_source.html#l00024">AttackComputer.hpp:24</a></div></div>
+<div class="ttc" id="anamespacegame_1_1core_1_1attack__rules_html_a68686ade28478ae0589a639f0d8bd445"><div class="ttname"><a href="namespacegame_1_1core_1_1attack__rules.html#a68686ade28478ae0589a639f0d8bd445">game::core::attack_rules::MAX_CRITICAL_LUCK</a></div><div class="ttdeci">const int MAX_CRITICAL_LUCK</div><div class="ttdef"><b>Definition:</b> <a href="_attack_computer_8hpp_source.html#l00023">AttackComputer.hpp:23</a></div></div>
 <div class="ttc" id="anamespacegame_1_1logs_html"><div class="ttname"><a href="namespacegame_1_1logs.html">game::logs</a></div><div class="ttdoc">Logger namespace.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00019">Logger.cpp:20</a></div></div>
 <div class="ttc" id="anamespacegame_1_1logs_html_a7815834a94e406a5b7fa8bd5305b2343"><div class="ttname"><a href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">game::logs::endlog</a></div><div class="ttdeci">ios_base &amp; endlog(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00251">Logger.cpp:251</a></div></div>
 <div class="ttc" id="anamespacegame_1_1logs_html_a99bfd0198d202315c565245819f1a77c"><div class="ttname"><a href="namespacegame_1_1logs.html#a99bfd0198d202315c565245819f1a77c">game::logs::debug</a></div><div class="ttdeci">ios_base &amp; debug(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00245">Logger.cpp:245</a></div></div>

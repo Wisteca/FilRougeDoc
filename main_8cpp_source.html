@@ -75,15 +75,15 @@ $(function() {
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_skills_set_8hpp.html">skills/SkillsSet.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_logger_8hpp.html">io/Logger.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_event_manager_8hpp.html">events/EventManager.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_wearable_item_8hpp.html">items/WearableItem.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_entity_8hpp.html">Entity.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_attack_computer_8hpp.html">AttackComputer.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_console_engine_8hpp.html">consoleEngine/ConsoleEngine.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_attack_computer_8hpp.html">gameCore/AttackComputer.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_console_engine_8hpp.html">consoleEngine/ConsoleEngine.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_game_manager_8hpp.html">gameCore/GameManager.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;rapidxml_ext.hpp&gt;</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
@@ -91,23 +91,23 @@ $(function() {
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1skills.html">game::skills</a>;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1logs.html">game::logs</a>;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1events.html">game::events</a>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1items.html">game::items</a>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using namespace </span>game::entity;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1console.html">game::console</a>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1math.html">game::math</a>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using namespace </span>rapidxml;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_test_listener.html">   31</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_test_listener.html">TestListener</a> : <span class="keyword">private</span> <a class="code" href="classgame_1_1events_1_1_event_listener.html">EventListener</a></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_test_listener.html">TestListener</a>()</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        EventManager::getInstance()-&gt;addListener(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;Creation&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">inline</span> <span class="keyword">virtual</span> ~<a class="code" href="class_test_listener.html">TestListener</a>()</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1console.html">game::console</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1math.html">game::math</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using namespace </span>game::core;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using namespace </span>rapidxml;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_test_listener.html">   30</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_test_listener.html">TestListener</a> : <span class="keyword">public</span> <a class="code" href="classgame_1_1events_1_1_event_listener.html">EventListener</a></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_test_listener.html">TestListener</a>()</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        EventManager::getInstance()-&gt;addListener((<span class="keyword">this</span>));</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;Creation&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">inline</span> <span class="keyword">virtual</span> ~<a class="code" href="class_test_listener.html">TestListener</a>()</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        EventManager::getInstance()-&gt;removeListener((<span class="keyword">this</span>));</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;destroy&quot;</span> &lt;&lt; endl;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
@@ -233,153 +233,145 @@ $(function() {
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    Logger::log() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#acda173634be088930af43767b63f95d6">severe</a> &lt;&lt; <span class="stringliteral">&quot;There is a problem in the matrix ! :p&quot;</span> &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    Logger::log() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a3bea0b6cba6e4d445a59889cb0586f85">warning</a> &lt;&lt; <span class="stringliteral">&quot;Please be careful to not eat too much chocolate.&quot;</span> &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    </div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="comment">// Create an event listener and create some events to see if it works good.</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    EventManager::start();</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <a class="code" href="class_test_listener.html">TestListener</a> test;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="comment">// Create an event listener and create some events to see if it works good.</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    EventManager::start();</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <a class="code" href="classgame_1_1events_1_1_event.html">Event</a>* e1 = <span class="keyword">new</span> <a class="code" href="classgame_1_1events_1_1_attack_event.html">AttackEvent</a>();</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <a class="code" href="classgame_1_1events_1_1_event.html">Event</a>* e2 = <span class="keyword">new</span> <a class="code" href="classgame_1_1events_1_1_move_event.html">MoveEvent</a>();</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    EventManager::getInstance()-&gt;pushEvent(e1);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    EventManager::getInstance()-&gt;pushEvent(e2);</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    EventManager::getInstance()-&gt;processEvents();</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;will test&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <a class="code" href="class_test_listener.html">TestListener</a> test;</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <a class="code" href="classgame_1_1entity_1_1_entity.html">Entity</a> ent;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <a class="code" href="classgame_1_1items_1_1_wearable_item.html">WearableItem</a> littleItem, bigItem;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    littleItem.<a class="code" href="classgame_1_1items_1_1_fight_item.html#af686161e505b3b593f1a2bb2701768f7">modificators</a>()[SkillType::AGILITY] = 20;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    bigItem.<a class="code" href="classgame_1_1items_1_1_fight_item.html#a5c14d997af0cad8336ee603d815f201d">requirements</a>()[SkillType::DODGE_PHYSIC] = 10;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    bigItem.<a class="code" href="classgame_1_1items_1_1_fight_item.html#af686161e505b3b593f1a2bb2701768f7">modificators</a>()[SkillType::MARTIAL_ARTS] = 20;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    shared_ptr&lt;Entity&gt; ptrEnt(&amp;ent);</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    Logger::log() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a0ce458c617d35922cbeff8eea07d4109">info</a> &lt;&lt; <span class="stringliteral">&quot;equip big item &quot;</span> &lt;&lt; boolalpha &lt;&lt; bigItem.<a class="code" href="classgame_1_1items_1_1_fight_item.html#a65f7d2a45f4e43840ddd58ae9c59a629">equip</a>(ptrEnt) &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    Logger::log() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a0ce458c617d35922cbeff8eea07d4109">info</a> &lt;&lt; <span class="stringliteral">&quot;equip little item &quot;</span> &lt;&lt; boolalpha &lt;&lt; littleItem.<a class="code" href="classgame_1_1items_1_1_fight_item.html#a65f7d2a45f4e43840ddd58ae9c59a629">equip</a>(ptrEnt) &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    Logger::log() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a0ce458c617d35922cbeff8eea07d4109">info</a> &lt;&lt; <span class="stringliteral">&quot;equip big item again &quot;</span> &lt;&lt; boolalpha &lt;&lt; bigItem.<a class="code" href="classgame_1_1items_1_1_fight_item.html#a65f7d2a45f4e43840ddd58ae9c59a629">equip</a>(ptrEnt) &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    Logger::log() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a0ce458c617d35922cbeff8eea07d4109">info</a> &lt;&lt; ent.getSkillsSet() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    Logger::log() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a0ce458c617d35922cbeff8eea07d4109">info</a> &lt;&lt; <span class="stringliteral">&quot;unequip little item &quot;</span> &lt;&lt; boolalpha &lt;&lt; littleItem.<a class="code" href="classgame_1_1items_1_1_fight_item.html#a65f7d2a45f4e43840ddd58ae9c59a629">equip</a>(<span class="keyword">nullptr</span>) &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    Logger::log() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a0ce458c617d35922cbeff8eea07d4109">info</a> &lt;&lt; ent.getSkillsSet() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a7815834a94e406a5b7fa8bd5305b2343">endlog</a>;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <a class="code" href="classgame_1_1entity_1_1_entity.html">Entity</a> attacker, target;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    attacker.getSkillsSet().<a class="code" href="classgame_1_1skills_1_1_skills_set.html#af572aca772a0ae659f28b5a4d27f6d72">getSkill</a>(SkillType::MARTIAL_ARTS)-&gt;<a class="code" href="classgame_1_1skills_1_1_skill.html#a5ec4ea0e093321719d3ba2a8252b4011">changeBaseValue</a>(30);</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    attacker.getSkillsSet().<a class="code" href="classgame_1_1skills_1_1_skills_set.html#af572aca772a0ae659f28b5a4d27f6d72">getSkill</a>(SkillType::CRITICAL_LUCK)-&gt;<a class="code" href="classgame_1_1skills_1_1_skill.html#a5ec4ea0e093321719d3ba2a8252b4011">changeBaseValue</a>(30);</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    attacker.getSkillsSet().<a class="code" href="classgame_1_1skills_1_1_skills_set.html#af572aca772a0ae659f28b5a4d27f6d72">getSkill</a>(SkillType::CRITICAL_FACTOR)-&gt;<a class="code" href="classgame_1_1skills_1_1_skill.html#a5ec4ea0e093321719d3ba2a8252b4011">changeBaseValue</a>(30);</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    target.getSkillsSet().<a class="code" href="classgame_1_1skills_1_1_skills_set.html#af572aca772a0ae659f28b5a4d27f6d72">getSkill</a>(SkillType::DODGE_PHYSIC)-&gt;<a class="code" href="classgame_1_1skills_1_1_skill.html#a5ec4ea0e093321719d3ba2a8252b4011">changeBaseValue</a>(50);</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    shared_ptr&lt;Entity&gt; ptrAttacker(&amp;attacker), ptrTarget(&amp;target);</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <a class="code" href="classgame_1_1entity_1_1_attack_computer.html">AttackComputer</a> ac;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    ac.<a class="code" href="classgame_1_1entity_1_1_attack_computer.html#a02ac8fdfbae9a6f31076c10a74568311">configureAttack</a>(20, 40, AttackType::HANDS_ATTACK);</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    ac.<a class="code" href="classgame_1_1entity_1_1_attack_computer.html#a20044135a777b6cb6b4d5cdf4d87d983">setAttacker</a>(ptrAttacker);</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    ac.<a class="code" href="classgame_1_1entity_1_1_attack_computer.html#a3a030c11d04f812f2d9de9769a1fa1a0">prepareAttack</a>();</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;attack prepared : physic dam &quot;</span> &lt;&lt; ac.<a class="code" href="classgame_1_1entity_1_1_attack_computer.html#a0cbd3efa9e110cad4ac21741e2793967">m_physicalDamage</a> &lt;&lt; <span class="stringliteral">&quot; magical dam &quot;</span> &lt;&lt; ac.<a class="code" href="classgame_1_1entity_1_1_attack_computer.html#ad7a7b8c36eeea0830719d4080cc292a9">m_magicalDamage</a> &lt;&lt; endl;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    ac.<a class="code" href="classgame_1_1entity_1_1_attack_computer.html#ab026282c9df2ec9a5f33abfaab0329af">setTarget</a>(ptrTarget);</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    ac.<a class="code" href="classgame_1_1entity_1_1_attack_computer.html#a01fb47cfad8ec0afab563f9569a8092c">targetDodge</a>();</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;After dodge : physic dam &quot;</span> &lt;&lt; ac.<a class="code" href="classgame_1_1entity_1_1_attack_computer.html#a0cbd3efa9e110cad4ac21741e2793967">m_physicalDamage</a> &lt;&lt; <span class="stringliteral">&quot; magical dam &quot;</span> &lt;&lt; ac.<a class="code" href="classgame_1_1entity_1_1_attack_computer.html#ad7a7b8c36eeea0830719d4080cc292a9">m_magicalDamage</a> &lt;&lt; endl;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="comment">// Console engine tests</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <a class="code" href="classgame_1_1console_1_1_console_engine.html">ConsoleEngine</a> ce(<a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a>(140, 40), 5);</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    cout &lt;&lt; endl &lt;&lt; <span class="stringliteral">&quot;now&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;CR is &quot;</span> &lt;&lt; ((int) <span class="charliteral">&#39;\n&#39;</span>) &lt;&lt; endl;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <a class="code" href="classgame_1_1console_1_1_sprite.html">Sprite</a>* bloody = <span class="keyword">new</span> <a class="code" href="classgame_1_1console_1_1_sprite.html">Sprite</a>(<span class="stringliteral">&quot;assets/bloody.sprite&quot;</span>);</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <a class="code" href="classgame_1_1console_1_1_multi_sprite.html">MultiSprite</a>* warrior;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="keywordflow">try</span>{</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        </div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        vector&lt;string&gt; filesnames = vector&lt;string&gt;();</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        filesnames.push_back(<span class="stringliteral">&quot;assets/warrior_right.sprite&quot;</span>);</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        filesnames.push_back(<span class="stringliteral">&quot;assets/warrior_left.sprite&quot;</span>);</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        filesnames.push_back(<span class="stringliteral">&quot;assets/warrior_face.sprite&quot;</span>);</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        warrior = <span class="keyword">new</span> <a class="code" href="classgame_1_1console_1_1_multi_sprite.html">MultiSprite</a>(filesnames);</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    } <span class="keywordflow">catch</span> (...) { cout &lt;&lt; <span class="stringliteral">&quot;bruh&quot;</span> &lt;&lt; endl; <span class="keywordflow">return</span> -1; }</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;size is &quot;</span> &lt;&lt; warrior-&gt;<a class="code" href="classgame_1_1console_1_1_multi_sprite.html#a8703004df44aa258a0a18732b9c2ce63">getSpriteNumber</a>() &lt;&lt; <span class="stringliteral">&quot; now &quot;</span> &lt;&lt; warrior-&gt;<a class="code" href="classgame_1_1console_1_1_multi_sprite.html#a37d9cb4cb6fd979719f0ce99c556424e">getCurrentSpriteIndex</a>() &lt;&lt; endl;</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    this_thread::sleep_for(chrono::milliseconds(1000));</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    shared_ptr&lt;Sprite&gt; bloodyPtr(bloody);</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    ce.addDrawable(bloodyPtr, 1);</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    ce.startRendering();</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    this_thread::sleep_for(chrono::milliseconds(3000));</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    ce.removeDrawable(bloodyPtr);</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    ce.addDrawable(shared_ptr&lt;MultiSprite&gt;(warrior), 0);</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keywordflow">while</span>(1)</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    {</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">int</span> index = 0;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        warrior-&gt;<a class="code" href="classgame_1_1console_1_1_drawable.html#a6d6e33b53ac5d4303707f5d87f42f95b">setPosition</a>(warrior-&gt;<a class="code" href="classgame_1_1console_1_1_drawable.html#adc0c2a133ff8f8ed223b4406deb67670">getPosition</a>() + <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;int&gt;</a>(1, 2));</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        warrior-&gt;<a class="code" href="classgame_1_1console_1_1_multi_sprite.html#a5a3975a82cbbfb5c456c48aac14ebc63">setCurrentSpriteIndex</a>(index);</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">int</span> test = 0;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="keywordflow">while</span>(test &lt; 100)</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        {</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            this_thread::sleep_for(chrono::milliseconds(10));</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            ++test;</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            EventManager::getInstance()-&gt;processEvents();</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        }</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        test = 0;</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">int</span> i = 0;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        stringstream ss;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        ss &lt;&lt; <span class="stringliteral">&quot;Je suis &quot;</span>;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        ss &lt;&lt; i;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        ss &lt;&lt; <span class="stringliteral">&quot; patate(s)&quot;</span>;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;       <span class="comment">// txt-&gt;writeText(Vec2&lt;int&gt;(1, 1), ss.str());</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        i++;</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        index++;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        <span class="keywordflow">if</span>(index == 3) index = 0;</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    }</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    EventManager::end();</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    Logger::end();</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;}</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;test created&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        EventManager::getInstance()-&gt;pushEvent(e1);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        EventManager::getInstance()-&gt;pushEvent(e2);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;process&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        EventManager::getInstance()-&gt;processEvents();</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    EventManager::getInstance()-&gt;pushEvent(<span class="keyword">new</span> <a class="code" href="classgame_1_1events_1_1_move_event.html">MoveEvent</a>());</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    EventManager::getInstance()-&gt;processEvents();</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment">    Entity ent;</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment">    WearableItem littleItem, bigItem;</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment">    littleItem.modificators()[SkillType::AGILITY] = 20;</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">    bigItem.requirements()[SkillType::DODGE_PHYSIC] = 10;</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">    bigItem.modificators()[SkillType::MARTIAL_ARTS] = 20;</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment">    shared_ptr&lt;Entity&gt; ptrEnt(&amp;ent);</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment">    Logger::log() &lt;&lt; info &lt;&lt; &quot;equip big item &quot; &lt;&lt; boolalpha &lt;&lt; bigItem.equip(ptrEnt) &lt;&lt; endlog;</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="comment">    Logger::log() &lt;&lt; info &lt;&lt; &quot;equip little item &quot; &lt;&lt; boolalpha &lt;&lt; littleItem.equip(ptrEnt) &lt;&lt; endlog;</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="comment">    Logger::log() &lt;&lt; info &lt;&lt; &quot;equip big item again &quot; &lt;&lt; boolalpha &lt;&lt; bigItem.equip(ptrEnt) &lt;&lt; endlog;</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="comment">    Logger::log() &lt;&lt; info &lt;&lt; ent.getSkillsSet() &lt;&lt; endlog;</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment">    Logger::log() &lt;&lt; info &lt;&lt; &quot;unequip little item &quot; &lt;&lt; boolalpha &lt;&lt; littleItem.equip(nullptr) &lt;&lt; endlog;</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="comment">    Logger::log() &lt;&lt; info &lt;&lt; ent.getSkillsSet() &lt;&lt; endlog;</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="comment">    Entity attacker, target;</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment">    attacker.getSkillsSet().getSkill(SkillType::MARTIAL_ARTS)-&gt;changeBaseValue(30);</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="comment">    attacker.getSkillsSet().getSkill(SkillType::CRITICAL_LUCK)-&gt;changeBaseValue(30);</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment">    attacker.getSkillsSet().getSkill(SkillType::CRITICAL_FACTOR)-&gt;changeBaseValue(30);</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="comment">    target.getSkillsSet().getSkill(SkillType::DODGE_PHYSIC)-&gt;changeBaseValue(50);</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment">    shared_ptr&lt;Entity&gt; ptrAttacker(&amp;attacker), ptrTarget(&amp;target);</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment">    AttackComputer ac;</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">    ac.configureAttack(20, 40, AttackType::HANDS_ATTACK);</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment">    ac.setAttacker(ptrAttacker);</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment">    ac.prepareAttack();</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment">    cout &lt;&lt; &quot;attack prepared : physic dam &quot; &lt;&lt; ac.m_physicalDamage &lt;&lt; &quot; magical dam &quot; &lt;&lt; ac.m_magicalDamage &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment">    ac.setTarget(ptrTarget);</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment">    ac.targetDodge();</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment">    cout &lt;&lt; &quot;After dodge : physic dam &quot; &lt;&lt; ac.m_physicalDamage &lt;&lt; &quot; magical dam &quot; &lt;&lt; ac.m_magicalDamage &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="comment">// Console engine tests</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">    ConsoleEngine ce(Vec2&lt;int&gt;(140, 40), 5);</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="comment">    cout &lt;&lt; endl &lt;&lt; &quot;now&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment">    cout &lt;&lt; &quot;CR is &quot; &lt;&lt; ((int) &#39;\n&#39;) &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="comment">    Sprite* bloody = new Sprite(&quot;assets/bloody.sprite&quot;);</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">    MultiSprite* warrior;</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">    try{</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">        </span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment">        vector&lt;string&gt; filesnames = vector&lt;string&gt;();</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment">        filesnames.push_back(&quot;assets/warrior_right.sprite&quot;);</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment">        filesnames.push_back(&quot;assets/warrior_left.sprite&quot;);</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment">        filesnames.push_back(&quot;assets/warrior_face.sprite&quot;);</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="comment">        warrior = new MultiSprite(filesnames);</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="comment">    } catch (...) { cout &lt;&lt; &quot;bruh&quot; &lt;&lt; endl; return -1; }</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="comment">    cout &lt;&lt; &quot;size is &quot; &lt;&lt; warrior-&gt;getSpriteNumber() &lt;&lt; &quot; now &quot; &lt;&lt; warrior-&gt;getCurrentSpriteIndex() &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment">    this_thread::sleep_for(chrono::milliseconds(1000));</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="comment">    shared_ptr&lt;Sprite&gt; bloodyPtr(bloody);</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="comment">    ce.addDrawable(bloodyPtr, 1);</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="comment">    ce.startRendering();</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="comment">    this_thread::sleep_for(chrono::milliseconds(3000));</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment">    ce.removeDrawable(bloodyPtr);</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="comment">    ce.addDrawable(shared_ptr&lt;MultiSprite&gt;(warrior), 0);</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="comment">    while(1)</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="comment">    {</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="comment">        static int index = 0;</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="comment">        warrior-&gt;setPosition(warrior-&gt;getPosition() + Vec2&lt;int&gt;(1, 2));</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="comment">        warrior-&gt;setCurrentSpriteIndex(index);</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="comment">        static int test = 0;</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="comment">        while(test &lt; 100)</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="comment">            this_thread::sleep_for(chrono::milliseconds(10));</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="comment">            ++test;</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="comment">            EventManager::getInstance()-&gt;processEvents();</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="comment">        test = 0;</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="comment">        static int i = 0;</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment">        stringstream ss;</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment">        ss &lt;&lt; &quot;Je suis &quot;;</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="comment">        ss &lt;&lt; i;</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="comment">        ss &lt;&lt; &quot; patate(s)&quot;;</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment">       // txt-&gt;writeText(Vec2&lt;int&gt;(1, 1), ss.str());</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="comment">        i++;</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="comment">        index++;</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment">        if(index == 3) index = 0;</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="comment">    }*/</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    this_thread::sleep_for(chrono::milliseconds(2000));</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    GameManager::start();</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keywordflow">while</span>(1)</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    {</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        EventManager::getInstance()-&gt;processEvents();</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        this_thread::sleep_for(chrono::milliseconds(10));</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    EventManager::end();</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    Logger::end();</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;}</div>
 <div class="ttc" id="a_attack_computer_8hpp_html"><div class="ttname"><a href="_attack_computer_8hpp.html">AttackComputer.hpp</a></div><div class="ttdoc">This is a class used to simplify and generalize attack computing while keeping it the most flexible p...</div></div>
 <div class="ttc" id="a_console_engine_8hpp_html"><div class="ttname"><a href="_console_engine_8hpp.html">ConsoleEngine.hpp</a></div><div class="ttdoc">Display really basic graphics in the console.</div></div>
-<div class="ttc" id="a_entity_8hpp_html"><div class="ttname"><a href="_entity_8hpp.html">Entity.hpp</a></div><div class="ttdoc">Entity of the world.</div></div>
 <div class="ttc" id="a_event_manager_8hpp_html"><div class="ttname"><a href="_event_manager_8hpp.html">EventManager.hpp</a></div><div class="ttdoc">Singleton that manages events processing.</div></div>
+<div class="ttc" id="a_game_manager_8hpp_html"><div class="ttname"><a href="_game_manager_8hpp.html">GameManager.hpp</a></div><div class="ttdoc">Singleton that manage the game progress.</div></div>
 <div class="ttc" id="a_logger_8hpp_html"><div class="ttname"><a href="_logger_8hpp.html">Logger.hpp</a></div><div class="ttdoc">Singleton that manages logs, their severity and files.</div></div>
 <div class="ttc" id="a_skill_8hpp_html"><div class="ttname"><a href="_skill_8hpp.html">Skill.hpp</a></div><div class="ttdoc">Header file of Skill class.</div></div>
 <div class="ttc" id="a_skill_type_8hpp_html"><div class="ttname"><a href="_skill_type_8hpp.html">SkillType.hpp</a></div><div class="ttdoc">Header file of SkillType class.</div></div>
 <div class="ttc" id="a_skills_set_8hpp_html"><div class="ttname"><a href="_skills_set_8hpp.html">SkillsSet.hpp</a></div><div class="ttdoc">Header file of SkillsSet class and SkillLevel enum.</div></div>
-<div class="ttc" id="a_wearable_item_8hpp_html"><div class="ttname"><a href="_wearable_item_8hpp.html">WearableItem.hpp</a></div><div class="ttdoc">A WearableItem is an object that can be weared by entities, for example an armor.</div></div>
-<div class="ttc" id="aclass_test_listener_html"><div class="ttname"><a href="class_test_listener.html">TestListener</a></div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00031">main.cpp:32</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_console_engine_html"><div class="ttname"><a href="classgame_1_1console_1_1_console_engine.html">game::console::ConsoleEngine</a></div><div class="ttdoc">Console manager class. An instance of this can manage all display using its own render thread.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8hpp_source.html#l00080">ConsoleEngine.hpp:81</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_drawable_html_a6d6e33b53ac5d4303707f5d87f42f95b"><div class="ttname"><a href="classgame_1_1console_1_1_drawable.html#a6d6e33b53ac5d4303707f5d87f42f95b">game::console::Drawable::setPosition</a></div><div class="ttdeci">void setPosition(const math::Vec2&lt; int &gt; &amp;pos)</div><div class="ttdoc">Change the position of the Drawable in the screen.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00256">ConsoleEngine.cpp:256</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_drawable_html_adc0c2a133ff8f8ed223b4406deb67670"><div class="ttname"><a href="classgame_1_1console_1_1_drawable.html#adc0c2a133ff8f8ed223b4406deb67670">game::console::Drawable::getPosition</a></div><div class="ttdeci">math::Vec2&lt; int &gt; getPosition() const</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00270">ConsoleEngine.cpp:270</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_multi_sprite_html"><div class="ttname"><a href="classgame_1_1console_1_1_multi_sprite.html">game::console::MultiSprite</a></div><div class="ttdoc">MultiSprite implementation. This Drawable object can display different Sprite regarding the index val...</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8hpp_source.html#l00393">ConsoleEngine.hpp:394</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_multi_sprite_html_a37d9cb4cb6fd979719f0ce99c556424e"><div class="ttname"><a href="classgame_1_1console_1_1_multi_sprite.html#a37d9cb4cb6fd979719f0ce99c556424e">game::console::MultiSprite::getCurrentSpriteIndex</a></div><div class="ttdeci">int getCurrentSpriteIndex() const</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00480">ConsoleEngine.cpp:480</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_multi_sprite_html_a5a3975a82cbbfb5c456c48aac14ebc63"><div class="ttname"><a href="classgame_1_1console_1_1_multi_sprite.html#a5a3975a82cbbfb5c456c48aac14ebc63">game::console::MultiSprite::setCurrentSpriteIndex</a></div><div class="ttdeci">bool setCurrentSpriteIndex(int index)</div><div class="ttdoc">Change the current Sprite, pass the needDraw flag to true.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00485">ConsoleEngine.cpp:485</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_multi_sprite_html_a8703004df44aa258a0a18732b9c2ce63"><div class="ttname"><a href="classgame_1_1console_1_1_multi_sprite.html#a8703004df44aa258a0a18732b9c2ce63">game::console::MultiSprite::getSpriteNumber</a></div><div class="ttdeci">int getSpriteNumber() const</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00475">ConsoleEngine.cpp:475</a></div></div>
-<div class="ttc" id="aclassgame_1_1console_1_1_sprite_html"><div class="ttname"><a href="classgame_1_1console_1_1_sprite.html">game::console::Sprite</a></div><div class="ttdoc">A Sprite is an ASCII image that can be displayed by the ConsoleEngine.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8hpp_source.html#l00295">ConsoleEngine.hpp:296</a></div></div>
-<div class="ttc" id="aclassgame_1_1entity_1_1_attack_computer_html"><div class="ttname"><a href="classgame_1_1entity_1_1_attack_computer.html">game::entity::AttackComputer</a></div><div class="ttdoc">Provide utility methods to compute an attack.</div><div class="ttdef"><b>Definition:</b> <a href="_attack_computer_8hpp_source.html#l00051">AttackComputer.hpp:52</a></div></div>
-<div class="ttc" id="aclassgame_1_1entity_1_1_attack_computer_html_a01fb47cfad8ec0afab563f9569a8092c"><div class="ttname"><a href="classgame_1_1entity_1_1_attack_computer.html#a01fb47cfad8ec0afab563f9569a8092c">game::entity::AttackComputer::targetDodge</a></div><div class="ttdeci">void targetDodge()</div><div class="ttdoc">Determine if the target can dodge the attack.</div><div class="ttdef"><b>Definition:</b> <a href="_attack_computer_8cpp_source.html#l00088">AttackComputer.cpp:88</a></div></div>
-<div class="ttc" id="aclassgame_1_1entity_1_1_attack_computer_html_a02ac8fdfbae9a6f31076c10a74568311"><div class="ttname"><a href="classgame_1_1entity_1_1_attack_computer.html#a02ac8fdfbae9a6f31076c10a74568311">game::entity::AttackComputer::configureAttack</a></div><div class="ttdeci">void configureAttack(int physicalDamage, int magicalDamage, AttackType type)</div><div class="ttdoc">Configure damages and attack type.</div><div class="ttdef"><b>Definition:</b> <a href="_attack_computer_8cpp_source.html#l00035">AttackComputer.cpp:35</a></div></div>
-<div class="ttc" id="aclassgame_1_1entity_1_1_attack_computer_html_a0cbd3efa9e110cad4ac21741e2793967"><div class="ttname"><a href="classgame_1_1entity_1_1_attack_computer.html#a0cbd3efa9e110cad4ac21741e2793967">game::entity::AttackComputer::m_physicalDamage</a></div><div class="ttdeci">int m_physicalDamage</div><div class="ttdef"><b>Definition:</b> <a href="_attack_computer_8hpp_source.html#l00066">AttackComputer.hpp:66</a></div></div>
-<div class="ttc" id="aclassgame_1_1entity_1_1_attack_computer_html_a20044135a777b6cb6b4d5cdf4d87d983"><div class="ttname"><a href="classgame_1_1entity_1_1_attack_computer.html#a20044135a777b6cb6b4d5cdf4d87d983">game::entity::AttackComputer::setAttacker</a></div><div class="ttdeci">void setAttacker(std::shared_ptr&lt; Entity &gt; attacker)</div><div class="ttdoc">Give a pointer on attacker for future computing.</div><div class="ttdef"><b>Definition:</b> <a href="_attack_computer_8cpp_source.html#l00042">AttackComputer.cpp:42</a></div></div>
-<div class="ttc" id="aclassgame_1_1entity_1_1_attack_computer_html_a3a030c11d04f812f2d9de9769a1fa1a0"><div class="ttname"><a href="classgame_1_1entity_1_1_attack_computer.html#a3a030c11d04f812f2d9de9769a1fa1a0">game::entity::AttackComputer::prepareAttack</a></div><div class="ttdeci">void prepareAttack()</div><div class="ttdoc">Compute the power of the attack.</div><div class="ttdef"><b>Definition:</b> <a href="_attack_computer_8cpp_source.html#l00047">AttackComputer.cpp:47</a></div></div>
-<div class="ttc" id="aclassgame_1_1entity_1_1_attack_computer_html_ab026282c9df2ec9a5f33abfaab0329af"><div class="ttname"><a href="classgame_1_1entity_1_1_attack_computer.html#ab026282c9df2ec9a5f33abfaab0329af">game::entity::AttackComputer::setTarget</a></div><div class="ttdeci">void setTarget(std::shared_ptr&lt; Entity &gt; target)</div><div class="ttdoc">Give a pointer on the target for future computing.</div><div class="ttdef"><b>Definition:</b> <a href="_attack_computer_8cpp_source.html#l00083">AttackComputer.cpp:83</a></div></div>
-<div class="ttc" id="aclassgame_1_1entity_1_1_attack_computer_html_ad7a7b8c36eeea0830719d4080cc292a9"><div class="ttname"><a href="classgame_1_1entity_1_1_attack_computer.html#ad7a7b8c36eeea0830719d4080cc292a9">game::entity::AttackComputer::m_magicalDamage</a></div><div class="ttdeci">int m_magicalDamage</div><div class="ttdef"><b>Definition:</b> <a href="_attack_computer_8hpp_source.html#l00067">AttackComputer.hpp:67</a></div></div>
-<div class="ttc" id="aclassgame_1_1entity_1_1_entity_html"><div class="ttname"><a href="classgame_1_1entity_1_1_entity.html">game::entity::Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00020">Entity.hpp:21</a></div></div>
-<div class="ttc" id="aclassgame_1_1events_1_1_attack_event_html"><div class="ttname"><a href="classgame_1_1events_1_1_attack_event.html">game::events::AttackEvent</a></div><div class="ttdoc">Processed when an entity attacks another.</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00106">Event.hpp:107</a></div></div>
+<div class="ttc" id="aclass_test_listener_html"><div class="ttname"><a href="class_test_listener.html">TestListener</a></div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00030">main.cpp:31</a></div></div>
+<div class="ttc" id="aclassgame_1_1events_1_1_attack_event_html"><div class="ttname"><a href="classgame_1_1events_1_1_attack_event.html">game::events::AttackEvent</a></div><div class="ttdoc">Processed when an entity attacks another.</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00112">Event.hpp:113</a></div></div>
 <div class="ttc" id="aclassgame_1_1events_1_1_console_key_pressed_event_html"><div class="ttname"><a href="classgame_1_1events_1_1_console_key_pressed_event.html">game::events::ConsoleKeyPressedEvent</a></div><div class="ttdoc">Processed when a terminal key is pressed.</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00081">Event.hpp:82</a></div></div>
 <div class="ttc" id="aclassgame_1_1events_1_1_event_html"><div class="ttname"><a href="classgame_1_1events_1_1_event.html">game::events::Event</a></div><div class="ttdoc">Superclass of any event.</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00051">Event.hpp:52</a></div></div>
 <div class="ttc" id="aclassgame_1_1events_1_1_event_listener_html"><div class="ttname"><a href="classgame_1_1events_1_1_event_listener.html">game::events::EventListener</a></div><div class="ttdoc">This is the interface each class who wants to listen to events must implement.</div><div class="ttdef"><b>Definition:</b> <a href="_event_manager_8hpp_source.html#l00069">EventManager.hpp:70</a></div></div>
-<div class="ttc" id="aclassgame_1_1events_1_1_move_event_html"><div class="ttname"><a href="classgame_1_1events_1_1_move_event.html">game::events::MoveEvent</a></div><div class="ttdoc">Processed when an entity moves.</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00117">Event.hpp:118</a></div></div>
-<div class="ttc" id="aclassgame_1_1items_1_1_fight_item_html_a5c14d997af0cad8336ee603d815f201d"><div class="ttname"><a href="classgame_1_1items_1_1_fight_item.html#a5c14d997af0cad8336ee603d815f201d">game::items::FightItem::requirements</a></div><div class="ttdeci">std::map&lt; skills::SkillType, int &gt; &amp; requirements()</div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8cpp_source.html#l00036">FightItem.cpp:36</a></div></div>
-<div class="ttc" id="aclassgame_1_1items_1_1_fight_item_html_a65f7d2a45f4e43840ddd58ae9c59a629"><div class="ttname"><a href="classgame_1_1items_1_1_fight_item.html#a65f7d2a45f4e43840ddd58ae9c59a629">game::items::FightItem::equip</a></div><div class="ttdeci">bool equip(std::shared_ptr&lt; entity::Entity &gt; user)</div><div class="ttdoc">Try to equip an entity, if it success, the item applies its modificators.</div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8cpp_source.html#l00057">FightItem.cpp:57</a></div></div>
-<div class="ttc" id="aclassgame_1_1items_1_1_fight_item_html_af686161e505b3b593f1a2bb2701768f7"><div class="ttname"><a href="classgame_1_1items_1_1_fight_item.html#af686161e505b3b593f1a2bb2701768f7">game::items::FightItem::modificators</a></div><div class="ttdeci">std::map&lt; skills::SkillType, int &gt; &amp; modificators()</div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8cpp_source.html#l00041">FightItem.cpp:41</a></div></div>
-<div class="ttc" id="aclassgame_1_1items_1_1_wearable_item_html"><div class="ttname"><a href="classgame_1_1items_1_1_wearable_item.html">game::items::WearableItem</a></div><div class="ttdef"><b>Definition:</b> <a href="_wearable_item_8hpp_source.html#l00014">WearableItem.hpp:15</a></div></div>
-<div class="ttc" id="aclassgame_1_1math_1_1_vec2_html"><div class="ttname"><a href="classgame_1_1math_1_1_vec2.html">game::math::Vec2&lt; int &gt;</a></div></div>
+<div class="ttc" id="aclassgame_1_1events_1_1_move_event_html"><div class="ttname"><a href="classgame_1_1events_1_1_move_event.html">game::events::MoveEvent</a></div><div class="ttdoc">Processed when an entity moves.</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00123">Event.hpp:124</a></div></div>
 <div class="ttc" id="aclassgame_1_1skills_1_1_skill_html"><div class="ttname"><a href="classgame_1_1skills_1_1_skill.html">game::skills::Skill</a></div><div class="ttdoc">This class contain a skill type, a base value for this skill and a temporary value used by buffs/debu...</div><div class="ttdef"><b>Definition:</b> <a href="_skill_8hpp_source.html#l00028">Skill.hpp:29</a></div></div>
-<div class="ttc" id="aclassgame_1_1skills_1_1_skill_html_a5ec4ea0e093321719d3ba2a8252b4011"><div class="ttname"><a href="classgame_1_1skills_1_1_skill.html#a5ec4ea0e093321719d3ba2a8252b4011">game::skills::Skill::changeBaseValue</a></div><div class="ttdeci">void changeBaseValue(int value)</div><div class="ttdoc">Add or remove points to the current value.</div><div class="ttdef"><b>Definition:</b> <a href="_skill_8cpp_source.html#l00031">Skill.cpp:31</a></div></div>
 <div class="ttc" id="aclassgame_1_1skills_1_1_skill_type_html"><div class="ttname"><a href="classgame_1_1skills_1_1_skill_type.html">game::skills::SkillType</a></div><div class="ttdoc">Skills enumeration.</div><div class="ttdef"><b>Definition:</b> <a href="_skill_type_8hpp_source.html#l00047">SkillType.hpp:48</a></div></div>
 <div class="ttc" id="aclassgame_1_1skills_1_1_skills_set_html"><div class="ttname"><a href="classgame_1_1skills_1_1_skills_set.html">game::skills::SkillsSet</a></div><div class="ttdoc">A set of all skills each Entity has with useful methods to manage them.</div><div class="ttdef"><b>Definition:</b> <a href="_skills_set_8hpp_source.html#l00046">SkillsSet.hpp:47</a></div></div>
-<div class="ttc" id="aclassgame_1_1skills_1_1_skills_set_html_af572aca772a0ae659f28b5a4d27f6d72"><div class="ttname"><a href="classgame_1_1skills_1_1_skills_set.html#af572aca772a0ae659f28b5a4d27f6d72">game::skills::SkillsSet::getSkill</a></div><div class="ttdeci">Skill * getSkill(const SkillType &amp;type)</div><div class="ttdef"><b>Definition:</b> <a href="_skills_set_8cpp_source.html#l00051">SkillsSet.cpp:51</a></div></div>
 <div class="ttc" id="anamespacegame_1_1console_html"><div class="ttname"><a href="namespacegame_1_1console.html">game::console</a></div><div class="ttdoc">Namespace of console engine.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00075">ConsoleEngine.cpp:76</a></div></div>
 <div class="ttc" id="anamespacegame_1_1events_html"><div class="ttname"><a href="namespacegame_1_1events.html">game::events</a></div><div class="ttdoc">Events system namespace.</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00017">Event.hpp:18</a></div></div>
-<div class="ttc" id="anamespacegame_1_1items_html"><div class="ttname"><a href="namespacegame_1_1items.html">game::items</a></div><div class="ttdoc">Items namespace.</div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8cpp_source.html#l00014">FightItem.cpp:15</a></div></div>
 <div class="ttc" id="anamespacegame_1_1logs_html"><div class="ttname"><a href="namespacegame_1_1logs.html">game::logs</a></div><div class="ttdoc">Logger namespace.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00019">Logger.cpp:20</a></div></div>
 <div class="ttc" id="anamespacegame_1_1logs_html_a0ce458c617d35922cbeff8eea07d4109"><div class="ttname"><a href="namespacegame_1_1logs.html#a0ce458c617d35922cbeff8eea07d4109">game::logs::info</a></div><div class="ttdeci">ios_base &amp; info(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00227">Logger.cpp:227</a></div></div>
 <div class="ttc" id="anamespacegame_1_1logs_html_a3bea0b6cba6e4d445a59889cb0586f85"><div class="ttname"><a href="namespacegame_1_1logs.html#a3bea0b6cba6e4d445a59889cb0586f85">game::logs::warning</a></div><div class="ttdeci">ios_base &amp; warning(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00233">Logger.cpp:233</a></div></div>

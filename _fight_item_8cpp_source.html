@@ -73,92 +73,93 @@ $(function() {
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_fight_item_8hpp.html">FightItem.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1skills.html">game::skills</a>;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="namespacegame_1_1items.html">   14</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegame_1_1items.html">game::items</a></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classgame_1_1items_1_1_fight_item.html#a3b96a224b34ba5a4b0bc40641ce70f6e">   16</a></span>&#160;    FightItem::FightItem() : <a class="code" href="classgame_1_1items_1_1_fight_item.html">FightItem</a>(<span class="stringliteral">&quot;Unkown FightItem&quot;</span>, 0) <span class="comment">// Default parameters</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {}</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classgame_1_1items_1_1_fight_item.html#a3b96a224b34ba5a4b0bc40641ce70f6e">FightItem::FightItem</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> name, <span class="keywordtype">float</span> weight) : <a class="code" href="classgame_1_1items_1_1_item.html">Item</a>(name, weight)</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">const</span> <a class="code" href="classgame_1_1skills_1_1_skill_type.html">SkillType</a>&amp; type : SkillType::values())</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="comment">// Default values : everything to 0 (no requirements and no effect)</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            m_requirements[type] = 0;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            m_modificators[type] = 0;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        }</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classgame_1_1items_1_1_fight_item.html#aa68ecdc3aeb4c3d85942e90b33a59443">   29</a></span>&#160;    <a class="code" href="classgame_1_1items_1_1_fight_item.html#a3b96a224b34ba5a4b0bc40641ce70f6e">FightItem::FightItem</a>(<span class="keyword">const</span> <a class="code" href="classgame_1_1items_1_1_fight_item.html">FightItem</a>&amp; toCopy) : <a class="code" href="classgame_1_1items_1_1_item.html">Item</a>(toCopy)</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="classgame_1_1items_1_1_fight_item.html#af5d33a4c532110d59eedd9dd79e42f5c">m_user</a>.reset(); <span class="comment">// New copy of item hasn&#39;t the same user.</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        m_requirements = toCopy.m_requirements; <span class="comment">// Copy requirements</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        m_modificators = toCopy.m_modificators; <span class="comment">// Copy modificators</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classgame_1_1items_1_1_fight_item.html#a5c14d997af0cad8336ee603d815f201d">   36</a></span>&#160;    map&lt;skills::SkillType, int&gt;&amp; <a class="code" href="classgame_1_1items_1_1_fight_item.html#a5c14d997af0cad8336ee603d815f201d">FightItem::requirements</a>()</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">return</span> m_requirements;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classgame_1_1items_1_1_fight_item.html#af686161e505b3b593f1a2bb2701768f7">   41</a></span>&#160;    map&lt;skills::SkillType, int&gt;&amp; <a class="code" href="classgame_1_1items_1_1_fight_item.html#af686161e505b3b593f1a2bb2701768f7">FightItem::modificators</a>()</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">return</span> m_modificators;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classgame_1_1items_1_1_fight_item.html#ab28cd00aceebe277e5caaf647d54a0a1">   46</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1items_1_1_fight_item.html#ab28cd00aceebe277e5caaf647d54a0a1">FightItem::canEquip</a>(std::shared_ptr&lt;entity::Entity&gt; user)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="comment">// Iterate over each entity skill and verify if it is above requirements</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">const</span> <a class="code" href="classgame_1_1skills_1_1_skill_type.html">SkillType</a>&amp; type : SkillType::values())</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordflow">if</span>(user-&gt;getSkillsSet().computeActualValue(type) &lt; m_requirements.at(type))</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classgame_1_1items_1_1_fight_item.html#a65f7d2a45f4e43840ddd58ae9c59a629">   57</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1items_1_1_fight_item.html#a65f7d2a45f4e43840ddd58ae9c59a629">FightItem::equip</a>(std::shared_ptr&lt;entity::Entity&gt; user) </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        shared_ptr&lt;entity::Entity&gt; curUser = <a class="code" href="classgame_1_1items_1_1_fight_item.html#af5d33a4c532110d59eedd9dd79e42f5c">m_user</a>.lock();</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">if</span>(user.get() == curUser.get())</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// Already equipped</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">if</span>((user &amp;&amp; <a class="code" href="classgame_1_1items_1_1_fight_item.html#ab28cd00aceebe277e5caaf647d54a0a1">canEquip</a>(user)) || !user) <span class="comment">// If the specified user can be equipped OR there is no new user</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">if</span>(curUser)</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <span class="comment">// Remove current user if he exists</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="comment">// Iterate over all skills of current user and remove the modificator</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="keywordflow">for</span>(<span class="keyword">const</span> <a class="code" href="classgame_1_1skills_1_1_skill_type.html">SkillType</a>&amp; type : SkillType::values())</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                    curUser-&gt;getSkillsSet().getSkill(type)-&gt;changeTempValue(m_modificators[type] * -1);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <a class="code" href="classgame_1_1items_1_1_fight_item.html#af5d33a4c532110d59eedd9dd79e42f5c">m_user</a>.reset();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">if</span>(user) <span class="comment">// If a new user is specified</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                <a class="code" href="classgame_1_1items_1_1_fight_item.html#af5d33a4c532110d59eedd9dd79e42f5c">m_user</a> = user; <span class="comment">// Update user</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <span class="comment">// Apply modificators to new user</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keywordflow">for</span>(<span class="keyword">const</span> <a class="code" href="classgame_1_1skills_1_1_skill_type.html">SkillType</a>&amp; type : SkillType::values())</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                    user-&gt;getSkillsSet().getSkill(type)-&gt;changeTempValue(m_modificators[type]);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(user)</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// The specified user hasn&#39;t the requirements</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// Success to remove old user and eventually to equip a new one</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">using namespace </span>game::core;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="namespacegame_1_1items.html">   15</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegame_1_1items.html">game::items</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classgame_1_1items_1_1_fight_item.html#a3b96a224b34ba5a4b0bc40641ce70f6e">   17</a></span>&#160;    FightItem::FightItem() : <a class="code" href="classgame_1_1items_1_1_fight_item.html">FightItem</a>(<span class="stringliteral">&quot;Unkown FightItem&quot;</span>, 0) <span class="comment">// Default parameters</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {}</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classgame_1_1items_1_1_fight_item.html#a3b96a224b34ba5a4b0bc40641ce70f6e">FightItem::FightItem</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> name, <span class="keywordtype">float</span> weight) : <a class="code" href="classgame_1_1items_1_1_item.html">Item</a>(name, weight)</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">const</span> <a class="code" href="classgame_1_1skills_1_1_skill_type.html">SkillType</a>&amp; type : SkillType::values())</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="comment">// Default values : everything to 0 (no requirements and no effect)</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            m_requirements[type] = 0;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            m_modificators[type] = 0;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        }</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classgame_1_1items_1_1_fight_item.html#aa68ecdc3aeb4c3d85942e90b33a59443">   30</a></span>&#160;    <a class="code" href="classgame_1_1items_1_1_fight_item.html#a3b96a224b34ba5a4b0bc40641ce70f6e">FightItem::FightItem</a>(<span class="keyword">const</span> <a class="code" href="classgame_1_1items_1_1_fight_item.html">FightItem</a>&amp; toCopy) : <a class="code" href="classgame_1_1items_1_1_item.html">Item</a>(toCopy)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <a class="code" href="classgame_1_1items_1_1_fight_item.html#a678e0e90b7e96db1256fe8ae730254bd">m_user</a>.reset(); <span class="comment">// New copy of item hasn&#39;t the same user.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        m_requirements = toCopy.m_requirements; <span class="comment">// Copy requirements</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        m_modificators = toCopy.m_modificators; <span class="comment">// Copy modificators</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classgame_1_1items_1_1_fight_item.html#a5c14d997af0cad8336ee603d815f201d">   37</a></span>&#160;    map&lt;skills::SkillType, int&gt;&amp; <a class="code" href="classgame_1_1items_1_1_fight_item.html#a5c14d997af0cad8336ee603d815f201d">FightItem::requirements</a>()</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">return</span> m_requirements;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classgame_1_1items_1_1_fight_item.html#af686161e505b3b593f1a2bb2701768f7">   42</a></span>&#160;    map&lt;skills::SkillType, int&gt;&amp; <a class="code" href="classgame_1_1items_1_1_fight_item.html#af686161e505b3b593f1a2bb2701768f7">FightItem::modificators</a>()</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">return</span> m_modificators;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classgame_1_1items_1_1_fight_item.html#a3a6c6d0a2eae1ba4e4439d28a49a606c">   47</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1items_1_1_fight_item.html#a3a6c6d0a2eae1ba4e4439d28a49a606c">FightItem::canEquip</a>(std::shared_ptr&lt;GameEntity&gt; user)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">// Iterate over each entity skill and verify if it is above requirements</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">const</span> <a class="code" href="classgame_1_1skills_1_1_skill_type.html">SkillType</a>&amp; type : SkillType::values())</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">if</span>(user-&gt;getSkillsSet().computeActualValue(type) &lt; m_requirements.at(type))</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classgame_1_1items_1_1_fight_item.html#a6c32d946daabdd161a33dcec799c5691">   58</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1items_1_1_fight_item.html#a6c32d946daabdd161a33dcec799c5691">FightItem::equip</a>(std::shared_ptr&lt;GameEntity&gt; user) </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        shared_ptr&lt;GameEntity&gt; curUser = <a class="code" href="classgame_1_1items_1_1_fight_item.html#a678e0e90b7e96db1256fe8ae730254bd">m_user</a>.lock();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">if</span>(user.get() == curUser.get())</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// Already equipped</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">if</span>((user &amp;&amp; <a class="code" href="classgame_1_1items_1_1_fight_item.html#a3a6c6d0a2eae1ba4e4439d28a49a606c">canEquip</a>(user)) || !user) <span class="comment">// If the specified user can be equipped OR there is no new user</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keywordflow">if</span>(curUser)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="comment">// Remove current user if he exists</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="comment">// Iterate over all skills of current user and remove the modificator</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <span class="keywordflow">for</span>(<span class="keyword">const</span> <a class="code" href="classgame_1_1skills_1_1_skill_type.html">SkillType</a>&amp; type : SkillType::values())</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                    curUser-&gt;getSkillsSet().getSkill(type)-&gt;changeTempValue(m_modificators[type] * -1);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <a class="code" href="classgame_1_1items_1_1_fight_item.html#a678e0e90b7e96db1256fe8ae730254bd">m_user</a>.reset();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">if</span>(user) <span class="comment">// If a new user is specified</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <a class="code" href="classgame_1_1items_1_1_fight_item.html#a678e0e90b7e96db1256fe8ae730254bd">m_user</a> = user; <span class="comment">// Update user</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="comment">// Apply modificators to new user</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keywordflow">for</span>(<span class="keyword">const</span> <a class="code" href="classgame_1_1skills_1_1_skill_type.html">SkillType</a>&amp; type : SkillType::values())</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    user-&gt;getSkillsSet().getSkill(type)-&gt;changeTempValue(m_modificators[type]);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(user)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// The specified user hasn&#39;t the requirements</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// Success to remove old user and eventually to equip a new one</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
 <div class="ttc" id="a_fight_item_8hpp_html"><div class="ttname"><a href="_fight_item_8hpp.html">FightItem.hpp</a></div><div class="ttdoc">A FightItem is an object that has a role in combat.</div></div>
 <div class="ttc" id="aclassgame_1_1items_1_1_fight_item_html"><div class="ttname"><a href="classgame_1_1items_1_1_fight_item.html">game::items::FightItem</a></div><div class="ttdoc">A FightItem is an object that has a role in combat.</div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8hpp_source.html#l00029">FightItem.hpp:30</a></div></div>
-<div class="ttc" id="aclassgame_1_1items_1_1_fight_item_html_a3b96a224b34ba5a4b0bc40641ce70f6e"><div class="ttname"><a href="classgame_1_1items_1_1_fight_item.html#a3b96a224b34ba5a4b0bc40641ce70f6e">game::items::FightItem::FightItem</a></div><div class="ttdeci">FightItem()</div><div class="ttdoc">Construct a FightItem with a default name and 0 weight.</div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8cpp_source.html#l00016">FightItem.cpp:16</a></div></div>
-<div class="ttc" id="aclassgame_1_1items_1_1_fight_item_html_a5c14d997af0cad8336ee603d815f201d"><div class="ttname"><a href="classgame_1_1items_1_1_fight_item.html#a5c14d997af0cad8336ee603d815f201d">game::items::FightItem::requirements</a></div><div class="ttdeci">std::map&lt; skills::SkillType, int &gt; &amp; requirements()</div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8cpp_source.html#l00036">FightItem.cpp:36</a></div></div>
-<div class="ttc" id="aclassgame_1_1items_1_1_fight_item_html_a65f7d2a45f4e43840ddd58ae9c59a629"><div class="ttname"><a href="classgame_1_1items_1_1_fight_item.html#a65f7d2a45f4e43840ddd58ae9c59a629">game::items::FightItem::equip</a></div><div class="ttdeci">bool equip(std::shared_ptr&lt; entity::Entity &gt; user)</div><div class="ttdoc">Try to equip an entity, if it success, the item applies its modificators.</div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8cpp_source.html#l00057">FightItem.cpp:57</a></div></div>
-<div class="ttc" id="aclassgame_1_1items_1_1_fight_item_html_ab28cd00aceebe277e5caaf647d54a0a1"><div class="ttname"><a href="classgame_1_1items_1_1_fight_item.html#ab28cd00aceebe277e5caaf647d54a0a1">game::items::FightItem::canEquip</a></div><div class="ttdeci">bool canEquip(std::shared_ptr&lt; entity::Entity &gt; user) const</div><div class="ttdoc">Test if an entity has the requirements to equip the FightItem.</div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8cpp_source.html#l00046">FightItem.cpp:46</a></div></div>
-<div class="ttc" id="aclassgame_1_1items_1_1_fight_item_html_af5d33a4c532110d59eedd9dd79e42f5c"><div class="ttname"><a href="classgame_1_1items_1_1_fight_item.html#af5d33a4c532110d59eedd9dd79e42f5c">game::items::FightItem::m_user</a></div><div class="ttdeci">std::weak_ptr&lt; entity::Entity &gt; m_user</div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8hpp_source.html#l00038">FightItem.hpp:38</a></div></div>
-<div class="ttc" id="aclassgame_1_1items_1_1_fight_item_html_af686161e505b3b593f1a2bb2701768f7"><div class="ttname"><a href="classgame_1_1items_1_1_fight_item.html#af686161e505b3b593f1a2bb2701768f7">game::items::FightItem::modificators</a></div><div class="ttdeci">std::map&lt; skills::SkillType, int &gt; &amp; modificators()</div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8cpp_source.html#l00041">FightItem.cpp:41</a></div></div>
+<div class="ttc" id="aclassgame_1_1items_1_1_fight_item_html_a3a6c6d0a2eae1ba4e4439d28a49a606c"><div class="ttname"><a href="classgame_1_1items_1_1_fight_item.html#a3a6c6d0a2eae1ba4e4439d28a49a606c">game::items::FightItem::canEquip</a></div><div class="ttdeci">bool canEquip(std::shared_ptr&lt; core::GameEntity &gt; user) const</div><div class="ttdoc">Test if an entity has the requirements to equip the FightItem.</div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8cpp_source.html#l00047">FightItem.cpp:47</a></div></div>
+<div class="ttc" id="aclassgame_1_1items_1_1_fight_item_html_a3b96a224b34ba5a4b0bc40641ce70f6e"><div class="ttname"><a href="classgame_1_1items_1_1_fight_item.html#a3b96a224b34ba5a4b0bc40641ce70f6e">game::items::FightItem::FightItem</a></div><div class="ttdeci">FightItem()</div><div class="ttdoc">Construct a FightItem with a default name and 0 weight.</div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8cpp_source.html#l00017">FightItem.cpp:17</a></div></div>
+<div class="ttc" id="aclassgame_1_1items_1_1_fight_item_html_a5c14d997af0cad8336ee603d815f201d"><div class="ttname"><a href="classgame_1_1items_1_1_fight_item.html#a5c14d997af0cad8336ee603d815f201d">game::items::FightItem::requirements</a></div><div class="ttdeci">std::map&lt; skills::SkillType, int &gt; &amp; requirements()</div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8cpp_source.html#l00037">FightItem.cpp:37</a></div></div>
+<div class="ttc" id="aclassgame_1_1items_1_1_fight_item_html_a678e0e90b7e96db1256fe8ae730254bd"><div class="ttname"><a href="classgame_1_1items_1_1_fight_item.html#a678e0e90b7e96db1256fe8ae730254bd">game::items::FightItem::m_user</a></div><div class="ttdeci">std::weak_ptr&lt; core::GameEntity &gt; m_user</div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8hpp_source.html#l00038">FightItem.hpp:38</a></div></div>
+<div class="ttc" id="aclassgame_1_1items_1_1_fight_item_html_a6c32d946daabdd161a33dcec799c5691"><div class="ttname"><a href="classgame_1_1items_1_1_fight_item.html#a6c32d946daabdd161a33dcec799c5691">game::items::FightItem::equip</a></div><div class="ttdeci">bool equip(std::shared_ptr&lt; core::GameEntity &gt; user)</div><div class="ttdoc">Try to equip an entity, if it success, the item applies its modificators.</div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8cpp_source.html#l00058">FightItem.cpp:58</a></div></div>
+<div class="ttc" id="aclassgame_1_1items_1_1_fight_item_html_af686161e505b3b593f1a2bb2701768f7"><div class="ttname"><a href="classgame_1_1items_1_1_fight_item.html#af686161e505b3b593f1a2bb2701768f7">game::items::FightItem::modificators</a></div><div class="ttdeci">std::map&lt; skills::SkillType, int &gt; &amp; modificators()</div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8cpp_source.html#l00042">FightItem.cpp:42</a></div></div>
 <div class="ttc" id="aclassgame_1_1items_1_1_item_html"><div class="ttname"><a href="classgame_1_1items_1_1_item.html">game::items::Item</a></div><div class="ttdoc">An item is an object an entity can own and use.</div><div class="ttdef"><b>Definition:</b> <a href="_item_8hpp_source.html#l00024">Item.hpp:25</a></div></div>
 <div class="ttc" id="aclassgame_1_1skills_1_1_skill_type_html"><div class="ttname"><a href="classgame_1_1skills_1_1_skill_type.html">game::skills::SkillType</a></div><div class="ttdoc">Skills enumeration.</div><div class="ttdef"><b>Definition:</b> <a href="_skill_type_8hpp_source.html#l00047">SkillType.hpp:48</a></div></div>
-<div class="ttc" id="anamespacegame_1_1items_html"><div class="ttname"><a href="namespacegame_1_1items.html">game::items</a></div><div class="ttdoc">Items namespace.</div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8cpp_source.html#l00014">FightItem.cpp:15</a></div></div>
+<div class="ttc" id="anamespacegame_1_1items_html"><div class="ttname"><a href="namespacegame_1_1items.html">game::items</a></div><div class="ttdoc">Items namespace.</div><div class="ttdef"><b>Definition:</b> <a href="_fight_item_8cpp_source.html#l00015">FightItem.cpp:16</a></div></div>
 <div class="ttc" id="anamespacegame_1_1skills_html"><div class="ttname"><a href="namespacegame_1_1skills.html">game::skills</a></div><div class="ttdoc">Skills system namespace.</div><div class="ttdef"><b>Definition:</b> <a href="_skill_8cpp_source.html#l00014">Skill.cpp:15</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
