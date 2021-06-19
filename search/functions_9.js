@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['needdraw_326',['needDraw',['../classgame_1_1console_1_1_drawable.html#a062513353ac1d20d88c60acece9af361',1,'game::console::Drawable::needDraw()'],['../classgame_1_1console_1_1_multi_sprite.html#a32ef64731cab4cc99c889b462fbeac41',1,'game::console::MultiSprite::needDraw()']]],
-  ['normalize_327',['normalize',['../classgame_1_1math_1_1_vec2.html#ab268a969a921a4e4f9d219636b6e126b',1,'game::math::Vec2']]]
+  ['length_384',['length',['../classgame_1_1math_1_1_vec2.html#a338eaf2058cb36a0f2f57cbdddfbe6a4',1,'game::math::Vec2']]],
+  ['load_385',['load',['../classgame_1_1console_1_1_sprite.html#a9da1bd6f5934899864b7070775704479',1,'game::console::Sprite::load()'],['../classgame_1_1console_1_1_multi_sprite.html#a3ca47d3cff1762cc1cfc3499612a7c6b',1,'game::console::MultiSprite::load()']]],
+  ['log_386',['log',['../classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad',1,'game::logs::Logger']]]
 ];

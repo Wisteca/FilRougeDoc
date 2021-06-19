@@ -75,39 +75,50 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../consoleEngine/ConsoleEngine.hpp&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span>game::core</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegame_1_1core.html">game::core</a></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classgame_1_1core_1_1_game_object.html">   15</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1core_1_1_game_object.html">GameObject</a></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        private :</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="classgame_1_1math_1_1_vec2.html">math::Vec2&lt;&gt;</a> m_pos;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordtype">float</span> m_radius;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        std::shared_ptr&lt;console::MultiSprite&gt; m_sprite;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        public :</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="classgame_1_1core_1_1_game_object.html">GameObject</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="classgame_1_1core_1_1_game_object.html">GameObject</a>(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">math::Vec2&lt;&gt;</a>&amp; pos, <span class="keywordtype">float</span> radius, std::shared_ptr&lt;console::MultiSprite&gt; sprite);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="classgame_1_1core_1_1_game_object.html">GameObject</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">void</span> ticks();</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classgame_1_1core_1_1_game_object.html">   29</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1core_1_1_game_object.html">GameObject</a></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        private :</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">void</span> setPosition(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">math::Vec2&lt;&gt;</a>&amp; pos);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="classgame_1_1math_1_1_vec2.html">math::Vec2&lt;&gt;</a> getPosition() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">void</span> setRadius(<span class="keywordtype">float</span> radius);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">float</span> getRadius() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        std::shared_ptr&lt;console::MultiSprite&gt; getSprite();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    };</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
-<div class="ttc" id="aclassgame_1_1core_1_1_game_object_html"><div class="ttname"><a href="classgame_1_1core_1_1_game_object.html">game::core::GameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8hpp_source.html#l00015">GameObject.hpp:16</a></div></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="classgame_1_1math_1_1_vec2.html">math::Vec2&lt;&gt;</a> m_pos; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="classgame_1_1math_1_1_vec2.html">math::Vec2&lt;&gt;</a> m_sizeWC; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">float</span> m_radius; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        std::shared_ptr&lt;console::MultiSprite&gt; m_sprite; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        public :</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="classgame_1_1core_1_1_game_object.html">GameObject</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classgame_1_1core_1_1_game_object.html#a37d6cb04792eb3bf87e197027b02451f">   48</a></span>&#160;        <a class="code" href="classgame_1_1core_1_1_game_object.html#a37d6cb04792eb3bf87e197027b02451f">GameObject</a>(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">math::Vec2&lt;&gt;</a>&amp; pos, <span class="keywordtype">float</span> radius, std::shared_ptr&lt;console::MultiSprite&gt; sprite);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="classgame_1_1core_1_1_game_object.html">GameObject</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgame_1_1core_1_1_game_object.html#a7bde8266d2f707098ef5e48ea33b981a">ticks</a>();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgame_1_1core_1_1_game_object.html#adf30ab37a21677eda74949fe8cfe1228">setPosition</a>(<span class="keyword">const</span> <a class="code" href="classgame_1_1math_1_1_vec2.html">math::Vec2&lt;&gt;</a>&amp; pos);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="classgame_1_1math_1_1_vec2.html">math::Vec2&lt;&gt;</a> <a class="code" href="classgame_1_1core_1_1_game_object.html#a331370b068f7778fa6525f050ca4d1b0">getPosition</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <a class="code" href="classgame_1_1math_1_1_vec2.html">math::Vec2&lt;&gt;</a> <a class="code" href="classgame_1_1core_1_1_game_object.html#a22d20b2a92c0cf91c4c16379774f6e2f">getSizeWC</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgame_1_1core_1_1_game_object.html#a0f660c1bdf16e27c6305a05375f02abb">setRadius</a>(<span class="keywordtype">float</span> radius);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordtype">float</span> <a class="code" href="classgame_1_1core_1_1_game_object.html#accc64c0c349ec90bd37c77e1723f7ab0">getRadius</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        std::shared_ptr&lt;console::MultiSprite&gt; <a class="code" href="classgame_1_1core_1_1_game_object.html#a58cd128fe5ec465ad1850de3805e7220">getSprite</a>();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    };</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
+<div class="ttc" id="aclassgame_1_1core_1_1_game_object_html"><div class="ttname"><a href="classgame_1_1core_1_1_game_object.html">game::core::GameObject</a></div><div class="ttdoc">An simple object, everything that has a role in the game must be an instance of this or inherit from ...</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8hpp_source.html#l00029">GameObject.hpp:30</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_game_object_html_a0f660c1bdf16e27c6305a05375f02abb"><div class="ttname"><a href="classgame_1_1core_1_1_game_object.html#a0f660c1bdf16e27c6305a05375f02abb">game::core::GameObject::setRadius</a></div><div class="ttdeci">void setRadius(float radius)</div><div class="ttdoc">Change the radius used for physics.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cpp_source.html#l00048">GameObject.cpp:48</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_game_object_html_a22d20b2a92c0cf91c4c16379774f6e2f"><div class="ttname"><a href="classgame_1_1core_1_1_game_object.html#a22d20b2a92c0cf91c4c16379774f6e2f">game::core::GameObject::getSizeWC</a></div><div class="ttdeci">math::Vec2 getSizeWC() const</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cpp_source.html#l00043">GameObject.cpp:43</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_game_object_html_a331370b068f7778fa6525f050ca4d1b0"><div class="ttname"><a href="classgame_1_1core_1_1_game_object.html#a331370b068f7778fa6525f050ca4d1b0">game::core::GameObject::getPosition</a></div><div class="ttdeci">math::Vec2 getPosition() const</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cpp_source.html#l00038">GameObject.cpp:38</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_game_object_html_a37d6cb04792eb3bf87e197027b02451f"><div class="ttname"><a href="classgame_1_1core_1_1_game_object.html#a37d6cb04792eb3bf87e197027b02451f">game::core::GameObject::GameObject</a></div><div class="ttdeci">GameObject(const math::Vec2&lt;&gt; &amp;pos, float radius, std::shared_ptr&lt; console::MultiSprite &gt; sprite)</div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_game_object_html_a58cd128fe5ec465ad1850de3805e7220"><div class="ttname"><a href="classgame_1_1core_1_1_game_object.html#a58cd128fe5ec465ad1850de3805e7220">game::core::GameObject::getSprite</a></div><div class="ttdeci">std::shared_ptr&lt; console::MultiSprite &gt; getSprite()</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cpp_source.html#l00058">GameObject.cpp:58</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_game_object_html_a7bde8266d2f707098ef5e48ea33b981a"><div class="ttname"><a href="classgame_1_1core_1_1_game_object.html#a7bde8266d2f707098ef5e48ea33b981a">game::core::GameObject::ticks</a></div><div class="ttdeci">void ticks()</div><div class="ttdoc">Used to perform operations repetitively.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cpp_source.html#l00029">GameObject.cpp:29</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_game_object_html_accc64c0c349ec90bd37c77e1723f7ab0"><div class="ttname"><a href="classgame_1_1core_1_1_game_object.html#accc64c0c349ec90bd37c77e1723f7ab0">game::core::GameObject::getRadius</a></div><div class="ttdeci">float getRadius() const</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cpp_source.html#l00053">GameObject.cpp:53</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_game_object_html_adf30ab37a21677eda74949fe8cfe1228"><div class="ttname"><a href="classgame_1_1core_1_1_game_object.html#adf30ab37a21677eda74949fe8cfe1228">game::core::GameObject::setPosition</a></div><div class="ttdeci">void setPosition(const math::Vec2&lt;&gt; &amp;pos)</div><div class="ttdoc">Change the position of the object.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cpp_source.html#l00032">GameObject.cpp:32</a></div></div>
 <div class="ttc" id="aclassgame_1_1math_1_1_vec2_html"><div class="ttname"><a href="classgame_1_1math_1_1_vec2.html">game::math::Vec2</a></div><div class="ttdoc">2D vector (x,y) with useful methods to use it</div><div class="ttdef"><b>Definition:</b> <a href="_vec2_8hpp_source.html#l00039">Vec2.hpp:40</a></div></div>
+<div class="ttc" id="anamespacegame_1_1core_html"><div class="ttname"><a href="namespacegame_1_1core.html">game::core</a></div><div class="ttdoc">Main features of the program.</div><div class="ttdef"><b>Definition:</b> <a href="_attack_computer_8cpp_source.html#l00019">AttackComputer.cpp:20</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

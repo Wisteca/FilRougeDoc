@@ -7,5 +7,5 @@ digraph "game::events::EventListener"
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="TestListener",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_test_listener.html",tooltip=" "];
   Node1 -> Node3 [dir="back",color="firebrick4",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="game::core::InputController",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1core_1_1_input_controller.html",tooltip=" "];
+  Node3 [label="game::core::InputController",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1core_1_1_input_controller.html",tooltip="This is the player controller that manages inputs."];
 }

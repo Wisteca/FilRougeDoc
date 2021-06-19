@@ -93,7 +93,7 @@ $(function() {
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1events.html">game::events</a>;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1console.html">game::console</a>;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1math.html">game::math</a>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using namespace </span>game::core;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegame_1_1core.html">game::core</a>;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using namespace </span>rapidxml;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_test_listener.html">   30</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_test_listener.html">TestListener</a> : <span class="keyword">public</span> <a class="code" href="classgame_1_1events_1_1_event_listener.html">EventListener</a></div>
@@ -341,18 +341,30 @@ $(function() {
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment">        if(index == 3) index = 0;</span></div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="comment">    }*/</span></div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    this_thread::sleep_for(chrono::milliseconds(2000));</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    GameManager::start();</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keywordflow">while</span>(1)</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    {</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        EventManager::getInstance()-&gt;processEvents();</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        this_thread::sleep_for(chrono::milliseconds(10));</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    }</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    EventManager::end();</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    Logger::end();</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;}</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    Logger::log().setConsoleVisibility(Severity::INFO, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    Logger::log().setConsoleVisibility(Severity::WARNING, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    this_thread::sleep_for(chrono::milliseconds(500));</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    GameManager::start();</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keywordtype">int</span> count = 0;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keywordflow">while</span>(GameManager::getInstance())</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    {</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        this_thread::sleep_for(chrono::milliseconds(10));</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        EventManager::getInstance()-&gt;processEvents();</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        ++count;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        <span class="keywordflow">if</span>(count &gt;= 10)</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        {</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            count = 0;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            GameManager::getInstance()-&gt;ticks();</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        }</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    }</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160; </div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    EventManager::end();</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    Logger::log() &lt;&lt; <a class="code" href="namespacegame_1_1logs.html#a0ce458c617d35922cbeff8eea07d4109">info</a> &lt;&lt; <span class="stringliteral">&quot;Goodbye&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    Logger::end();</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;}</div>
 <div class="ttc" id="a_attack_computer_8hpp_html"><div class="ttname"><a href="_attack_computer_8hpp.html">AttackComputer.hpp</a></div><div class="ttdoc">This is a class used to simplify and generalize attack computing while keeping it the most flexible p...</div></div>
 <div class="ttc" id="a_console_engine_8hpp_html"><div class="ttname"><a href="_console_engine_8hpp.html">ConsoleEngine.hpp</a></div><div class="ttdoc">Display really basic graphics in the console.</div></div>
 <div class="ttc" id="a_event_manager_8hpp_html"><div class="ttname"><a href="_event_manager_8hpp.html">EventManager.hpp</a></div><div class="ttdoc">Singleton that manages events processing.</div></div>
@@ -371,6 +383,7 @@ $(function() {
 <div class="ttc" id="aclassgame_1_1skills_1_1_skill_type_html"><div class="ttname"><a href="classgame_1_1skills_1_1_skill_type.html">game::skills::SkillType</a></div><div class="ttdoc">Skills enumeration.</div><div class="ttdef"><b>Definition:</b> <a href="_skill_type_8hpp_source.html#l00047">SkillType.hpp:48</a></div></div>
 <div class="ttc" id="aclassgame_1_1skills_1_1_skills_set_html"><div class="ttname"><a href="classgame_1_1skills_1_1_skills_set.html">game::skills::SkillsSet</a></div><div class="ttdoc">A set of all skills each Entity has with useful methods to manage them.</div><div class="ttdef"><b>Definition:</b> <a href="_skills_set_8hpp_source.html#l00046">SkillsSet.hpp:47</a></div></div>
 <div class="ttc" id="anamespacegame_1_1console_html"><div class="ttname"><a href="namespacegame_1_1console.html">game::console</a></div><div class="ttdoc">Namespace of console engine.</div><div class="ttdef"><b>Definition:</b> <a href="_console_engine_8cpp_source.html#l00075">ConsoleEngine.cpp:76</a></div></div>
+<div class="ttc" id="anamespacegame_1_1core_html"><div class="ttname"><a href="namespacegame_1_1core.html">game::core</a></div><div class="ttdoc">Main features of the program.</div><div class="ttdef"><b>Definition:</b> <a href="_attack_computer_8cpp_source.html#l00019">AttackComputer.cpp:20</a></div></div>
 <div class="ttc" id="anamespacegame_1_1events_html"><div class="ttname"><a href="namespacegame_1_1events.html">game::events</a></div><div class="ttdoc">Events system namespace.</div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00017">Event.hpp:18</a></div></div>
 <div class="ttc" id="anamespacegame_1_1logs_html"><div class="ttname"><a href="namespacegame_1_1logs.html">game::logs</a></div><div class="ttdoc">Logger namespace.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00019">Logger.cpp:20</a></div></div>
 <div class="ttc" id="anamespacegame_1_1logs_html_a0ce458c617d35922cbeff8eea07d4109"><div class="ttname"><a href="namespacegame_1_1logs.html#a0ce458c617d35922cbeff8eea07d4109">game::logs::info</a></div><div class="ttdeci">ios_base &amp; info(std::ios_base &amp;base)</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cpp_source.html#l00227">Logger.cpp:227</a></div></div>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y_197',['y',['../classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d',1,'game::math::Vec2::y()'],['../classgame_1_1math_1_1_vec2.html#afde63ec3892073249e729d7f5253653e',1,'game::math::Vec2::y() const']]]
+  ['x_229',['x',['../classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9',1,'game::math::Vec2::x()'],['../classgame_1_1math_1_1_vec2.html#a1afc6e1b068e1c1dd4484b82266140bc',1,'game::math::Vec2::x() const']]]
 ];

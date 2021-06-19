@@ -72,7 +72,7 @@ $(function() {
 <a href="_vec2_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;ostream&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;../io/Logger.hpp&quot;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="namespacegame_1_1math.html">   15</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegame_1_1math.html">game::math</a></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
 <div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="namespacegame_1_1math.html#ae3a8ebeca811da46bb58b980e41c8199">   20</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="namespacegame_1_1math.html#ae3a8ebeca811da46bb58b980e41c8199">EPSILON</a> = 0.01;</div>
@@ -204,18 +204,31 @@ $(function() {
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <span class="keywordflow">return</span> stream;</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        }</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        private :</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="comment">// Positive difference between a and b</span></div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        T diffT(T a, T b)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="keyword">        </span>{</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <span class="keywordflow">if</span>(a &lt; b)</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                <span class="keywordflow">return</span> b - a;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                <span class="keywordflow">return</span> a - b;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        }</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    };</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;}</div>
+<div class="line"><a name="l00201"></a><span class="lineno"><a class="line" href="classgame_1_1math_1_1_vec2.html#ac1a7aa472120c15f530fa2459f4cd1b5">  201</a></span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> C = <span class="keywordtype">float</span>&gt; <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1math_1_1_vec2.html#ac1a7aa472120c15f530fa2459f4cd1b5">isInside</a>(<a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;C&gt;</a> pos, <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;C&gt;</a> bottomRight, <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;C&gt;</a> topLeft = <a class="code" href="classgame_1_1math_1_1_vec2.html">Vec2&lt;C&gt;</a>(0, 0))</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <span class="keywordflow">if</span>(pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() &lt; topLeft.x())</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="keywordflow">if</span>(pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>() &lt; topLeft.y())</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            <span class="keywordflow">if</span>(pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>() &gt; bottomRight.<a class="code" href="classgame_1_1math_1_1_vec2.html#a3721c20991966a6b94a714e7492e1df9">x</a>())</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <span class="keywordflow">if</span>(pos.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>() &gt; bottomRight.<a class="code" href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">y</a>())</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        private :</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <span class="comment">// Positive difference between a and b</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        T diffT(T a, T b)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            <span class="keywordflow">if</span>(a &lt; b)</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                <span class="keywordflow">return</span> b - a;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                <span class="keywordflow">return</span> a - b;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        }</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    };</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;}</div>
 <div class="ttc" id="aclassgame_1_1math_1_1_vec2_html"><div class="ttname"><a href="classgame_1_1math_1_1_vec2.html">game::math::Vec2</a></div><div class="ttdoc">2D vector (x,y) with useful methods to use it</div><div class="ttdef"><b>Definition:</b> <a href="_vec2_8hpp_source.html#l00039">Vec2.hpp:40</a></div></div>
 <div class="ttc" id="aclassgame_1_1math_1_1_vec2_html_a16f600df54aa799299e1e77767a736be"><div class="ttname"><a href="classgame_1_1math_1_1_vec2.html#a16f600df54aa799299e1e77767a736be">game::math::Vec2::operator==</a></div><div class="ttdeci">bool operator==(const Vec2&lt; T &gt; &amp;v) const</div><div class="ttdef"><b>Definition:</b> <a href="_vec2_8hpp_source.html#l00099">Vec2.hpp:99</a></div></div>
 <div class="ttc" id="aclassgame_1_1math_1_1_vec2_html_a1afc6e1b068e1c1dd4484b82266140bc"><div class="ttname"><a href="classgame_1_1math_1_1_vec2.html#a1afc6e1b068e1c1dd4484b82266140bc">game::math::Vec2::x</a></div><div class="ttdeci">T x() const</div><div class="ttdef"><b>Definition:</b> <a href="_vec2_8hpp_source.html#l00073">Vec2.hpp:73</a></div></div>
@@ -224,6 +237,7 @@ $(function() {
 <div class="ttc" id="aclassgame_1_1math_1_1_vec2_html_a5440d196b304325df6ab6f545faad3bb"><div class="ttname"><a href="classgame_1_1math_1_1_vec2.html#a5440d196b304325df6ab6f545faad3bb">game::math::Vec2::Vec2</a></div><div class="ttdeci">Vec2(T x=0, T y=0)</div><div class="ttdef"><b>Definition:</b> <a href="_vec2_8hpp_source.html#l00048">Vec2.hpp:48</a></div></div>
 <div class="ttc" id="aclassgame_1_1math_1_1_vec2_html_a62786a283e106d87da009b9d155c076d"><div class="ttname"><a href="classgame_1_1math_1_1_vec2.html#a62786a283e106d87da009b9d155c076d">game::math::Vec2::y</a></div><div class="ttdeci">T &amp; y()</div><div class="ttdef"><b>Definition:</b> <a href="_vec2_8hpp_source.html#l00065">Vec2.hpp:65</a></div></div>
 <div class="ttc" id="aclassgame_1_1math_1_1_vec2_html_ab268a969a921a4e4f9d219636b6e126b"><div class="ttname"><a href="classgame_1_1math_1_1_vec2.html#ab268a969a921a4e4f9d219636b6e126b">game::math::Vec2::normalize</a></div><div class="ttdeci">Vec2 &amp; normalize()</div><div class="ttdoc">Divide the vector by its length to obtain a length of 1.</div><div class="ttdef"><b>Definition:</b> <a href="_vec2_8hpp_source.html#l00186">Vec2.hpp:186</a></div></div>
+<div class="ttc" id="aclassgame_1_1math_1_1_vec2_html_ac1a7aa472120c15f530fa2459f4cd1b5"><div class="ttname"><a href="classgame_1_1math_1_1_vec2.html#ac1a7aa472120c15f530fa2459f4cd1b5">game::math::Vec2::isInside</a></div><div class="ttdeci">static bool isInside(Vec2&lt; C &gt; pos, Vec2&lt; C &gt; bottomRight, Vec2&lt; C &gt; topLeft=Vec2&lt; C &gt;(0, 0))</div><div class="ttdef"><b>Definition:</b> <a href="_vec2_8hpp_source.html#l00201">Vec2.hpp:201</a></div></div>
 <div class="ttc" id="aclassgame_1_1math_1_1_vec2_html_ad214a4093daefc14013b80ec7c2ccfc3"><div class="ttname"><a href="classgame_1_1math_1_1_vec2.html#ad214a4093daefc14013b80ec7c2ccfc3">game::math::Vec2::dot</a></div><div class="ttdeci">T dot(const Vec2&lt; T &gt; &amp;v) const</div><div class="ttdef"><b>Definition:</b> <a href="_vec2_8hpp_source.html#l00166">Vec2.hpp:166</a></div></div>
 <div class="ttc" id="aclassgame_1_1math_1_1_vec2_html_afde63ec3892073249e729d7f5253653e"><div class="ttname"><a href="classgame_1_1math_1_1_vec2.html#afde63ec3892073249e729d7f5253653e">game::math::Vec2::y</a></div><div class="ttdeci">T y() const</div><div class="ttdef"><b>Definition:</b> <a href="_vec2_8hpp_source.html#l00081">Vec2.hpp:81</a></div></div>
 <div class="ttc" id="anamespacegame_1_1math_html"><div class="ttname"><a href="namespacegame_1_1math.html">game::math</a></div><div class="ttdoc">Namespace of mathematic content.</div><div class="ttdef"><b>Definition:</b> <a href="_vec2_8hpp_source.html#l00015">Vec2.hpp:16</a></div></div>

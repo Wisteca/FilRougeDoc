@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['onevent_131',['onEvent',['../classgame_1_1events_1_1_event_listener.html#ad4425057b3c4ac7736c9c70df7c65773',1,'game::events::EventListener']]],
-  ['operator_20vec2_3c_20c_20_3e_132',['operator Vec2&lt; C &gt;',['../classgame_1_1math_1_1_vec2.html#a125e601d896892c8ecc2b8bd05c5be5a',1,'game::math::Vec2']]],
-  ['operator_3c_133',['operator&lt;',['../classgame_1_1skills_1_1_skill_type.html#a594bc5c3fec605b7e04ee6fb682dd35a',1,'game::skills::SkillType']]],
-  ['operator_3c_3c_134',['operator&lt;&lt;',['../classgame_1_1items_1_1_item.html#a4a39cd399f202e3225cd7976dcf4ae3d',1,'game::items::Item::operator&lt;&lt;()'],['../classgame_1_1skills_1_1_skills_set.html#a147038a93e58cf97d1dbbc60b017a926',1,'game::skills::SkillsSet::operator&lt;&lt;()'],['../classgame_1_1skills_1_1_skill_type.html#a596a0f3c8134616da108ff5cd34263f6',1,'game::skills::SkillType::operator&lt;&lt;()']]],
-  ['operator_3d_3d_135',['operator==',['../classgame_1_1math_1_1_vec2.html#a16f600df54aa799299e1e77767a736be',1,'game::math::Vec2::operator==()'],['../classgame_1_1skills_1_1_skill_type.html#a628ae306235402ac0ad9d5f656649dde',1,'game::skills::SkillType::operator==()']]]
+  ['needdraw_152',['needDraw',['../classgame_1_1console_1_1_drawable.html#a062513353ac1d20d88c60acece9af361',1,'game::console::Drawable::needDraw()'],['../classgame_1_1console_1_1_multi_sprite.html#a32ef64731cab4cc99c889b462fbeac41',1,'game::console::MultiSprite::needDraw()']]],
+  ['normal_153',['NORMAL',['../namespacegame_1_1skills.html#a23c3c906594652d6fb2d249dfdbed78ba1e23852820b9154316c7c06e2b7ba051',1,'game::skills']]],
+  ['normalize_154',['normalize',['../classgame_1_1math_1_1_vec2.html#ab268a969a921a4e4f9d219636b6e126b',1,'game::math::Vec2']]]
 ];

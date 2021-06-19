@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['warning_362',['warning',['../namespacegame_1_1logs.html#a3bea0b6cba6e4d445a59889cb0586f85',1,'game::logs']]],
-  ['wearableitem_363',['WearableItem',['../classgame_1_1items_1_1_wearable_item.html#a5b1f4af130d7612ffc3657cc218cdc21',1,'game::items::WearableItem::WearableItem()'],['../classgame_1_1items_1_1_wearable_item.html#adcc74c2733833caeca62f3ffe704842c',1,'game::items::WearableItem::WearableItem(std::string name, float weight=0)'],['../classgame_1_1items_1_1_wearable_item.html#aeba9c4e505e95b29208e9cc0ae3a8816',1,'game::items::WearableItem::WearableItem(const WearableItem &amp;toCopy)=default']]],
-  ['writetext_364',['writeText',['../classgame_1_1console_1_1_sprite.html#ad28881ed992a34aecf313ea069ea6318',1,'game::console::Sprite']]]
+  ['updateallobjectspos_430',['updateAllObjectsPos',['../classgame_1_1core_1_1_world.html#acd4432ebcb357495e4a51944d7374234',1,'game::core::World']]],
+  ['updatecamera_431',['updateCamera',['../classgame_1_1core_1_1_game_manager.html#a6ab1b0fce65dc297082dc2335e1443df',1,'game::core::GameManager']]],
+  ['use_432',['use',['../classgame_1_1items_1_1_item.html#a52a162f02adc35ecc5377ad36d82dc62',1,'game::items::Item::use()'],['../classgame_1_1items_1_1_melee_weapon.html#a77674598eade2187df1d10ffcdd59a02',1,'game::items::MeleeWeapon::use()'],['../classgame_1_1items_1_1_wearable_item.html#af1e9a90d34f2975b6ea2fdfad6c0509b',1,'game::items::WearableItem::use()']]]
 ];

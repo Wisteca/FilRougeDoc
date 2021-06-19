@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['length_320',['length',['../classgame_1_1math_1_1_vec2.html#a338eaf2058cb36a0f2f57cbdddfbe6a4',1,'game::math::Vec2']]],
-  ['load_321',['load',['../classgame_1_1console_1_1_sprite.html#a9da1bd6f5934899864b7070775704479',1,'game::console::Sprite::load()'],['../classgame_1_1console_1_1_multi_sprite.html#a3ca47d3cff1762cc1cfc3499612a7c6b',1,'game::console::MultiSprite::load()']]],
-  ['log_322',['log',['../classgame_1_1logs_1_1_logger.html#a036307cebe1e2ea25c31cc2cb8e5b3ad',1,'game::logs::Logger']]]
+  ['hasfinished_377',['hasFinished',['../classgame_1_1core_1_1_controller.html#a5a420cfa660ac1dea69a03bd70f53b89',1,'game::core::Controller::hasFinished()'],['../classgame_1_1core_1_1_input_controller.html#adb0da9f92f165b8c3d0b93e2081254a2',1,'game::core::InputController::hasFinished()'],['../classgame_1_1core_1_1_trap_controller.html#a0997d13a9d5a23ac42cd3ae540752433',1,'game::core::TrapController::hasFinished()'],['../classgame_1_1core_1_1_a_i_controller.html#a9960978ec58dc1e1c1e02813f55f7074',1,'game::core::AIController::hasFinished()']]]
 ];

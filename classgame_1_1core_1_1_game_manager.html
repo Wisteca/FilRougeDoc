@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>game</b></li><li class="navelem"><b>core</b></li><li class="navelem"><a class="el" href="classgame_1_1core_1_1_game_manager.html">GameManager</a></li>  </ul>
+<li class="navelem"><b>game</b></li><li class="navelem"><a class="el" href="namespacegame_1_1core.html">core</a></li><li class="navelem"><a class="el" href="classgame_1_1core_1_1_game_manager.html">GameManager</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -73,6 +73,11 @@ $(function() {
 <div class="title">game::core::GameManager Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This singleton manages all the game.  
+ <a href="classgame_1_1core_1_1_game_manager.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_game_manager_8hpp_source.html">GameManager.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -82,44 +87,219 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a84058c1aa2b6df730f7712cb114e98ab"><td class="memItemLeft" align="right" valign="top"><a id="a84058c1aa2b6df730f7712cb114e98ab"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classgame_1_1core_1_1_game_manager.html">GameManager</a> &amp;gm)=delete</td></tr>
 <tr class="separator:a84058c1aa2b6df730f7712cb114e98ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace37f2167f94e5eb0deae7e93e131e1b"><td class="memItemLeft" align="right" valign="top"><a id="ace37f2167f94e5eb0deae7e93e131e1b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>play</b> (bool flag)</td></tr>
+<tr class="memitem:a0885ec2b4ffe345332942a533628a1a1"><td class="memItemLeft" align="right" valign="top"><a id="a0885ec2b4ffe345332942a533628a1a1"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_game_manager.html#a0885ec2b4ffe345332942a533628a1a1">~GameManager</a> ()</td></tr>
+<tr class="memdesc:a0885ec2b4ffe345332942a533628a1a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">End the game / destruct manager. <br /></td></tr>
+<tr class="separator:a0885ec2b4ffe345332942a533628a1a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace37f2167f94e5eb0deae7e93e131e1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_game_manager.html#ace37f2167f94e5eb0deae7e93e131e1b">play</a> (bool flag)</td></tr>
 <tr class="separator:ace37f2167f94e5eb0deae7e93e131e1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad07f749d9e89eec627801d25a74a39fb"><td class="memItemLeft" align="right" valign="top"><a id="ad07f749d9e89eec627801d25a74a39fb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ticks</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_game_manager.html#ad07f749d9e89eec627801d25a74a39fb">ticks</a> ()</td></tr>
+<tr class="memdesc:ad07f749d9e89eec627801d25a74a39fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Must be called each 100ms by the main loop to perform the game operations. <br /></td></tr>
 <tr class="separator:ad07f749d9e89eec627801d25a74a39fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64ecb592ef168f36f12db47330a90784"><td class="memItemLeft" align="right" valign="top"><a id="a64ecb592ef168f36f12db47330a90784"></a>
-std::shared_ptr&lt; <a class="el" href="classgame_1_1console_1_1_console_engine.html">console::ConsoleEngine</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getEngine</b> ()</td></tr>
+<tr class="memitem:a64ecb592ef168f36f12db47330a90784"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classgame_1_1console_1_1_console_engine.html">console::ConsoleEngine</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_game_manager.html#a64ecb592ef168f36f12db47330a90784">getEngine</a> ()</td></tr>
 <tr class="separator:a64ecb592ef168f36f12db47330a90784"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36d8cfa50e03c109ba2a7b0f526e4c8c"><td class="memItemLeft" align="right" valign="top"><a id="a36d8cfa50e03c109ba2a7b0f526e4c8c"></a>
-std::shared_ptr&lt; <a class="el" href="classgame_1_1core_1_1_world.html">World</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getWorld</b> ()</td></tr>
+<tr class="memitem:a36d8cfa50e03c109ba2a7b0f526e4c8c"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classgame_1_1core_1_1_world.html">World</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_game_manager.html#a36d8cfa50e03c109ba2a7b0f526e4c8c">getWorld</a> ()</td></tr>
 <tr class="separator:a36d8cfa50e03c109ba2a7b0f526e4c8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68e6c0ee875645098481aa97380ea34b"><td class="memItemLeft" align="right" valign="top"><a id="a68e6c0ee875645098481aa97380ea34b"></a>
-<a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>computeScreenPosition</b> (const <a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt;&gt; &amp;pos)</td></tr>
+<a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_game_manager.html#a68e6c0ee875645098481aa97380ea34b">computeScreenPosition</a> (const <a class="el" href="classgame_1_1math_1_1_vec2.html">math::Vec2</a>&lt;&gt; &amp;pos)</td></tr>
+<tr class="memdesc:a68e6c0ee875645098481aa97380ea34b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the WC position to SC position regarding the position of the camera. <br /></td></tr>
 <tr class="separator:a68e6c0ee875645098481aa97380ea34b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9871832d51ec30a526f8f23e342c3ea1"><td class="memItemLeft" align="right" valign="top"><a id="a9871832d51ec30a526f8f23e342c3ea1"></a>
-std::shared_ptr&lt; <a class="el" href="classgame_1_1core_1_1_entity_controller.html">EntityController</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getCameraController</b> () const</td></tr>
+<tr class="memitem:a9871832d51ec30a526f8f23e342c3ea1"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classgame_1_1core_1_1_entity_controller.html">EntityController</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_game_manager.html#a9871832d51ec30a526f8f23e342c3ea1">getCameraController</a> () const</td></tr>
 <tr class="separator:a9871832d51ec30a526f8f23e342c3ea1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3668311af4e306bb6faa7379f4470a5"><td class="memItemLeft" align="right" valign="top"><a id="af3668311af4e306bb6faa7379f4470a5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setCameraController</b> (std::shared_ptr&lt; <a class="el" href="classgame_1_1core_1_1_entity_controller.html">EntityController</a> &gt; owner)</td></tr>
+<tr class="memitem:af3668311af4e306bb6faa7379f4470a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_game_manager.html#af3668311af4e306bb6faa7379f4470a5">setCameraController</a> (std::shared_ptr&lt; <a class="el" href="classgame_1_1core_1_1_entity_controller.html">EntityController</a> &gt; owner)</td></tr>
+<tr class="memdesc:af3668311af4e306bb6faa7379f4470a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the camera owner.  <a href="classgame_1_1core_1_1_game_manager.html#af3668311af4e306bb6faa7379f4470a5">More...</a><br /></td></tr>
 <tr class="separator:af3668311af4e306bb6faa7379f4470a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ab1b0fce65dc297082dc2335e1443df"><td class="memItemLeft" align="right" valign="top"><a id="a6ab1b0fce65dc297082dc2335e1443df"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_game_manager.html#a6ab1b0fce65dc297082dc2335e1443df">updateCamera</a> ()</td></tr>
+<tr class="memdesc:a6ab1b0fce65dc297082dc2335e1443df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the position of objects in the screen and the HUD. <br /></td></tr>
+<tr class="separator:a6ab1b0fce65dc297082dc2335e1443df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec2b8c3b930aeeae9c4a6e60763a5c5d"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classgame_1_1console_1_1_multi_sprite.html">console::MultiSprite</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_game_manager.html#aec2b8c3b930aeeae9c4a6e60763a5c5d">getSprite</a> (const std::string &amp;name)</td></tr>
+<tr class="separator:aec2b8c3b930aeeae9c4a6e60763a5c5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a369f1f57dbfef33fb91650e67bd3c817"><td class="memItemLeft" align="right" valign="top"><a id="a369f1f57dbfef33fb91650e67bd3c817"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> ()</td></tr>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_game_manager.html#a369f1f57dbfef33fb91650e67bd3c817">start</a> ()</td></tr>
+<tr class="memdesc:a369f1f57dbfef33fb91650e67bd3c817"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the game. <br /></td></tr>
 <tr class="separator:a369f1f57dbfef33fb91650e67bd3c817"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d0af6710c15495dcad175ed5d47e307"><td class="memItemLeft" align="right" valign="top"><a id="a9d0af6710c15495dcad175ed5d47e307"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> ()</td></tr>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_game_manager.html#a9d0af6710c15495dcad175ed5d47e307">end</a> ()</td></tr>
+<tr class="memdesc:a9d0af6710c15495dcad175ed5d47e307"><td class="mdescLeft">&#160;</td><td class="mdescRight">End the game. <br /></td></tr>
 <tr class="separator:a9d0af6710c15495dcad175ed5d47e307"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2a273faaeb6c939522324ba9603bb5f"><td class="memItemLeft" align="right" valign="top"><a id="ae2a273faaeb6c939522324ba9603bb5f"></a>
-static std::shared_ptr&lt; <a class="el" href="classgame_1_1core_1_1_game_manager.html">GameManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getInstance</b> ()</td></tr>
+<tr class="memitem:ae2a273faaeb6c939522324ba9603bb5f"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="classgame_1_1core_1_1_game_manager.html">GameManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_game_manager.html#ae2a273faaeb6c939522324ba9603bb5f">getInstance</a> ()</td></tr>
 <tr class="separator:ae2a273faaeb6c939522324ba9603bb5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_game_manager_8hpp_source.html#l00017">17</a> of file <a class="el" href="_game_manager_8hpp_source.html">GameManager.hpp</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<div class="textblock"><p>This singleton manages all the game. </p>
+<p>Non-exhaustive list of managements :</p><ul>
+<li>ConsoleEngine</li>
+<li>Contains the list of objects controllers</li>
+<li>Reference on the <a class="el" href="classgame_1_1core_1_1_world.html" title="The World object is a container that contains a reference on all game objects.">World</a> object</li>
+<li>Camera position and owner entity (the entity the camera follow)</li>
+<li>List of loaded sprites</li>
+<li>HUD for displaying informations</li>
+<li>TODO : play/pause</li>
+<li>Level generation (place objects in the world)</li>
+</ul>
+<p>This is the core class of the game. </p>
+
+<p class="definition">Definition at line <a class="el" href="_game_manager_8hpp_source.html#l00074">74</a> of file <a class="el" href="_game_manager_8hpp_source.html">GameManager.hpp</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a9871832d51ec30a526f8f23e342c3ea1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9871832d51ec30a526f8f23e342c3ea1">&#9670;&nbsp;</a></span>getCameraController()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">shared_ptr&lt; <a class="el" href="classgame_1_1core_1_1_entity_controller.html">EntityController</a> &gt; game::core::GameManager::getCameraController </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The entity that own the camera (the camera follow him) </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_game_manager_8cpp_source.html#l00164">164</a> of file <a class="el" href="_game_manager_8cpp_source.html">GameManager.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a64ecb592ef168f36f12db47330a90784"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64ecb592ef168f36f12db47330a90784">&#9670;&nbsp;</a></span>getEngine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">shared_ptr&lt; <a class="el" href="classgame_1_1console_1_1_console_engine.html">ConsoleEngine</a> &gt; game::core::GameManager::getEngine </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Pointer on the ConsoleEngine </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_game_manager_8cpp_source.html#l00113">113</a> of file <a class="el" href="_game_manager_8cpp_source.html">GameManager.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ae2a273faaeb6c939522324ba9603bb5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2a273faaeb6c939522324ba9603bb5f">&#9670;&nbsp;</a></span>getInstance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">shared_ptr&lt; <a class="el" href="classgame_1_1core_1_1_game_manager.html">GameManager</a> &gt; game::core::GameManager::getInstance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Singleton instance </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_game_manager_8cpp_source.html#l00084">84</a> of file <a class="el" href="_game_manager_8cpp_source.html">GameManager.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aec2b8c3b930aeeae9c4a6e60763a5c5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec2b8c3b930aeeae9c4a6e60763a5c5d">&#9670;&nbsp;</a></span>getSprite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">shared_ptr&lt; <a class="el" href="classgame_1_1console_1_1_multi_sprite.html">MultiSprite</a> &gt; game::core::GameManager::getSprite </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>A copy a the MultiSprite loaded with the given name or nullptr if there is no sprite with this name </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_game_manager_8cpp_source.html#l00192">192</a> of file <a class="el" href="_game_manager_8cpp_source.html">GameManager.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a36d8cfa50e03c109ba2a7b0f526e4c8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36d8cfa50e03c109ba2a7b0f526e4c8c">&#9670;&nbsp;</a></span>getWorld()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">shared_ptr&lt; <a class="el" href="classgame_1_1core_1_1_world.html">World</a> &gt; game::core::GameManager::getWorld </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>A reference on the world </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_game_manager_8cpp_source.html#l00118">118</a> of file <a class="el" href="_game_manager_8cpp_source.html">GameManager.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ace37f2167f94e5eb0deae7e93e131e1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace37f2167f94e5eb0deae7e93e131e1b">&#9670;&nbsp;</a></span>play()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game::core::GameManager::play </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>flag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>TODO : Play/pause the game </p>
+
+<p class="definition">Definition at line <a class="el" href="_game_manager_8cpp_source.html#l00089">89</a> of file <a class="el" href="_game_manager_8cpp_source.html">GameManager.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af3668311af4e306bb6faa7379f4470a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3668311af4e306bb6faa7379f4470a5">&#9670;&nbsp;</a></span>setCameraController()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game::core::GameManager::setCameraController </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classgame_1_1core_1_1_entity_controller.html">EntityController</a> &gt;&#160;</td>
+          <td class="paramname"><em>owner</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Change the camera owner. </p>
+<p>Call <a class="el" href="classgame_1_1core_1_1_game_manager.html#a6ab1b0fce65dc297082dc2335e1443df" title="Update the position of objects in the screen and the HUD.">updateCamera()</a> after to update objects position in the screen. </p>
+
+<p class="definition">Definition at line <a class="el" href="_game_manager_8cpp_source.html#l00169">169</a> of file <a class="el" href="_game_manager_8cpp_source.html">GameManager.cpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/gameCore/<a class="el" href="_game_manager_8hpp_source.html">GameManager.hpp</a></li>
 <li>src/gameCore/<a class="el" href="_game_manager_8cpp_source.html">GameManager.cpp</a></li>
 </ul>

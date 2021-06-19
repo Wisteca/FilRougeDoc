@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['prepareattack_332',['prepareAttack',['../classgame_1_1core_1_1_attack_computer.html#ad746fdce1ca36edd8ca7512a1841f8f7',1,'game::core::AttackComputer']]],
-  ['processevents_333',['processEvents',['../classgame_1_1events_1_1_event_manager.html#a55dd07571cb899824ee9e6c34b7b0593',1,'game::events::EventManager']]],
-  ['pushevent_334',['pushEvent',['../classgame_1_1events_1_1_event_manager.html#a3c04c7e2a634dff0b142eb85d4f71fcf',1,'game::events::EventManager']]]
+  ['needdraw_391',['needDraw',['../classgame_1_1console_1_1_drawable.html#a062513353ac1d20d88c60acece9af361',1,'game::console::Drawable::needDraw()'],['../classgame_1_1console_1_1_multi_sprite.html#a32ef64731cab4cc99c889b462fbeac41',1,'game::console::MultiSprite::needDraw()']]],
+  ['normalize_392',['normalize',['../classgame_1_1math_1_1_vec2.html#ab268a969a921a4e4f9d219636b6e126b',1,'game::math::Vec2']]]
 ];

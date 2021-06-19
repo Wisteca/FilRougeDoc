@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>game</b></li><li class="navelem"><b>core</b></li><li class="navelem"><a class="el" href="classgame_1_1core_1_1_controller.html">Controller</a></li>  </ul>
+<li class="navelem"><b>game</b></li><li class="navelem"><a class="el" href="namespacegame_1_1core.html">core</a></li><li class="navelem"><a class="el" href="classgame_1_1core_1_1_controller.html">Controller</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -72,6 +72,11 @@ $(function() {
 <div class="title">game::core::Controller Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Abstract <a class="el" href="classgame_1_1core_1_1_controller.html" title="Abstract Controller class that can manage a GameObject.">Controller</a> class that can manage a <a class="el" href="classgame_1_1core_1_1_game_object.html" title="An simple object, everything that has a role in the game must be an instance of this or inherit from ...">GameObject</a>.  
+ <a href="classgame_1_1core_1_1_controller.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_controller_8hpp_source.html">Controller.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for game::core::Controller:</div>
 <div class="dyncontent">
@@ -81,19 +86,51 @@ Inheritance diagram for game::core::Controller:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac238963193c7d2215ed09ff59f566a51"><td class="memItemLeft" align="right" valign="top"><a id="ac238963193c7d2215ed09ff59f566a51"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Controller</b> (std::shared_ptr&lt; <a class="el" href="classgame_1_1core_1_1_game_object.html">GameObject</a> &gt; object)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_controller.html#ac238963193c7d2215ed09ff59f566a51">Controller</a> (std::shared_ptr&lt; <a class="el" href="classgame_1_1core_1_1_game_object.html">GameObject</a> &gt; object)</td></tr>
+<tr class="memdesc:ac238963193c7d2215ed09ff59f566a51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create the controller and give an entity to manage. <br /></td></tr>
 <tr class="separator:ac238963193c7d2215ed09ff59f566a51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81aeb16bd8980964ebca105b2ac85c8c"><td class="memItemLeft" align="right" valign="top"><a id="a81aeb16bd8980964ebca105b2ac85c8c"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>ticks</b> ()=0</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_controller.html#a81aeb16bd8980964ebca105b2ac85c8c">ticks</a> ()=0</td></tr>
+<tr class="memdesc:a81aeb16bd8980964ebca105b2ac85c8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called each 100 ms to execute the behavior. <br /></td></tr>
 <tr class="separator:a81aeb16bd8980964ebca105b2ac85c8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5810af2a522483b4b9f070e5f1351e49"><td class="memItemLeft" align="right" valign="top"><a id="a5810af2a522483b4b9f070e5f1351e49"></a>
-std::shared_ptr&lt; <a class="el" href="classgame_1_1core_1_1_game_object.html">GameObject</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getControlledObject</b> ()</td></tr>
+<tr class="memitem:a5810af2a522483b4b9f070e5f1351e49"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classgame_1_1core_1_1_game_object.html">GameObject</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_controller.html#a5810af2a522483b4b9f070e5f1351e49">getControlledObject</a> ()</td></tr>
 <tr class="separator:a5810af2a522483b4b9f070e5f1351e49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a420cfa660ac1dea69a03bd70f53b89"><td class="memItemLeft" align="right" valign="top"><a id="a5a420cfa660ac1dea69a03bd70f53b89"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_controller.html#a5a420cfa660ac1dea69a03bd70f53b89">hasFinished</a> ()</td></tr>
+<tr class="memdesc:a5a420cfa660ac1dea69a03bd70f53b89"><td class="mdescLeft">&#160;</td><td class="mdescRight">If return true, the <a class="el" href="classgame_1_1core_1_1_game_manager.html" title="This singleton manages all the game.">GameManager</a> will remove the controller from the list. <br /></td></tr>
+<tr class="separator:a5a420cfa660ac1dea69a03bd70f53b89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_controller_8hpp_source.html#l00016">16</a> of file <a class="el" href="_controller_8hpp_source.html">Controller.hpp</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<div class="textblock"><p>Abstract <a class="el" href="classgame_1_1core_1_1_controller.html" title="Abstract Controller class that can manage a GameObject.">Controller</a> class that can manage a <a class="el" href="classgame_1_1core_1_1_game_object.html" title="An simple object, everything that has a role in the game must be an instance of this or inherit from ...">GameObject</a>. </p>
+<p>The <a class="el" href="classgame_1_1core_1_1_controller.html" title="Abstract Controller class that can manage a GameObject.">Controller</a> class manages a <a class="el" href="classgame_1_1core_1_1_game_object.html" title="An simple object, everything that has a role in the game must be an instance of this or inherit from ...">GameObject</a>. It's the <a class="el" href="classgame_1_1core_1_1_controller.html" title="Abstract Controller class that can manage a GameObject.">Controller</a> that gives "life" to an object by giving it a behavior.</p>
+<p>The <a class="el" href="classgame_1_1core_1_1_controller.html" title="Abstract Controller class that can manage a GameObject.">Controller</a> is binded to a <a class="el" href="classgame_1_1core_1_1_game_object.html" title="An simple object, everything that has a role in the game must be an instance of this or inherit from ...">GameObject</a> and will usually manage its creation and destruction.</p>
+<p>The <a class="el" href="classgame_1_1core_1_1_controller.html#a81aeb16bd8980964ebca105b2ac85c8c" title="Called each 100 ms to execute the behavior.">ticks()</a> method is called by the <a class="el" href="classgame_1_1core_1_1_game_manager.html" title="This singleton manages all the game.">GameManager</a> singleton each 100ms to give possibility to the <a class="el" href="classgame_1_1core_1_1_controller.html" title="Abstract Controller class that can manage a GameObject.">Controller</a> executing its behavior.</p>
+<p>If a <a class="el" href="classgame_1_1core_1_1_controller.html" title="Abstract Controller class that can manage a GameObject.">Controller</a> has finished operations (example : its binded entity died, the object has been used), it can return true when the <a class="el" href="classgame_1_1core_1_1_game_manager.html" title="This singleton manages all the game.">GameManager</a> call the <a class="el" href="classgame_1_1core_1_1_controller.html#a5a420cfa660ac1dea69a03bd70f53b89" title="If return true, the GameManager will remove the controller from the list.">hasFinished()</a> method. The <a class="el" href="classgame_1_1core_1_1_game_manager.html" title="This singleton manages all the game.">GameManager</a> will remove it from the <a class="el" href="classgame_1_1core_1_1_controller.html" title="Abstract Controller class that can manage a GameObject.">Controller</a> list and the destructot will be called.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classgame_1_1core_1_1_game_manager.html" title="This singleton manages all the game.">GameManager</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_controller_8hpp_source.html#l00037">37</a> of file <a class="el" href="_controller_8hpp_source.html">Controller.hpp</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5810af2a522483b4b9f070e5f1351e49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5810af2a522483b4b9f070e5f1351e49">&#9670;&nbsp;</a></span>getControlledObject()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classgame_1_1core_1_1_game_object.html">GameObject</a> &gt; game::core::Controller::getControlledObject </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The controlled object </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_controller_8cpp_source.html#l00028">28</a> of file <a class="el" href="_controller_8cpp_source.html">Controller.cpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/gameCore/<a class="el" href="_controller_8hpp_source.html">Controller.hpp</a></li>
 <li>src/gameCore/<a class="el" href="_controller_8cpp_source.html">Controller.cpp</a></li>
 </ul>

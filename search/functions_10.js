@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['values_360',['values',['../classgame_1_1skills_1_1_skills_set.html#af9a7db77170fc87557f45bba1de34e4d',1,'game::skills::SkillsSet::values()'],['../classgame_1_1skills_1_1_skill_type.html#a19e12c5a54cc5c0c3d5d24c051808535',1,'game::skills::SkillType::values()']]],
-  ['vec2_361',['Vec2',['../classgame_1_1math_1_1_vec2.html#a5440d196b304325df6ab6f545faad3bb',1,'game::math::Vec2']]]
+  ['targetdodge_426',['targetDodge',['../classgame_1_1core_1_1_attack_computer.html#ada83b3f4214fcd0e5a090eee1aeb2f03',1,'game::core::AttackComputer']]],
+  ['targetprotection_427',['targetProtection',['../classgame_1_1core_1_1_attack_computer.html#a4d8bc43a10504bfb66bbb882bf812c76',1,'game::core::AttackComputer']]],
+  ['ticks_428',['ticks',['../classgame_1_1core_1_1_controller.html#a81aeb16bd8980964ebca105b2ac85c8c',1,'game::core::Controller::ticks()'],['../classgame_1_1core_1_1_input_controller.html#a06d57dbec5dd9ff2416d5320354ad5ef',1,'game::core::InputController::ticks()'],['../classgame_1_1core_1_1_default_controller.html#ac5a1219d75d250b9f80ba11df089e5f0',1,'game::core::DefaultController::ticks()'],['../classgame_1_1core_1_1_trap_controller.html#af50a0bca50fc51d01ccd0c29bb5909c1',1,'game::core::TrapController::ticks()'],['../classgame_1_1core_1_1_a_i_controller.html#a4d5b4672d3388af1e74ad88f7bcd369e',1,'game::core::AIController::ticks()'],['../classgame_1_1core_1_1_game_manager.html#ad07f749d9e89eec627801d25a74a39fb',1,'game::core::GameManager::ticks()'],['../classgame_1_1core_1_1_game_object.html#a7bde8266d2f707098ef5e48ea33b981a',1,'game::core::GameObject::ticks()'],['../classgame_1_1core_1_1_world.html#acb7743404d2f7dfc524af6a145b6abe0',1,'game::core::World::ticks()']]],
+  ['trapcontroller_429',['TrapController',['../classgame_1_1core_1_1_trap_controller.html#a5732122f009722e6656c29a7cbb858c6',1,'game::core::TrapController']]]
 ];

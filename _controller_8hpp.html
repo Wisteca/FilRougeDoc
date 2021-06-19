@@ -66,7 +66,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
 <div class="title">Controller.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -77,6 +78,7 @@ $(function() {
 <div class="textblock"><code>#include &quot;<a class="el" href="_game_entity_8hpp_source.html">GameEntity.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_event_manager_8hpp_source.html">../events/EventManager.hpp</a>&quot;</code><br />
 <code>#include &lt;memory&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Controller.hpp:</div>
 <div class="dyncontent">
@@ -93,10 +95,28 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_controller.html">game::core::Controller</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract <a class="el" href="classgame_1_1core_1_1_controller.html" title="Abstract Controller class that can manage a GameObject.">Controller</a> class that can manage a <a class="el" href="classgame_1_1core_1_1_game_object.html" title="An simple object, everything that has a role in the game must be an instance of this or inherit from ...">GameObject</a>.  <a href="classgame_1_1core_1_1_controller.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_entity_controller.html">game::core::EntityController</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This controller is specific for entities.  <a href="classgame_1_1core_1_1_entity_controller.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_input_controller.html">game::core::InputController</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the player controller that manages inputs.  <a href="classgame_1_1core_1_1_input_controller.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_default_controller.html">game::core::DefaultController</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Most basic controller used for displaying really simple and inactive object.  <a href="classgame_1_1core_1_1_default_controller.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_trap_controller.html">game::core::TrapController</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trap controller, when an entity is near the trap, it is triggered.  <a href="classgame_1_1core_1_1_trap_controller.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1core_1_1_a_i_controller.html">game::core::AIController</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classgame_1_1core_1_1_a_i_controller.html" title="AIController can manage an entity to attack another.">AIController</a> can manage an entity to attack another.  <a href="classgame_1_1core_1_1_a_i_controller.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacegame_1_1core"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame_1_1core.html">game::core</a></td></tr>
+<tr class="memdesc:namespacegame_1_1core"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main features of the program. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>

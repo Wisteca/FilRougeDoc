@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['onevent_328',['onEvent',['../classgame_1_1events_1_1_event_listener.html#ad4425057b3c4ac7736c9c70df7c65773',1,'game::events::EventListener']]],
-  ['operator_20vec2_3c_20c_20_3e_329',['operator Vec2&lt; C &gt;',['../classgame_1_1math_1_1_vec2.html#a125e601d896892c8ecc2b8bd05c5be5a',1,'game::math::Vec2']]],
-  ['operator_3c_330',['operator&lt;',['../classgame_1_1skills_1_1_skill_type.html#a594bc5c3fec605b7e04ee6fb682dd35a',1,'game::skills::SkillType']]],
-  ['operator_3d_3d_331',['operator==',['../classgame_1_1math_1_1_vec2.html#a16f600df54aa799299e1e77767a736be',1,'game::math::Vec2::operator==()'],['../classgame_1_1skills_1_1_skill_type.html#a628ae306235402ac0ad9d5f656649dde',1,'game::skills::SkillType::operator==()']]]
+  ['meleeweapon_387',['MeleeWeapon',['../classgame_1_1items_1_1_melee_weapon.html#a72f4718bf13afe335d02b0ae17dbb5d8',1,'game::items::MeleeWeapon::MeleeWeapon()'],['../classgame_1_1items_1_1_melee_weapon.html#a451314d280ea145bbd9f09227386db5b',1,'game::items::MeleeWeapon::MeleeWeapon(const std::string &amp;name, float weight=0, int physicalDamage=0, int magicalDamage=0)'],['../classgame_1_1items_1_1_melee_weapon.html#a47a8232575310063147724f67b0eeffc',1,'game::items::MeleeWeapon::MeleeWeapon(const MeleeWeapon &amp;toCopy)=default']]],
+  ['modificators_388',['modificators',['../classgame_1_1items_1_1_fight_item.html#af686161e505b3b593f1a2bb2701768f7',1,'game::items::FightItem']]],
+  ['moveto_389',['moveTo',['../classgame_1_1core_1_1_world.html#a0ec75cc58da7b5adf6862da56948289c',1,'game::core::World']]],
+  ['multisprite_390',['MultiSprite',['../classgame_1_1console_1_1_multi_sprite.html#afcd5d7b0d9d9a048fc0ea894d42673cc',1,'game::console::MultiSprite::MultiSprite(const MultiSprite &amp;msp)'],['../classgame_1_1console_1_1_multi_sprite.html#a0dba6bfc9437e6e3f1f3ad373e13cc05',1,'game::console::MultiSprite::MultiSprite(const math::Vec2&lt; int &gt; &amp;size)'],['../classgame_1_1console_1_1_multi_sprite.html#a72b7daf7bccdd2aeeb617a5c66da93e3',1,'game::console::MultiSprite::MultiSprite(const std::vector&lt; std::string &gt; &amp;paths)']]]
 ];

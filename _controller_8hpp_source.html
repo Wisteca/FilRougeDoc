@@ -75,59 +75,134 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_game_entity_8hpp.html">GameEntity.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;../events/EventManager.hpp&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>game::core</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classgame_1_1core_1_1_controller.html">   16</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1core_1_1_controller.html">Controller</a></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        private :</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        std::shared_ptr&lt;GameObject&gt; m_object;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        public :</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="classgame_1_1core_1_1_controller.html">Controller</a>(std::shared_ptr&lt;GameObject&gt; <span class="keywordtype">object</span>);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="classgame_1_1core_1_1_controller.html">Controller</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> ticks() = 0;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        std::shared_ptr&lt;GameObject&gt; getControlledObject();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    };</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classgame_1_1core_1_1_entity_controller.html">   33</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1core_1_1_entity_controller.html">EntityController</a> : <span class="keyword">public</span> <a class="code" href="classgame_1_1core_1_1_controller.html">Controller</a></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        private :</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        std::shared_ptr&lt;GameEntity&gt; m_controlled;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        public :</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegame_1_1core.html">game::core</a></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classgame_1_1core_1_1_controller.html">   37</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1core_1_1_controller.html">Controller</a></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        private :</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classgame_1_1core_1_1_entity_controller.html">EntityController</a>(std::shared_ptr&lt;GameEntity&gt; entity);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="classgame_1_1core_1_1_entity_controller.html">EntityController</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        std::shared_ptr&lt;GameObject&gt; m_object; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        public :</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        std::shared_ptr&lt;GameEntity&gt; getControlledEntity();</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    };</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classgame_1_1core_1_1_input_controller.html">   48</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1core_1_1_input_controller.html">InputController</a> : <span class="keyword">public</span> <a class="code" href="classgame_1_1core_1_1_entity_controller.html">EntityController</a>, <span class="keyword">private</span> <a class="code" href="classgame_1_1events_1_1_event_listener.html">events::EventListener</a></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        public :</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="classgame_1_1core_1_1_controller.html#ac238963193c7d2215ed09ff59f566a51">Controller</a>(std::shared_ptr&lt;GameObject&gt; <span class="keywordtype">object</span>);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="classgame_1_1core_1_1_controller.html">Controller</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <a class="code" href="classgame_1_1core_1_1_input_controller.html">InputController</a>(std::shared_ptr&lt;GameEntity&gt; entity);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="classgame_1_1core_1_1_input_controller.html">InputController</a>();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordtype">void</span> ticks() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">void</span> onEvent(<span class="keyword">const</span> std::shared_ptr&lt;events::Event&gt; event) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    };</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classgame_1_1core_1_1_controller.html#a81aeb16bd8980964ebca105b2ac85c8c">   55</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classgame_1_1core_1_1_controller.html#a81aeb16bd8980964ebca105b2ac85c8c">ticks</a>() = 0;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        std::shared_ptr&lt;GameObject&gt; <a class="code" href="classgame_1_1core_1_1_controller.html#a5810af2a522483b4b9f070e5f1351e49">getControlledObject</a>();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1core_1_1_controller.html#a5a420cfa660ac1dea69a03bd70f53b89">hasFinished</a>();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    };</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classgame_1_1core_1_1_entity_controller.html">   74</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1core_1_1_entity_controller.html">EntityController</a> : <span class="keyword">public</span> <a class="code" href="classgame_1_1core_1_1_controller.html">Controller</a></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        private :</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        std::shared_ptr&lt;GameEntity&gt; m_controlled; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        public :</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <a class="code" href="classgame_1_1core_1_1_entity_controller.html#a7a63809189ae18c5569b6cd347bcd61e">EntityController</a>(std::shared_ptr&lt;GameEntity&gt; entity);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="classgame_1_1core_1_1_entity_controller.html">EntityController</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        std::shared_ptr&lt;GameEntity&gt; <a class="code" href="classgame_1_1core_1_1_entity_controller.html#a198d361dc7ef2dddfedcaf0402be93fd">getControlledEntity</a>();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    };</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="classgame_1_1core_1_1_input_controller.html">  107</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1core_1_1_input_controller.html">InputController</a> : <span class="keyword">public</span> <a class="code" href="classgame_1_1core_1_1_entity_controller.html">EntityController</a>, <span class="keyword">private</span> <a class="code" href="classgame_1_1events_1_1_event_listener.html">events::EventListener</a></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        private :</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordtype">bool</span> m_dead = <span class="keyword">false</span>; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        public :</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <a class="code" href="classgame_1_1core_1_1_input_controller.html#a021772107e87d26c9dd3c63222ff592c">InputController</a>();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="classgame_1_1core_1_1_input_controller.html">InputController</a>();</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgame_1_1core_1_1_input_controller.html#a06d57dbec5dd9ff2416d5320354ad5ef">ticks</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1core_1_1_input_controller.html#adb0da9f92f165b8c3d0b93e2081254a2">hasFinished</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgame_1_1core_1_1_input_controller.html#a26be844337642478d2f56f9a1586acfe">onEvent</a>(<span class="keyword">const</span> std::shared_ptr&lt;events::Event&gt; event) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    };</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="classgame_1_1core_1_1_default_controller.html">  141</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1core_1_1_default_controller.html">DefaultController</a> : <span class="keyword">public</span> <a class="code" href="classgame_1_1core_1_1_controller.html">Controller</a></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        public :</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <a class="code" href="classgame_1_1core_1_1_default_controller.html#a20f4e598a8b93e6afc8d7bb844f6ab6c">DefaultController</a>(<span class="keyword">const</span> std::string&amp; spriteName);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="classgame_1_1core_1_1_default_controller.html">DefaultController</a>();</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgame_1_1core_1_1_default_controller.html#ac5a1219d75d250b9f80ba11df089e5f0">ticks</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    };</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="classgame_1_1core_1_1_trap_controller.html">  162</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1core_1_1_trap_controller.html">TrapController</a> : <span class="keyword">public</span> <a class="code" href="classgame_1_1core_1_1_controller.html">Controller</a></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        private :</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keywordtype">bool</span> m_trapped = <span class="keyword">false</span>; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordtype">int</span> m_stay = 0; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        public :</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <a class="code" href="classgame_1_1core_1_1_trap_controller.html#a5732122f009722e6656c29a7cbb858c6">TrapController</a>(<span class="keyword">const</span> std::string&amp; spriteName);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="classgame_1_1core_1_1_trap_controller.html">TrapController</a>();</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgame_1_1core_1_1_trap_controller.html#af50a0bca50fc51d01ccd0c29bb5909c1">ticks</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1core_1_1_trap_controller.html#a0997d13a9d5a23ac42cd3ae540752433">hasFinished</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    };</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno"><a class="line" href="classgame_1_1core_1_1_a_i_controller.html">  200</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgame_1_1core_1_1_a_i_controller.html">AIController</a> : <span class="keyword">public</span> <a class="code" href="classgame_1_1core_1_1_entity_controller.html">EntityController</a></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    {</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        private :</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="keywordtype">bool</span> m_dead = <span class="keyword">false</span>; </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="keywordtype">int</span> m_state = 0; </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        std::weak_ptr&lt;GameEntity&gt; m_target;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        public :</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <a class="code" href="classgame_1_1core_1_1_a_i_controller.html#aca33ab5976553903564effb8907ab9d4">AIController</a>();</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="classgame_1_1core_1_1_a_i_controller.html">AIController</a>();</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgame_1_1core_1_1_a_i_controller.html#a4d5b4672d3388af1e74ad88f7bcd369e">ticks</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classgame_1_1core_1_1_a_i_controller.html#a9960978ec58dc1e1c1e02813f55f7074">hasFinished</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    };</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;}</div>
 <div class="ttc" id="a_game_entity_8hpp_html"><div class="ttname"><a href="_game_entity_8hpp.html">GameEntity.hpp</a></div><div class="ttdoc">A GameEntity is an entity like a player or a monster that can move, attack, etc.</div></div>
-<div class="ttc" id="aclassgame_1_1core_1_1_controller_html"><div class="ttname"><a href="classgame_1_1core_1_1_controller.html">game::core::Controller</a></div><div class="ttdef"><b>Definition:</b> <a href="_controller_8hpp_source.html#l00016">Controller.hpp:17</a></div></div>
-<div class="ttc" id="aclassgame_1_1core_1_1_entity_controller_html"><div class="ttname"><a href="classgame_1_1core_1_1_entity_controller.html">game::core::EntityController</a></div><div class="ttdef"><b>Definition:</b> <a href="_controller_8hpp_source.html#l00033">Controller.hpp:34</a></div></div>
-<div class="ttc" id="aclassgame_1_1core_1_1_input_controller_html"><div class="ttname"><a href="classgame_1_1core_1_1_input_controller.html">game::core::InputController</a></div><div class="ttdef"><b>Definition:</b> <a href="_controller_8hpp_source.html#l00048">Controller.hpp:49</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_a_i_controller_html"><div class="ttname"><a href="classgame_1_1core_1_1_a_i_controller.html">game::core::AIController</a></div><div class="ttdoc">AIController can manage an entity to attack another.</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8hpp_source.html#l00200">Controller.hpp:201</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_a_i_controller_html_a4d5b4672d3388af1e74ad88f7bcd369e"><div class="ttname"><a href="classgame_1_1core_1_1_a_i_controller.html#a4d5b4672d3388af1e74ad88f7bcd369e">game::core::AIController::ticks</a></div><div class="ttdeci">void ticks() override</div><div class="ttdoc">Perform behavior.</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8cpp_source.html#l00202">Controller.cpp:202</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_a_i_controller_html_a9960978ec58dc1e1c1e02813f55f7074"><div class="ttname"><a href="classgame_1_1core_1_1_a_i_controller.html#a9960978ec58dc1e1c1e02813f55f7074">game::core::AIController::hasFinished</a></div><div class="ttdeci">bool hasFinished() override</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8cpp_source.html#l00295">Controller.cpp:295</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_a_i_controller_html_aca33ab5976553903564effb8907ab9d4"><div class="ttname"><a href="classgame_1_1core_1_1_a_i_controller.html#aca33ab5976553903564effb8907ab9d4">game::core::AIController::AIController</a></div><div class="ttdeci">AIController()</div><div class="ttdoc">Create the controller and the player GameEntity binded to it.</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8cpp_source.html#l00185">Controller.cpp:185</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_controller_html"><div class="ttname"><a href="classgame_1_1core_1_1_controller.html">game::core::Controller</a></div><div class="ttdoc">Abstract Controller class that can manage a GameObject.</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8hpp_source.html#l00037">Controller.hpp:38</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_controller_html_a5810af2a522483b4b9f070e5f1351e49"><div class="ttname"><a href="classgame_1_1core_1_1_controller.html#a5810af2a522483b4b9f070e5f1351e49">game::core::Controller::getControlledObject</a></div><div class="ttdeci">std::shared_ptr&lt; GameObject &gt; getControlledObject()</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8cpp_source.html#l00028">Controller.cpp:28</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_controller_html_a5a420cfa660ac1dea69a03bd70f53b89"><div class="ttname"><a href="classgame_1_1core_1_1_controller.html#a5a420cfa660ac1dea69a03bd70f53b89">game::core::Controller::hasFinished</a></div><div class="ttdeci">virtual bool hasFinished()</div><div class="ttdoc">If return true, the GameManager will remove the controller from the list.</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8cpp_source.html#l00033">Controller.cpp:33</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_controller_html_a81aeb16bd8980964ebca105b2ac85c8c"><div class="ttname"><a href="classgame_1_1core_1_1_controller.html#a81aeb16bd8980964ebca105b2ac85c8c">game::core::Controller::ticks</a></div><div class="ttdeci">virtual void ticks()=0</div><div class="ttdoc">Called each 100 ms to execute the behavior.</div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_controller_html_ac238963193c7d2215ed09ff59f566a51"><div class="ttname"><a href="classgame_1_1core_1_1_controller.html#ac238963193c7d2215ed09ff59f566a51">game::core::Controller::Controller</a></div><div class="ttdeci">Controller(std::shared_ptr&lt; GameObject &gt; object)</div><div class="ttdoc">Create the controller and give an entity to manage.</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8cpp_source.html#l00025">Controller.cpp:25</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_default_controller_html"><div class="ttname"><a href="classgame_1_1core_1_1_default_controller.html">game::core::DefaultController</a></div><div class="ttdoc">Most basic controller used for displaying really simple and inactive object.</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8hpp_source.html#l00141">Controller.hpp:142</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_default_controller_html_a20f4e598a8b93e6afc8d7bb844f6ab6c"><div class="ttname"><a href="classgame_1_1core_1_1_default_controller.html#a20f4e598a8b93e6afc8d7bb844f6ab6c">game::core::DefaultController::DefaultController</a></div><div class="ttdeci">DefaultController(const std::string &amp;spriteName)</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8cpp_source.html#l00132">Controller.cpp:132</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_default_controller_html_ac5a1219d75d250b9f80ba11df089e5f0"><div class="ttname"><a href="classgame_1_1core_1_1_default_controller.html#ac5a1219d75d250b9f80ba11df089e5f0">game::core::DefaultController::ticks</a></div><div class="ttdeci">void ticks() override</div><div class="ttdoc">Perform behavior.</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8cpp_source.html#l00143">Controller.cpp:143</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_entity_controller_html"><div class="ttname"><a href="classgame_1_1core_1_1_entity_controller.html">game::core::EntityController</a></div><div class="ttdoc">This controller is specific for entities.</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8hpp_source.html#l00074">Controller.hpp:75</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_entity_controller_html_a198d361dc7ef2dddfedcaf0402be93fd"><div class="ttname"><a href="classgame_1_1core_1_1_entity_controller.html#a198d361dc7ef2dddfedcaf0402be93fd">game::core::EntityController::getControlledEntity</a></div><div class="ttdeci">std::shared_ptr&lt; GameEntity &gt; getControlledEntity()</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8cpp_source.html#l00045">Controller.cpp:45</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_entity_controller_html_a7a63809189ae18c5569b6cd347bcd61e"><div class="ttname"><a href="classgame_1_1core_1_1_entity_controller.html#a7a63809189ae18c5569b6cd347bcd61e">game::core::EntityController::EntityController</a></div><div class="ttdeci">EntityController(std::shared_ptr&lt; GameEntity &gt; entity)</div><div class="ttdoc">Create the Controller and specify an entity.</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8cpp_source.html#l00040">Controller.cpp:40</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_input_controller_html"><div class="ttname"><a href="classgame_1_1core_1_1_input_controller.html">game::core::InputController</a></div><div class="ttdoc">This is the player controller that manages inputs.</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8hpp_source.html#l00107">Controller.hpp:108</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_input_controller_html_a021772107e87d26c9dd3c63222ff592c"><div class="ttname"><a href="classgame_1_1core_1_1_input_controller.html#a021772107e87d26c9dd3c63222ff592c">game::core::InputController::InputController</a></div><div class="ttdeci">InputController()</div><div class="ttdoc">Create the controller and the player GameEntity binded to it.</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8cpp_source.html#l00052">Controller.cpp:52</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_input_controller_html_a06d57dbec5dd9ff2416d5320354ad5ef"><div class="ttname"><a href="classgame_1_1core_1_1_input_controller.html#a06d57dbec5dd9ff2416d5320354ad5ef">game::core::InputController::ticks</a></div><div class="ttdeci">void ticks() override</div><div class="ttdoc">Perform behavior.</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8cpp_source.html#l00068">Controller.cpp:68</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_input_controller_html_a26be844337642478d2f56f9a1586acfe"><div class="ttname"><a href="classgame_1_1core_1_1_input_controller.html#a26be844337642478d2f56f9a1586acfe">game::core::InputController::onEvent</a></div><div class="ttdeci">void onEvent(const std::shared_ptr&lt; events::Event &gt; event) override</div><div class="ttdoc">Used to listen to events.</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8cpp_source.html#l00084">Controller.cpp:84</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_input_controller_html_adb0da9f92f165b8c3d0b93e2081254a2"><div class="ttname"><a href="classgame_1_1core_1_1_input_controller.html#adb0da9f92f165b8c3d0b93e2081254a2">game::core::InputController::hasFinished</a></div><div class="ttdeci">bool hasFinished() override</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8cpp_source.html#l00079">Controller.cpp:79</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_trap_controller_html"><div class="ttname"><a href="classgame_1_1core_1_1_trap_controller.html">game::core::TrapController</a></div><div class="ttdoc">Trap controller, when an entity is near the trap, it is triggered.</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8hpp_source.html#l00162">Controller.hpp:163</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_trap_controller_html_a0997d13a9d5a23ac42cd3ae540752433"><div class="ttname"><a href="classgame_1_1core_1_1_trap_controller.html#a0997d13a9d5a23ac42cd3ae540752433">game::core::TrapController::hasFinished</a></div><div class="ttdeci">bool hasFinished() override</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8cpp_source.html#l00178">Controller.cpp:178</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_trap_controller_html_a5732122f009722e6656c29a7cbb858c6"><div class="ttname"><a href="classgame_1_1core_1_1_trap_controller.html#a5732122f009722e6656c29a7cbb858c6">game::core::TrapController::TrapController</a></div><div class="ttdeci">TrapController(const std::string &amp;spriteName)</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8cpp_source.html#l00148">Controller.cpp:148</a></div></div>
+<div class="ttc" id="aclassgame_1_1core_1_1_trap_controller_html_af50a0bca50fc51d01ccd0c29bb5909c1"><div class="ttname"><a href="classgame_1_1core_1_1_trap_controller.html#af50a0bca50fc51d01ccd0c29bb5909c1">game::core::TrapController::ticks</a></div><div class="ttdeci">void ticks() override</div><div class="ttdoc">Perform behavior.</div><div class="ttdef"><b>Definition:</b> <a href="_controller_8cpp_source.html#l00159">Controller.cpp:159</a></div></div>
 <div class="ttc" id="aclassgame_1_1events_1_1_event_listener_html"><div class="ttname"><a href="classgame_1_1events_1_1_event_listener.html">game::events::EventListener</a></div><div class="ttdoc">This is the interface each class who wants to listen to events must implement.</div><div class="ttdef"><b>Definition:</b> <a href="_event_manager_8hpp_source.html#l00069">EventManager.hpp:70</a></div></div>
+<div class="ttc" id="anamespacegame_1_1core_html"><div class="ttname"><a href="namespacegame_1_1core.html">game::core</a></div><div class="ttdoc">Main features of the program.</div><div class="ttdef"><b>Definition:</b> <a href="_attack_computer_8cpp_source.html#l00019">AttackComputer.cpp:20</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -67,6 +67,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="classgame_1_1math_1_1_vec2-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -120,6 +121,12 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 <tr class="memitem:ab268a969a921a4e4f9d219636b6e126b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgame_1_1math_1_1_vec2.html">Vec2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1math_1_1_vec2.html#ab268a969a921a4e4f9d219636b6e126b">normalize</a> ()</td></tr>
 <tr class="memdesc:ab268a969a921a4e4f9d219636b6e126b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide the vector by its length to obtain a length of 1.  <a href="classgame_1_1math_1_1_vec2.html#ab268a969a921a4e4f9d219636b6e126b">More...</a><br /></td></tr>
 <tr class="separator:ab268a969a921a4e4f9d219636b6e126b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:ac1a7aa472120c15f530fa2459f4cd1b5"><td class="memTemplParams" colspan="2">template&lt;typename C  = float&gt; </td></tr>
+<tr class="memitem:ac1a7aa472120c15f530fa2459f4cd1b5"><td class="memTemplItemLeft" align="right" valign="top">static bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgame_1_1math_1_1_vec2.html#ac1a7aa472120c15f530fa2459f4cd1b5">isInside</a> (<a class="el" href="classgame_1_1math_1_1_vec2.html">Vec2</a>&lt; C &gt; pos, <a class="el" href="classgame_1_1math_1_1_vec2.html">Vec2</a>&lt; C &gt; bottomRight, <a class="el" href="classgame_1_1math_1_1_vec2.html">Vec2</a>&lt; C &gt; topLeft=<a class="el" href="classgame_1_1math_1_1_vec2.html">Vec2</a>&lt; C &gt;(0, 0))</td></tr>
+<tr class="separator:ac1a7aa472120c15f530fa2459f4cd1b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -225,6 +232,55 @@ template&lt;typename T  = float&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>The scalar product (dot product) with another vector </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_vec2_8hpp_source.html#l00166">166</a> of file <a class="el" href="_vec2_8hpp_source.html">Vec2.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ac1a7aa472120c15f530fa2459f4cd1b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1a7aa472120c15f530fa2459f4cd1b5">&#9670;&nbsp;</a></span>isInside()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = float&gt; </div>
+<div class="memtemplate">
+template&lt;typename C  = float&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool <a class="el" href="classgame_1_1math_1_1_vec2.html">game::math::Vec2</a>&lt; T &gt;::isInside </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgame_1_1math_1_1_vec2.html">Vec2</a>&lt; C &gt;&#160;</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classgame_1_1math_1_1_vec2.html">Vec2</a>&lt; C &gt;&#160;</td>
+          <td class="paramname"><em>bottomRight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classgame_1_1math_1_1_vec2.html">Vec2</a>&lt; C &gt;&#160;</td>
+          <td class="paramname"><em>topLeft</em> = <code><a class="el" href="classgame_1_1math_1_1_vec2.html">Vec2</a>&lt;C&gt;(0,&#160;0)</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>true if pos is between bottom right and top left points </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_vec2_8hpp_source.html#l00201">201</a> of file <a class="el" href="_vec2_8hpp_source.html">Vec2.hpp</a>.</p>
 
 </div>
 </div>
