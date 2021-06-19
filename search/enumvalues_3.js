@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['frozen_496',['FROZEN',['../namespacegame_1_1skills.html#a23c3c906594652d6fb2d249dfdbed78ba081912e034fd835fdda076251f2cd586',1,'game::skills']]]
+  ['frozen_498',['FROZEN',['../namespacegame_1_1skills.html#a23c3c906594652d6fb2d249dfdbed78ba081912e034fd835fdda076251f2cd586',1,'game::skills']]]
 ];

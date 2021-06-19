@@ -26,6 +26,6 @@ digraph "src/events/Event.hpp"
   Node7 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node11 [label="src/gameCore/World.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_world_8cpp.html",tooltip="The World object is a container that contains a reference on all game objects."];
   Node7 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node12 [label="src/main.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8cpp_source.html",tooltip=" "];
+  Node12 [label="src/main.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8cpp.html",tooltip="For unit tests and main loop."];
   Node2 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }
